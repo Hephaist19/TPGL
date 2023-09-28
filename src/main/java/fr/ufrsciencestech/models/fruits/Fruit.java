@@ -1,11 +1,32 @@
 package fr.ufrsciencestech.models.fruits;
 
 public interface Fruit {
-    public boolean isSeedless();  //predicat indiquant si le fruit a ou non des pepins
-    public double getPrix();      //prix unitaire du fruit (en euros)
-    public String getOrigine();   //pays d'origine du fruit
+    /**
+     * @brief Renvoie si le fruit est sans graine
+     * @return 
+     */
+    public boolean isSeedless();
+    
+    /**
+     * @brief Renvoie le prix unitaire du fruit
+     * @return 
+     */
+    public double getPrix();
+    
+    /**
+     * @brief Renvoie le pays d'origine du fruit
+     * @return Un String contenant le pays
+     */
+    public String getOrigine();
+    
+    /**
+     * @brief Test si deux fruit sont les mêmes
+     * @param o a tester    
+     * @return True si les mêmes, false sinon
+     */
     @Override
-    public boolean equals(Object o);  //predicat pour tester si 2 fruits sont equivalents
+    public boolean equals(Object o);
+    
     @Override
-    public String toString();    //affichage d'un fruit
+    public String toString();
 }

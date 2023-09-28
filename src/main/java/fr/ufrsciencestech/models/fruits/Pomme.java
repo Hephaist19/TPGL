@@ -56,14 +56,4 @@ public class Pomme implements Fruit{
     public boolean isSeedless() {  //predicat indiquant qu'une orange a des pepins
         return false;
     }
-
-
-    public static void main (String[] args){
-        //Ecrire ici vos tests
-	System.out.println("premier Pomme");
-	Pomme o= new Pomme();
-	System.out.println(o.toString());
-	Pomme o1= new Pomme(-2.0,"maroc");
-	System.out.println(o1.toString());
-   }
 }

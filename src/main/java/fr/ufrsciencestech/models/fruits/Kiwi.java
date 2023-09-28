@@ -57,27 +57,4 @@ public class Kiwi implements Fruit{
     public boolean isSeedless() {  //predicat indiquant qu'une kiwi a des pepins
         return false;
     }
-
-
-    public static void main (String[] args){
-        //Ecrire ici vos tests
-        System.out.println("premier test Kiwi");
-        Kiwi kiwi = new Kiwi();
-        double prix = 12;
-        double oldPrice = 0.5;
-        boolean isTest = true;
-        if (kiwi.getPrix() != oldPrice) 
-            isTest = false;
-        kiwi.setPrix(prix);
-        if (kiwi.getPrix() != prix)
-            isTest = false;
-        if (isTest) 
-            System.out.println("Test prix réussi");
-        boolean isTest2 = true;
-        isTest2 = kiwi.getOrigine().equals("Espagne");
-        kiwi.setOrigine("France");
-        isTest2 = kiwi.getOrigine().equals("France");
-        if (isTest2)
-            System.out.println("Deuxième test réussi");
-   }
 }

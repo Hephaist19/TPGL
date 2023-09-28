@@ -55,15 +55,9 @@ public class Ananas implements Fruit{
         return false;
     }
 
+    @Override
     public boolean isSeedless() {  //predicat indiquant qu'une orange a des pepins
         return false;
     }
-
-
-    public static void main (String[] args){
-	System.out.println("premier test Ananas");
-    Ananas or = new Ananas(15,"algerie");
-    System.out.println(or);
-   }
 }
 

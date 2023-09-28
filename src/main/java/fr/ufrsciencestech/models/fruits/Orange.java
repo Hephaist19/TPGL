@@ -56,42 +56,4 @@ public class Orange implements Fruit{
     public boolean isSeedless() {  //predicat indiquant qu'une orange a des pepins
         return false;
     }
-
-
-    public static void main (String[] args){
-        //Ecrire ici vos tests
-	System.out.println("premier test Orange");
-
-    double pr = 1;
-    String str = "bidule";
-
-    //instance orange
-    Orange or = new Orange();
-    Orange or2 = new Orange(pr, str);
-
-    //affiche le prix des oranges
-    
-    System.out.println("Prix orange 1 : "+ or.getPrix());
-    System.out.println("Prix orange 2 : "+ or2.getPrix());
-
-    //modification des prix des oranges
-    or.setPrix(1.5);
-    or2.setPrix(2);
-
-    System.out.println("Origine orange 1 : " + or.getOrigine());
-    System.out.println("Origine orange 2 : " + or2.getOrigine());
-
-    //modification origine
-    or.setOrigine("Andalouse");
-    or2.setOrigine("Amazonie");
-
-    //affichage après modification
-    System.out.println("Orange créé : " + or.toString());
-    
-    System.out.println("Orange 2 créé : " + or2.toString());
-    
-    System.out.println(or.equals(or2));
-    System.out.println(or.isSeedless());
-
-   }
 }

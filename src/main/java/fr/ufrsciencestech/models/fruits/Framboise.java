@@ -56,41 +56,4 @@ public class Framboise implements Fruit {
     public boolean isSeedless() {  //predicat indiquant qu'une orange a des pepins
         return false;
     }
-
-
-    public static void main (String[] args){
-        //Ecrire ici vos tests
-	System.out.println("premier test Framboise");
-
-    double pr = 1;
-    String str = "bidule";
-
-    //instance orange
-    Framboise fr = new Framboise();
-    Framboise fr2 = new Framboise(pr, str);
-
-    //affiche le prix des oranges
-    
-    System.out.println("Prix framboise 1 : "+ fr.getPrix());
-    System.out.println("Prix framboise: "+ fr2.getPrix());
-
-    //modification des prix des oranges
-    fr.setPrix(1.5);
-    fr2.setPrix(2);
-
-    System.out.println("Origine Framboise 1 : " + fr.getOrigine());
-    System.out.println("Origine Framboise 2 : " + fr2.getOrigine());
-
-    //modification origine
-    fr.setOrigine("Andalouse");
-    fr2.setOrigine("Amazonie");
-
-    //affichage après modification
-    System.out.println("Framboise créé : " + fr.toString());
-    
-    System.out.println("Framboise 2 créé : " + fr2.toString());
-    
-    System.out.println(fr.equals(fr2));
-    System.out.println(fr.isSeedless());
-   }
 }
