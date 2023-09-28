@@ -52,6 +52,7 @@ public class Main {
 
         
         //TEST DE L'INTERFACE
+        System.out.println("Test de l'affichage de l'interface!");
         
         MarcheFruits dialog = new MarcheFruits(new javax.swing.JFrame(), true);
         dialog.addWindowListener(new java.awt.event.WindowAdapter() {
