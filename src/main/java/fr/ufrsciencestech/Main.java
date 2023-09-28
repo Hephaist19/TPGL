@@ -2,6 +2,7 @@ package fr.ufrsciencestech;
 
 import fr.ufrsciencestech.fruits.*;
 import fr.ufrsciencestech.panier.Panier;
+import fr.ufrsciencestech.interfaces.MarcheFruits;
 
 public class Main {
 
@@ -49,5 +50,19 @@ public class Main {
             e.printStackTrace ();
         }
 
+        
+        //TEST DE L'INTERFACE
+        
+        MarcheFruits dialog = new MarcheFruits(new javax.swing.JFrame(), true);
+        dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+        dialog.setVisible(true);
+
+        
+        
     }
 }
