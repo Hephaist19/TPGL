@@ -1,4 +1,4 @@
-package fr.ufrsciencestech.panier;
+package fr.ufrsciencestech.fruits;
 
 public class Kiwi implements Fruit{
     private double prix;
