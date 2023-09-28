@@ -1,10 +1,6 @@
 package fr.ufrsciencestech.panier;
 
-/**
- *
- * @author roudet
- */
-public class Framboise {
+public class Framboise implements Fruit {
     private double prix;
     private String origine;
 	

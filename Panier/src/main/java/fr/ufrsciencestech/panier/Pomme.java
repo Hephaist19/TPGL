@@ -1,16 +1,16 @@
 package fr.ufrsciencestech.panier;
 
-public class Orange implements Fruit{
+public class Pomme implements Fruit{
     private double prix;
     private String origine;
 	
-    public Orange() 
+    public Pomme() 
     {
         this.prix = 0.5;  //prix en euros
         this.origine="Espagne";
     }
     
-    public Orange(double prix, String origine) 
+    public Pomme(double prix, String origine) 
     {
 	if(prix < 0)
 	    this.prix = -prix;  //une solution possible pour interdire les prix negatifs
@@ -41,13 +41,13 @@ public class Orange implements Fruit{
 
     @Override
     public String toString(){
-        return "Orange de " + origine + " a " + prix + " euros";
+        return "Pomme de " + origine + " a " + prix + " euros";
     }
 
     @Override
     public boolean equals(Object o){  //predicat pour tester si 2 oranges sont equivalentes
         if(o != null && getClass() == o.getClass()){
-            Orange or = (Orange) o;
+            Pomme or = (Pomme) o;
             return (prix == or.prix && origine.equals(or.origine));
         }
         return false;
@@ -60,38 +60,10 @@ public class Orange implements Fruit{
 
     public static void main (String[] args){
         //Ecrire ici vos tests
-	System.out.println("premier test Orange");
-
-    double pr = 1;
-    String str = "bidule";
-
-    //instance orange
-    Orange or = new Orange();
-    Orange or2 = new Orange(pr, str);
-
-    //affiche le prix des oranges
-    
-    System.out.println("Prix orange 1 : "+ or.getPrix());
-    System.out.println("Prix orange 2 : "+ or2.getPrix());
-
-    //modification des prix des oranges
-    or.setPrix(1.5);
-    or2.setPrix(2);
-
-    System.out.println("Origine orange 1 : " + or.getOrigine());
-    System.out.println("Origine orange 2 : " + or2.getOrigine());
-
-    //modification origine
-    or.setOrigine("Andalouse");
-    or2.setOrigine("Amazonie");
-
-    //affichage après modification
-    System.out.println("Orange créé : " + or.toString());
-    
-    System.out.println("Orange 2 créé : " + or2.toString());
-    
-    System.out.println(or.equals(or2));
-    System.out.println(or.isSeedless());
-
+	System.out.println("premier Pomme");
+	Pomme o= new Pomme();
+	System.out.println(o.toString());
+	Pomme o1= new Pomme(-2.0,"maroc");
+	System.out.println(o1.toString());
    }
 }
