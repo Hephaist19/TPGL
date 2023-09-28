@@ -46,7 +46,8 @@ public class Ananas implements Fruit{
     public String toString(){
         return "Ananas de " + origine + " a " + prix + " euros";
     }
-
+    
+    @Override
     public boolean equals(Object o){  //predicat pour tester si 2 oranges sont equivalentes
         if(o != null && getClass() == o.getClass()){
             Ananas or = (Ananas) o;
@@ -57,7 +58,7 @@ public class Ananas implements Fruit{
 
     @Override
     public boolean isSeedless() {  //predicat indiquant qu'une orange a des pepins
-        return false;
+        return true;
     }
 }
 
