@@ -91,6 +91,7 @@ public class MarcheFruits extends javax.swing.JDialog {
 
         PanelExempleFruit.setLayout(new java.awt.GridLayout(2, 1));
 
+        BoutonExempleFruit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banane_verte.jpg"))); // NOI18N
         BoutonExempleFruit.setMaximumSize(new java.awt.Dimension(10, 10));
         BoutonExempleFruit.setMinimumSize(new java.awt.Dimension(10, 10));
         BoutonExempleFruit.setPreferredSize(new java.awt.Dimension(10, 10));
