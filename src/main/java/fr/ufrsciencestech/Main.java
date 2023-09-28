@@ -3,8 +3,8 @@ package fr.ufrsciencestech;
 import fr.ufrsciencestech.models.fruits.Kiwi;
 import fr.ufrsciencestech.models.fruits.Fruit;
 import fr.ufrsciencestech.models.fruits.Ananas;
-import fr.ufrsciencestech.panier.Panier;
-import fr.ufrsciencestech.interfaces.MarcheFruits;
+import fr.ufrsciencestech.models.panier.Panier;
+import fr.ufrsciencestech.views.*;
 
 public class Main {
 

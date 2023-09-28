@@ -1,4 +1,4 @@
-package fr.ufrsciencestech.interfaces;
+package fr.ufrsciencestech.views;
 
 /**
  *

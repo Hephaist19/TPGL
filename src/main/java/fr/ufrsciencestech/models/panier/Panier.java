@@ -1,4 +1,4 @@
-package fr.ufrsciencestech.panier;
+package fr.ufrsciencestech.models.panier;
 
 import fr.ufrsciencestech.models.fruits.Fruit;
 import fr.ufrsciencestech.exceptions.*;
