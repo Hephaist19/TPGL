@@ -18,6 +18,7 @@ public class Main {
         Panier panierTestG4 = new Panier(1);
         Fruit kiwi1 = new Kiwi();
         Fruit kiwi2 = new Kiwi();
+        Fruit kiwi3 = new Kiwi();
         try {
             
             System.out.println("Panier de base : " + panierTestG4.toString());
