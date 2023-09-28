@@ -6,7 +6,6 @@ import fr.ufrsciencestech.panier.Panier;
 public class Main {
 
     public static void main(String[] args) {
-        //tests
 
         //Ecrire ici vos tests
         System.out.println("premier test Panier");
