@@ -2,12 +2,8 @@ package fr.ufrsciencestech.models;
 
 import fr.ufrsciencestech.models.fruits.Fruit;
 import fr.ufrsciencestech.exceptions.*;
-
 import java.util.*;
-/**
- *
- * @author roudet
- */
+
 public class Panier {
     private ArrayList<Fruit> fruits  = new ArrayList<Fruit>();  //attribut pour stocker les fruits
     private int contenanceMax=10;        //nb maximum d'oranges que peut contenir le panier
@@ -25,15 +21,15 @@ public class Panier {
     
     //groupe 2
     public ArrayList<Fruit> getFruits() {  //accesseur du premier attribut
-       return null;
+       return this.fruits;
     }
 
     public void setFruits(ArrayList<Fruit> fruits) { //modificateur du premier attribut
-      
+      this.fruits = fruits;
     }
 
     public int getTaillePanier(){  //accesseur retournant la taille allouee pour l'attibut fruits
-        return 0;
+        return this.fruits.size();
     }
     
     public int getContenanceMax(){  //accesseur du second attribut
@@ -41,20 +37,26 @@ public class Panier {
     }
 
     //groupe 3
-    public Fruit getFruit(int i){  //accesseur retournant le fruit contenu dans le panier a l'emplacement n°i ou null s'il n'y a rien a cet emplacement
-	return null;
+    public Fruit getFruit(int index){  //accesseur retournant le fruit contenu dans le panier a l'emplacement n°i ou null s'il n'y a rien a cet emplacement
+	return this.fruits.get(index);
     }
     
     public void setFruit(int i, Fruit f){  //modificateur du fruit contenu dans le panier a l'emplacement n°i par f (s'il y a bien deja un fruit a cet emplacement, ne rien faire sinon)
-
+        
     }
     
     public boolean estVide(){  //predicat indiquant que le panier est vide
-	return false;
+        return this.fruits.isEmpty();
+                
     }
     
     public boolean estPlein(){  //predicat indiquant que le panier est plein
-	return false;
+        if(this.fruits.size() == this.contenanceMax){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     //groupe 4
@@ -82,7 +84,7 @@ public class Panier {
     
     //groupe 7
     public void boycotteOrigine(String origine){  //supprime du panier tous les fruits provenant du pays origine
-	
+	return true;
     }  
         
     //groupe 8    
