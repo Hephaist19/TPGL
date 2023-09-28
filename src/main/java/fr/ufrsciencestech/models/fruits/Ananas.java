@@ -1,18 +1,16 @@
 package fr.ufrsciencestech.models.fruits;
 
-public class Ananas implements Fruit{
+public class Ananas implements Fruit {
     private double prix;
     private String origine;
 	
-    public Ananas() 
-    {
+    public Ananas() {
         super();
         this.prix = 0.5;  //prix en euros
         this.origine="Espagne";
     }
     
-    public Ananas(double prix, String origine) 
-    {
+    public Ananas(double prix, String origine) {
 	if(prix < 0)
 	    this.prix = -prix;  //une solution possible pour interdire les prix negatifs
 	else
@@ -25,16 +23,16 @@ public class Ananas implements Fruit{
     }
 
     @Override
-    public double getPrix(){
+    public double getPrix() {
 	return prix;
     }
 
-    public void setPrix(double prix){
+    public void setPrix(double prix) {
 	this.prix=prix;
     }
 
     @Override
-    public String getOrigine(){
+    public String getOrigine() {
 	return origine;
     }
  
@@ -43,12 +41,12 @@ public class Ananas implements Fruit{
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Ananas de " + origine + " a " + prix + " euros";
     }
     
     @Override
-    public boolean equals(Object o){  //predicat pour tester si 2 oranges sont equivalentes
+    public boolean equals(Object o) {  //predicat pour tester si 2 oranges sont equivalentes
         if(o != null && getClass() == o.getClass()){
             Ananas or = (Ananas) o;
             return (prix == or.prix && origine.equals(or.origine));
