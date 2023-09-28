@@ -1,4 +1,4 @@
-package fr.ufrsciencestech.fruits;
+package fr.ufrsciencestech.models.fruits;
 
 public class Framboise implements Fruit {
     private double prix;

@@ -1,6 +1,6 @@
 package fr.ufrsciencestech.panier;
 
-import fr.ufrsciencestech.fruits.*;
+import fr.ufrsciencestech.models.fruits.Fruit;
 import fr.ufrsciencestech.exceptions.*;
 
 import java.util.*;

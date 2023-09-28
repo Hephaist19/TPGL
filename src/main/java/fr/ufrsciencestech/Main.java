@@ -1,6 +1,8 @@
 package fr.ufrsciencestech;
 
-import fr.ufrsciencestech.fruits.*;
+import fr.ufrsciencestech.models.fruits.Kiwi;
+import fr.ufrsciencestech.models.fruits.Fruit;
+import fr.ufrsciencestech.models.fruits.Ananas;
 import fr.ufrsciencestech.panier.Panier;
 import fr.ufrsciencestech.interfaces.MarcheFruits;
 
