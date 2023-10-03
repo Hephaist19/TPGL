@@ -52,11 +52,11 @@ public class MarcheFruits extends javax.swing.JDialog {
         Catégories.setLayout(CatégoriesLayout);
         CatégoriesLayout.setHorizontalGroup(
             CatégoriesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 887, Short.MAX_VALUE)
+            .addGap(0, 316, Short.MAX_VALUE)
         );
         CatégoriesLayout.setVerticalGroup(
             CatégoriesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 231, Short.MAX_VALUE)
+            .addGap(0, 68, Short.MAX_VALUE)
         );
 
         Colonne1.add(Catégories);
