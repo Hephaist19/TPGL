@@ -1,11 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
- */
 package fr.ufrsciencestech.models;
-
 import fr.ufrsciencestech.exceptions.PanierPleinException;
 import fr.ufrsciencestech.models.fruits.*;
+import java.util.ArrayList;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -126,8 +122,12 @@ public class PanierTest {
     public void testAjout() throws Exception {
         System.out.println("ajout");
         Fruit o = new Pomme();
+        int expResult = 1;
         Panier instance = new Panier(1);
         instance.ajout(o);
+        int result = instance.getTaillePanier();
+        assertEquals(expResult,result);
+        
     }
 
     /**
@@ -136,9 +136,62 @@ public class PanierTest {
     @Test
     public void testRetrait() throws Exception {
         System.out.println("retrait");
+        int expResult = 0;
         Panier instance = new Panier(1);
         Fruit o = new Pomme();
         instance.ajout(o);
         instance.retrait();
+        int result = instance.getTaillePanier();
+        assertEquals(expResult,result);
     }
+
+    /**
+     * Test of getFruits method, of class Panier.
+     */
+    @Test
+    public void testGetFruits() {
+        System.out.println("getFruits");
+        Panier instance = new Panier(1);
+        ArrayList<Fruit> expResult = new ArrayList<>();
+        instance.setFruits(expResult);
+        ArrayList<Fruit> result = instance.getFruits();
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of getPrix method, of class Panier.
+     */
+    @Test
+    public void testGetPrix() {
+        System.out.println("getPrix");
+        Panier instance = new Panier(1);
+        double expResult = 3.99;
+        Fruit f = new Pomme(expResult,"France");
+        try {
+            instance.ajout(f);
+        } catch (PanierPleinException ex) {}
+        double result = instance.getPrix();
+        assertEquals(expResult, result,0.003);
+    }
+
+    /**
+     * Test of boycotteOrigine method, of class Panier.
+     */
+    @Test
+    public void testBoycotteOrigine() {
+        System.out.println("boycotteOrigine");
+        int expresult = 0;
+        String origine = "Espagne";
+        Panier instance = new Panier(1);
+        Fruit f = new Pomme();
+        try{
+        instance.ajout(f);
+        }
+        catch(PanierPleinException e){}
+        instance.boycotteOrigine(origine);
+        int result = instance.getTaillePanier();
+        assertEquals(expresult,result);
+
+    }
+    
 }

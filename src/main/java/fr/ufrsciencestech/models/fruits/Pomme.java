@@ -12,7 +12,8 @@ public class Pomme implements Fruit{
     
     public Pomme(double prix, String origine) 
     {
-	if(prix < 0)
+        
+	if(prix < 0.00)
 	    this.prix = -prix;  //une solution possible pour interdire les prix negatifs
 	else
 	    this.prix = prix;
@@ -21,6 +22,7 @@ public class Pomme implements Fruit{
             this.origine = "Espagne";  //Espagne par défaut
 	else
             this.origine = origine;   
+        
     }
 
     public double getPrix(){
