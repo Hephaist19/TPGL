@@ -24,8 +24,8 @@ public class MarcheFruits extends javax.swing.JDialog {
     private void initComponents() {
 
         Colonne1 = new javax.swing.JPanel();
-        BoutonQuitter = new javax.swing.JButton();
         Catégories = new javax.swing.JPanel();
+        BoutonQuitter = new javax.swing.JButton();
         ComboBoxTrierPar = new javax.swing.JComboBox<>();
         LabelRecap = new javax.swing.JLabel();
         ScrollPaneRecap = new javax.swing.JScrollPane();
@@ -45,19 +45,17 @@ public class MarcheFruits extends javax.swing.JDialog {
         Colonne1.setPreferredSize(new java.awt.Dimension(200, 400));
         Colonne1.setLayout(new java.awt.GridLayout(5, 1));
 
-        BoutonQuitter.setText("jButton1");
-        Colonne1.add(BoutonQuitter);
+        Catégories.setLayout(new javax.swing.BoxLayout(Catégories, javax.swing.BoxLayout.LINE_AXIS));
 
-        javax.swing.GroupLayout CatégoriesLayout = new javax.swing.GroupLayout(Catégories);
-        Catégories.setLayout(CatégoriesLayout);
-        CatégoriesLayout.setHorizontalGroup(
-            CatégoriesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 316, Short.MAX_VALUE)
-        );
-        CatégoriesLayout.setVerticalGroup(
-            CatégoriesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 68, Short.MAX_VALUE)
-        );
+        BoutonQuitter.setText("jButton1");
+        BoutonQuitter.setMinimumSize(new java.awt.Dimension(150, 25));
+        BoutonQuitter.setPreferredSize(new java.awt.Dimension(150, 25));
+        BoutonQuitter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BoutonQuitterActionPerformed(evt);
+            }
+        });
+        Catégories.add(BoutonQuitter);
 
         Colonne1.add(Catégories);
 
@@ -109,6 +107,10 @@ public class MarcheFruits extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BoutonQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoutonQuitterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BoutonQuitterActionPerformed
 
     /**
      * @param args the command line arguments

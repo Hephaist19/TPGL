@@ -2,25 +2,30 @@ package fr.ufrsciencestech.models;
 
 import fr.ufrsciencestech.models.fruits.Fruit;
 import fr.ufrsciencestech.exceptions.*;
+import java.beans.PropertyChangeSupport;
 import java.util.*;
 
-public class Panier {
-
+public class Panier{
+    
+    PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+    
     private ArrayList<Fruit> fruits = new ArrayList<Fruit>();  //attribut pour stocker les fruits
     private int contenanceMax = 10;        //nb maximum d'oranges que peut contenir le panier
-
-    //groupe 1
+    
     public Panier(int contenanceMax) {  //initialise un panier vide ayant une certaine contenance maximale (precisee en parametre)
 
         this.contenanceMax = contenanceMax;
     }
-
+    
     @Override
     public String toString() {  //affichage de ce qui est contenu dans le panier : liste des fruits presents
-        return "";
+        StringBuilder sb = new StringBuilder();
+        sb.append("Taille: ").append(fruits.size());
+        for(Fruit f: fruits)
+            sb.append(f.toString());
+        return sb.toString();
     }
 
-    //groupe 2
     public ArrayList<Fruit> getFruits() {  //accesseur du premier attribut
         return this.fruits;
     }
@@ -37,7 +42,6 @@ public class Panier {
         return contenanceMax;
     }
 
-    //groupe 3
     public Fruit getFruit(int index) {  //accesseur retournant le fruit contenu dans le panier a l'emplacement n°i ou null s'il n'y a rien a cet emplacement
         return this.fruits.get(index);
     }
@@ -48,15 +52,10 @@ public class Panier {
 
     public boolean estVide() {  //predicat indiquant que le panier est vide
         return this.fruits.isEmpty();
-
     }
 
     public boolean estPlein() {  //predicat indiquant que le panier est plein
-        if(this.fruits.size() == this.contenanceMax) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.fruits.size() == this.contenanceMax;
     }
 
     //groupe 4
