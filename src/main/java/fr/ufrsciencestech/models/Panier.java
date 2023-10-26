@@ -13,7 +13,6 @@ public class Panier{
     private int contenanceMax = 10;        //nb maximum d'oranges que peut contenir le panier
     
     public Panier(int contenanceMax) {  //initialise un panier vide ayant une certaine contenance maximale (precisee en parametre)
-
         this.contenanceMax = contenanceMax;
     }
     
@@ -34,7 +33,7 @@ public class Panier{
         this.fruits = fruits;
     }
 
-    public int getTaillePanier() {  //accesseur retournant la taille allouee pour l'attibut fruits
+    public int getTaillePanier() {  //Accesseur retournant le nombre de fruit dans la panier
         return this.fruits.size();
     }
 
@@ -47,7 +46,10 @@ public class Panier{
     }
 
     public void setFruit(int i, Fruit f) {  //modificateur du fruit contenu dans le panier a l'emplacement n°i par f (s'il y a bien deja un fruit a cet emplacement, ne rien faire sinon)
-
+        if(this.fruits.size() > i)
+        {
+            fruits.set(i, f);
+        }
     }
 
     public boolean estVide() {  //predicat indiquant que le panier est vide
@@ -58,7 +60,6 @@ public class Panier{
         return this.fruits.size() == this.contenanceMax;
     }
 
-    //groupe 4
     public void ajout(Fruit o) throws PanierPleinException {  //ajoute le fruit o a la fin du panier si celui-ci n'est pas plein
         if (fruits.size() < contenanceMax) {
             fruits.add(o);
@@ -67,12 +68,11 @@ public class Panier{
         }
     }
 
-    //groupe 5
     public void retrait() throws PanierVideException { //retire le dernier fruit du panier si celui-ci n'est pas vide
-        if (fruits != null) {
+        if (!fruits.isEmpty()) {
             fruits.remove(fruits.size() - 1);
         } else {
-            System.out.println("le panier est vide");
+            throw new PanierVideException();
         }
     }
 
@@ -86,7 +86,7 @@ public class Panier{
 
     public void boycotteOrigine(String origine) {  //supprime du panier tous les fruits provenant du pays origine
         for (int i=0 ;i<this.contenanceMax;i++) {
-            if((this.fruits.get(i).getOrigine().equals(origine)))
+            if(this.fruits.get(i).getOrigine().equals(origine))
                 this.fruits.remove(i);
         }
     }
