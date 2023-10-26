@@ -1,32 +1,33 @@
 package fr.ufrsciencestech.models.fruits;
 
 public interface Fruit {
+
     /**
      * @brief Renvoie si le fruit est sans graine
-     * @return 
+     * @return
      */
     public boolean isSeedless();
-    
+
     /**
      * @brief Renvoie le prix unitaire du fruit
-     * @return 
+     * @return
      */
     public double getPrix();
-    
+
     /**
      * @brief Renvoie le pays d'origine du fruit
      * @return Un String contenant le pays
      */
     public String getOrigine();
-    
+
     /**
      * @brief Test si deux fruit sont les mêmes
-     * @param o a tester    
+     * @param o a tester
      * @return True si les mêmes, false sinon
      */
     @Override
     public boolean equals(Object o);
-    
+
     @Override
     public String toString();
 }

@@ -13,12 +13,14 @@ enum FruitType {
     ORANGE,
     POMME
 }
+
 /**
  *
  * @author nj123548
  */
 public class FruitsFactory {
-    Fruit createFruit(FruitType type){
+
+    Fruit createFruit(FruitType type) {
         switch (type) {
             case ANANAS:
                 return new Ananas();
@@ -34,8 +36,8 @@ public class FruitsFactory {
                 return null;
         }
     }
-    
-    Fruit createFruit(FruitType type, double prix, String origine){
+
+    Fruit createFruit(FruitType type, double prix, String origine) {
         switch (type) {
             case ANANAS:
                 return new Ananas(prix, origine);
