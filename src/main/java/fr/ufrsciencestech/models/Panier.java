@@ -9,7 +9,7 @@ public class Panier{
     
     PropertyChangeSupport pcs = new PropertyChangeSupport(this);
     
-    private ArrayList<Fruit> fruits = new ArrayList<Fruit>();  //attribut pour stocker les fruits
+    private ArrayList<Fruit> fruits = new ArrayList<>();  //attribut pour stocker les fruits
     private int contenanceMax = 10;        //nb maximum d'oranges que peut contenir le panier
     
     public Panier(int contenanceMax) {  //initialise un panier vide ayant une certaine contenance maximale (precisee en parametre)
@@ -93,6 +93,9 @@ public class Panier{
 
     @Override
     public boolean equals(Object o) {  ///predicat pour tester si 2 paniers sont equivalents : s'ils contiennent exactement les memes fruits
-        return this.contenanceMax == ((Panier)(o)).contenanceMax && ((Panier)(o)).equals(this.fruits);
+        if(o instanceof Panier){
+            return this.contenanceMax == ((Panier)(o)).contenanceMax && ((Panier)(o)).getFruits().equals(this.fruits);
+        }
+        return false;
     }
 }
