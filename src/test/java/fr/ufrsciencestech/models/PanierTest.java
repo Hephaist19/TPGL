@@ -1,5 +1,6 @@
 package fr.ufrsciencestech.models;
 import fr.ufrsciencestech.exceptions.PanierPleinException;
+import fr.ufrsciencestech.exceptions.PanierVideException;
 import fr.ufrsciencestech.models.fruits.*;
 import java.util.ArrayList;
 import org.junit.*;
@@ -96,6 +97,21 @@ public class PanierTest {
         Panier instance = new Panier(1);
         boolean expResult = true;
         boolean result = instance.estVide();
+        assertEquals(expResult, result);
+        try{
+            instance.ajout(new Orange(1, "France"));
+        }catch(PanierPleinException e ){}
+        
+        expResult = false;
+        result = instance.estVide();
+        assertEquals(expResult, result);
+        
+        try{
+            instance.retrait();
+        }catch(PanierVideException e ){}
+        
+        expResult = true;
+        result = instance.estVide();
         assertEquals(expResult, result);
     }
 

@@ -22,7 +22,8 @@ public class Framboise implements Fruit {
 	else
             this.origine = origine;   
     }
-
+    
+    @Override
     public double getPrix(){
 	return prix;
     }
@@ -52,7 +53,8 @@ public class Framboise implements Fruit {
         }
         return false;
     }
-
+    
+    @Override
     public boolean isSeedless() {  //predicat indiquant qu'une orange a des pepins
         return false;
     }

@@ -24,7 +24,8 @@ public class Pomme implements Fruit{
             this.origine = origine;   
         
     }
-
+    
+    @Override
     public double getPrix(){
 	return prix;
     }
@@ -32,7 +33,8 @@ public class Pomme implements Fruit{
     public void setPrix(double prix){
 	this.prix=prix;
     }
-
+    
+    @Override
     public String getOrigine(){
 	return origine;
     }
@@ -54,7 +56,8 @@ public class Pomme implements Fruit{
         }
         return false;
     }
-
+    
+    @Override
     public boolean isSeedless() {  //predicat indiquant qu'une orange a des pepins
         return false;
     }

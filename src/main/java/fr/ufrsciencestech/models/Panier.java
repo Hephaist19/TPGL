@@ -17,7 +17,7 @@ public class Panier{
         this.contenanceMax = contenanceMax;
     }
     
-    //Ajouter un listener pour les modifications des éléments du panier
+    //Ajouter un listener pour les modifications du contenu du panier
     public void addObserver(PropertyChangeListener l){
         pcs.addPropertyChangeListener(l);
     }
