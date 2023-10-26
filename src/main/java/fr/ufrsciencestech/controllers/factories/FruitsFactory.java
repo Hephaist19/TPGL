@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
+
 package fr.ufrsciencestech.controllers.factories;
 
 import fr.ufrsciencestech.models.fruits.*;
@@ -19,6 +16,10 @@ enum FruitType {
  * @author nj123548
  */
 public class FruitsFactory {
+    
+    public void FruitsFactory(){
+        
+    }
 
     Fruit createFruit(FruitType type) {
         switch (type) {
