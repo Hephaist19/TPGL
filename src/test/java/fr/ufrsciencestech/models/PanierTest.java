@@ -1,28 +1,40 @@
 package fr.ufrsciencestech.models;
+
 import fr.ufrsciencestech.exceptions.PanierPleinException;
 import fr.ufrsciencestech.exceptions.PanierVideException;
 import fr.ufrsciencestech.models.fruits.*;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import org.junit.*;
 import static org.junit.Assert.*;
+import org.mockito.Mock;
+import static org.mockito.Mockito.mock;
 
 public class PanierTest {
+
+    @Mock
+    private Panier p;
+
     
+    private PropertyChangeListener l = mock(PropertyChangeListener.class);
+
     public PanierTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
+        p = new Panier(2);
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -33,31 +45,39 @@ public class PanierTest {
     @Test
     public void testGetTaillePanier() {
         System.out.println("getTaillePanier");
-        Panier instance = new Panier(2);
+        //Test vide
         int expResult = 0;
-        int result = instance.getTaillePanier();
+        int result = p.getTaillePanier();
         assertEquals(expResult, result);
-        Fruit fruit1 = (Fruit)(new Pomme());
-        try{
-            instance.ajout(fruit1);
-        }catch(PanierPleinException e ){}
+
+        //Test 1 fruit
+        Pomme fruit1 = new Pomme();
+        try {
+            p.ajout(fruit1);
+        } catch (PanierPleinException e) {
+        }
+
         expResult = 1;
-        result = instance.getTaillePanier();
+        result = p.getTaillePanier();
         assertEquals(expResult, result);
-        
-        Fruit fruit2 = (Fruit)(new Orange());
-        try{
-            instance.ajout(fruit2);
-        }catch(PanierPleinException e ){}
+
+        Orange fruit2 = new Orange();
+        try {
+            p.ajout(fruit2);
+        } catch (PanierPleinException e) {
+        }
         expResult = 2;
-        result = instance.getTaillePanier();
+        result = p.getTaillePanier();
         assertEquals(expResult, result);
-        
-        Fruit fruit3 = (Fruit)(new Pomme());
-        try{
-            instance.ajout(fruit3);
-        }catch(PanierPleinException e ){assertEquals(1, 1);}
- 
+
+        //Test ajout erreur:
+        Ananas fruit3 = new Ananas();
+        try {
+            p.ajout(fruit3);
+        } catch (PanierPleinException e) {
+            assertEquals(1, 1);
+        }
+
     }
 
     /**
@@ -66,13 +86,10 @@ public class PanierTest {
     @Test
     public void testGetContenanceMax() {
         System.out.println("getContenanceMax");
-        int expResult = 2;
-        Panier instance = new Panier(expResult);
-        int result = instance.getContenanceMax();
-        assertEquals(expResult, result);
+        int result = p.getContenanceMax();
+        assertEquals(2, result);
     }
 
-    
     /**
      * Test of getFruit method, of class Panier.
      */
@@ -80,12 +97,13 @@ public class PanierTest {
     public void testGetFruit() {
         System.out.println("getFruit");
         int i = 0;
-        Panier instance = new Panier(1);
-        Fruit expResult = new Pomme();
-        try{
-            instance.ajout(expResult);
-        }catch(PanierPleinException e ){}
-        Fruit result = instance.getFruit(i);
+        Pomme expResult = new Pomme();
+        try {
+            p.ajout(expResult);
+        } catch (PanierPleinException e) {
+        }
+
+        Pomme result = (Pomme) p.getFruit(i);
         assertEquals(expResult, result);
     }
 
@@ -95,24 +113,26 @@ public class PanierTest {
     @Test
     public void testEstVide() {
         System.out.println("estVide");
-        Panier instance = new Panier(1);
         boolean expResult = true;
-        boolean result = instance.estVide();
+        boolean result = p.estVide();
         assertEquals(expResult, result);
-        try{
-            instance.ajout(new Orange(1, "France"));
-        }catch(PanierPleinException e ){}
-        
+
+        try {
+            p.ajout(new Orange(1, "France"));
+        } catch (PanierPleinException e) {
+        }
+
         expResult = false;
-        result = instance.estVide();
+        result = p.estVide();
         assertEquals(expResult, result);
-        
-        try{
-            instance.retrait();
-        }catch(PanierVideException e ){}
-        
+
+        try {
+            p.retrait();
+        } catch (PanierVideException e) {
+        }
+
         expResult = true;
-        result = instance.estVide();
+        result = p.estVide();
         assertEquals(expResult, result);
     }
 
@@ -122,44 +142,65 @@ public class PanierTest {
     @Test
     public void testEstPlein() {
         System.out.println("estPlein");
-        Panier instance = new Panier(1);
-        boolean expResult = true;
-        Fruit fruit1 = new Pomme();
-        try{
-            instance.ajout(fruit1);
-        }catch(PanierPleinException e ){}
-        boolean result = instance.estPlein();
-        assertEquals(expResult, result);
+        
+        Pomme po = new Pomme();
+        try {
+            p.ajout(po);
+        } catch (PanierPleinException e) {
+        }
+        boolean result = p.estPlein();
+        //Test si le panier n'est pas plein
+        assertEquals(false, result);
+
+        try {
+            p.ajout(po);
+        } catch (PanierPleinException e) {
+        }
+
+        //Test d'un panier plein
+        assertEquals(true, p.estPlein());
+
     }
 
     /**
      * Test of ajout method, of class Panier.
      */
     @Test
-    public void testAjout() throws Exception {
+    public void testAjout() {
         System.out.println("ajout");
         Fruit o = new Pomme();
         int expResult = 1;
-        Panier instance = new Panier(1);
-        instance.ajout(o);
-        int result = instance.getTaillePanier();
-        assertEquals(expResult,result);
-        
+        try {
+            p.ajout(o);
+        } catch (PanierPleinException e) {
+        }
+
+        int result = p.getTaillePanier();
+        assertEquals(expResult, result);
+
     }
 
     /**
      * Test of retrait method, of class Panier.
      */
     @Test
-    public void testRetrait() throws Exception {
+    public void testRetrait() {
         System.out.println("retrait");
+
+        Pomme o = new Pomme();
+        try {
+            p.ajout(o);
+        } catch (PanierPleinException e) {
+        };
+
+        try {
+            p.retrait();
+        } catch (PanierVideException ex) {
+        }
+
         int expResult = 0;
-        Panier instance = new Panier(1);
-        Fruit o = new Pomme();
-        instance.ajout(o);
-        instance.retrait();
-        int result = instance.getTaillePanier();
-        assertEquals(expResult,result);
+        int result = p.getTaillePanier();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -168,27 +209,38 @@ public class PanierTest {
     @Test
     public void testGetFruits() {
         System.out.println("getFruits");
-        Panier instance = new Panier(1);
+
         ArrayList<Fruit> expResult = new ArrayList<>();
-        instance.setFruits(expResult);
-        ArrayList<Fruit> result = instance.getFruits();
+        Pomme po = new Pomme(1, "France");
+
+        expResult.add(po);
+        try {
+            p.ajout(po);
+        } catch (PanierPleinException ex) {
+        }
+        ArrayList<Fruit> result = p.getFruits();
+
         assertEquals(expResult, result);
     }
-    
+
     /**
      * Test of getPrix method, of class Panier.
      */
     @Test
     public void testGetPrix() {
         System.out.println("getPrix");
-        Panier instance = new Panier(1);
-        double expResult = 3.99;
-        Fruit f = new Pomme(expResult,"France");
+
+        Pomme po = new Pomme(1.5, "France");
+        Orange o = new Orange(2.3, "France");
+
         try {
-            instance.ajout(f);
-        } catch (PanierPleinException ex) {}
-        double result = instance.getPrix();
-        assertEquals(expResult, result,0.003);
+            p.ajout(po);
+            p.ajout(o);
+        } catch (PanierPleinException ex) {
+        }
+
+        double result = p.getPrix();
+        assertEquals(3.8, result, 0.003);
     }
 
     /**
@@ -197,18 +249,138 @@ public class PanierTest {
     @Test
     public void testBoycotteOrigine() {
         System.out.println("boycotteOrigine");
-        int expresult = 0;
+
+        int expresult = 1;
         String origine = "Espagne";
-        Panier instance = new Panier(1);
-        Fruit f = new Pomme();
-        try{
-        instance.ajout(f);
+
+        Pomme po = new Pomme();
+        Orange o = new Orange(2.3, "France");
+        try {
+            p.ajout(po);
+            p.ajout(o);
+        } catch (PanierPleinException e) {
         }
-        catch(PanierPleinException e){}
-        instance.boycotteOrigine(origine);
-        int result = instance.getTaillePanier();
-        assertEquals(expresult,result);
+
+        p.boycotteOrigine(origine);
+        int result = p.getTaillePanier();
+
+        assertEquals(expresult, result);
 
     }
-    
+
+    /**
+     * Test of addObserver method, of class Panier.
+     */
+    @Test
+    public void testAddObserver() {
+        System.out.println("addObserver");
+
+        p.addObserver(l);
+        System.out.println(l);
+        System.out.println(p.getPropertyChangeSupport().getPropertyChangeListeners().length);
+        assertEquals(1, p.getPropertyChangeSupport().getPropertyChangeListeners().length);
+    }
+
+    /**
+     * Test of setFruits method, of class Panier.
+     */
+    @Test
+    public void testSetFruits() {
+        System.out.println("setFruits");
+        Pomme po = new Pomme();
+        ArrayList<Fruit> fruits = new ArrayList<>();
+        fruits.add(po);
+
+        p.setFruits(fruits);
+        assertEquals(p.getFruits(), fruits);
+    }
+
+    /**
+     * Test of setFruit method, of class Panier.
+     */
+    @Test
+    public void testSetFruit() {
+        System.out.println("setFruit");
+        int i = 0;
+        Pomme po = new Pomme();
+        try {
+            p.ajout(po);
+            p.ajout(po);
+        } catch (PanierPleinException ex) {
+        }
+
+        Orange o = new Orange();
+        p.setFruit(0, o);
+
+        assertEquals(p.getFruit(0), o);
+
+    }
+
+    /**
+     * Test of toString method, of class Panier.
+     */
+    @Test
+    public void testToString() {
+        System.out.println("toString");
+        String expResult = "Taille: 1" + System.getProperty("line.separator") + "Pomme de France à 1.0 euros" + System.getProperty("line.separator");
+        try {
+            p.ajout(new Pomme(1.0, "France"));
+        } catch (PanierPleinException ex) {
+        }
+
+        String result = p.toString();
+
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of equals method, of class Panier.
+     */
+    @Test
+    public void testEquals() {
+        System.out.println("equals");
+
+        Panier p2 = new Panier(2);
+        Pomme po = new Pomme();
+
+        try {
+            p2.ajout(po);
+            p.ajout(po);
+        } catch (PanierPleinException ex) {
+        }
+
+        boolean expResult = true;
+        boolean result = p.equals(p2);
+
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of removeObserver method, of class Panier.
+     */
+    @Test
+    public void testRemoveObserver() {
+        System.out.println("removeObserver");
+
+        PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+        pcs.addPropertyChangeListener(l);
+
+        p.addObserver(l);
+
+        p.removeObserver(l);
+        pcs.removePropertyChangeListener(l);
+        assertEquals(p.getPropertyChangeSupport().getPropertyChangeListeners().length, pcs.getPropertyChangeListeners().length);
+    }
+
+    /**
+     * Test of getPropertyChangeSupport method, of class Panier.
+     */
+    @Test
+    public void testGetPropertyChangeSupport() {
+        System.out.println("getPropertyChangeSupport");
+
+        PropertyChangeSupport result = p.getPropertyChangeSupport();
+        assertEquals(0, result.getPropertyChangeListeners().length);
+    }
+
 }

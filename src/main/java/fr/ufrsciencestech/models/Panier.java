@@ -8,7 +8,7 @@ import java.util.*;
 
 public class Panier {
 
-    PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+    final private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
     private ArrayList<Fruit> fruits = new ArrayList<>();  //attribut pour stocker les fruits
     private int contenanceMax = 10;        //nb maximum d'oranges que peut contenir le panier
@@ -19,7 +19,16 @@ public class Panier {
 
     //Ajouter un listener pour les modifications du contenu du panier
     public void addObserver(PropertyChangeListener l) {
-        pcs.addPropertyChangeListener(l);
+        pcs.addPropertyChangeListener("fruits", l);
+    }
+    
+    //Ajouter un listener pour les modifications du contenu du panier
+    public void removeObserver(PropertyChangeListener l) {
+        pcs.removePropertyChangeListener("fruits", l);
+    }
+    
+    public PropertyChangeSupport getPropertyChangeSupport() {
+        return this.pcs;
     }
 
     //Modificateurs pouvant émettre une notification\\
@@ -53,7 +62,7 @@ public class Panier {
     public void boycotteOrigine(String origine) {  //supprime du panier tous les fruits provenant du pays origine
         int nbModification = 0;
         ArrayList<Fruit> old = this.fruits;
-        for (int i = 0; i < this.contenanceMax; i++) {
+        for (int i = 0; i < this.fruits.size(); i++) {
             if (this.fruits.get(i).getOrigine().equals(origine)) {
                 this.fruits.remove(i);
                 nbModification++;
@@ -77,9 +86,9 @@ public class Panier {
     @Override
     public String toString() {  //affichage de ce qui est contenu dans le panier : liste des fruits presents
         StringBuilder sb = new StringBuilder();
-        sb.append("Taille: ").append(fruits.size());
+        sb.append("Taille: ").append(fruits.size()).append(System.getProperty("line.separator"));
         for (Fruit f : fruits) {
-            sb.append(f.toString());
+            sb.append(f.toString()).append(System.getProperty("line.separator"));
         }
         return sb.toString();
     }
