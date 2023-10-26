@@ -94,8 +94,17 @@ public class Panier{
     @Override
     public boolean equals(Object o) {  ///predicat pour tester si 2 paniers sont equivalents : s'ils contiennent exactement les memes fruits
         if(o instanceof Panier){
-            return this.contenanceMax == ((Panier)(o)).contenanceMax && ((Panier)(o)).getFruits().equals(this.fruits);
+            Panier p = (Panier) o;
+            //Comparaison préliminaire
+            if(this.contenanceMax != ((Panier)(o)).contenanceMax) return false;
+            else {
+                //On regarde si les deux panier ont les même fruits, indépendemment de l'ordre dans lequel ils sont dans la liste, en conservant la cardinalité des différents fruits
+                ArrayList<Fruit> tmp = this.getFruits();
+                for(Fruit f : p.getFruits())
+                    //Si on a pas pu enlever le fruit, c'est que les deux panier sont différents
+                    if(!this.getFruits().remove(f)) return false;
+            }
         }
-        return false;
+        return true;
     }
 }
