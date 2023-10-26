@@ -72,6 +72,7 @@ public class PanierTest {
         assertEquals(expResult, result);
     }
 
+    
     /**
      * Test of getFruit method, of class Panier.
      */
