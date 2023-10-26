@@ -23,60 +23,100 @@ public class Interface extends javax.swing.JFrame {
     private void initComponents() {
 
         InterfacePanier = new javax.swing.JPanel();
+        filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200));
         Colonne1 = new javax.swing.JPanel();
         ComboBoxRecettes = new javax.swing.JComboBox<>();
+        jSeparator1 = new javax.swing.JSeparator();
         ScrollPaneRecettes = new javax.swing.JScrollPane();
         TextAreaRecettes = new javax.swing.JTextArea();
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 200), new java.awt.Dimension(10, 200), new java.awt.Dimension(10, 200));
         Colonne2 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         LabelPanier = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         ScrollPanePanier = new javax.swing.JScrollPane();
         TextAreaPanier = new javax.swing.JTextArea();
         LigneTotalPanier = new javax.swing.JPanel();
         LabelTotalPanier = new javax.swing.JLabel();
         LabelPrixTotal = new javax.swing.JLabel();
+        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200));
         Colonne3 = new javax.swing.JPanel();
         BoutonAjouterFruit = new javax.swing.JButton();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
         BoutonRetirerFruit = new javax.swing.JButton();
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
         BoutonViderPanier = new javax.swing.JButton();
-        PanelVide1 = new javax.swing.JPanel();
-        PanelVide2 = new javax.swing.JPanel();
+        spaceButton = new javax.swing.Box.Filler(new java.awt.Dimension(0, 200), new java.awt.Dimension(0, 200), new java.awt.Dimension(250, 200));
         BoutonValiderPanier = new javax.swing.JButton();
+        filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200));
         BarreDeMenu = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
-        InterfacePanier.setLayout(new java.awt.GridLayout(1, 3));
+        java.awt.GridBagLayout InterfacePanierLayout = new java.awt.GridBagLayout();
+        InterfacePanierLayout.columnWidths = new int[] {0};
+        InterfacePanierLayout.rowHeights = new int[] {0};
+        InterfacePanierLayout.columnWeights = new double[] {0.0};
+        InterfacePanierLayout.rowWeights = new double[] {0.0};
+        InterfacePanier.setLayout(InterfacePanierLayout);
+        InterfacePanier.add(filler6, new java.awt.GridBagConstraints());
 
-        Colonne1.setLayout(new java.awt.GridLayout(2, 1));
+        Colonne1.setLayout(new javax.swing.BoxLayout(Colonne1, javax.swing.BoxLayout.Y_AXIS));
 
         ComboBoxRecettes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Recettes", "Cake au citron", "Ganache à l'amande", "Délice parfait", "Tarte aux pommes", "Chausson aux cerises griottes", " " }));
-        ComboBoxRecettes.setMaximumSize(new java.awt.Dimension(189, 50));
+        ComboBoxRecettes.setMaximumSize(new java.awt.Dimension(200, 50));
+        ComboBoxRecettes.setMinimumSize(new java.awt.Dimension(200, 22));
+        ComboBoxRecettes.setPreferredSize(new java.awt.Dimension(200, 22));
         Colonne1.add(ComboBoxRecettes);
+        Colonne1.add(jSeparator1);
 
+        ScrollPaneRecettes.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        ScrollPaneRecettes.setMaximumSize(new java.awt.Dimension(200, 300));
+        ScrollPaneRecettes.setMinimumSize(new java.awt.Dimension(200, 300));
+        ScrollPaneRecettes.setPreferredSize(new java.awt.Dimension(200, 300));
+
+        TextAreaRecettes.setEditable(false);
         TextAreaRecettes.setColumns(20);
         TextAreaRecettes.setRows(5);
+        TextAreaRecettes.setMaximumSize(new java.awt.Dimension(200, 300));
+        TextAreaRecettes.setMinimumSize(new java.awt.Dimension(200, 300));
+        TextAreaRecettes.setPreferredSize(new java.awt.Dimension(200, 300));
         ScrollPaneRecettes.setViewportView(TextAreaRecettes);
 
         Colonne1.add(ScrollPaneRecettes);
 
-        InterfacePanier.add(Colonne1);
+        InterfacePanier.add(Colonne1, new java.awt.GridBagConstraints());
+        InterfacePanier.add(filler3, new java.awt.GridBagConstraints());
 
-        Colonne2.setLayout(new java.awt.GridLayout(3, 1));
+        Colonne2.setMinimumSize(new java.awt.Dimension(200, 192));
+        Colonne2.setPreferredSize(new java.awt.Dimension(300, 416));
+        Colonne2.setLayout(new javax.swing.BoxLayout(Colonne2, javax.swing.BoxLayout.Y_AXIS));
 
         LabelPanier.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LabelPanier.setText("Votre panier :");
         LabelPanier.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        Colonne2.add(LabelPanier);
+        jPanel1.add(LabelPanier);
+
+        Colonne2.add(jPanel1);
+
+        jPanel2.setMaximumSize(new java.awt.Dimension(32767, 300));
+        jPanel2.setMinimumSize(new java.awt.Dimension(26, 150));
+        jPanel2.setPreferredSize(new java.awt.Dimension(200, 300));
+
+        ScrollPanePanier.setPreferredSize(new java.awt.Dimension(244, 160));
 
         TextAreaPanier.setColumns(20);
         TextAreaPanier.setRows(5);
-        TextAreaPanier.setMaximumSize(new java.awt.Dimension(13, 20));
+        TextAreaPanier.setMaximumSize(new java.awt.Dimension(13, 250));
+        TextAreaPanier.setMinimumSize(new java.awt.Dimension(13, 250));
+        TextAreaPanier.setPreferredSize(new java.awt.Dimension(100, 250));
         ScrollPanePanier.setViewportView(TextAreaPanier);
 
-        Colonne2.add(ScrollPanePanier);
+        jPanel2.add(ScrollPanePanier);
+
+        Colonne2.add(jPanel2);
 
         LigneTotalPanier.setLayout(new java.awt.GridLayout(1, 2));
 
@@ -90,44 +130,31 @@ public class Interface extends javax.swing.JFrame {
 
         Colonne2.add(LigneTotalPanier);
 
-        InterfacePanier.add(Colonne2);
+        InterfacePanier.add(Colonne2, new java.awt.GridBagConstraints());
+        InterfacePanier.add(filler4, new java.awt.GridBagConstraints());
 
-        Colonne3.setLayout(new java.awt.GridLayout(6, 1));
+        Colonne3.setLayout(new javax.swing.BoxLayout(Colonne3, javax.swing.BoxLayout.Y_AXIS));
 
         BoutonAjouterFruit.setText("Ajouter un fruit");
+        BoutonAjouterFruit.setMaximumSize(new java.awt.Dimension(114, 22));
+        BoutonAjouterFruit.setMinimumSize(new java.awt.Dimension(114, 22));
+        BoutonAjouterFruit.setPreferredSize(new java.awt.Dimension(114, 22));
         Colonne3.add(BoutonAjouterFruit);
+        Colonne3.add(filler1);
 
         BoutonRetirerFruit.setText("Retirer un fruit");
+        BoutonRetirerFruit.setMaximumSize(new java.awt.Dimension(114, 22));
+        BoutonRetirerFruit.setMinimumSize(new java.awt.Dimension(114, 22));
+        BoutonRetirerFruit.setPreferredSize(new java.awt.Dimension(114, 22));
         Colonne3.add(BoutonRetirerFruit);
+        Colonne3.add(filler2);
 
         BoutonViderPanier.setText("Vider le panier");
+        BoutonViderPanier.setMaximumSize(new java.awt.Dimension(114, 22));
+        BoutonViderPanier.setMinimumSize(new java.awt.Dimension(114, 22));
+        BoutonViderPanier.setPreferredSize(new java.awt.Dimension(114, 22));
         Colonne3.add(BoutonViderPanier);
-
-        javax.swing.GroupLayout PanelVide1Layout = new javax.swing.GroupLayout(PanelVide1);
-        PanelVide1.setLayout(PanelVide1Layout);
-        PanelVide1Layout.setHorizontalGroup(
-            PanelVide1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 241, Short.MAX_VALUE)
-        );
-        PanelVide1Layout.setVerticalGroup(
-            PanelVide1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 76, Short.MAX_VALUE)
-        );
-
-        Colonne3.add(PanelVide1);
-
-        javax.swing.GroupLayout PanelVide2Layout = new javax.swing.GroupLayout(PanelVide2);
-        PanelVide2.setLayout(PanelVide2Layout);
-        PanelVide2Layout.setHorizontalGroup(
-            PanelVide2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 241, Short.MAX_VALUE)
-        );
-        PanelVide2Layout.setVerticalGroup(
-            PanelVide2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 76, Short.MAX_VALUE)
-        );
-
-        Colonne3.add(PanelVide2);
+        Colonne3.add(spaceButton);
 
         BoutonValiderPanier.setText("Valider le panier");
         BoutonValiderPanier.addActionListener(new java.awt.event.ActionListener() {
@@ -137,14 +164,15 @@ public class Interface extends javax.swing.JFrame {
         });
         Colonne3.add(BoutonValiderPanier);
 
-        InterfacePanier.add(Colonne3);
+        InterfacePanier.add(Colonne3, new java.awt.GridBagConstraints());
+        InterfacePanier.add(filler5, new java.awt.GridBagConstraints());
 
-        getContentPane().add(InterfacePanier);
+        getContentPane().add(InterfacePanier, java.awt.BorderLayout.CENTER);
 
-        jMenu1.setText("File");
+        jMenu1.setText("New");
         BarreDeMenu.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Help");
         BarreDeMenu.add(jMenu2);
 
         setJMenuBar(BarreDeMenu);
@@ -210,13 +238,21 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JLabel LabelPrixTotal;
     private javax.swing.JLabel LabelTotalPanier;
     private javax.swing.JPanel LigneTotalPanier;
-    private javax.swing.JPanel PanelVide1;
-    private javax.swing.JPanel PanelVide2;
     private javax.swing.JScrollPane ScrollPanePanier;
     private javax.swing.JScrollPane ScrollPaneRecettes;
     private javax.swing.JTextArea TextAreaPanier;
     private javax.swing.JTextArea TextAreaRecettes;
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.Box.Filler filler2;
+    private javax.swing.Box.Filler filler3;
+    private javax.swing.Box.Filler filler4;
+    private javax.swing.Box.Filler filler5;
+    private javax.swing.Box.Filler filler6;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.Box.Filler spaceButton;
     // End of variables declaration//GEN-END:variables
 }
