@@ -6,6 +6,8 @@ import fr.ufrsciencestech.models.fruits.*;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.*;
 import static org.junit.Assert.*;
 import org.mockito.Mock;
@@ -190,8 +192,7 @@ public class PanierTest {
         Pomme o = new Pomme();
         try {
             p.ajout(o);
-        } catch (PanierPleinException e) {
-        };
+        } catch (PanierPleinException e) {};
 
         try {
             p.retrait();
@@ -200,7 +201,15 @@ public class PanierTest {
 
         int expResult = 0;
         int result = p.getTaillePanier();
+        //Cas ok
         assertEquals(expResult, result);
+        
+        try {
+            p.retrait();
+        } catch (PanierVideException ex) {
+            //Cas où le retrait est impossible (PanierVideException)
+            assertEquals(1, 1);
+        }
     }
 
     /**
@@ -339,20 +348,33 @@ public class PanierTest {
     @Test
     public void testEquals() {
         System.out.println("equals");
-
+        
+        Panier p1 = new Panier(1);
+        //Premier cas faux (pas la même contenance max)
+        assertEquals(false, p.equals(p1));
+        
+        //Meme taille de panier
         Panier p2 = new Panier(2);
         Pomme po = new Pomme();
-
+        Orange o = new Orange();
+        
         try {
-            p2.ajout(po);
             p.ajout(po);
-        } catch (PanierPleinException ex) {
-        }
+            p2.ajout(o);
+        } catch (PanierPleinException ex) {}
 
-        boolean expResult = true;
         boolean result = p.equals(p2);
-
-        assertEquals(expResult, result);
+        //Cas meme taille, mais pas les même fruits
+        assertEquals(false, result);
+        
+        try {
+            p.ajout(o);
+            p2.ajout(po);
+        } catch (PanierPleinException ex) {}
+        
+        result = p.equals(p2);
+        //Cas meme taille, mais pas les même fruits
+        assertEquals(true, result);
     }
 
     /**
