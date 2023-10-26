@@ -37,8 +37,10 @@ public class PageFruit extends javax.swing.JFrame {
     private void initComponents() {
 
         Ligne1 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         ImageFruit = new javax.swing.JButton();
         PanelInfoFruit = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         NomFruit = new javax.swing.JLabel();
         Ligne2Infos = new javax.swing.JPanel();
         LabelOrigine = new javax.swing.JLabel();
@@ -48,6 +50,7 @@ public class PageFruit extends javax.swing.JFrame {
         PrixFruit = new javax.swing.JLabel();
         EuroFruit = new javax.swing.JLabel();
         Ligne2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
         LabelExempleRecettes = new javax.swing.JLabel();
         ExempleRecette = new javax.swing.JLabel();
         Ligne3 = new javax.swing.JPanel();
@@ -61,36 +64,63 @@ public class PageFruit extends javax.swing.JFrame {
         AjoutFruit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.GridLayout(3, 0));
+        setMaximumSize(new java.awt.Dimension(460, 325));
+        setMinimumSize(new java.awt.Dimension(460, 318));
+        setPreferredSize(new java.awt.Dimension(460, 300));
+        getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.Y_AXIS));
 
         Ligne1.setLayout(new java.awt.GridLayout(1, 2));
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(100, 125));
+
+        ImageFruit.setForeground(new java.awt.Color(255, 255, 255));
         ImageFruit.setEnabled(false);
-        Ligne1.add(ImageFruit);
+        ImageFruit.setPreferredSize(new java.awt.Dimension(125, 125));
+        jPanel1.add(ImageFruit);
+
+        Ligne1.add(jPanel1);
 
         PanelInfoFruit.setLayout(new javax.swing.BoxLayout(PanelInfoFruit, javax.swing.BoxLayout.Y_AXIS));
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setPreferredSize(new java.awt.Dimension(100, 25));
+
+        NomFruit.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        NomFruit.setForeground(new java.awt.Color(141, 126, 255));
         NomFruit.setText("Fruit");
-        PanelInfoFruit.add(NomFruit);
+        jPanel2.add(NomFruit);
 
-        Ligne2Infos.setLayout(new javax.swing.BoxLayout(Ligne2Infos, javax.swing.BoxLayout.X_AXIS));
+        PanelInfoFruit.add(jPanel2);
 
+        Ligne2Infos.setBackground(new java.awt.Color(255, 255, 255));
+
+        LabelOrigine.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        LabelOrigine.setForeground(new java.awt.Color(141, 126, 255));
         LabelOrigine.setText("Origine : ");
         Ligne2Infos.add(LabelOrigine);
 
+        OrigineFruit.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        OrigineFruit.setForeground(new java.awt.Color(189, 98, 199));
         OrigineFruit.setText("Pays");
         Ligne2Infos.add(OrigineFruit);
 
         PanelInfoFruit.add(Ligne2Infos);
 
-        Ligne3Infos.setLayout(new javax.swing.BoxLayout(Ligne3Infos, javax.swing.BoxLayout.X_AXIS));
+        Ligne3Infos.setBackground(new java.awt.Color(255, 255, 255));
 
+        LabelPrix.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        LabelPrix.setForeground(new java.awt.Color(141, 126, 255));
         LabelPrix.setText("Prix : ");
         Ligne3Infos.add(LabelPrix);
 
+        PrixFruit.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        PrixFruit.setForeground(new java.awt.Color(189, 98, 199));
         PrixFruit.setText("00,00");
         Ligne3Infos.add(PrixFruit);
 
+        EuroFruit.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        EuroFruit.setForeground(new java.awt.Color(189, 98, 199));
         EuroFruit.setText(" €");
         Ligne3Infos.add(EuroFruit);
 
@@ -100,23 +130,41 @@ public class PageFruit extends javax.swing.JFrame {
 
         getContentPane().add(Ligne1);
 
-        Ligne2.setLayout(new javax.swing.BoxLayout(Ligne2, javax.swing.BoxLayout.LINE_AXIS));
+        Ligne2.setPreferredSize(new java.awt.Dimension(100, 70));
+        Ligne2.setLayout(new javax.swing.BoxLayout(Ligne2, javax.swing.BoxLayout.Y_AXIS));
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setMinimumSize(new java.awt.Dimension(378, 100));
+        jPanel3.setPreferredSize(new java.awt.Dimension(100, 80));
+        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 25));
+
+        LabelExempleRecettes.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        LabelExempleRecettes.setForeground(new java.awt.Color(141, 126, 255));
         LabelExempleRecettes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LabelExempleRecettes.setText("Exemples de recettes :");
-        Ligne2.add(LabelExempleRecettes);
+        jPanel3.add(LabelExempleRecettes);
 
+        ExempleRecette.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        ExempleRecette.setForeground(new java.awt.Color(189, 98, 199));
         ExempleRecette.setText("recette, recette, recette");
         ExempleRecette.setToolTipText("");
-        Ligne2.add(ExempleRecette);
+        jPanel3.add(ExempleRecette);
+
+        Ligne2.add(jPanel3);
 
         getContentPane().add(Ligne2);
 
+        Ligne3.setPreferredSize(new java.awt.Dimension(350, 40));
         Ligne3.setLayout(new java.awt.GridLayout(1, 2));
 
-        PanelNombreFruit.setLayout(new javax.swing.BoxLayout(PanelNombreFruit, javax.swing.BoxLayout.LINE_AXIS));
+        PanelNombreFruit.setBackground(new java.awt.Color(255, 255, 255));
+        PanelNombreFruit.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 10));
 
+        MoinsFruit.setBackground(new java.awt.Color(141, 126, 255));
+        MoinsFruit.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        MoinsFruit.setForeground(new java.awt.Color(255, 255, 255));
         MoinsFruit.setText("-");
+        MoinsFruit.setPreferredSize(new java.awt.Dimension(32, 32));
         MoinsFruit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 MoinsFruitMouseClicked(evt);
@@ -124,12 +172,18 @@ public class PageFruit extends javax.swing.JFrame {
         });
         PanelNombreFruit.add(MoinsFruit);
 
+        NbFruit.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
         NbFruit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         NbFruit.setText("0");
         NbFruit.setMaximumSize(new java.awt.Dimension(30, 25));
+        NbFruit.setPreferredSize(new java.awt.Dimension(64, 32));
         PanelNombreFruit.add(NbFruit);
 
+        PlusFruit.setBackground(new java.awt.Color(141, 126, 255));
+        PlusFruit.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        PlusFruit.setForeground(new java.awt.Color(255, 255, 255));
         PlusFruit.setText("+");
+        PlusFruit.setPreferredSize(new java.awt.Dimension(32, 32));
         PlusFruit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 PlusFruitMouseClicked(evt);
@@ -139,15 +193,24 @@ public class PageFruit extends javax.swing.JFrame {
 
         Ligne3.add(PanelNombreFruit);
 
-        PanelTotalFruit.setLayout(new javax.swing.BoxLayout(PanelTotalFruit, javax.swing.BoxLayout.X_AXIS));
+        PanelTotalFruit.setBackground(new java.awt.Color(255, 255, 255));
+        PanelTotalFruit.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 10));
 
+        TotalFruit.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        TotalFruit.setForeground(new java.awt.Color(189, 98, 199));
         TotalFruit.setText("00,00");
         PanelTotalFruit.add(TotalFruit);
 
+        EuroTotal.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        EuroTotal.setForeground(new java.awt.Color(189, 98, 199));
         EuroTotal.setText(" € ");
         PanelTotalFruit.add(EuroTotal);
 
+        AjoutFruit.setBackground(new java.awt.Color(189, 98, 199));
+        AjoutFruit.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        AjoutFruit.setForeground(new java.awt.Color(255, 255, 255));
         AjoutFruit.setText("Ajouter");
+        AjoutFruit.setPreferredSize(new java.awt.Dimension(89, 32));
         PanelTotalFruit.add(AjoutFruit);
 
         Ligne3.add(PanelTotalFruit);
@@ -236,5 +299,8 @@ public class PageFruit extends javax.swing.JFrame {
     private javax.swing.JButton PlusFruit;
     private javax.swing.JLabel PrixFruit;
     private javax.swing.JLabel TotalFruit;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }
