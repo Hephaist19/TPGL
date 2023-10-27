@@ -26,55 +26,55 @@ public class MarcheFruits extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jSeparator3 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
+        boutonQuitterMarche = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel11 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        labelCategorie = new javax.swing.JLabel();
+        categorie1 = new javax.swing.JRadioButton();
+        categorie2 = new javax.swing.JRadioButton();
+        categorie3 = new javax.swing.JRadioButton();
         jSeparator2 = new javax.swing.JSeparator();
         jPanel12 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        trierPar = new javax.swing.JComboBox<>();
         jPanel13 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        labelRecapPanier = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        listeRecap = new javax.swing.JList<>();
         jPanel14 = new javax.swing.JPanel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        labelRecapTotalPanier = new javax.swing.JLabel();
+        labelPrixRecapPanier = new javax.swing.JLabel();
+        euros = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        boutonAnanas = new javax.swing.JButton();
+        boutonPomme = new javax.swing.JButton();
+        boutonKiwi = new javax.swing.JButton();
+        boutonOrange = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        labelAnanas = new javax.swing.JLabel();
+        labelPomme = new javax.swing.JLabel();
+        labelKiwi = new javax.swing.JLabel();
+        labelOrange = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        boutonFramboise = new javax.swing.JButton();
+        boutonCitron = new javax.swing.JButton();
+        boutonCerise = new javax.swing.JButton();
+        boutonFraise = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        labelFramboise = new javax.swing.JLabel();
+        labelCitron = new javax.swing.JLabel();
+        labelCerise = new javax.swing.JLabel();
+        labelFraise = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
+        boutonBanane = new javax.swing.JButton();
+        boutonPeche = new javax.swing.JButton();
+        boutonLitchi = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        labelBanane = new javax.swing.JLabel();
+        labelPeche = new javax.swing.JLabel();
+        labelLitchi = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(308, 192));
@@ -93,22 +93,22 @@ public class MarcheFruits extends javax.swing.JDialog {
         jSeparator3.setPreferredSize(new java.awt.Dimension(0, 1));
         jPanel5.add(jSeparator3);
 
-        jButton1.setBackground(new java.awt.Color(189, 98, 199));
-        jButton1.setFont(new java.awt.Font("Eunjin Nakseo", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Quitter le marché");
-        jButton1.setAlignmentX(0.5F);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setMargin(new java.awt.Insets(5, 14, 5, 14));
-        jButton1.setMaximumSize(new java.awt.Dimension(200, 25));
-        jButton1.setPreferredSize(new java.awt.Dimension(200, 40));
-        jButton1.setRolloverEnabled(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        boutonQuitterMarche.setBackground(new java.awt.Color(189, 98, 199));
+        boutonQuitterMarche.setFont(new java.awt.Font("Eunjin Nakseo", 0, 18)); // NOI18N
+        boutonQuitterMarche.setForeground(new java.awt.Color(255, 255, 255));
+        boutonQuitterMarche.setText("Quitter le marché");
+        boutonQuitterMarche.setAlignmentX(0.5F);
+        boutonQuitterMarche.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        boutonQuitterMarche.setMargin(new java.awt.Insets(5, 14, 5, 14));
+        boutonQuitterMarche.setMaximumSize(new java.awt.Dimension(200, 25));
+        boutonQuitterMarche.setPreferredSize(new java.awt.Dimension(200, 40));
+        boutonQuitterMarche.setRolloverEnabled(false);
+        boutonQuitterMarche.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                boutonQuitterMarcheActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton1);
+        jPanel5.add(boutonQuitterMarche);
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
@@ -118,29 +118,29 @@ public class MarcheFruits extends javax.swing.JDialog {
         jPanel11.setMaximumSize(new java.awt.Dimension(200, 88));
         jPanel11.setLayout(new java.awt.GridLayout(4, 0, 1, 3));
 
-        jLabel3.setFont(new java.awt.Font("Eunjin Nakseo", 0, 17)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(141, 126, 255));
-        jLabel3.setText("Catégorie");
-        jLabel3.setAlignmentY(0.0F);
-        jPanel11.add(jLabel3);
+        labelCategorie.setFont(new java.awt.Font("Eunjin Nakseo", 0, 17)); // NOI18N
+        labelCategorie.setForeground(new java.awt.Color(141, 126, 255));
+        labelCategorie.setText("Catégorie");
+        labelCategorie.setAlignmentY(0.0F);
+        jPanel11.add(labelCategorie);
 
-        jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jRadioButton1.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
-        jRadioButton1.setForeground(new java.awt.Color(189, 98, 199));
-        jRadioButton1.setText("jRadioButton1");
-        jPanel11.add(jRadioButton1);
+        categorie1.setBackground(new java.awt.Color(255, 255, 255));
+        categorie1.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
+        categorie1.setForeground(new java.awt.Color(189, 98, 199));
+        categorie1.setText("jRadioButton1");
+        jPanel11.add(categorie1);
 
-        jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jRadioButton2.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(189, 98, 199));
-        jRadioButton2.setText("jRadioButton2");
-        jPanel11.add(jRadioButton2);
+        categorie2.setBackground(new java.awt.Color(255, 255, 255));
+        categorie2.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
+        categorie2.setForeground(new java.awt.Color(189, 98, 199));
+        categorie2.setText("jRadioButton2");
+        jPanel11.add(categorie2);
 
-        jRadioButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jRadioButton3.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
-        jRadioButton3.setForeground(new java.awt.Color(189, 98, 199));
-        jRadioButton3.setText("jRadioButton3");
-        jPanel11.add(jRadioButton3);
+        categorie3.setBackground(new java.awt.Color(255, 255, 255));
+        categorie3.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
+        categorie3.setForeground(new java.awt.Color(189, 98, 199));
+        categorie3.setText("jRadioButton3");
+        jPanel11.add(categorie3);
 
         jPanel5.add(jPanel11);
 
@@ -150,55 +150,55 @@ public class MarcheFruits extends javax.swing.JDialog {
 
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
 
-        jComboBox1.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(141, 126, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Trier par", "Ordre Alphabétique", "Dernier ajout" }));
-        jComboBox1.setAlignmentX(0.25F);
-        jComboBox1.setMaximumSize(new java.awt.Dimension(170, 25));
-        jComboBox1.setPreferredSize(new java.awt.Dimension(180, 25));
-        jPanel12.add(jComboBox1);
+        trierPar.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
+        trierPar.setForeground(new java.awt.Color(141, 126, 255));
+        trierPar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Trier par", "Ordre Alphabétique", "Dernier ajout" }));
+        trierPar.setAlignmentX(0.25F);
+        trierPar.setMaximumSize(new java.awt.Dimension(170, 25));
+        trierPar.setPreferredSize(new java.awt.Dimension(180, 25));
+        jPanel12.add(trierPar);
 
         jPanel5.add(jPanel12);
 
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
         jPanel13.setPreferredSize(new java.awt.Dimension(200, 15));
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Eunjin Nakseo", 0, 17)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(141, 126, 255));
-        jLabel2.setText("Récapitulatif panier");
-        jPanel13.add(jLabel2);
+        labelRecapPanier.setBackground(new java.awt.Color(255, 255, 255));
+        labelRecapPanier.setFont(new java.awt.Font("Eunjin Nakseo", 0, 17)); // NOI18N
+        labelRecapPanier.setForeground(new java.awt.Color(141, 126, 255));
+        labelRecapPanier.setText("Récapitulatif panier");
+        jPanel13.add(labelRecapPanier);
 
         jPanel5.add(jPanel13);
 
-        jList1.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
-        jList1.setForeground(new java.awt.Color(189, 98, 199));
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        listeRecap.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
+        listeRecap.setForeground(new java.awt.Color(189, 98, 199));
+        listeRecap.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(listeRecap);
 
         jPanel5.add(jScrollPane1);
 
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
         jPanel14.setPreferredSize(new java.awt.Dimension(200, 20));
 
-        jLabel17.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(141, 126, 255));
-        jLabel17.setText("Total panier : ");
-        jPanel14.add(jLabel17);
+        labelRecapTotalPanier.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        labelRecapTotalPanier.setForeground(new java.awt.Color(141, 126, 255));
+        labelRecapTotalPanier.setText("Total panier : ");
+        jPanel14.add(labelRecapTotalPanier);
 
-        jLabel15.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(189, 98, 199));
-        jLabel15.setText("00,00");
-        jPanel14.add(jLabel15);
+        labelPrixRecapPanier.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        labelPrixRecapPanier.setForeground(new java.awt.Color(189, 98, 199));
+        labelPrixRecapPanier.setText("00,00");
+        jPanel14.add(labelPrixRecapPanier);
 
-        jLabel16.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(189, 98, 199));
-        jLabel16.setText("€");
-        jPanel14.add(jLabel16);
+        euros.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        euros.setForeground(new java.awt.Color(189, 98, 199));
+        euros.setText("€");
+        jPanel14.add(euros);
 
         jPanel5.add(jPanel14);
 
@@ -217,152 +217,152 @@ public class MarcheFruits extends javax.swing.JDialog {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton2.setMaximumSize(new java.awt.Dimension(125, 125));
-        jButton2.setMinimumSize(new java.awt.Dimension(125, 125));
-        jButton2.setPreferredSize(new java.awt.Dimension(125, 125));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        boutonAnanas.setMaximumSize(new java.awt.Dimension(125, 125));
+        boutonAnanas.setMinimumSize(new java.awt.Dimension(125, 125));
+        boutonAnanas.setPreferredSize(new java.awt.Dimension(125, 125));
+        boutonAnanas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                boutonAnanasActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton2);
+        jPanel3.add(boutonAnanas);
 
-        jButton3.setMaximumSize(new java.awt.Dimension(125, 125));
-        jButton3.setMinimumSize(new java.awt.Dimension(125, 125));
-        jButton3.setPreferredSize(new java.awt.Dimension(125, 125));
-        jPanel3.add(jButton3);
+        boutonPomme.setMaximumSize(new java.awt.Dimension(125, 125));
+        boutonPomme.setMinimumSize(new java.awt.Dimension(125, 125));
+        boutonPomme.setPreferredSize(new java.awt.Dimension(125, 125));
+        jPanel3.add(boutonPomme);
 
-        jButton4.setMaximumSize(new java.awt.Dimension(125, 125));
-        jButton4.setMinimumSize(new java.awt.Dimension(125, 125));
-        jButton4.setPreferredSize(new java.awt.Dimension(125, 125));
-        jPanel3.add(jButton4);
+        boutonKiwi.setMaximumSize(new java.awt.Dimension(125, 125));
+        boutonKiwi.setMinimumSize(new java.awt.Dimension(125, 125));
+        boutonKiwi.setPreferredSize(new java.awt.Dimension(125, 125));
+        jPanel3.add(boutonKiwi);
 
-        jButton5.setMaximumSize(new java.awt.Dimension(125, 125));
-        jButton5.setMinimumSize(new java.awt.Dimension(125, 125));
-        jButton5.setPreferredSize(new java.awt.Dimension(125, 125));
-        jPanel3.add(jButton5);
+        boutonOrange.setMaximumSize(new java.awt.Dimension(125, 125));
+        boutonOrange.setMinimumSize(new java.awt.Dimension(125, 125));
+        boutonOrange.setPreferredSize(new java.awt.Dimension(125, 125));
+        jPanel3.add(boutonOrange);
 
         jPanel4.add(jPanel3);
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 80, 5));
 
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(189, 98, 199));
-        jLabel4.setText("Ananas");
-        jPanel6.add(jLabel4);
+        labelAnanas.setBackground(new java.awt.Color(255, 255, 255));
+        labelAnanas.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        labelAnanas.setForeground(new java.awt.Color(189, 98, 199));
+        labelAnanas.setText("Ananas");
+        jPanel6.add(labelAnanas);
 
-        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(141, 126, 255));
-        jLabel5.setText("Pomme");
-        jPanel6.add(jLabel5);
+        labelPomme.setBackground(new java.awt.Color(255, 255, 255));
+        labelPomme.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        labelPomme.setForeground(new java.awt.Color(141, 126, 255));
+        labelPomme.setText("Pomme");
+        jPanel6.add(labelPomme);
 
-        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel6.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(189, 98, 199));
-        jLabel6.setText("Kiwi");
-        jPanel6.add(jLabel6);
+        labelKiwi.setBackground(new java.awt.Color(255, 255, 255));
+        labelKiwi.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        labelKiwi.setForeground(new java.awt.Color(189, 98, 199));
+        labelKiwi.setText("Kiwi");
+        jPanel6.add(labelKiwi);
 
-        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel7.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(141, 126, 255));
-        jLabel7.setText("Orange");
-        jPanel6.add(jLabel7);
+        labelOrange.setBackground(new java.awt.Color(255, 255, 255));
+        labelOrange.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        labelOrange.setForeground(new java.awt.Color(141, 126, 255));
+        labelOrange.setText("Orange");
+        jPanel6.add(labelOrange);
 
         jPanel4.add(jPanel6);
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton6.setMaximumSize(new java.awt.Dimension(125, 125));
-        jButton6.setMinimumSize(new java.awt.Dimension(125, 125));
-        jButton6.setPreferredSize(new java.awt.Dimension(125, 125));
-        jPanel7.add(jButton6);
+        boutonFramboise.setMaximumSize(new java.awt.Dimension(125, 125));
+        boutonFramboise.setMinimumSize(new java.awt.Dimension(125, 125));
+        boutonFramboise.setPreferredSize(new java.awt.Dimension(125, 125));
+        jPanel7.add(boutonFramboise);
 
-        jButton7.setMaximumSize(new java.awt.Dimension(125, 125));
-        jButton7.setMinimumSize(new java.awt.Dimension(125, 125));
-        jButton7.setPreferredSize(new java.awt.Dimension(125, 125));
-        jPanel7.add(jButton7);
+        boutonCitron.setMaximumSize(new java.awt.Dimension(125, 125));
+        boutonCitron.setMinimumSize(new java.awt.Dimension(125, 125));
+        boutonCitron.setPreferredSize(new java.awt.Dimension(125, 125));
+        jPanel7.add(boutonCitron);
 
-        jButton8.setMaximumSize(new java.awt.Dimension(125, 125));
-        jButton8.setMinimumSize(new java.awt.Dimension(125, 125));
-        jButton8.setPreferredSize(new java.awt.Dimension(125, 125));
-        jPanel7.add(jButton8);
+        boutonCerise.setMaximumSize(new java.awt.Dimension(125, 125));
+        boutonCerise.setMinimumSize(new java.awt.Dimension(125, 125));
+        boutonCerise.setPreferredSize(new java.awt.Dimension(125, 125));
+        jPanel7.add(boutonCerise);
 
-        jButton9.setMaximumSize(new java.awt.Dimension(125, 125));
-        jButton9.setMinimumSize(new java.awt.Dimension(125, 125));
-        jButton9.setPreferredSize(new java.awt.Dimension(125, 125));
-        jPanel7.add(jButton9);
+        boutonFraise.setMaximumSize(new java.awt.Dimension(125, 125));
+        boutonFraise.setMinimumSize(new java.awt.Dimension(125, 125));
+        boutonFraise.setPreferredSize(new java.awt.Dimension(125, 125));
+        jPanel7.add(boutonFraise);
 
         jPanel4.add(jPanel7);
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 80, 5));
 
-        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel8.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(141, 126, 255));
-        jLabel8.setText("Framboise");
-        jPanel8.add(jLabel8);
+        labelFramboise.setBackground(new java.awt.Color(255, 255, 255));
+        labelFramboise.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        labelFramboise.setForeground(new java.awt.Color(141, 126, 255));
+        labelFramboise.setText("Framboise");
+        jPanel8.add(labelFramboise);
 
-        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel9.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(189, 98, 199));
-        jLabel9.setText("Citron");
-        jPanel8.add(jLabel9);
+        labelCitron.setBackground(new java.awt.Color(255, 255, 255));
+        labelCitron.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        labelCitron.setForeground(new java.awt.Color(189, 98, 199));
+        labelCitron.setText("Citron");
+        jPanel8.add(labelCitron);
 
-        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel10.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(141, 126, 255));
-        jLabel10.setText("Cerise");
-        jPanel8.add(jLabel10);
+        labelCerise.setBackground(new java.awt.Color(255, 255, 255));
+        labelCerise.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        labelCerise.setForeground(new java.awt.Color(141, 126, 255));
+        labelCerise.setText("Cerise");
+        jPanel8.add(labelCerise);
 
-        jLabel11.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(189, 98, 199));
-        jLabel11.setText("Fraise");
-        jPanel8.add(jLabel11);
+        labelFraise.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        labelFraise.setForeground(new java.awt.Color(189, 98, 199));
+        labelFraise.setText("Fraise");
+        jPanel8.add(labelFraise);
 
         jPanel4.add(jPanel8);
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton10.setMaximumSize(new java.awt.Dimension(125, 125));
-        jButton10.setMinimumSize(new java.awt.Dimension(125, 125));
-        jButton10.setPreferredSize(new java.awt.Dimension(125, 125));
-        jPanel10.add(jButton10);
+        boutonBanane.setMaximumSize(new java.awt.Dimension(125, 125));
+        boutonBanane.setMinimumSize(new java.awt.Dimension(125, 125));
+        boutonBanane.setPreferredSize(new java.awt.Dimension(125, 125));
+        jPanel10.add(boutonBanane);
 
-        jButton11.setMaximumSize(new java.awt.Dimension(125, 125));
-        jButton11.setMinimumSize(new java.awt.Dimension(125, 125));
-        jButton11.setPreferredSize(new java.awt.Dimension(125, 125));
-        jPanel10.add(jButton11);
+        boutonPeche.setMaximumSize(new java.awt.Dimension(125, 125));
+        boutonPeche.setMinimumSize(new java.awt.Dimension(125, 125));
+        boutonPeche.setPreferredSize(new java.awt.Dimension(125, 125));
+        jPanel10.add(boutonPeche);
 
-        jButton12.setMaximumSize(new java.awt.Dimension(125, 125));
-        jButton12.setMinimumSize(new java.awt.Dimension(125, 125));
-        jButton12.setPreferredSize(new java.awt.Dimension(125, 125));
-        jPanel10.add(jButton12);
+        boutonLitchi.setMaximumSize(new java.awt.Dimension(125, 125));
+        boutonLitchi.setMinimumSize(new java.awt.Dimension(125, 125));
+        boutonLitchi.setPreferredSize(new java.awt.Dimension(125, 125));
+        jPanel10.add(boutonLitchi);
 
         jPanel4.add(jPanel10);
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
         jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 80, 5));
 
-        jLabel14.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel14.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(141, 126, 255));
-        jLabel14.setText("Banane");
-        jPanel9.add(jLabel14);
+        labelBanane.setBackground(new java.awt.Color(255, 255, 255));
+        labelBanane.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        labelBanane.setForeground(new java.awt.Color(141, 126, 255));
+        labelBanane.setText("Banane");
+        jPanel9.add(labelBanane);
 
-        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel13.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(189, 98, 199));
-        jLabel13.setText("Pêche");
-        jPanel9.add(jLabel13);
+        labelPeche.setBackground(new java.awt.Color(255, 255, 255));
+        labelPeche.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        labelPeche.setForeground(new java.awt.Color(189, 98, 199));
+        labelPeche.setText("Pêche");
+        jPanel9.add(labelPeche);
 
-        jLabel12.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(141, 126, 255));
-        jLabel12.setText("Litchi");
-        jPanel9.add(jLabel12);
+        labelLitchi.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        labelLitchi.setForeground(new java.awt.Color(141, 126, 255));
+        labelLitchi.setText("Litchi");
+        jPanel9.add(labelLitchi);
 
         jPanel4.add(jPanel9);
 
@@ -389,13 +389,13 @@ public class MarcheFruits extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void boutonAnanasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonAnanasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_boutonAnanasActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void boutonQuitterMarcheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonQuitterMarcheActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_boutonQuitterMarcheActionPerformed
 
     /**
      * @param args the command line arguments
@@ -440,37 +440,23 @@ public class MarcheFruits extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton boutonAnanas;
+    private javax.swing.JButton boutonBanane;
+    private javax.swing.JButton boutonCerise;
+    private javax.swing.JButton boutonCitron;
+    private javax.swing.JButton boutonFraise;
+    private javax.swing.JButton boutonFramboise;
+    private javax.swing.JButton boutonKiwi;
+    private javax.swing.JButton boutonLitchi;
+    private javax.swing.JButton boutonOrange;
+    private javax.swing.JButton boutonPeche;
+    private javax.swing.JButton boutonPomme;
+    private javax.swing.JButton boutonQuitterMarche;
+    private javax.swing.JRadioButton categorie1;
+    private javax.swing.JRadioButton categorie2;
+    private javax.swing.JRadioButton categorie3;
+    private javax.swing.JLabel euros;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -485,12 +471,26 @@ public class MarcheFruits extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JLabel labelAnanas;
+    private javax.swing.JLabel labelBanane;
+    private javax.swing.JLabel labelCategorie;
+    private javax.swing.JLabel labelCerise;
+    private javax.swing.JLabel labelCitron;
+    private javax.swing.JLabel labelFraise;
+    private javax.swing.JLabel labelFramboise;
+    private javax.swing.JLabel labelKiwi;
+    private javax.swing.JLabel labelLitchi;
+    private javax.swing.JLabel labelOrange;
+    private javax.swing.JLabel labelPeche;
+    private javax.swing.JLabel labelPomme;
+    private javax.swing.JLabel labelPrixRecapPanier;
+    private javax.swing.JLabel labelRecapPanier;
+    private javax.swing.JLabel labelRecapTotalPanier;
+    private javax.swing.JList<String> listeRecap;
+    private javax.swing.JComboBox<String> trierPar;
     // End of variables declaration//GEN-END:variables
 }

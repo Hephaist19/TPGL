@@ -52,6 +52,7 @@ public class Interface extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        InterfacePanier.setBackground(new java.awt.Color(255, 255, 255));
         java.awt.GridBagLayout InterfacePanierLayout = new java.awt.GridBagLayout();
         InterfacePanierLayout.columnWidths = new int[] {0};
         InterfacePanierLayout.rowHeights = new int[] {0};
@@ -62,6 +63,8 @@ public class Interface extends javax.swing.JFrame {
 
         Colonne1.setLayout(new javax.swing.BoxLayout(Colonne1, javax.swing.BoxLayout.Y_AXIS));
 
+        ComboBoxRecettes.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        ComboBoxRecettes.setForeground(new java.awt.Color(141, 126, 255));
         ComboBoxRecettes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Recettes", "Cake au citron", "Ganache à l'amande", "Délice parfait", "Tarte aux pommes", "Chausson aux cerises griottes", " " }));
         ComboBoxRecettes.setMaximumSize(new java.awt.Dimension(200, 50));
         ComboBoxRecettes.setMinimumSize(new java.awt.Dimension(200, 22));
@@ -72,6 +75,9 @@ public class Interface extends javax.swing.JFrame {
             }
         });
         Colonne1.add(ComboBoxRecettes);
+
+        jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
         Colonne1.add(jSeparator1);
 
         ScrollPaneRecettes.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -80,11 +86,13 @@ public class Interface extends javax.swing.JFrame {
         ScrollPaneRecettes.setPreferredSize(new java.awt.Dimension(200, 300));
 
         TextAreaRecettes.setEditable(false);
+        TextAreaRecettes.setBackground(new java.awt.Color(255, 255, 255));
         TextAreaRecettes.setColumns(20);
+        TextAreaRecettes.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
+        TextAreaRecettes.setForeground(new java.awt.Color(189, 98, 199));
         TextAreaRecettes.setRows(5);
         TextAreaRecettes.setMaximumSize(new java.awt.Dimension(200, 300));
         TextAreaRecettes.setMinimumSize(new java.awt.Dimension(200, 300));
-        TextAreaRecettes.setPreferredSize(new java.awt.Dimension(200, 300));
         ScrollPaneRecettes.setViewportView(TextAreaRecettes);
 
         Colonne1.add(ScrollPaneRecettes);
@@ -92,14 +100,19 @@ public class Interface extends javax.swing.JFrame {
         InterfacePanier.add(Colonne1, new java.awt.GridBagConstraints());
         InterfacePanier.add(filler3, new java.awt.GridBagConstraints());
 
+        Colonne2.setBackground(new java.awt.Color(255, 255, 255));
         Colonne2.setMaximumSize(new java.awt.Dimension(300, 400));
         Colonne2.setMinimumSize(new java.awt.Dimension(300, 400));
         Colonne2.setPreferredSize(new java.awt.Dimension(300, 416));
         Colonne2.setLayout(new javax.swing.BoxLayout(Colonne2, javax.swing.BoxLayout.Y_AXIS));
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMaximumSize(new java.awt.Dimension(200, 50));
         jPanel1.setMinimumSize(new java.awt.Dimension(100, 30));
+        jPanel1.setPreferredSize(new java.awt.Dimension(117, 21));
 
+        LabelPanier.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        LabelPanier.setForeground(new java.awt.Color(189, 98, 199));
         LabelPanier.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LabelPanier.setText("Votre panier :");
         LabelPanier.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
@@ -107,9 +120,11 @@ public class Interface extends javax.swing.JFrame {
 
         Colonne2.add(jPanel1);
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setMaximumSize(new java.awt.Dimension(32767, 300));
         jPanel2.setMinimumSize(new java.awt.Dimension(26, 150));
-        jPanel2.setPreferredSize(new java.awt.Dimension(200, 300));
+        jPanel2.setPreferredSize(new java.awt.Dimension(200, 330));
+        jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
 
         ScrollPanePanier.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         ScrollPanePanier.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
@@ -117,7 +132,11 @@ public class Interface extends javax.swing.JFrame {
         ScrollPanePanier.setMinimumSize(new java.awt.Dimension(250, 300));
         ScrollPanePanier.setPreferredSize(new java.awt.Dimension(250, 300));
 
+        TextAreaPanier.setEditable(false);
+        TextAreaPanier.setBackground(new java.awt.Color(255, 255, 255));
         TextAreaPanier.setColumns(20);
+        TextAreaPanier.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
+        TextAreaPanier.setForeground(new java.awt.Color(141, 126, 255));
         TextAreaPanier.setRows(5);
         TextAreaPanier.setMaximumSize(new java.awt.Dimension(250, 300));
         TextAreaPanier.setMinimumSize(new java.awt.Dimension(250, 300));
@@ -128,11 +147,13 @@ public class Interface extends javax.swing.JFrame {
 
         Colonne2.add(jPanel2);
 
+        LigneTotalPanier.setBackground(new java.awt.Color(255, 255, 255));
         LigneTotalPanier.setMaximumSize(new java.awt.Dimension(200, 30));
         LigneTotalPanier.setMinimumSize(new java.awt.Dimension(200, 30));
         LigneTotalPanier.setPreferredSize(new java.awt.Dimension(104, 30));
         LigneTotalPanier.setLayout(new java.awt.GridLayout(1, 2));
 
+        LabelTotalPanier.setForeground(new java.awt.Color(141, 126, 255));
         LabelTotalPanier.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         LabelTotalPanier.setText("Total :");
         LabelTotalPanier.setMaximumSize(new java.awt.Dimension(40, 30));
@@ -140,6 +161,9 @@ public class Interface extends javax.swing.JFrame {
         LabelTotalPanier.setPreferredSize(new java.awt.Dimension(40, 30));
         LigneTotalPanier.add(LabelTotalPanier);
 
+        LabelPrixTotal.setBackground(new java.awt.Color(255, 255, 255));
+        LabelPrixTotal.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        LabelPrixTotal.setForeground(new java.awt.Color(189, 98, 199));
         LabelPrixTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         LabelPrixTotal.setText("00,00 €");
         LabelPrixTotal.setMaximumSize(new java.awt.Dimension(52, 30));
@@ -152,30 +176,47 @@ public class Interface extends javax.swing.JFrame {
         InterfacePanier.add(Colonne2, new java.awt.GridBagConstraints());
         InterfacePanier.add(filler4, new java.awt.GridBagConstraints());
 
+        Colonne3.setBackground(new java.awt.Color(255, 255, 255));
         Colonne3.setLayout(new javax.swing.BoxLayout(Colonne3, javax.swing.BoxLayout.Y_AXIS));
 
+        BoutonAjouterFruit.setBackground(new java.awt.Color(141, 126, 255));
+        BoutonAjouterFruit.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
+        BoutonAjouterFruit.setForeground(new java.awt.Color(255, 255, 255));
         BoutonAjouterFruit.setText("Ajouter un fruit");
-        BoutonAjouterFruit.setMaximumSize(new java.awt.Dimension(137, 22));
-        BoutonAjouterFruit.setMinimumSize(new java.awt.Dimension(137, 22));
+        BoutonAjouterFruit.setMaximumSize(new java.awt.Dimension(155, 22));
+        BoutonAjouterFruit.setMinimumSize(new java.awt.Dimension(155, 22));
         BoutonAjouterFruit.setPreferredSize(new java.awt.Dimension(137, 22));
         Colonne3.add(BoutonAjouterFruit);
         Colonne3.add(filler1);
 
+        BoutonRetirerFruit.setBackground(new java.awt.Color(141, 126, 255));
+        BoutonRetirerFruit.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
+        BoutonRetirerFruit.setForeground(new java.awt.Color(255, 255, 255));
         BoutonRetirerFruit.setText("Retirer un fruit");
-        BoutonRetirerFruit.setMaximumSize(new java.awt.Dimension(137, 22));
+        BoutonRetirerFruit.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BoutonRetirerFruit.setMaximumSize(new java.awt.Dimension(155, 22));
         BoutonRetirerFruit.setMinimumSize(new java.awt.Dimension(137, 22));
-        BoutonRetirerFruit.setPreferredSize(new java.awt.Dimension(137, 22));
+        BoutonRetirerFruit.setPreferredSize(new java.awt.Dimension(155, 22));
         Colonne3.add(BoutonRetirerFruit);
         Colonne3.add(filler2);
 
+        BoutonViderPanier.setBackground(new java.awt.Color(141, 126, 255));
+        BoutonViderPanier.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
+        BoutonViderPanier.setForeground(new java.awt.Color(255, 255, 255));
         BoutonViderPanier.setText("Vider le panier");
-        BoutonViderPanier.setMaximumSize(new java.awt.Dimension(137, 22));
+        BoutonViderPanier.setMaximumSize(new java.awt.Dimension(155, 22));
         BoutonViderPanier.setMinimumSize(new java.awt.Dimension(137, 22));
-        BoutonViderPanier.setPreferredSize(new java.awt.Dimension(137, 22));
+        BoutonViderPanier.setPreferredSize(new java.awt.Dimension(155, 22));
         Colonne3.add(BoutonViderPanier);
         Colonne3.add(spaceButton);
 
+        BoutonValiderPanier.setBackground(new java.awt.Color(189, 98, 199));
+        BoutonValiderPanier.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        BoutonValiderPanier.setForeground(new java.awt.Color(255, 255, 255));
         BoutonValiderPanier.setText("Valider le panier");
+        BoutonValiderPanier.setMaximumSize(new java.awt.Dimension(155, 32));
+        BoutonValiderPanier.setMinimumSize(new java.awt.Dimension(155, 32));
+        BoutonValiderPanier.setPreferredSize(new java.awt.Dimension(155, 32));
         BoutonValiderPanier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BoutonValiderPanierActionPerformed(evt);
