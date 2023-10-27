@@ -6,8 +6,6 @@ import fr.ufrsciencestech.models.fruits.*;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.junit.*;
 import static org.junit.Assert.*;
 import org.mockito.Mock;

@@ -12,11 +12,9 @@ public class Ananas implements Fruit {
     }
 
     public Ananas(double prix, String origine) {
-        if (prix < 0) {
-            this.prix = -prix;  //une solution possible pour interdire les prix negatifs
-        } else {
-            this.prix = prix;
-        }
+        
+        setPrix(prix);  //une solution possible pour interdire les prix negatifs
+
 
         if (origine.equals("")) {
             this.origine = "Espagne";  //Espagne par défaut
@@ -29,23 +27,29 @@ public class Ananas implements Fruit {
     public double getPrix() {
         return prix;
     }
-
+    
+    @Override
     public void setPrix(double prix) {
-        this.prix = prix;
+        if(prix < 0)
+            this.prix = -prix;
+        else
+            this.prix = prix;
+        
     }
 
     @Override
     public String getOrigine() {
         return origine;
     }
-
+    
+    @Override
     public void setOrigine(String origine) {
         this.origine = origine;
     }
 
     @Override
     public String toString() {
-        return "Ananas de " + origine + " a " + prix + " euros";
+        return "Ananas de " + origine + " à " + prix + " euros";
     }
 
     @Override

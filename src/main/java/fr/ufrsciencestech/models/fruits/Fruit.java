@@ -13,12 +13,16 @@ public interface Fruit {
      * @return
      */
     public double getPrix();
+    
+    public void setPrix(double prix);
 
     /**
      * @brief Renvoie le pays d'origine du fruit
      * @return Un String contenant le pays
      */
     public String getOrigine();
+    
+    public void setOrigine(String s);
 
     /**
      * @brief Test si deux fruit sont les mêmes
