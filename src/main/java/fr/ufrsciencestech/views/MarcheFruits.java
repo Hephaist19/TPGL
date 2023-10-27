@@ -152,10 +152,15 @@ public class MarcheFruits extends javax.swing.JDialog {
 
         trierPar.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
         trierPar.setForeground(new java.awt.Color(141, 126, 255));
-        trierPar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Trier par", "Ordre Alphabétique", "Dernier ajout" }));
+        trierPar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Trier par", "Ordre Alphabétique", "Prix Croissant", "Prix Décroissant" }));
         trierPar.setAlignmentX(0.25F);
         trierPar.setMaximumSize(new java.awt.Dimension(170, 25));
         trierPar.setPreferredSize(new java.awt.Dimension(180, 25));
+        trierPar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trierParActionPerformed(evt);
+            }
+        });
         jPanel12.add(trierPar);
 
         jPanel5.add(jPanel12);
@@ -217,6 +222,7 @@ public class MarcheFruits extends javax.swing.JDialog {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
+        boutonAnanas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ananas.jpg"))); // NOI18N
         boutonAnanas.setMaximumSize(new java.awt.Dimension(125, 125));
         boutonAnanas.setMinimumSize(new java.awt.Dimension(125, 125));
         boutonAnanas.setPreferredSize(new java.awt.Dimension(125, 125));
@@ -227,16 +233,19 @@ public class MarcheFruits extends javax.swing.JDialog {
         });
         jPanel3.add(boutonAnanas);
 
+        boutonPomme.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pomme.jpg"))); // NOI18N
         boutonPomme.setMaximumSize(new java.awt.Dimension(125, 125));
         boutonPomme.setMinimumSize(new java.awt.Dimension(125, 125));
         boutonPomme.setPreferredSize(new java.awt.Dimension(125, 125));
         jPanel3.add(boutonPomme);
 
+        boutonKiwi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/kiwi.png"))); // NOI18N
         boutonKiwi.setMaximumSize(new java.awt.Dimension(125, 125));
         boutonKiwi.setMinimumSize(new java.awt.Dimension(125, 125));
         boutonKiwi.setPreferredSize(new java.awt.Dimension(125, 125));
         jPanel3.add(boutonKiwi);
 
+        boutonOrange.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/orange.png"))); // NOI18N
         boutonOrange.setMaximumSize(new java.awt.Dimension(125, 125));
         boutonOrange.setMinimumSize(new java.awt.Dimension(125, 125));
         boutonOrange.setPreferredSize(new java.awt.Dimension(125, 125));
@@ -275,21 +284,25 @@ public class MarcheFruits extends javax.swing.JDialog {
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
+        boutonFramboise.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/framboise.jpg"))); // NOI18N
         boutonFramboise.setMaximumSize(new java.awt.Dimension(125, 125));
         boutonFramboise.setMinimumSize(new java.awt.Dimension(125, 125));
         boutonFramboise.setPreferredSize(new java.awt.Dimension(125, 125));
         jPanel7.add(boutonFramboise);
 
+        boutonCitron.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/citron.png"))); // NOI18N
         boutonCitron.setMaximumSize(new java.awt.Dimension(125, 125));
         boutonCitron.setMinimumSize(new java.awt.Dimension(125, 125));
         boutonCitron.setPreferredSize(new java.awt.Dimension(125, 125));
         jPanel7.add(boutonCitron);
 
+        boutonCerise.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cerise.jpg"))); // NOI18N
         boutonCerise.setMaximumSize(new java.awt.Dimension(125, 125));
         boutonCerise.setMinimumSize(new java.awt.Dimension(125, 125));
         boutonCerise.setPreferredSize(new java.awt.Dimension(125, 125));
         jPanel7.add(boutonCerise);
 
+        boutonFraise.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fraise.png"))); // NOI18N
         boutonFraise.setMaximumSize(new java.awt.Dimension(125, 125));
         boutonFraise.setMinimumSize(new java.awt.Dimension(125, 125));
         boutonFraise.setPreferredSize(new java.awt.Dimension(125, 125));
@@ -327,16 +340,19 @@ public class MarcheFruits extends javax.swing.JDialog {
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
 
+        boutonBanane.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banane.jpg"))); // NOI18N
         boutonBanane.setMaximumSize(new java.awt.Dimension(125, 125));
         boutonBanane.setMinimumSize(new java.awt.Dimension(125, 125));
         boutonBanane.setPreferredSize(new java.awt.Dimension(125, 125));
         jPanel10.add(boutonBanane);
 
+        boutonPeche.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/peche.jpg"))); // NOI18N
         boutonPeche.setMaximumSize(new java.awt.Dimension(125, 125));
         boutonPeche.setMinimumSize(new java.awt.Dimension(125, 125));
         boutonPeche.setPreferredSize(new java.awt.Dimension(125, 125));
         jPanel10.add(boutonPeche);
 
+        boutonLitchi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/litchi.png"))); // NOI18N
         boutonLitchi.setMaximumSize(new java.awt.Dimension(125, 125));
         boutonLitchi.setMinimumSize(new java.awt.Dimension(125, 125));
         boutonLitchi.setPreferredSize(new java.awt.Dimension(125, 125));
@@ -396,6 +412,10 @@ public class MarcheFruits extends javax.swing.JDialog {
     private void boutonQuitterMarcheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonQuitterMarcheActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_boutonQuitterMarcheActionPerformed
+
+    private void trierParActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trierParActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_trierParActionPerformed
 
     /**
      * @param args the command line arguments

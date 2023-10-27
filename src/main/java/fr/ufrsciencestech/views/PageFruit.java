@@ -11,20 +11,27 @@ package fr.ufrsciencestech.views;
 public class PageFruit extends javax.swing.JFrame {
 
     private int noFruit = 0;
-    
-            
+    private String nF;
+    private String oF;
+    private double pF;
+    private String[] rF;
+    private String iF; //chemin pour accéder à l'image du fruit ?
     
     /**
      * Creates new form PageFruit
      */
     public PageFruit() {
         initComponents();
-        setNbFruit(noFruit);
+       
+        this.NbFruit.setText(Integer.toString(noFruit));
+        //this.ImageFruit.setIcon(iF);
+        //this.NomFruit.setText(nF);
+        //this.OrigineFruit.setText(oF);
+        //this.PrixFruit.setText(pF);
+        //this.ExempleRecette.setText(); //boucle for pour afficher la liste 
+
     }
 
-    public void setNbFruit(int noFruit){
-        this.NbFruit.setText(Integer.toString(noFruit));
-    }
     
     
     /**
@@ -164,7 +171,9 @@ public class PageFruit extends javax.swing.JFrame {
         MoinsFruit.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
         MoinsFruit.setForeground(new java.awt.Color(255, 255, 255));
         MoinsFruit.setText("-");
-        MoinsFruit.setPreferredSize(new java.awt.Dimension(32, 32));
+        MoinsFruit.setMaximumSize(new java.awt.Dimension(37, 37));
+        MoinsFruit.setMinimumSize(new java.awt.Dimension(37, 37));
+        MoinsFruit.setPreferredSize(new java.awt.Dimension(37, 37));
         MoinsFruit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 MoinsFruitMouseClicked(evt);
@@ -175,15 +184,18 @@ public class PageFruit extends javax.swing.JFrame {
         NbFruit.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
         NbFruit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         NbFruit.setText("0");
-        NbFruit.setMaximumSize(new java.awt.Dimension(30, 25));
-        NbFruit.setPreferredSize(new java.awt.Dimension(64, 32));
+        NbFruit.setMaximumSize(new java.awt.Dimension(30, 37));
+        NbFruit.setMinimumSize(new java.awt.Dimension(64, 37));
+        NbFruit.setPreferredSize(new java.awt.Dimension(64, 37));
         PanelNombreFruit.add(NbFruit);
 
         PlusFruit.setBackground(new java.awt.Color(141, 126, 255));
         PlusFruit.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
         PlusFruit.setForeground(new java.awt.Color(255, 255, 255));
         PlusFruit.setText("+");
-        PlusFruit.setPreferredSize(new java.awt.Dimension(32, 32));
+        PlusFruit.setMaximumSize(new java.awt.Dimension(37, 37));
+        PlusFruit.setMinimumSize(new java.awt.Dimension(37, 37));
+        PlusFruit.setPreferredSize(new java.awt.Dimension(37, 37));
         PlusFruit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 PlusFruitMouseClicked(evt);
@@ -211,6 +223,11 @@ public class PageFruit extends javax.swing.JFrame {
         AjoutFruit.setForeground(new java.awt.Color(255, 255, 255));
         AjoutFruit.setText("Ajouter");
         AjoutFruit.setPreferredSize(new java.awt.Dimension(89, 32));
+        AjoutFruit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AjoutFruitMouseClicked(evt);
+            }
+        });
         PanelTotalFruit.add(AjoutFruit);
 
         Ligne3.add(PanelTotalFruit);
@@ -223,7 +240,7 @@ public class PageFruit extends javax.swing.JFrame {
     
     private void MoinsFruitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MoinsFruitMouseClicked
         int nombre = Integer.parseInt(this.NbFruit.getText());
-        if(nombre==0)
+        if(nombre==0) //Vérification qu'on ne peut avoir un chiffre négatif
         {
             this.NbFruit.setText(Integer.toString(nombre));
         }
@@ -232,13 +249,27 @@ public class PageFruit extends javax.swing.JFrame {
             nombre--;
             this.NbFruit.setText(Integer.toString(nombre));
         }
+        
+        //Mise à jour du prix total
+        double prixTotal = nombre*pF;
+        this.TotalFruit.setText(Double.toString(prixTotal));
     }//GEN-LAST:event_MoinsFruitMouseClicked
 
     private void PlusFruitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PlusFruitMouseClicked
         int nombre = Integer.parseInt(this.NbFruit.getText());
         nombre++;
         this.NbFruit.setText(Integer.toString(nombre));
+        
+        //Mise à jour du prix total
+        double prixTotal = nombre*pF;
+        this.TotalFruit.setText(Double.toString(prixTotal));
     }//GEN-LAST:event_PlusFruitMouseClicked
+
+    private void AjoutFruitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AjoutFruitMouseClicked
+        // Renvoyer les informations pour mettre à jour dans la boîte de dialogue précédente
+        //->Ajouter les fruits dans le récapitulatif panier
+        //->Prix total à accumuler
+    }//GEN-LAST:event_AjoutFruitMouseClicked
 
     /**
      * @param args the command line arguments

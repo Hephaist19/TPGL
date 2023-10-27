@@ -233,10 +233,11 @@
                       <Color blue="ff" green="7e" red="8d" type="rgb"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="3">
+                      <StringArray count="4">
                         <StringItem index="0" value="Trier par"/>
                         <StringItem index="1" value="Ordre Alphab&#xe9;tique"/>
-                        <StringItem index="2" value="Dernier ajout"/>
+                        <StringItem index="2" value="Prix Croissant"/>
+                        <StringItem index="3" value="Prix D&#xe9;croissant"/>
                       </StringArray>
                     </Property>
                     <Property name="alignmentX" type="float" value="0.25"/>
@@ -247,6 +248,9 @@
                       <Dimension value="[180, 25]"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="trierParActionPerformed"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
@@ -408,6 +412,9 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="boutonAnanas">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/ananas.jpg"/>
+                </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[125, 125]"/>
                 </Property>
@@ -424,6 +431,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="boutonPomme">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/pomme.jpg"/>
+                </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[125, 125]"/>
                 </Property>
@@ -437,6 +447,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="boutonKiwi">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/kiwi.png"/>
+                </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[125, 125]"/>
                 </Property>
@@ -450,6 +463,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="boutonOrange">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/orange.png"/>
+                </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[125, 125]"/>
                 </Property>
@@ -543,6 +559,9 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="boutonFramboise">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/framboise.jpg"/>
+                </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[125, 125]"/>
                 </Property>
@@ -556,6 +575,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="boutonCitron">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/citron.png"/>
+                </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[125, 125]"/>
                 </Property>
@@ -569,6 +591,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="boutonCerise">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/cerise.jpg"/>
+                </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[125, 125]"/>
                 </Property>
@@ -582,6 +607,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="boutonFraise">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/fraise.png"/>
+                </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[125, 125]"/>
                 </Property>
@@ -672,6 +700,9 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="boutonBanane">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/banane.jpg"/>
+                </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[125, 125]"/>
                 </Property>
@@ -685,6 +716,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="boutonPeche">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/peche.jpg"/>
+                </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[125, 125]"/>
                 </Property>
@@ -698,6 +732,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="boutonLitchi">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/litchi.png"/>
+                </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[125, 125]"/>
                 </Property>
