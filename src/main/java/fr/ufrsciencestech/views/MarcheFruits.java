@@ -23,6 +23,7 @@ public class MarcheFruits extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        categorieGroupe = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jSeparator3 = new javax.swing.JSeparator();
@@ -30,9 +31,10 @@ public class MarcheFruits extends javax.swing.JDialog {
         jSeparator1 = new javax.swing.JSeparator();
         jPanel11 = new javax.swing.JPanel();
         labelCategorie = new javax.swing.JLabel();
-        categorie1 = new javax.swing.JRadioButton();
-        categorie2 = new javax.swing.JRadioButton();
-        categorie3 = new javax.swing.JRadioButton();
+        categorieSansPepins = new javax.swing.JRadioButton();
+        categorieAvecNoyau = new javax.swing.JRadioButton();
+        categorieAgrume = new javax.swing.JRadioButton();
+        categorieExotique = new javax.swing.JRadioButton();
         jSeparator2 = new javax.swing.JSeparator();
         jPanel12 = new javax.swing.JPanel();
         trierPar = new javax.swing.JComboBox<>();
@@ -116,7 +118,7 @@ public class MarcheFruits extends javax.swing.JDialog {
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
         jPanel11.setMaximumSize(new java.awt.Dimension(200, 88));
-        jPanel11.setLayout(new java.awt.GridLayout(4, 0, 1, 3));
+        jPanel11.setLayout(new java.awt.GridLayout(5, 0, 1, 3));
 
         labelCategorie.setFont(new java.awt.Font("Eunjin Nakseo", 0, 17)); // NOI18N
         labelCategorie.setForeground(new java.awt.Color(141, 126, 255));
@@ -124,23 +126,43 @@ public class MarcheFruits extends javax.swing.JDialog {
         labelCategorie.setAlignmentY(0.0F);
         jPanel11.add(labelCategorie);
 
-        categorie1.setBackground(new java.awt.Color(255, 255, 255));
-        categorie1.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
-        categorie1.setForeground(new java.awt.Color(189, 98, 199));
-        categorie1.setText("jRadioButton1");
-        jPanel11.add(categorie1);
+        categorieSansPepins.setBackground(new java.awt.Color(255, 255, 255));
+        categorieGroupe.add(categorieSansPepins);
+        categorieSansPepins.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
+        categorieSansPepins.setForeground(new java.awt.Color(189, 98, 199));
+        categorieSansPepins.setText("Sans pépins");
+        categorieSansPepins.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                categorieSansPepinsActionPerformed(evt);
+            }
+        });
+        jPanel11.add(categorieSansPepins);
 
-        categorie2.setBackground(new java.awt.Color(255, 255, 255));
-        categorie2.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
-        categorie2.setForeground(new java.awt.Color(189, 98, 199));
-        categorie2.setText("jRadioButton2");
-        jPanel11.add(categorie2);
+        categorieAvecNoyau.setBackground(new java.awt.Color(255, 255, 255));
+        categorieGroupe.add(categorieAvecNoyau);
+        categorieAvecNoyau.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
+        categorieAvecNoyau.setForeground(new java.awt.Color(189, 98, 199));
+        categorieAvecNoyau.setText("Avec noyau");
+        jPanel11.add(categorieAvecNoyau);
 
-        categorie3.setBackground(new java.awt.Color(255, 255, 255));
-        categorie3.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
-        categorie3.setForeground(new java.awt.Color(189, 98, 199));
-        categorie3.setText("jRadioButton3");
-        jPanel11.add(categorie3);
+        categorieAgrume.setBackground(new java.awt.Color(255, 255, 255));
+        categorieGroupe.add(categorieAgrume);
+        categorieAgrume.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
+        categorieAgrume.setForeground(new java.awt.Color(189, 98, 199));
+        categorieAgrume.setText("Agrume");
+        jPanel11.add(categorieAgrume);
+
+        categorieExotique.setBackground(new java.awt.Color(255, 255, 255));
+        categorieGroupe.add(categorieExotique);
+        categorieExotique.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
+        categorieExotique.setForeground(new java.awt.Color(189, 98, 199));
+        categorieExotique.setText("Exotique");
+        categorieExotique.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                categorieExotiqueActionPerformed(evt);
+            }
+        });
+        jPanel11.add(categorieExotique);
 
         jPanel5.add(jPanel11);
 
@@ -149,6 +171,7 @@ public class MarcheFruits extends javax.swing.JDialog {
         jPanel5.add(jSeparator2);
 
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel12.setPreferredSize(new java.awt.Dimension(190, 20));
 
         trierPar.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
         trierPar.setForeground(new java.awt.Color(141, 126, 255));
@@ -413,9 +436,19 @@ public class MarcheFruits extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_boutonQuitterMarcheActionPerformed
 
+
     private void trierParActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trierParActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_trierParActionPerformed
+
+    private void categorieSansPepinsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorieSansPepinsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_categorieSansPepinsActionPerformed
+
+    private void categorieExotiqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorieExotiqueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_categorieExotiqueActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -472,9 +505,11 @@ public class MarcheFruits extends javax.swing.JDialog {
     private javax.swing.JButton boutonPeche;
     private javax.swing.JButton boutonPomme;
     private javax.swing.JButton boutonQuitterMarche;
-    private javax.swing.JRadioButton categorie1;
-    private javax.swing.JRadioButton categorie2;
-    private javax.swing.JRadioButton categorie3;
+    private javax.swing.JRadioButton categorieAgrume;
+    private javax.swing.JRadioButton categorieAvecNoyau;
+    private javax.swing.JRadioButton categorieExotique;
+    private javax.swing.ButtonGroup categorieGroupe;
+    private javax.swing.JRadioButton categorieSansPepins;
     private javax.swing.JLabel euros;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
