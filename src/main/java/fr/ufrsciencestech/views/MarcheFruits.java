@@ -35,6 +35,7 @@ public class MarcheFruits extends javax.swing.JDialog {
         categorieAvecNoyau = new javax.swing.JRadioButton();
         categorieAgrume = new javax.swing.JRadioButton();
         categorieExotique = new javax.swing.JRadioButton();
+        categorieTous = new javax.swing.JRadioButton();
         jSeparator2 = new javax.swing.JSeparator();
         jPanel12 = new javax.swing.JPanel();
         trierPar = new javax.swing.JComboBox<>();
@@ -105,11 +106,6 @@ public class MarcheFruits extends javax.swing.JDialog {
         boutonQuitterMarche.setMaximumSize(new java.awt.Dimension(200, 25));
         boutonQuitterMarche.setPreferredSize(new java.awt.Dimension(200, 40));
         boutonQuitterMarche.setRolloverEnabled(false);
-        boutonQuitterMarche.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boutonQuitterMarcheActionPerformed(evt);
-            }
-        });
         jPanel5.add(boutonQuitterMarche);
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
@@ -117,8 +113,10 @@ public class MarcheFruits extends javax.swing.JDialog {
         jPanel5.add(jSeparator1);
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel11.setMaximumSize(new java.awt.Dimension(200, 88));
-        jPanel11.setLayout(new java.awt.GridLayout(5, 0, 1, 3));
+        jPanel11.setMaximumSize(new java.awt.Dimension(200, 155));
+        jPanel11.setMinimumSize(new java.awt.Dimension(108, 155));
+        jPanel11.setPreferredSize(new java.awt.Dimension(108, 155));
+        jPanel11.setLayout(new java.awt.GridLayout(6, 0, 1, 3));
 
         labelCategorie.setFont(new java.awt.Font("Eunjin Nakseo", 0, 17)); // NOI18N
         labelCategorie.setForeground(new java.awt.Color(141, 126, 255));
@@ -143,6 +141,11 @@ public class MarcheFruits extends javax.swing.JDialog {
         categorieAvecNoyau.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
         categorieAvecNoyau.setForeground(new java.awt.Color(189, 98, 199));
         categorieAvecNoyau.setText("Avec noyau");
+        categorieAvecNoyau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                categorieAvecNoyauActionPerformed(evt);
+            }
+        });
         jPanel11.add(categorieAvecNoyau);
 
         categorieAgrume.setBackground(new java.awt.Color(255, 255, 255));
@@ -150,6 +153,11 @@ public class MarcheFruits extends javax.swing.JDialog {
         categorieAgrume.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
         categorieAgrume.setForeground(new java.awt.Color(189, 98, 199));
         categorieAgrume.setText("Agrume");
+        categorieAgrume.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                categorieAgrumeActionPerformed(evt);
+            }
+        });
         jPanel11.add(categorieAgrume);
 
         categorieExotique.setBackground(new java.awt.Color(255, 255, 255));
@@ -163,6 +171,18 @@ public class MarcheFruits extends javax.swing.JDialog {
             }
         });
         jPanel11.add(categorieExotique);
+
+        categorieTous.setBackground(new java.awt.Color(255, 255, 255));
+        categorieGroupe.add(categorieTous);
+        categorieTous.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
+        categorieTous.setForeground(new java.awt.Color(189, 98, 199));
+        categorieTous.setText("Tous");
+        categorieTous.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                categorieTousActionPerformed(evt);
+            }
+        });
+        jPanel11.add(categorieTous);
 
         jPanel5.add(jPanel11);
 
@@ -179,11 +199,6 @@ public class MarcheFruits extends javax.swing.JDialog {
         trierPar.setAlignmentX(0.25F);
         trierPar.setMaximumSize(new java.awt.Dimension(170, 25));
         trierPar.setPreferredSize(new java.awt.Dimension(180, 25));
-        trierPar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                trierParActionPerformed(evt);
-            }
-        });
         jPanel12.add(trierPar);
 
         jPanel5.add(jPanel12);
@@ -249,11 +264,6 @@ public class MarcheFruits extends javax.swing.JDialog {
         boutonAnanas.setMaximumSize(new java.awt.Dimension(125, 125));
         boutonAnanas.setMinimumSize(new java.awt.Dimension(125, 125));
         boutonAnanas.setPreferredSize(new java.awt.Dimension(125, 125));
-        boutonAnanas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boutonAnanasActionPerformed(evt);
-            }
-        });
         jPanel3.add(boutonAnanas);
 
         boutonPomme.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pomme.jpg"))); // NOI18N
@@ -428,26 +438,193 @@ public class MarcheFruits extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void boutonAnanasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonAnanasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boutonAnanasActionPerformed
-
-    private void boutonQuitterMarcheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonQuitterMarcheActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boutonQuitterMarcheActionPerformed
-
-
-    private void trierParActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trierParActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_trierParActionPerformed
-
     private void categorieSansPepinsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorieSansPepinsActionPerformed
-        // TODO add your handling code here:
+        // Fruits sans pépins -> Ananas, Kiwi, Framboise, Cerise, Fraise, Banane, Pêche,Litchi
+        
+        this.boutonAnanas.setVisible(true);
+        this.labelAnanas.setVisible(true);
+        
+        this.boutonKiwi.setVisible(true);
+        this.labelKiwi.setVisible(true);
+        
+        this.boutonFramboise.setVisible(true);
+        this.labelFramboise.setVisible(true);
+        
+        this.boutonCerise.setVisible(true);
+        this.labelCerise.setVisible(true);
+        
+        this.boutonFraise.setVisible(true);
+        this.labelFraise.setVisible(true);
+        
+        this.boutonBanane.setVisible(true);
+        this.labelBanane.setVisible(true);
+        
+        this.boutonPeche.setVisible(true);
+        this.labelPeche.setVisible(true);
+        
+        this.boutonLitchi.setVisible(true);
+        this.labelLitchi.setVisible(true);
+        
+        this.boutonOrange.setVisible(false);
+        this.labelOrange.setVisible(false);
+        
+        this.boutonCitron.setVisible(false);
+        this.labelCitron.setVisible(false);
+        
+        this.boutonPomme.setVisible(false);
+        this.labelPomme.setVisible(false);
     }//GEN-LAST:event_categorieSansPepinsActionPerformed
 
+    private void categorieAvecNoyauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorieAvecNoyauActionPerformed
+        // Fruits avec noyau -> Cerise, Pêche, Litchi
+        
+        this.boutonCerise.setVisible(true);
+        this.labelCerise.setVisible(true);
+        
+        this.boutonPeche.setVisible(true);
+        this.labelPeche.setVisible(true);
+        
+        this.boutonLitchi.setVisible(true);
+        this.labelLitchi.setVisible(true);
+        
+        this.boutonAnanas.setVisible(false);
+        this.labelAnanas.setVisible(false);
+        
+        this.boutonKiwi.setVisible(false);
+        this.labelKiwi.setVisible(false);
+        
+        this.boutonBanane.setVisible(false);
+        this.labelBanane.setVisible(false);
+        
+        this.boutonPomme.setVisible(false);
+        this.labelPomme.setVisible(false);
+        
+        this.boutonOrange.setVisible(false);
+        this.labelOrange.setVisible(false);
+        
+        this.boutonFramboise.setVisible(false);
+        this.labelFramboise.setVisible(false);
+        
+        this.boutonCitron.setVisible(false);
+        this.labelCitron.setVisible(false);
+      
+        this.boutonFraise.setVisible(false);
+        this.labelFraise.setVisible(false);
+        
+    }//GEN-LAST:event_categorieAvecNoyauActionPerformed
+
+    private void categorieAgrumeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorieAgrumeActionPerformed
+        // Agrumes -> Orange, Citron
+        
+        this.boutonOrange.setVisible(true);
+        this.labelOrange.setVisible(true);
+        
+        this.boutonCitron.setVisible(true);
+        this.labelCitron.setVisible(true);
+        
+        this.boutonAnanas.setVisible(false);
+        this.labelAnanas.setVisible(false);
+        
+        this.boutonKiwi.setVisible(false);
+        this.labelKiwi.setVisible(false);
+        
+        this.boutonBanane.setVisible(false);
+        this.labelBanane.setVisible(false);
+        
+        this.boutonLitchi.setVisible(false);
+        this.labelLitchi.setVisible(false);
+        
+        this.boutonPomme.setVisible(false);
+        this.labelPomme.setVisible(false);
+        
+        this.boutonFramboise.setVisible(false);
+        this.labelFramboise.setVisible(false);
+        
+        this.boutonCerise.setVisible(false);
+        this.labelCerise.setVisible(false);
+        
+        this.boutonFraise.setVisible(false);
+        this.labelFraise.setVisible(false);
+        
+        this.boutonPeche.setVisible(false);
+        this.labelPeche.setVisible(false);
+    }//GEN-LAST:event_categorieAgrumeActionPerformed
+
     private void categorieExotiqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorieExotiqueActionPerformed
-        // TODO add your handling code here:
+        // Fruits exotiques -> Ananas, Kiwi, Banane, Litchi
+        
+        this.boutonAnanas.setVisible(true);
+        this.labelAnanas.setVisible(true);
+        
+        this.boutonKiwi.setVisible(true);
+        this.labelKiwi.setVisible(true);
+        
+        this.boutonBanane.setVisible(true);
+        this.labelBanane.setVisible(true);
+        
+        this.boutonLitchi.setVisible(true);
+        this.labelLitchi.setVisible(true);
+        
+        this.boutonPomme.setVisible(false);
+        this.labelPomme.setVisible(false);
+        
+        this.boutonOrange.setVisible(false);
+        this.labelOrange.setVisible(false);
+        
+        this.boutonFramboise.setVisible(false);
+        this.labelFramboise.setVisible(false);
+        
+        this.boutonCitron.setVisible(false);
+        this.labelCitron.setVisible(false);
+        
+        this.boutonCerise.setVisible(false);
+        this.labelCerise.setVisible(false);
+        
+        this.boutonFraise.setVisible(false);
+        this.labelFraise.setVisible(false);
+        
+        this.boutonPeche.setVisible(false);
+        this.labelPeche.setVisible(false);
+        
     }//GEN-LAST:event_categorieExotiqueActionPerformed
+
+    private void categorieTousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorieTousActionPerformed
+        // Tous les fruits du marché
+        
+        this.boutonAnanas.setVisible(true);
+        this.labelAnanas.setVisible(true);
+        
+        this.boutonKiwi.setVisible(true);
+        this.labelKiwi.setVisible(true);
+        
+        this.boutonFramboise.setVisible(true);
+        this.labelFramboise.setVisible(true);
+        
+        this.boutonCerise.setVisible(true);
+        this.labelCerise.setVisible(true);
+        
+        this.boutonFraise.setVisible(true);
+        this.labelFraise.setVisible(true);
+        
+        this.boutonBanane.setVisible(true);
+        this.labelBanane.setVisible(true);
+        
+        this.boutonPeche.setVisible(true);
+        this.labelPeche.setVisible(true);
+        
+        this.boutonLitchi.setVisible(true);
+        this.labelLitchi.setVisible(true);
+        
+        this.boutonOrange.setVisible(true);
+        this.labelOrange.setVisible(true);
+        
+        this.boutonCitron.setVisible(true);
+        this.labelCitron.setVisible(true);
+        
+        this.boutonPomme.setVisible(true);
+        this.labelPomme.setVisible(true);
+    }//GEN-LAST:event_categorieTousActionPerformed
+
 
 
     /**
@@ -510,6 +687,7 @@ public class MarcheFruits extends javax.swing.JDialog {
     private javax.swing.JRadioButton categorieExotique;
     private javax.swing.ButtonGroup categorieGroupe;
     private javax.swing.JRadioButton categorieSansPepins;
+    private javax.swing.JRadioButton categorieTous;
     private javax.swing.JLabel euros;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

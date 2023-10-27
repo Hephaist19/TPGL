@@ -8,7 +8,7 @@ package fr.ufrsciencestech.views;
  *
  * @author hg186648
  */
-public class PageFruit extends javax.swing.JFrame {
+public class PageFruit extends javax.swing.JDialog {
 
     private int noFruit = 0;
     private String nF;
@@ -20,7 +20,8 @@ public class PageFruit extends javax.swing.JFrame {
     /**
      * Creates new form PageFruit
      */
-    public PageFruit() {
+    public PageFruit(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
        
         this.NbFruit.setText(Integer.toString(noFruit));
@@ -70,7 +71,6 @@ public class PageFruit extends javax.swing.JFrame {
         EuroTotal = new javax.swing.JLabel();
         AjoutFruit = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(460, 325));
         setMinimumSize(new java.awt.Dimension(460, 318));
         setPreferredSize(new java.awt.Dimension(460, 300));
@@ -301,7 +301,14 @@ public class PageFruit extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PageFruit().setVisible(true);
+                PageFruit dialog1 = new PageFruit(new javax.swing.JFrame(), true);
+                dialog1.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog1.setVisible(true);
             }
         });
     }
