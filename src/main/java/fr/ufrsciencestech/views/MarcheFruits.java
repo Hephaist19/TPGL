@@ -23,6 +23,7 @@ public class MarcheFruits extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        categorieGroupe = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jSeparator3 = new javax.swing.JSeparator();
@@ -125,18 +126,21 @@ public class MarcheFruits extends javax.swing.JDialog {
         jPanel11.add(labelCategorie);
 
         categorie1.setBackground(new java.awt.Color(255, 255, 255));
+        categorieGroupe.add(categorie1);
         categorie1.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
         categorie1.setForeground(new java.awt.Color(189, 98, 199));
         categorie1.setText("jRadioButton1");
         jPanel11.add(categorie1);
 
         categorie2.setBackground(new java.awt.Color(255, 255, 255));
+        categorieGroupe.add(categorie2);
         categorie2.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
         categorie2.setForeground(new java.awt.Color(189, 98, 199));
         categorie2.setText("jRadioButton2");
         jPanel11.add(categorie2);
 
         categorie3.setBackground(new java.awt.Color(255, 255, 255));
+        categorieGroupe.add(categorie3);
         categorie3.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
         categorie3.setForeground(new java.awt.Color(189, 98, 199));
         categorie3.setText("jRadioButton3");
@@ -455,6 +459,7 @@ public class MarcheFruits extends javax.swing.JDialog {
     private javax.swing.JRadioButton categorie1;
     private javax.swing.JRadioButton categorie2;
     private javax.swing.JRadioButton categorie3;
+    private javax.swing.ButtonGroup categorieGroupe;
     private javax.swing.JLabel euros;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
