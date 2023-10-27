@@ -149,7 +149,7 @@
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
                 <Property name="columns" type="int" value="0"/>
                 <Property name="horizontalGap" type="int" value="1"/>
-                <Property name="rows" type="int" value="4"/>
+                <Property name="rows" type="int" value="5"/>
                 <Property name="verticalGap" type="int" value="3"/>
               </Layout>
               <SubComponents>
@@ -165,7 +165,7 @@
                     <Property name="alignmentY" type="float" value="0.0"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="categorie1">
+                <Component class="javax.swing.JRadioButton" name="categorieSansPepins">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -179,10 +179,30 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="c7" green="62" red="bd" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="jRadioButton1"/>
+                    <Property name="text" type="java.lang.String" value="Sans p&#xe9;pins"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="categorieSansPepinsActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JRadioButton" name="categorieAvecNoyau">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="categorieGroupe"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Eunjin Nakseo" size="15" style="0"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="c7" green="62" red="bd" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Avec noyau"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="categorie2">
+                <Component class="javax.swing.JRadioButton" name="categorieAgrume">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -196,10 +216,10 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="c7" green="62" red="bd" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="jRadioButton2"/>
+                    <Property name="text" type="java.lang.String" value="Agrume"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="categorie3">
+                <Component class="javax.swing.JRadioButton" name="categorieExotique">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -213,8 +233,11 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="c7" green="62" red="bd" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="jRadioButton3"/>
+                    <Property name="text" type="java.lang.String" value="Exotique"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="categorieExotiqueActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -232,6 +255,9 @@
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[190, 20]"/>
                 </Property>
               </Properties>
 
