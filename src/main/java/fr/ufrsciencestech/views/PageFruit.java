@@ -18,7 +18,9 @@ public class PageFruit extends javax.swing.JDialog {
     private String iF; //chemin pour accéder à l'image du fruit ?
     
     /**
-     * Creates new form PageFruit
+     * Creates new PageFruit
+     * @param parent
+     * @param modal
      */
     public PageFruit(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -266,7 +268,7 @@ public class PageFruit extends javax.swing.JDialog {
     }//GEN-LAST:event_PlusFruitMouseClicked
 
     private void AjoutFruitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AjoutFruitMouseClicked
-        // Renvoyer les informations pour mettre à jour dans la boîte de dialogue précédente
+        // VERIFIER MAX PANIER NON ATTEINT et Renvoyer les informations pour mettre à jour dans la boîte de dialogue précédente
         //->Ajouter les fruits dans le récapitulatif panier
         //->Prix total à accumuler
     }//GEN-LAST:event_AjoutFruitMouseClicked

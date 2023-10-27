@@ -1,17 +1,120 @@
 package fr.ufrsciencestech.views;
+import java.util.*;
+import javax.swing.*;
 
 /**
  *
  * @author mgall
  */
 public class MarcheFruits extends javax.swing.JDialog {
+    
+    private List<String> listeSansPepins = Arrays.asList("Ananas","Kiwi","Framboise","Cerise","Fraise","Banane","Pêche","Litchi");
+    private List<String> listeAvecNoyau = Arrays.asList("Cerise","Pêche","Litchi");
+    private List<String> listeAgrume = Arrays.asList("Orange","Citron");  
+    private List<String> listeExotique = Arrays.asList("Ananas","Kiwi","Banane","Litchi"); 
+    private List<String> listeTous = Arrays.asList("Ananas","Pomme","Kiwi","Orange","Citron","Framboise","Cerise","Fraise","Banane","Pêche","Litchi");
+    
+    private List<String> listeOrdreAlphabtique = Arrays.asList("Ananas","Banane","Cerise","Citron","Fraise","Framboise","Kiwi","Litchi","Orange","Pêche","Pomme"); 
+    //private List<String> listePrixCroissant = Arrays.asList();
+    //private List<String> listePrixDecroissant = Arrays.asList();
+    
 
     /**
      * Creates new form MarcheFruits
+     * @param parent
+     * @param modal
      */
     public MarcheFruits(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        initButtons();
+    }
+    
+    //Créer dynamiquement tous les fruits avec la listeTous
+    public void initButtons(){
+        
+        for(int i=0;i<listeTous.size();i++)
+        {
+            //Chemin d'accès  à l'image
+            String path = "../src/main/resources/images/"+listeTous.get(i)+".png"; 
+            
+            //Couleur du texte pair/impair
+            java.awt.Color mauve = new java.awt.Color(189, 98, 199);
+            java.awt.Color bleu = new java.awt.Color(141, 126, 255);
+            
+            if(i<4) //Première ligne
+            {
+                JButton bouton = new JButton();
+                bouton.setMaximumSize(new java.awt.Dimension(125, 125));
+                bouton.setMinimumSize(new java.awt.Dimension(125, 125));
+                bouton.setPreferredSize(new java.awt.Dimension(125, 125));
+                bouton.setIcon(new javax.swing.ImageIcon(path)); 
+                jPanel3.add(bouton);
+
+                JLabel label = new JLabel();
+                label.setBackground(new java.awt.Color(255, 255, 255));
+                label.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); 
+                if(i%2==0)
+                {
+                    label.setForeground(mauve);
+                }
+                else
+                {
+                    label.setForeground(bleu);
+                }
+                label.setText(listeTous.get(i));
+                jPanel6.add(label);   
+            }
+            else if (i<8) //Deuxième ligne
+            {
+                JButton bouton = new JButton();
+                bouton.setMaximumSize(new java.awt.Dimension(125, 125));
+                bouton.setMinimumSize(new java.awt.Dimension(125, 125));
+                bouton.setPreferredSize(new java.awt.Dimension(125, 125));
+                bouton.setIcon(new javax.swing.ImageIcon(path));              
+                //bouton.setIcon(new javax.swing.ImageIcon(getClass().getResource(path))); 
+                jPanel7.add(bouton);
+
+                JLabel label = new JLabel();
+                label.setBackground(new java.awt.Color(255, 255, 255));
+                label.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); 
+                if(i%2==0)
+                {
+                    label.setForeground(mauve);
+                }
+                else
+                {
+                    label.setForeground(bleu);
+                }
+                label.setText(listeTous.get(i));
+                jPanel8.add(label); 
+            }
+            else { //Troisième ligne
+                JButton bouton = new JButton();
+                bouton.setMaximumSize(new java.awt.Dimension(125, 125));
+                bouton.setMinimumSize(new java.awt.Dimension(125, 125));
+                bouton.setPreferredSize(new java.awt.Dimension(125, 125));
+                bouton.setIcon(new javax.swing.ImageIcon(path));                 
+                //bouton.setIcon(new javax.swing.ImageIcon(getClass().getResource(path))); 
+                jPanel10.add(bouton);
+
+                JLabel label = new JLabel();
+                label.setBackground(new java.awt.Color(255, 255, 255));
+                label.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); 
+                if(i%2==0)
+                {
+                    label.setForeground(mauve);
+                }
+                else
+                {
+                    label.setForeground(bleu);
+                }
+                label.setText(listeTous.get(i));
+                jPanel9.add(label); 
+                
+            }
+        }
+        
     }
 
     /**
@@ -106,6 +209,11 @@ public class MarcheFruits extends javax.swing.JDialog {
         boutonQuitterMarche.setMaximumSize(new java.awt.Dimension(200, 25));
         boutonQuitterMarche.setPreferredSize(new java.awt.Dimension(200, 40));
         boutonQuitterMarche.setRolloverEnabled(false);
+        boutonQuitterMarche.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                boutonQuitterMarcheMouseClicked(evt);
+            }
+        });
         jPanel5.add(boutonQuitterMarche);
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
@@ -199,6 +307,11 @@ public class MarcheFruits extends javax.swing.JDialog {
         trierPar.setAlignmentX(0.25F);
         trierPar.setMaximumSize(new java.awt.Dimension(170, 25));
         trierPar.setPreferredSize(new java.awt.Dimension(180, 25));
+        trierPar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trierParActionPerformed(evt);
+            }
+        });
         jPanel12.add(trierPar);
 
         jPanel5.add(jPanel12);
@@ -260,25 +373,25 @@ public class MarcheFruits extends javax.swing.JDialog {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        boutonAnanas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ananas.jpg"))); // NOI18N
+        boutonAnanas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Ananas.png"))); // NOI18N
         boutonAnanas.setMaximumSize(new java.awt.Dimension(125, 125));
         boutonAnanas.setMinimumSize(new java.awt.Dimension(125, 125));
         boutonAnanas.setPreferredSize(new java.awt.Dimension(125, 125));
         jPanel3.add(boutonAnanas);
 
-        boutonPomme.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pomme.jpg"))); // NOI18N
+        boutonPomme.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Pomme.png"))); // NOI18N
         boutonPomme.setMaximumSize(new java.awt.Dimension(125, 125));
         boutonPomme.setMinimumSize(new java.awt.Dimension(125, 125));
         boutonPomme.setPreferredSize(new java.awt.Dimension(125, 125));
         jPanel3.add(boutonPomme);
 
-        boutonKiwi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/kiwi.png"))); // NOI18N
+        boutonKiwi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Kiwi.png"))); // NOI18N
         boutonKiwi.setMaximumSize(new java.awt.Dimension(125, 125));
         boutonKiwi.setMinimumSize(new java.awt.Dimension(125, 125));
         boutonKiwi.setPreferredSize(new java.awt.Dimension(125, 125));
         jPanel3.add(boutonKiwi);
 
-        boutonOrange.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/orange.png"))); // NOI18N
+        boutonOrange.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Orange.png"))); // NOI18N
         boutonOrange.setMaximumSize(new java.awt.Dimension(125, 125));
         boutonOrange.setMinimumSize(new java.awt.Dimension(125, 125));
         boutonOrange.setPreferredSize(new java.awt.Dimension(125, 125));
@@ -317,25 +430,25 @@ public class MarcheFruits extends javax.swing.JDialog {
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
-        boutonFramboise.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/framboise.jpg"))); // NOI18N
+        boutonFramboise.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Framboise.png"))); // NOI18N
         boutonFramboise.setMaximumSize(new java.awt.Dimension(125, 125));
         boutonFramboise.setMinimumSize(new java.awt.Dimension(125, 125));
         boutonFramboise.setPreferredSize(new java.awt.Dimension(125, 125));
         jPanel7.add(boutonFramboise);
 
-        boutonCitron.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/citron.png"))); // NOI18N
+        boutonCitron.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Citron.png"))); // NOI18N
         boutonCitron.setMaximumSize(new java.awt.Dimension(125, 125));
         boutonCitron.setMinimumSize(new java.awt.Dimension(125, 125));
         boutonCitron.setPreferredSize(new java.awt.Dimension(125, 125));
         jPanel7.add(boutonCitron);
 
-        boutonCerise.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cerise.jpg"))); // NOI18N
+        boutonCerise.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cerise.png"))); // NOI18N
         boutonCerise.setMaximumSize(new java.awt.Dimension(125, 125));
         boutonCerise.setMinimumSize(new java.awt.Dimension(125, 125));
         boutonCerise.setPreferredSize(new java.awt.Dimension(125, 125));
         jPanel7.add(boutonCerise);
 
-        boutonFraise.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fraise.png"))); // NOI18N
+        boutonFraise.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Fraise.png"))); // NOI18N
         boutonFraise.setMaximumSize(new java.awt.Dimension(125, 125));
         boutonFraise.setMinimumSize(new java.awt.Dimension(125, 125));
         boutonFraise.setPreferredSize(new java.awt.Dimension(125, 125));
@@ -373,19 +486,19 @@ public class MarcheFruits extends javax.swing.JDialog {
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
 
-        boutonBanane.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banane.jpg"))); // NOI18N
+        boutonBanane.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Banane.png"))); // NOI18N
         boutonBanane.setMaximumSize(new java.awt.Dimension(125, 125));
         boutonBanane.setMinimumSize(new java.awt.Dimension(125, 125));
         boutonBanane.setPreferredSize(new java.awt.Dimension(125, 125));
         jPanel10.add(boutonBanane);
 
-        boutonPeche.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/peche.jpg"))); // NOI18N
+        boutonPeche.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Peche.png"))); // NOI18N
         boutonPeche.setMaximumSize(new java.awt.Dimension(125, 125));
         boutonPeche.setMinimumSize(new java.awt.Dimension(125, 125));
         boutonPeche.setPreferredSize(new java.awt.Dimension(125, 125));
         jPanel10.add(boutonPeche);
 
-        boutonLitchi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/litchi.png"))); // NOI18N
+        boutonLitchi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Litchi.png"))); // NOI18N
         boutonLitchi.setMaximumSize(new java.awt.Dimension(125, 125));
         boutonLitchi.setMinimumSize(new java.awt.Dimension(125, 125));
         boutonLitchi.setPreferredSize(new java.awt.Dimension(125, 125));
@@ -625,7 +738,31 @@ public class MarcheFruits extends javax.swing.JDialog {
         this.labelPomme.setVisible(true);
     }//GEN-LAST:event_categorieTousActionPerformed
 
+    private void trierParActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trierParActionPerformed
+        String choix = (String) this.trierPar.getSelectedItem(); //Récupère ce qui a été sélectionné
 
+        //On réalise au cas par cas
+        switch (choix) {
+            case "Ordre Alphabétique":
+                //Les trier dans cet ordre => Ananas, Banane, Cerise, Citron, Fraise, Framboise, Kiwi, Litchi, Orange, Pêche, Pomme
+                break;
+            case "Prix Croissant":
+                //Les trier dans cet ordre (prix)=>
+                break;
+            case "Prix Décroissant":
+                //Les trier dans cet ordre (prix inverse ci dessus) =>
+                break;
+            default:
+                //Les trier comme on a initialisé
+                break;
+        }
+
+     }//GEN-LAST:event_trierParActionPerformed
+
+    private void boutonQuitterMarcheMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boutonQuitterMarcheMouseClicked
+        // Quitter le marché -> Récupérer les instances de fruits dans le récapitulatif panier JList this.listeRecap afin de les ajouter dans le panier en vérifiant que le MAX panier n'est pas atteint !
+        
+    }//GEN-LAST:event_boutonQuitterMarcheMouseClicked
 
     /**
      * @param args the command line arguments
@@ -656,6 +793,7 @@ public class MarcheFruits extends javax.swing.JDialog {
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 MarcheFruits dialog = new MarcheFruits(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
