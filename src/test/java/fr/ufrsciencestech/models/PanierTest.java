@@ -317,7 +317,7 @@ public class PanierTest {
         }
 
         Orange o = new Orange();
-        p.setFruit(0, o);
+        p.setFruit(i, o);
 
         assertEquals(p.getFruit(0), o);
 
@@ -346,22 +346,33 @@ public class PanierTest {
     @Test
     public void testEquals() {
         System.out.println("equals");
+
+        //Réflexivité vide
+        boolean result = p.equals(p);
+        assertTrue(result);
         
         Panier p1 = new Panier(1);
         //Premier cas faux (pas la même contenance max)
         assertEquals(false, p.equals(p1));
         
-        //Meme taille de panier
+        ///Meme taille de panier
         Panier p2 = new Panier(2);
+
+        //Symétrie vide
+        assertEquals(p.equals(p2), p2.equals(p));
+
         Pomme po = new Pomme();
         Orange o = new Orange();
         
+        //p aura une pomme
+        //p2 aura une orange
         try {
             p.ajout(po);
             p2.ajout(o);
         } catch (PanierPleinException ex) {}
 
-        boolean result = p.equals(p2);
+        result = p.equals(p2);
+
         //Cas meme taille, mais pas les même fruits
         assertEquals(false, result);
         
@@ -371,8 +382,21 @@ public class PanierTest {
         } catch (PanierPleinException ex) {}
         
         result = p.equals(p2);
-        //Cas meme taille, mais pas les même fruits
+        //Cas meme taille, mais même fruits, et pas dans le même ordre
         assertEquals(true, result);
+        //Test symétrie
+        assertEquals(result, p2.equals(p));
+
+        Panier p3 = new Panier(2);
+        p3.setFruits(p.getFruits());
+        //Test transitivité d'égalité:
+        boolean resultxy = p.equals(p2);
+        boolean resultyz = p2.equals(p3);
+        assertEquals(resultxy, resultyz);
+
+        result = p.equals(p3);
+
+        assertTrue(result);
     }
 
     /**
