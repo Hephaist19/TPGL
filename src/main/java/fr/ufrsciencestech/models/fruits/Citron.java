@@ -9,7 +9,8 @@ package fr.ufrsciencestech.models.fruits;
  * @author jl336673
  */
 public class Citron {
-        private double prix;
+    
+    private double prix;
     private String origine;
 
     public Citron() {
