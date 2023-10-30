@@ -5,11 +5,7 @@ import fr.ufrsciencestech.models.*;
 
 public class PanierFactory {
      
-    public void PanierFactory(){
-        
-    }
-    
-    public Panier createPanier(int contenance){
+    public static Panier createPanier(int contenance){
         return new Panier(contenance);
     }
 }
