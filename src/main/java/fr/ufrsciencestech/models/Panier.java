@@ -13,33 +13,58 @@ public class Panier {
     private ArrayList<Fruit> fruits = new ArrayList<>();  //attribut pour stocker les fruits
     private int contenanceMax = 10;        //nb maximum d'oranges que peut contenir le panier
 
-    public Panier(int contenanceMax) {  //initialise un panier vide ayant une certaine contenance maximale (precisee en parametre)
+    /**
+     * Construit un panier vide ayant une certaine contenance maximale
+     * @param contenanceMax int
+     */
+    public Panier(int contenanceMax) {  
         this.contenanceMax = contenanceMax;
     }
 
-    //Ajouter un listener pour les modifications du contenu du panier
+    /**
+     * Ajouter un listener pour les modifications du contenu du panier
+     * @param l PropertyChangeListener à attacher
+     */
     public void addObserver(PropertyChangeListener l) {
         pcs.addPropertyChangeListener("fruits", l);
     }
     
-    //Ajouter un listener pour les modifications du contenu du panier
+    /**
+     * Supprime un listener associé au modification du Panier
+     * @param l PropertyChangeListener
+     */
     public void removeObserver(PropertyChangeListener l) {
         pcs.removePropertyChangeListener("fruits", l);
     }
     
+    /**
+     * Getter de l'attribut PropertyChangeSupport du Panier
+     * @return l'instance de PropertyChangeSupport associé au Panier
+     */
     public PropertyChangeSupport getPropertyChangeSupport() {
         return this.pcs;
     }
 
-    //Modificateurs pouvant émettre une notification\\
-    public void setFruits(ArrayList<Fruit> fruits) { //modificateur du premier attribut
+    /// Tous les modificateurs pouvant émettrent une notification \\\
+
+
+    /**
+     * Set la liste de fruit associé au Panier
+     * @param fruits ArrayList<<>Fruit>
+     */
+    public void setFruits(ArrayList<Fruit> fruits) {
         ArrayList<Fruit> old = this.fruits;
         this.fruits = fruits;
-        //Emission de l'évênement de modification
+        //Emission de l'évênement de modification à tous les listeners
         pcs.firePropertyChange("fruits", old, this.fruits);
     }
 
-    public void ajout(Fruit o) throws PanierPleinException {  //ajoute le fruit o a la fin du panier si celui-ci n'est pas plein
+    /**
+     * Ajoute un fruit dans le panier
+     * @param o Fruit à ajouter
+     * @throws PanierPleinException Si le panier est plein avant ajout du fruit
+     */
+    public void ajout(Fruit o) throws PanierPleinException {
         if (fruits.size() < contenanceMax) {
             ArrayList<Fruit> old = this.fruits;
             fruits.add(o);
@@ -49,7 +74,11 @@ public class Panier {
         }
     }
 
-    public void retrait() throws PanierVideException { //retire le dernier fruit du panier si celui-ci n'est pas vide
+    /**
+     * Retire le dernier fruit du panier si celui-ci n'est pas vide
+     * @throws PanierVideException Si le panier est vide avant de retirer le fruit
+     */
+    public void retrait() throws PanierVideException {
         if (!fruits.isEmpty()) {
             ArrayList<Fruit> old = this.fruits;
             fruits.remove(fruits.size() - 1);
@@ -59,7 +88,11 @@ public class Panier {
         }
     }
 
-    public void boycotteOrigine(String origine) {  //supprime du panier tous les fruits provenant du pays origine
+    /**
+     * Supprime du panier tous les fruits provenant du pays origine
+     * @param origine Le pays d'origine à boycotter 
+     */
+    public void boycotteOrigine(String origine) {
         int nbModification = 0;
         ArrayList<Fruit> old = this.fruits;
         for (int i = 0; i < this.fruits.size(); i++) {
@@ -74,7 +107,13 @@ public class Panier {
         }
     }
 
-    public void setFruit(int i, Fruit f) {  //modificateur du fruit contenu dans le panier a l'emplacement n°i par f (s'il y a bien deja un fruit a cet emplacement, ne rien faire sinon)
+    /**
+     * Modifie le fruit contenu dans le panier à l'emplacement i par f.
+     * S'il n'y a pas de fruit à cet emplacement, rien ne se passe.
+     * @param i L'index du fruit à remplacer
+     * @param f Le fruit à remplacer
+     */
+    public void setFruit(int i, Fruit f) {
         if (this.fruits.size() > i) {
             ArrayList<Fruit> old = this.fruits;
             fruits.set(i, f);
@@ -82,7 +121,8 @@ public class Panier {
         }
     }
 
-    //-----------------------------------------------\\
+    /// ----------------------------------------------- \\\
+    
     @Override
     public String toString() {  //affichage de ce qui est contenu dans le panier : liste des fruits presents
         StringBuilder sb = new StringBuilder();
@@ -93,31 +133,60 @@ public class Panier {
         return sb.toString();
     }
 
-    public ArrayList<Fruit> getFruits() {  //accesseur du premier attribut
+    /**
+     * Renvoie la liste des fruits du panier dans une 
+     * @return ArrayList<Fruit>
+     */
+    public ArrayList<Fruit> getFruits() {  //
         return this.fruits;
     }
 
-    public int getTaillePanier() {  //Accesseur retournant le nombre de fruit dans la panier
+    /**
+     * Accesseur retournant le nombre de fruit dans la panier
+     * @return le nombre de fruit dans le panier
+     */
+    public int getTaillePanier() {
         return this.fruits.size();
     }
 
-    public int getContenanceMax() {  //accesseur du second attribut
+    /**
+     * La taille maximale du panier
+     * @return La nombre maximum de fruit que le panier peut contenir
+     */
+    public int getContenanceMax() {
         return contenanceMax;
     }
 
-    public Fruit getFruit(int index) {  //accesseur retournant le fruit contenu dans le panier a l'emplacement n°i ou null s'il n'y a rien a cet emplacement
+    /**
+     * Accesseur retournant le fruit contenu dans le panier a l'emplacement i ou null s'il n'y a rien a cet emplacement
+     * @param index Indice du fruit du panier à récupérer
+     * @return 
+     */
+    public Fruit getFruit(int index) {
+        if(index < 0 || index > this.fruits.size()) {
+            return null;
+        }
         return this.fruits.get(index);
     }
 
-    public boolean estVide() {  //predicat indiquant que le panier est vide
+    /**
+     * @return si le panier est vide
+     */
+    public boolean estVide() {  //
         return this.fruits.isEmpty();
     }
 
-    public boolean estPlein() {  //predicat indiquant que le panier est plein
+    /**
+     * @return Si le panier est plein
+     */
+    public boolean estPlein() {  //
         return this.fruits.size() == this.contenanceMax;
     }
 
-    public double getPrix() {  //calcule le prix du panier par addition des prix de tous les fruits contenus dedans
+    /**
+     * @return La veleur total du contenu du panier
+     */
+    public double getPrix() {
         double sum = 0;
         for (Fruit f : this.fruits) {
             sum += f.getPrix();
@@ -125,19 +194,26 @@ public class Panier {
         return sum;
     }
 
+
     @Override
-    public boolean equals(Object o) {  ///predicat pour tester si 2 paniers sont equivalents : s'ils contiennent exactement les memes fruits
+    public boolean equals(Object o) {  //predicat pour tester si 2 paniers sont equivalents : s'ils contiennent exactement les memes fruits
         if (o instanceof Panier) {
             Panier p = (Panier) o;
             //Comparaison préliminaire
-            if (this.contenanceMax != ((Panier) (o)).contenanceMax) {
+            if (this.contenanceMax != p.contenanceMax) {
                 return false;
             } else {
                 //On regarde si les deux panier ont les même fruits, indépendemment de l'ordre, et en conservant la cardinalité des différents fruits
-                ArrayList<Fruit> tmp = this.getFruits();
-                for (Fruit f : p.getFruits()) //Si on a pas pu enlever le fruit, c'est que les deux panier sont différents
-                {
-                    if (!this.getFruits().remove(f)) {
+                //On copie tous les fruits dans une liste
+                ArrayList<Fruit> copie = new ArrayList<>();
+                for (Fruit fruit : p.fruits) {
+                    copie.add(fruit);
+                }
+                
+                //Pour chaque fruit contenu dans le panier this
+                for (Fruit fruit : this.getFruits()) {
+                    //Si on a pas pu enlever le fruit, c'est que les deux panier sont différents
+                    if (!copie.remove(fruit)) {
                         return false;
                     }
                 }
