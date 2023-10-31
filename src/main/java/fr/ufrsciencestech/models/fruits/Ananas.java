@@ -12,15 +12,8 @@ public class Ananas implements Fruit {
     }
 
     public Ananas(double prix, String origine) {
-        
-        setPrix(prix);  //une solution possible pour interdire les prix negatifs
-
-
-        if (origine.equals("")) {
-            this.origine = "Espagne";  //Espagne par défaut
-        } else {
-            this.origine = origine;
-        }
+        setPrix(prix);
+        setOrigine(origine);
     }
 
     @Override
@@ -44,7 +37,14 @@ public class Ananas implements Fruit {
     
     @Override
     public void setOrigine(String origine) {
-        this.origine = origine;
+
+        if(origine != "") {
+            this.origine = origine;
+        }
+        else {
+            this.origine = "Espagne";
+        }
+        
     }
 
     @Override

@@ -11,17 +11,8 @@ public class Orange implements Fruit {
     }
 
     public Orange(double prix, String origine) {
-        if (prix < 0) {
-            this.prix = -prix;  //une solution possible pour interdire les prix negatifs
-        } else {
-            this.prix = prix;
-        }
-
-        if (origine.equals("")) {
-            this.origine = "Espagne";  //Espagne par défaut
-        } else {
-            this.origine = origine;
-        }
+        setPrix(prix);
+        setOrigine(origine);
     }
 
     @Override
@@ -29,8 +20,13 @@ public class Orange implements Fruit {
         return prix;
     }
 
+    @Override
     public void setPrix(double prix) {
-        this.prix = prix;
+        if(prix < 0)
+            this.prix = -prix;
+        else
+            this.prix = prix;
+        
     }
 
     @Override
@@ -38,8 +34,16 @@ public class Orange implements Fruit {
         return origine;
     }
 
+    @Override
     public void setOrigine(String origine) {
-        this.origine = origine;
+        
+        if(origine != "") {
+            this.origine = origine;
+        }
+        else {
+            this.origine = "Espagne";
+        }
+        
     }
 
     @Override
