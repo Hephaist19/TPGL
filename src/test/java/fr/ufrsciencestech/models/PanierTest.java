@@ -283,8 +283,6 @@ public class PanierTest {
         System.out.println("addObserver");
 
         p.addObserver(l);
-        System.out.println(l);
-        System.out.println(p.getPropertyChangeSupport().getPropertyChangeListeners().length);
         assertEquals(1, p.getPropertyChangeSupport().getPropertyChangeListeners().length);
     }
 
