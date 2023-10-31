@@ -72,7 +72,7 @@ public class Peche implements Fruit{
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         return new Peche(this.prix, this.origine);
     }
 }

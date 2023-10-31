@@ -64,4 +64,9 @@ public class Orange implements Fruit {
     public boolean isSeedless() {  //predicat indiquant qu'une orange a des pepins
         return false;
     }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return new Orange(this.prix, this.origine);
+    }
 }

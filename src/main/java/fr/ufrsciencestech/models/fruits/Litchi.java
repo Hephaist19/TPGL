@@ -72,7 +72,7 @@ public class Litchi implements Fruit {
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         return new Litchi(this.prix, this.origine);
     }
 }

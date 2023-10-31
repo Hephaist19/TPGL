@@ -74,7 +74,7 @@ public class Banane implements Fruit{
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         return new Banane(this.prix, this.origine);
     }
 }

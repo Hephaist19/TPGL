@@ -64,4 +64,9 @@ public class Kiwi implements Fruit {
     public boolean isSeedless() {  //predicat indiquant qu'une kiwi a des pepins
         return false;
     }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return new Kiwi(this.prix, this.origine);
+    }
 }
