@@ -201,7 +201,7 @@ public class Panier {
         //On va donc le faire à la main
         for(Fruit f : this.fruits) {
             try {
-                copie.ajout(f.clone());
+                copie.ajout((Fruit) f.clone());
             } catch (PanierPleinException e) {}
         }
         return super.clone();
