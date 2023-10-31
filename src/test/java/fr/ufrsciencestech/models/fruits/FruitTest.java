@@ -103,6 +103,10 @@ public abstract class FruitTest {
         
         double result = fi.getPrix();
         assertEquals(result, d, 0.001);
+
+        fi.setPrix(-1.1);
+        //On s'attend que le prix soit passé positif
+        assertEquals(fi.getPrix(), 1.1, 0.001);
     }
 
     /**
@@ -116,6 +120,12 @@ public abstract class FruitTest {
         
         String result = fi.getOrigine();
         assertEquals(string, result);
+
+        fi.setOrigine("");
+        
+        //On s'attend que le pays soit mit à Espagne
+        result = fi.getOrigine();
+        assertEquals("Espagne", result);
     }
 
     @Test
