@@ -475,6 +475,7 @@ public class PanierTest {
 
             try {
                 Panier copieOver = (Panier) p.clone();
+                assertEquals(copieOver, p);
                 //Une copie devant satisfaire un equals
                 //Nous avons décider de lancer une erreur
                 //
@@ -485,7 +486,6 @@ public class PanierTest {
                 //- En copiant uniquement les fruits pouvant être contenu dans le panier
                 //  -> ne satisfait pas le equals
 
-        
             } catch (CloneNotSupportedException e) {
                 assertTrue(true);
             }
