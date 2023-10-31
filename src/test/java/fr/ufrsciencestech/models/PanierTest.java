@@ -105,6 +105,12 @@ public class PanierTest {
 
         Pomme result = (Pomme) p.getFruit(i);
         assertEquals(expResult, result);
+
+        Pomme miss = (Pomme) p.getFruit(-1);
+        assertEquals(null, miss);
+
+        miss = (Pomme) p.getFruit(2);
+        assertEquals(null, miss);
     }
 
     /**
@@ -273,6 +279,10 @@ public class PanierTest {
 
         assertEquals(expresult, result);
 
+        //Test sans modification faite
+        p.boycotteOrigine(origine);
+        assertEquals(expresult, result);
+
     }
 
     /**
@@ -306,8 +316,8 @@ public class PanierTest {
     @Test
     public void testSetFruit() {
         System.out.println("setFruit");
-        int i = 0;
         Pomme po = new Pomme();
+        //Deux pommes dans le panier
         try {
             p.ajout(po);
             p.ajout(po);
@@ -315,9 +325,21 @@ public class PanierTest {
         }
 
         Orange o = new Orange();
-        p.setFruit(i, o);
+        //On remplace la 1ere pomme avec une Orange
+        p.setFruit(0, o);
 
+        //On vérifie l'orange soit bien à l'emplacement 0
         assertEquals(p.getFruit(0), o);
+
+        try {
+            Panier temoin = (Panier) p.clone();
+            //Test out -
+            p.setFruit(-1, o);
+            assertTrue(p.equals(temoin));
+            //Test out +
+            p.setFruit(3, o);
+            assertTrue(p.equals(temoin));
+        } catch (Exception e) {}
 
     }
 
@@ -376,6 +398,8 @@ public class PanierTest {
         
         try {
             p.ajout(o);
+            //Test pas le même nombre de fruit
+            assertFalse(p.equals(p2));
             p2.ajout(po);
         } catch (PanierPleinException ex) {}
         
@@ -395,6 +419,9 @@ public class PanierTest {
         result = p.equals(p3);
 
         assertTrue(result);
+
+        //Test comparaison Panier avec autre Object
+        assertFalse(p.equals(new Pomme()));
     }
 
     /**
@@ -423,6 +450,50 @@ public class PanierTest {
 
         PropertyChangeSupport result = p.getPropertyChangeSupport();
         assertEquals(0, result.getPropertyChangeListeners().length);
+    }
+
+    /**
+     * Test du clone
+     */
+    @Test
+    public void testClone() {
+        try {
+            p.ajout(new Orange());
+            
+            Panier copie = (Panier) p.clone();
+            //Même panier + même contenu
+            assertTrue(p.equals(copie));
+
+            //Pas la même référence
+            assertFalse(p == copie);
+
+            //test spéciale où l'arraylist a plus de Fruit que contenance max
+            //On remplie le panier de taille 2
+            p.ajout(new Kiwi());
+            //Hack pour sur-remplir le panier
+            p.getFruits().add(new Orange());
+
+            try {
+                Panier copieOver = (Panier) p.clone();
+                //Une copie devant satisfaire un equals
+                //Nous avons décider de lancer une erreur
+                //
+                //Nous aurions pu copier le contenu du panier:
+                //- En copiant le débordement
+                //  -> satisfait le equals
+
+                //- En copiant uniquement les fruits pouvant être contenu dans le panier
+                //  -> ne satisfait pas le equals
+
+        
+            } catch (CloneNotSupportedException e) {
+                assertTrue(true);
+            }
+            
+            } catch (Exception e) {
+            fail("Clone impossible de Panier");
+        }
+        
     }
 
 }

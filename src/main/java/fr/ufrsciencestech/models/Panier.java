@@ -114,7 +114,7 @@ public class Panier {
      * @param f Le fruit à remplacer
      */
     public void setFruit(int i, Fruit f) {
-        if (this.fruits.size() > i) {
+        if (i >= 0 && this.fruits.size() > i) {
             ArrayList<Fruit> old = this.fruits;
             fruits.set(i, f);
             pcs.firePropertyChange("fruits", old, this.fruits);
@@ -202,9 +202,12 @@ public class Panier {
         for(Fruit f : this.fruits) {
             try {
                 copie.ajout((Fruit) f.clone());
-            } catch (PanierPleinException e) {}
+            } catch (PanierPleinException e) {
+                System.err.println("Le panier this possède plus de fruit que le permet ContenanceMax!");
+                throw new CloneNotSupportedException();
+            }
         }
-        return super.clone();
+        return copie;
     }
 
     @Override
@@ -215,6 +218,11 @@ public class Panier {
             if (this.contenanceMax != p.contenanceMax) {
                 return false;
             } else {
+                //S'ils n'ont pas le même nombre de fruit, forcément différent
+                if(p.getTaillePanier() != this.getTaillePanier()) {
+                    return false;
+                }
+
                 //On regarde si les deux panier ont les même fruits, indépendemment de l'ordre, et en conservant la cardinalité des différents fruits
                 //On copie tous les fruits dans une liste
                 ArrayList<Fruit> copie = new ArrayList<>();
@@ -224,13 +232,15 @@ public class Panier {
                 
                 //Pour chaque fruit contenu dans le panier this
                 for (Fruit fruit : this.getFruits()) {
-                    //Si on a pas pu enlever le fruit, c'est que les deux panier sont différents
+                    //Si on a pas pu enlever le fruit dans la copie, c'est que les deux panier sont différents
                     if (!copie.remove(fruit)) {
                         return false;
                     }
                 }
             }
+            //Ils sont égaux
+            return true;
         }
-        return true;
+        return false;
     }
 }
