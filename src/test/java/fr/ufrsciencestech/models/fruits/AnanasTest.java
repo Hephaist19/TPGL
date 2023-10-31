@@ -41,15 +41,25 @@ public class AnanasTest extends FruitTest {
     @Test
     public void testEquals() {
         System.out.println("equals");
-        System.out.println("Test pas égal");
-        Fruit o = new Ananas(0.5, "Espagne");
-        boolean expResult = true;
-        boolean result = fi.equals(o);
-        assertEquals(expResult, result);
         
-        o = new Ananas(0.5, "France");
-        result = fi.equals(o);
-        System.out.println("Test égal");
-        assertEquals(false, result);
+        //Test egal
+        Fruit o = new Ananas(0.5, "Espagne");
+
+        assertTrue(fi.equals(o));
+        
+        o.setOrigine("France");
+        //test pas egal par origine
+        assertFalse(fi.equals(o));
+
+        //test pas egal par prix
+        o.setOrigine("Espagne");
+        o.setPrix(1.0);
+        assertFalse(fi.equals(o));
+
+        //Test avec null
+        assertFalse(fi.equals(null));
+
+        //Test avec une classe différente de celle de l'instance
+        assertFalse(fi.equals(new Banane()));
     }
 }
