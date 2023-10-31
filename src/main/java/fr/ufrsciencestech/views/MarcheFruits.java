@@ -1,4 +1,5 @@
 package fr.ufrsciencestech.views;
+import java.net.URL;
 import java.util.*;
 import javax.swing.*;
 
@@ -8,13 +9,13 @@ import javax.swing.*;
  */
 public class MarcheFruits extends javax.swing.JDialog {
     
-    private List<String> listeSansPepins = Arrays.asList("Ananas","Kiwi","Framboise","Cerise","Fraise","Banane","Pêche","Litchi");
-    private List<String> listeAvecNoyau = Arrays.asList("Cerise","Pêche","Litchi");
+    private List<String> listeSansPepins = Arrays.asList("Ananas","Kiwi","Framboise","Cerise","Fraise","Banane","Peche","Litchi");
+    private List<String> listeAvecNoyau = Arrays.asList("Cerise","Peche","Litchi");
     private List<String> listeAgrume = Arrays.asList("Orange","Citron");  
     private List<String> listeExotique = Arrays.asList("Ananas","Kiwi","Banane","Litchi"); 
-    private List<String> listeTous = Arrays.asList("Ananas","Pomme","Kiwi","Orange","Citron","Framboise","Cerise","Fraise","Banane","Pêche","Litchi");
-    
-    private List<String> listeOrdreAlphabtique = Arrays.asList("Ananas","Banane","Cerise","Citron","Fraise","Framboise","Kiwi","Litchi","Orange","Pêche","Pomme"); 
+    private List<String> listeTous = Arrays.asList("Ananas","Pomme","Kiwi","Orange","Citron","Framboise","Cerise","Fraise","Banane","Peche","Litchi");
+
+    private List<String> listeOrdreAlphabtique = Arrays.asList("Ananas","Banane","Cerise","Citron","Fraise","Framboise","Kiwi","Litchi","Orange","Peche","Pomme"); 
     //private List<String> listePrixCroissant = Arrays.asList();
     //private List<String> listePrixDecroissant = Arrays.asList();
     
@@ -35,8 +36,8 @@ public class MarcheFruits extends javax.swing.JDialog {
         
         for(int i=0;i<listeTous.size();i++)
         {
-            //Chemin d'accès  à l'image
-            String path = "../src/main/resources/images/"+listeTous.get(i)+".png"; 
+            //Chemin d'accès à l'image
+            URL path = this.getClass().getClassLoader().getResource("./images/" + listeTous.get(i) + ".png");
             
             //Couleur du texte pair/impair
             java.awt.Color mauve = new java.awt.Color(189, 98, 199);

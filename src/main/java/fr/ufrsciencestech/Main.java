@@ -15,7 +15,7 @@ public class Main {
         List<String> listeTous = Arrays.asList("Ananas","Pomme","Kiwi","Orange","Citron","Framboise","Cerise","Fraise","Banane","Pêche","Litchi");
         for(int i=0;i<listeTous.size();i++)
         {
-            String path = "../src/main/resources/images/"+listeTous.get(i)+".png"; 
+            String path = "../src/main/resources/images/"+listeTous.get(i)+".png";
             System.out.println(path);
         }
         
@@ -27,7 +27,5 @@ public class Main {
                     }
                 });
         dialog.setVisible(true);
-        
-        
     }
 }
