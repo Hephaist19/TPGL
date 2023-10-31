@@ -194,6 +194,18 @@ public class Panier {
         return sum;
     }
 
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        Panier copie = new Panier(this.contenanceMax);
+        //Un clone d'une arrayList est un shallow copie (copie les reférences, et non les instances)
+        //On va donc le faire à la main
+        for(Fruit f : this.fruits) {
+            try {
+                copie.ajout(f.clone());
+            } catch (PanierPleinException e) {}
+        }
+        return super.clone();
+    }
 
     @Override
     public boolean equals(Object o) {  //predicat pour tester si 2 paniers sont equivalents : s'ils contiennent exactement les memes fruits
