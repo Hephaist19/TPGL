@@ -65,4 +65,9 @@ public class Ananas implements Fruit {
     public boolean isSeedless() {  //predicat indiquant qu'une orange a des pepins
         return true;
     }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return new Ananas(this.prix, this.origine);
+    }
 }

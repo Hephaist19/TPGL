@@ -8,8 +8,9 @@ package fr.ufrsciencestech.models.fruits;
  *
  * @author jl336673
  */
-public class Fraise {
-        private double prix;
+public class Fraise implements Fruit{
+    
+    private double prix;
     private String origine;
 
     public Fraise() {
@@ -61,7 +62,13 @@ public class Fraise {
         return false;
     }
 
+    @Override
     public boolean isSeedless() {  //predicat indiquant qu'une kiwi a des pepins
         return false;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return new Fraise(this.prix, this.origine);
     }
 }

@@ -8,7 +8,7 @@ package fr.ufrsciencestech.models.fruits;
  *
  * @author jl336673
  */
-public class Litchi {
+public class Litchi implements Fruit {
     
     private double prix;
     private String origine;
@@ -62,7 +62,13 @@ public class Litchi {
         return false;
     }
 
+    @Override
     public boolean isSeedless() {  //predicat indiquant qu'une kiwi a des pepins
         return false;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return new Litchi(this.prix, this.origine);
     }
 }
