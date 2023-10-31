@@ -53,7 +53,7 @@ public class Ananas implements Fruit {
     }
 
     @Override
-    public boolean equals(Object o) {  //predicat pour tester si 2 oranges sont equivalentes
+    public boolean equals(Object o) {
         if (o != null && getClass() == o.getClass()) {
             Ananas or = (Ananas) o;
             return (prix == or.prix && origine.equals(or.origine));
@@ -62,7 +62,7 @@ public class Ananas implements Fruit {
     }
 
     @Override
-    public boolean isSeedless() {  //predicat indiquant qu'une orange a des pepins
+    public boolean isSeedless() {
         return true;
     }
 
