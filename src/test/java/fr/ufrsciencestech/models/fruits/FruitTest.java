@@ -117,4 +117,19 @@ public abstract class FruitTest {
         String result = fi.getOrigine();
         assertEquals(string, result);
     }
+
+    @Test
+    public void testClone() {
+        System.out.println("clone");
+        try {
+            Fruit copie = (Fruit) fi.clone();
+            boolean result = fi.equals(copie);
+            //Même contenu
+            assertTrue(result);
+            //Pas les mêmes références mémoire
+            assertFalse(copie == fi);
+        }catch (CloneNotSupportedException e) {
+            fail("Clone non supporté");
+        }
+    }
 }
