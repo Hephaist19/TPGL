@@ -17,10 +17,12 @@ public class FruitsfactoryTest {
     @Test
     public void testCreateFruit() {
         FruitsFactory instance = new FruitsFactory();
+        assertTrue(instance != null);
         System.out.println("testCreateFruit");
         for(FruitType ft : FruitType.values()) {
             //Tester que la creation d'un fruit est possible pour tous les cas
             Fruit tmp = FruitsFactory.createFruit(ft);
+            assertTrue(tmp != null);
         }
         for(FruitType ft : FruitType.values()) {
             Fruit tmp = FruitsFactory.createFruit(ft, 8.5, "France");
