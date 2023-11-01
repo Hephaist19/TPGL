@@ -1,6 +1,7 @@
 package fr.ufrsciencestech.utils;
 
-public enum Filtertype {
+public enum FilterType {
     SANSPEPINS,
-    AVECPEPINS
+    AVECPEPINS,
+    AUCUN
 }

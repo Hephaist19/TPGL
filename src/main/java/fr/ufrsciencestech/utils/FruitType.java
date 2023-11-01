@@ -11,5 +11,6 @@ public enum FruitType {
     LITCHI,
     ORANGE,
     PECHE,
-    POMME
+    POMME,
+    NULL //Nécéssaire pour traiter le cas défault, pour JaCoCo ..
 }
