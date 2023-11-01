@@ -4,26 +4,10 @@ import java.util.ArrayList;
 
 import fr.ufrsciencestech.controllers.factories.FruitsFactory;
 import fr.ufrsciencestech.models.fruits.Fruit;
+import fr.ufrsciencestech.utils.Filtertype;
+import fr.ufrsciencestech.utils.SortType;
 
 public class FilterExecutor {
-
-    /**
-     * Tous les type de tri
-     */
-    enum SortType {
-        ALPHABETIQUE,
-        ANTIALPHABETIQUE,
-        PRIXCROISSANT,
-        PRIXDECROISSANT
-    }
-
-    /**
-     * Tous les filtres par attribut des fruits
-     */
-    enum FilterType {
-        SANSPEPINS,
-        AVECPEPINS
-    }
 
     private ArrayList<Fruit> liste;
 
@@ -114,7 +98,7 @@ public class FilterExecutor {
      * @param type Type de filtre
      * @return FilterExecutor instance
      */
-    public FilterExecutor filter(FilterType type) {
+    public FilterExecutor filter(Filtertype type) {
         switch (type) {
             case SANSPEPINS:
                 for (int i = 0; i < liste.size(); i++) {

@@ -4,20 +4,7 @@ package fr.ufrsciencestech.controllers.factories;
 import java.util.ArrayList;
 
 import fr.ufrsciencestech.models.fruits.*;
-
-enum FruitType {
-    ANANAS,
-    BANANE,
-    CERISE,
-    CITRON,
-    FRAISE,
-    FRAMBOISE,
-    KIWI,
-    LITCHI,
-    ORANGE,
-    PECHE,
-    POMME
-}
+import fr.ufrsciencestech.utils.FruitType;
 
 /**
  *
