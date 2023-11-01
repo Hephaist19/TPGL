@@ -123,9 +123,9 @@ public abstract class FruitTest {
 
         fi.setOrigine("");
         
-        //On s'attend que le pays soit mit à Espagne
+        //On s'attend que le pays soit pas vide
         result = fi.getOrigine();
-        assertEquals("Espagne", result);
+        assertFalse(result.equals(""));
     }
 
     @Test

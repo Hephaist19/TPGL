@@ -6,8 +6,8 @@ public class Pomme implements Fruit {
     private String origine;
 
     public Pomme() {
-        this.prix = 0.5;  //prix en euros
-        this.origine = "Espagne";
+        setPrix(2.69);
+        setOrigine("France");
     }
 
     public Pomme(double prix, String origine) {
@@ -46,7 +46,7 @@ public class Pomme implements Fruit {
             this.origine = origine;
         }
         else {
-            this.origine = "Espagne";
+            this.origine = "France";
         }
         
     }
@@ -67,7 +67,7 @@ public class Pomme implements Fruit {
 
     @Override
     public boolean isSeedless() {  //predicat indiquant qu'une orange a des pepins
-        return false;
+        return true;
     }
 
     @Override

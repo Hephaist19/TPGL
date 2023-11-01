@@ -6,8 +6,8 @@ public class Kiwi implements Fruit {
     private String origine;
 
     public Kiwi() {
-        this.prix = 0.5;  //prix en euros
-        this.origine = "Espagne";
+        setPrix(0.59);
+        setOrigine("Nouvelle-Zelande");
     }
 
     public Kiwi(double prix, String origine) {
@@ -46,14 +46,14 @@ public class Kiwi implements Fruit {
             this.origine = origine;
         }
         else {
-            this.origine = "Espagne";
+            this.origine = "Nouvelle-Zelande";
         }
         
     }
 
     @Override
     public String toString() {
-        return "Kiwi de " + origine + " a " + prix + " euros";
+        return "Kiwi de " + origine + " à " + prix + " euros";
     }
 
     @Override
@@ -66,7 +66,7 @@ public class Kiwi implements Fruit {
     }
 
     @Override
-    public boolean isSeedless() {  //predicat indiquant qu'une kiwi a des pepins
+    public boolean isSeedless() {
         return false;
     }
 

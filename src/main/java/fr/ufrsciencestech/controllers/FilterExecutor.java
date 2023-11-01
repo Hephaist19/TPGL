@@ -2,28 +2,14 @@ package fr.ufrsciencestech.controllers;
 
 import java.util.ArrayList;
 
+import javax.management.RuntimeErrorException;
+
 import fr.ufrsciencestech.controllers.factories.FruitsFactory;
 import fr.ufrsciencestech.models.fruits.Fruit;
+import fr.ufrsciencestech.utils.FilterType;
+import fr.ufrsciencestech.utils.SortType;
 
 public class FilterExecutor {
-
-    /**
-     * Tous les type de tri
-     */
-    enum SortType {
-        ALPHABETIQUE,
-        ANTIALPHABETIQUE,
-        PRIXCROISSANT,
-        PRIXDECROISSANT
-    }
-
-    /**
-     * Tous les filtres par attribut des fruits
-     */
-    enum FilterType {
-        SANSPEPINS,
-        AVECPEPINS
-    }
 
     private ArrayList<Fruit> liste;
 
@@ -39,7 +25,19 @@ public class FilterExecutor {
      * @param fruits Liste de fruit 
      */
     public FilterExecutor(ArrayList<Fruit> fruits) {
-        this.liste = fruits;
+        deepCopie(fruits);
+    }
+
+    public ArrayList<Fruit> getResult() {
+        return liste;
+    }
+
+    private void deepCopie(ArrayList<Fruit> toCopie) {
+        liste = new ArrayList<>();
+
+        for(Fruit f : toCopie) {
+            liste.add(f);
+        }
     }
 
     /**
@@ -50,61 +48,62 @@ public class FilterExecutor {
     public FilterExecutor sort(SortType type) {
 
         Fruit tmp;
+        //Tri à bulle classique
         switch (type) {
             case ALPHABETIQUE:
-                for(int i = 0; i < liste.size(); i++) {
-                    for(int j = i+1; i < liste.size(); i++) {
-                        if(liste.get(i).getName().compareTo(liste.get(j).getName()) > 0) {
+                for(int i = liste.size() - 1; i >= 0; i--) {
+                    for(int j = 0; j < i; j++) {
+                        if(liste.get(j).getName().compareTo(liste.get(j+1).getName()) > 0) {
                             //On échange les deux fruit
-                            tmp = liste.get(i);
+                            tmp = liste.get(j);
 
-                            liste.set(i, liste.get(j));
-                            liste.set(j, tmp);
+                            liste.set(j, liste.get(j+1));
+                            liste.set(j+1, tmp);
                         }
                     }
                 }
                 break;
             case ANTIALPHABETIQUE:
-                for(int i = 0; i < liste.size(); i++) {
-                    for(int j = i+1; i < liste.size(); i++) {
-                        if(liste.get(i).getName().compareTo(liste.get(j).getName()) < 0) {
+                for(int i = liste.size() - 1; i >= 0; i--) {
+                    for(int j = 0; j < i; j++) {
+                        if(liste.get(j).getName().compareTo(liste.get(j+1).getName()) < 0) {
                             //On échange les deux fruit
-                            tmp = liste.get(i);
+                            tmp = liste.get(j);
 
-                            liste.set(i, liste.get(j));
-                            liste.set(j, tmp);
+                            liste.set(j, liste.get(j+1));
+                            liste.set(j+1, tmp);
                         }
                     }
                 }
                 break;
             case PRIXCROISSANT:
-                for(int i = 0; i < liste.size(); i++) {
-                    for(int j = i+1; i < liste.size(); i++) {
-                        if(liste.get(i).getPrix() > liste.get(j).getPrix()) {
+                for(int i = liste.size() - 1; i >= 0; i--) {
+                    for(int j = 0; j < i; j++) {
+                        if(liste.get(j).getPrix() > liste.get(j+1).getPrix()) {
                             //On échange les deux fruit
-                            tmp = liste.get(i);
+                            tmp = liste.get(j);
 
-                            liste.set(i, liste.get(j));
-                            liste.set(j, tmp);
+                            liste.set(j, liste.get(j+1));
+                            liste.set(j+1, tmp);
                         }
                     }
                 }
                 break;
             case PRIXDECROISSANT:
-                for(int i = 0; i < liste.size(); i++) {
-                    for(int j = i+1; i < liste.size(); i++) {
-                        if(liste.get(i).getPrix() < liste.get(j).getPrix()) {
+                for(int i = liste.size() - 1; i >= 0; i--) {
+                    for(int j = 0; j < i; j++) {
+                        if(liste.get(j).getPrix() < liste.get(j+1).getPrix()) {
                             //On échange les deux fruit
-                            tmp = liste.get(i);
+                            tmp = liste.get(j);
 
-                            liste.set(i, liste.get(j));
-                            liste.set(j, tmp);
+                            liste.set(j, liste.get(j+1));
+                            liste.set(j+1, tmp);
                         }
                     }
                 }
                 break;
-            default:
-                break;
+            default: //AUCUN
+                return this;
         }
         return this;
     }
@@ -118,22 +117,27 @@ public class FilterExecutor {
         switch (type) {
             case SANSPEPINS:
                 for (int i = 0; i < liste.size(); i++) {
-                    if(!liste.get(i).isSeedless()) liste.remove(i);
+                    //On enlève tous les fruit avec pépins
+                    if(!liste.get(i).isSeedless()) {
+                        liste.remove(i);
+                        i--;
+                    }
                 }
                 break;
-
             case AVECPEPINS:
                 for (int i = 0; i < liste.size(); i++) {
-                    if(liste.get(i).isSeedless()) liste.remove(i);
+                    //On enlève tous les fruit sans pépins
+                    if(liste.get(i).isSeedless()) {
+                        liste.remove(i);
+                        i--;
+                    }
                 }
                 break;
             default:
-                break;
+            return this;
         }
         return this;
     }
 
-    public ArrayList<Fruit> getResult() {
-        return liste;
-    }
+    
 }

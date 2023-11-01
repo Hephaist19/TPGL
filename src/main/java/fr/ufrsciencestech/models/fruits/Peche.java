@@ -14,8 +14,8 @@ public class Peche implements Fruit{
     private String origine;
 
     public Peche() {
-        this.prix = 0.5;  //prix en euros
-        this.origine = "Espagne";
+        setPrix(2.99);
+        setOrigine("France");
     }
 
     public Peche(double prix, String origine) {
@@ -38,7 +38,7 @@ public class Peche implements Fruit{
 
     @Override
     public String getName() {
-        return "Peche";
+        return "Pêche";
     }
 
     public String getOrigine() {
@@ -52,14 +52,14 @@ public class Peche implements Fruit{
             this.origine = origine;
         }
         else {
-            this.origine = "Espagne";
+            this.origine = "France";
         }
         
     }
 
     @Override
     public String toString() {
-        return "Peche de " + origine + " à " + prix + " euros";
+        return "Pêche de " + origine + " à " + prix + " euros";
     }
 
     @Override

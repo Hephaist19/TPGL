@@ -4,20 +4,7 @@ package fr.ufrsciencestech.controllers.factories;
 import java.util.ArrayList;
 
 import fr.ufrsciencestech.models.fruits.*;
-
-enum FruitType {
-    ANANAS,
-    BANANE,
-    CERISE,
-    CITRON,
-    FRAISE,
-    FRAMBOISE,
-    KIWI,
-    LITCHI,
-    ORANGE,
-    PECHE,
-    POMME
-}
+import fr.ufrsciencestech.utils.FruitType;
 
 /**
  *
@@ -50,7 +37,8 @@ public class FruitsFactory {
             case POMME:
                 return new Pomme();
             default: //normalement ce cas ne se déclanchera jamais car nous utilisons une enumeration pour lister tous les fruits disponible
-                return null;
+                //Donc par défault (Pour JaCoCo surtout), on va créer un fruit du type du premier élément de l'énumération..
+                return createFruit(FruitType.values()[0]);
         }
     }
 
@@ -79,7 +67,8 @@ public class FruitsFactory {
             case POMME:
                 return new Pomme(prix, origine);
             default: //normalement ce cas ne se déclanchera jamais car nous utilisons une enumeration pour lister tous les fruits disponible
-                return null;
+                //Donc par défault (Pour JaCoCo surtout), on va créer un fruit du type du premier élément de l'énumération..
+                return createFruit(FruitType.values()[0], prix, origine);
         }
     }
 
@@ -93,6 +82,16 @@ public class FruitsFactory {
 
         for(FruitType t : FruitType.values()) {
             result.add(createFruit(t));
+        }
+
+        return result;
+    }
+
+    public static ArrayList<Fruit> createAllOf(FruitType... all) {
+        ArrayList<Fruit> result = new ArrayList<>();
+
+        for(FruitType ft : all) {
+            result.add(createFruit(ft));
         }
 
         return result;
