@@ -30,6 +30,11 @@ public class Framboise implements Fruit {
     }
 
     @Override
+    public String getName() {
+        return "Framboise";
+    }
+
+    @Override
     public String getOrigine() {
         return origine;
     }

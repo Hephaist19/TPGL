@@ -41,6 +41,11 @@ public class Litchi implements Fruit {
     }
 
     @Override
+    public String getName() {
+        return "Litchi";
+    }
+
+    @Override
     public void setOrigine(String origine) {
         
         if(origine != "") {

@@ -38,6 +38,11 @@ public class Cerise implements Fruit {
     }
 
     @Override
+    public String getName() {
+        return "Cerise";
+    }
+
+    @Override
     public String getOrigine() {
         return origine;
     }

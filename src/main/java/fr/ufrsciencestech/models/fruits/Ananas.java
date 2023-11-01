@@ -48,6 +48,16 @@ public class Ananas implements Fruit {
     }
 
     @Override
+    public String getName() {
+        return "Ananas";
+    }
+    
+    @Override
+    public boolean isSeedless() {
+        return true;
+    }
+
+    @Override
     public String toString() {
         return "Ananas de " + origine + " à " + prix + " euros";
     }
@@ -61,10 +71,7 @@ public class Ananas implements Fruit {
         return false;
     }
 
-    @Override
-    public boolean isSeedless() {
-        return true;
-    }
+    
 
     @Override
     public Object clone() throws CloneNotSupportedException {

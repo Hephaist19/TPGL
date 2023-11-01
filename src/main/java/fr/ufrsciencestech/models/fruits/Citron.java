@@ -55,6 +55,11 @@ public class Citron implements Fruit{
     }
 
     @Override
+    public String getName() {
+        return "Citron";
+    }
+
+    @Override
     public String toString() {
         return "Citron de " + origine + " à " + prix + " euros";
     }

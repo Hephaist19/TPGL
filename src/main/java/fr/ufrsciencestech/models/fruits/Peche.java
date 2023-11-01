@@ -36,6 +36,11 @@ public class Peche implements Fruit{
         
     }
 
+    @Override
+    public String getName() {
+        return "Peche";
+    }
+
     public String getOrigine() {
         return origine;
     }

@@ -30,6 +30,11 @@ public class Kiwi implements Fruit {
     }
 
     @Override
+    public String getName() {
+        return "Kiwi";
+    }
+
+    @Override
     public String getOrigine() {
         return origine;
     }

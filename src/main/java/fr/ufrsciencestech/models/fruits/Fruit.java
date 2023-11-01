@@ -24,6 +24,8 @@ public interface Fruit {
     
     public void setOrigine(String s);
 
+    public String getName();
+
     /**
      * @brief Test si deux fruit sont les mêmes
      * @param o a tester

@@ -55,6 +55,16 @@ public class Banane implements Fruit{
     }
 
     @Override
+    public String getName() {
+        return "Banane";
+    }
+
+    @Override
+    public boolean isSeedless() {  //predicat indiquant qu'une kiwi a des pepins
+        return false;
+    }
+
+    @Override
     public String toString() {
         return "Banane de " + origine + " à " + prix + " euros";
     }
@@ -68,10 +78,7 @@ public class Banane implements Fruit{
         return false;
     }
 
-    @Override
-    public boolean isSeedless() {  //predicat indiquant qu'une kiwi a des pepins
-        return false;
-    }
+    
 
     @Override
     public Object clone() throws CloneNotSupportedException {
