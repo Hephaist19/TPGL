@@ -266,7 +266,7 @@ public class PanierTest {
         int expresult = 1;
         String origine = "Espagne";
 
-        Pomme po = new Pomme();
+        Pomme po = new Pomme(1.9, "Espagne");
         Orange o = new Orange(2.3, "France");
         try {
             p.ajout(po);
