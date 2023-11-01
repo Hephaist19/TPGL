@@ -67,7 +67,7 @@ public class Pomme implements Fruit {
 
     @Override
     public boolean isSeedless() {  //predicat indiquant qu'une orange a des pepins
-        return false;
+        return true;
     }
 
     @Override

@@ -53,7 +53,7 @@ public class Orange implements Fruit {
 
     @Override
     public String toString() {
-        return "Orange de " + origine + " a " + prix + " euros";
+        return "Orange de " + origine + " à " + prix + " euros";
     }
 
     @Override
@@ -67,7 +67,7 @@ public class Orange implements Fruit {
 
     @Override
     public boolean isSeedless() {  //predicat indiquant qu'une orange a des pepins
-        return false;
+        return true;
     }
 
     @Override

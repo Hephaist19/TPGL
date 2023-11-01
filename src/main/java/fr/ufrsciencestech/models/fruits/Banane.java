@@ -60,8 +60,8 @@ public class Banane implements Fruit{
     }
 
     @Override
-    public boolean isSeedless() {  //predicat indiquant qu'une kiwi a des pepins
-        return false;
+    public boolean isSeedless() {
+        return true;
     }
 
     @Override

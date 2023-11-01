@@ -72,7 +72,7 @@ public class Litchi implements Fruit {
     }
 
     @Override
-    public boolean isSeedless() {  //predicat indiquant qu'une kiwi a des pepins
+    public boolean isSeedless() {
         return false;
     }
 

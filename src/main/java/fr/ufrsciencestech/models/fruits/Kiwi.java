@@ -53,7 +53,7 @@ public class Kiwi implements Fruit {
 
     @Override
     public String toString() {
-        return "Kiwi de " + origine + " a " + prix + " euros";
+        return "Kiwi de " + origine + " à " + prix + " euros";
     }
 
     @Override
@@ -66,7 +66,7 @@ public class Kiwi implements Fruit {
     }
 
     @Override
-    public boolean isSeedless() {  //predicat indiquant qu'une kiwi a des pepins
+    public boolean isSeedless() {
         return false;
     }
 

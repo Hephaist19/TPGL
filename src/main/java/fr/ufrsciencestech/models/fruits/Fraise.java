@@ -75,7 +75,7 @@ public class Fraise implements Fruit{
 
     @Override
     public boolean isSeedless() {  //predicat indiquant qu'une kiwi a des pepins
-        return false;
+        return true;
     }
 
     @Override

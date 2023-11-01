@@ -38,7 +38,7 @@ public class Peche implements Fruit{
 
     @Override
     public String getName() {
-        return "Peche";
+        return "Pêche";
     }
 
     public String getOrigine() {
@@ -59,7 +59,7 @@ public class Peche implements Fruit{
 
     @Override
     public String toString() {
-        return "Peche de " + origine + " à " + prix + " euros";
+        return "Pêche de " + origine + " à " + prix + " euros";
     }
 
     @Override
