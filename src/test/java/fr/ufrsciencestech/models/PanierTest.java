@@ -1,8 +1,11 @@
 package fr.ufrsciencestech.models;
 
+import fr.ufrsciencestech.controllers.factories.FruitsFactory;
 import fr.ufrsciencestech.exceptions.PanierPleinException;
 import fr.ufrsciencestech.exceptions.PanierVideException;
 import fr.ufrsciencestech.models.fruits.*;
+import fr.ufrsciencestech.utils.FruitType;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
@@ -494,6 +497,42 @@ public class PanierTest {
             fail("Clone impossible de Panier");
         }
         
+    }
+
+    @Test
+    public void testVider() {
+        System.out.println("testVider");
+        try {
+            p.ajout(new Orange());
+        } catch (PanierPleinException e) {
+            e.printStackTrace();
+        }
+
+        p.vider();
+        assertEquals(0, p.getTaillePanier());
+
+    }
+
+    @Test
+    public void testAjouterTout() {
+        System.out.println("testAjouterTout");
+        ArrayList<Fruit> test = FruitsFactory.createAllOf(FruitType.BANANE, FruitType.LITCHI);
+        try {
+            p.ajouterTout(test);
+        } catch (PanierPleinException e) {
+            e.printStackTrace();
+        }
+
+        assertEquals(2, p.getTaillePanier());
+
+        //ajout de trop de fruit
+        test = FruitsFactory.createAllOf(FruitType.FRAISE);
+
+        try {
+            p.ajouterTout(test);
+        } catch (PanierPleinException e) {
+            assertTrue(true);
+        }
     }
 
 }
