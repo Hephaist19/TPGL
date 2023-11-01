@@ -6,8 +6,8 @@ public class Orange implements Fruit {
     private String origine;
 
     public Orange() {
-        this.prix = 0.5;  //prix en euros
-        this.origine = "Espagne";
+        setPrix(0.99);
+        setOrigine("Espagne");;
     }
 
     public Orange(double prix, String origine) {

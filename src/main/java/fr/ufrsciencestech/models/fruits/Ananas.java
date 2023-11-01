@@ -7,8 +7,8 @@ public class Ananas implements Fruit {
 
     public Ananas() {
         super();
-        this.prix = 0.5;  //prix en euros
-        this.origine = "Espagne";
+        setPrix(3.5);
+        setOrigine("Brésil");
     }
 
     public Ananas(double prix, String origine) {
@@ -42,7 +42,7 @@ public class Ananas implements Fruit {
             this.origine = origine;
         }
         else {
-            this.origine = "Espagne";
+            this.origine = "Brésil";
         }
         
     }

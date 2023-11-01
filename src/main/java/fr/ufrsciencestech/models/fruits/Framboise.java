@@ -6,8 +6,8 @@ public class Framboise implements Fruit {
     private String origine;
 
     public Framboise() {
-        this.prix = 0.5;  //prix en euros
-        this.origine = "Espagne";
+        setPrix(3.99);;
+        setOrigine("Portugal");
     }
 
     public Framboise(double prix, String origine) {
@@ -46,7 +46,7 @@ public class Framboise implements Fruit {
             this.origine = origine;
         }
         else {
-            this.origine = "Espagne";
+            this.origine = "Portugal";
         }
         
     }

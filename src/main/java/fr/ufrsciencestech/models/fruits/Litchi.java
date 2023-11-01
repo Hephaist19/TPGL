@@ -14,8 +14,8 @@ public class Litchi implements Fruit {
     private String origine;
 
     public Litchi() {
-        this.prix = 0.5;  //prix en euros
-        this.origine = "Espagne";
+        setPrix(3.99);
+        setOrigine("Madagascar");
     }
 
     public Litchi(double prix, String origine) {
@@ -52,7 +52,7 @@ public class Litchi implements Fruit {
             this.origine = origine;
         }
         else {
-            this.origine = "Espagne";
+            this.origine = "Madagascar";
         }
         
     }

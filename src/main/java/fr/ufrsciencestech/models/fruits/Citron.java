@@ -14,8 +14,8 @@ public class Citron implements Fruit{
     private String origine;
 
     public Citron() {
-        this.prix = 0.5;  //prix en euros
-        this.origine = "Espagne";
+        setPrix(1.99);
+        setOrigine("Espagne");
     }
 
     public Citron(double prix, String origine) {
