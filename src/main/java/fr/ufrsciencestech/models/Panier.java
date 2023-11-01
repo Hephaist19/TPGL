@@ -75,6 +75,33 @@ public class Panier {
     }
 
     /**
+     * Ajoute une liste entière de fruits au panier
+     * @param liste
+     * @throws PanierPleinException si le panier est plein
+     */
+    public void ajouterTout(ArrayList<Fruit> liste) throws PanierPleinException {
+        ArrayList<Fruit> old = this.fruits;
+        for(Fruit f : liste) {
+            try {
+                ajout(f);
+            } catch (PanierPleinException e) {
+                throw new PanierPleinException();
+            } finally {
+                //On emet quand même le signal après capture de l'erreur au niveau plus haut
+                pcs.firePropertyChange("fruits", old, this.fruits);
+            }
+        }
+    }
+
+    /**
+     * Vide entièrement le panier
+     */
+    public void vider() {
+        this.fruits.clear();
+        pcs.firePropertyChange("fruits", this.fruits, fruits);
+    }
+
+    /**
      * Retire le dernier fruit du panier si celui-ci n'est pas vide
      * @throws PanierVideException Si le panier est vide avant de retirer le fruit
      */
