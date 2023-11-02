@@ -2,8 +2,6 @@ package fr.ufrsciencestech.controllers;
 
 import java.util.ArrayList;
 
-import javax.management.RuntimeErrorException;
-
 import fr.ufrsciencestech.controllers.factories.FruitsFactory;
 import fr.ufrsciencestech.models.fruits.Fruit;
 import fr.ufrsciencestech.utils.FilterType;
