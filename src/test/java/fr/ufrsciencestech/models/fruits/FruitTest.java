@@ -17,16 +17,17 @@ import org.mockito.Mock;
  * @author nj123548
  */
 public abstract class FruitTest {
-    
+
     /**
      * Instancie un fruit pour les tests de l'interface Fruit.
-     * @return 
+     * 
+     * @return
      */
     public abstract Fruit createInstance();
-    
+
     @Mock
     Fruit fi;
-    
+
     public FruitTest() {
     }
 
@@ -37,7 +38,7 @@ public abstract class FruitTest {
     @AfterClass
     public static void tearDownClass() throws Exception {
     }
-    
+
     @Before
     public void setUp() {
         fi = createInstance();
@@ -53,8 +54,8 @@ public abstract class FruitTest {
     @Test
     public void testIsSeedless() {
         System.out.println("isSeedless");
-        boolean res = fi.isSeedless(); //Obligé pour la couverture de code
-        //Ici aucune particularitée
+        boolean res = fi.isSeedless(); // Obligé pour la couverture de code
+        // Ici aucune particularitée
         assertTrue(res || !res);
     }
 
@@ -64,7 +65,7 @@ public abstract class FruitTest {
     @Test
     public void testGetPrix() {
         System.out.println("getPrix");
-        //On veut qu'un fruit ait toujours un prix positif (ou nul)
+        // On veut qu'un fruit ait toujours un prix positif (ou nul)
         boolean result = fi.getPrix() >= 0.0;
         assertTrue(result);
     }
@@ -75,8 +76,16 @@ public abstract class FruitTest {
     @Test
     public void testGetOrigine() {
         System.out.println("getOrigine");
-        //On veut que ce getter renvoie une chaine non vide
+        // On veut que ce getter renvoie une chaine non vide
         boolean result = !fi.getOrigine().equals("");
+        assertTrue(result);
+    }
+
+    @Test
+    public void testGetName() {
+        System.out.println("getName");
+        // On veut que ce getter renvoie une chaine non vide
+        boolean result = !fi.getName().equals("");
         assertTrue(result);
     }
 
@@ -100,12 +109,12 @@ public abstract class FruitTest {
         System.out.println("setPrix");
         double d = 8.2;
         fi.setPrix(d);
-        
+
         double result = fi.getPrix();
         assertEquals(result, d, 0.001);
 
         fi.setPrix(-1.1);
-        //On s'attend que le prix soit passé positif
+        // On s'attend que le prix soit passé positif
         assertEquals(fi.getPrix(), 1.1, 0.001);
     }
 
@@ -117,13 +126,13 @@ public abstract class FruitTest {
         System.out.println("setOrigine");
         String string = "Lune";
         fi.setOrigine(string);
-        
+
         String result = fi.getOrigine();
         assertEquals(string, result);
 
         fi.setOrigine("");
-        
-        //On s'attend que le pays soit pas vide
+
+        // On s'attend que le pays soit pas vide
         result = fi.getOrigine();
         assertFalse(result.equals(""));
     }
@@ -134,11 +143,11 @@ public abstract class FruitTest {
         try {
             Fruit copie = (Fruit) fi.clone();
             boolean result = fi.equals(copie);
-            //Même contenu
+            // Même contenu
             assertTrue(result);
-            //Pas les mêmes références mémoire
+            // Pas les mêmes références mémoire
             assertFalse(copie == fi);
-        }catch (CloneNotSupportedException e) {
+        } catch (CloneNotSupportedException e) {
             fail("Clone non supporté");
         }
     }
