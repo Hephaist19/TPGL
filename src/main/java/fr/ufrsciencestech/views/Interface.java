@@ -37,17 +37,14 @@ public class Interface extends javax.swing.JDialog {
         InterfacePanier = new javax.swing.JPanel();
         filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 200), new java.awt.Dimension(20, 200), new java.awt.Dimension(20, 200));
         Colonne1 = new javax.swing.JPanel();
-        choixRecette = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
-        ScrollPaneRecettes = new javax.swing.JScrollPane();
-        afficheRecette = new javax.swing.JTextArea();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200));
         Colonne2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         labelVotrePanier = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        ScrollPanePanier = new javax.swing.JScrollPane();
-        affichePanier = new javax.swing.JTextArea();
+        ScrollPanier = new javax.swing.JScrollPane();
+        affichePanier = new javax.swing.JList<>();
         LigneTotalPanier = new javax.swing.JPanel();
         LabelTotalPanier = new javax.swing.JLabel();
         LabelPrixTotal = new javax.swing.JLabel();
@@ -62,8 +59,6 @@ public class Interface extends javax.swing.JDialog {
         BoutonValiderPanier = new javax.swing.JButton();
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200));
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         InterfacePanier.setBackground(new java.awt.Color(255, 255, 255));
         java.awt.GridBagLayout InterfacePanierLayout = new java.awt.GridBagLayout();
         InterfacePanierLayout.columnWidths = new int[] {0};
@@ -75,39 +70,9 @@ public class Interface extends javax.swing.JDialog {
 
         Colonne1.setLayout(new javax.swing.BoxLayout(Colonne1, javax.swing.BoxLayout.Y_AXIS));
 
-        choixRecette.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        choixRecette.setForeground(new java.awt.Color(141, 126, 255));
-        choixRecette.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Recettes", "Cake au citron", "Ganache à l'amande", "Délice parfait", "Tarte aux pommes", "Chausson aux cerises griottes", " " }));
-        choixRecette.setMaximumSize(new java.awt.Dimension(200, 50));
-        choixRecette.setMinimumSize(new java.awt.Dimension(200, 22));
-        choixRecette.setPreferredSize(new java.awt.Dimension(200, 22));
-        choixRecette.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                choixRecetteActionPerformed(evt);
-            }
-        });
-        Colonne1.add(choixRecette);
-
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
         Colonne1.add(jSeparator1);
-
-        ScrollPaneRecettes.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        ScrollPaneRecettes.setMaximumSize(new java.awt.Dimension(200, 300));
-        ScrollPaneRecettes.setMinimumSize(new java.awt.Dimension(200, 300));
-        ScrollPaneRecettes.setPreferredSize(new java.awt.Dimension(200, 300));
-
-        afficheRecette.setEditable(false);
-        afficheRecette.setBackground(new java.awt.Color(255, 255, 255));
-        afficheRecette.setColumns(20);
-        afficheRecette.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
-        afficheRecette.setForeground(new java.awt.Color(189, 98, 199));
-        afficheRecette.setRows(5);
-        afficheRecette.setMaximumSize(new java.awt.Dimension(200, 300));
-        afficheRecette.setMinimumSize(new java.awt.Dimension(200, 300));
-        ScrollPaneRecettes.setViewportView(afficheRecette);
-
-        Colonne1.add(ScrollPaneRecettes);
 
         InterfacePanier.add(Colonne1, new java.awt.GridBagConstraints());
         InterfacePanier.add(filler3, new java.awt.GridBagConstraints());
@@ -138,24 +103,25 @@ public class Interface extends javax.swing.JDialog {
         jPanel2.setPreferredSize(new java.awt.Dimension(200, 330));
         jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
 
-        ScrollPanePanier.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        ScrollPanePanier.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-        ScrollPanePanier.setMaximumSize(new java.awt.Dimension(250, 300));
-        ScrollPanePanier.setMinimumSize(new java.awt.Dimension(250, 300));
-        ScrollPanePanier.setPreferredSize(new java.awt.Dimension(250, 300));
+        ScrollPanier.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        ScrollPanier.setHorizontalScrollBar(null);
+        ScrollPanier.setMaximumSize(new java.awt.Dimension(250, 300));
+        ScrollPanier.setMinimumSize(new java.awt.Dimension(250, 300));
+        ScrollPanier.setPreferredSize(new java.awt.Dimension(250, 300));
 
-        affichePanier.setEditable(false);
-        affichePanier.setBackground(new java.awt.Color(255, 255, 255));
-        affichePanier.setColumns(20);
-        affichePanier.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
+        affichePanier.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
         affichePanier.setForeground(new java.awt.Color(141, 126, 255));
-        affichePanier.setRows(5);
+        affichePanier.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
         affichePanier.setMaximumSize(new java.awt.Dimension(250, 300));
         affichePanier.setMinimumSize(new java.awt.Dimension(250, 300));
         affichePanier.setPreferredSize(new java.awt.Dimension(250, 300));
-        ScrollPanePanier.setViewportView(affichePanier);
+        ScrollPanier.setViewportView(affichePanier);
 
-        jPanel2.add(ScrollPanePanier);
+        jPanel2.add(ScrollPanier);
 
         Colonne2.add(jPanel2);
 
@@ -248,10 +214,6 @@ public class Interface extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_BoutonValiderPanierActionPerformed
 
-    private void choixRecetteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choixRecetteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_choixRecetteActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -312,11 +274,8 @@ public class Interface extends javax.swing.JDialog {
     private javax.swing.JLabel LabelPrixTotal;
     private javax.swing.JLabel LabelTotalPanier;
     private javax.swing.JPanel LigneTotalPanier;
-    private javax.swing.JScrollPane ScrollPanePanier;
-    private javax.swing.JScrollPane ScrollPaneRecettes;
-    private javax.swing.JTextArea affichePanier;
-    private javax.swing.JTextArea afficheRecette;
-    private javax.swing.JComboBox<String> choixRecette;
+    private javax.swing.JScrollPane ScrollPanier;
+    private javax.swing.JList<String> affichePanier;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
