@@ -19,7 +19,7 @@ public class Main {
             System.out.println(path);
         }
         
-        MarcheFruits dialog = new MarcheFruits(new javax.swing.JFrame(), true);
+        MarcheFruits dialog = new MarcheFruits();
         dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

@@ -4,37 +4,54 @@
  */
 package fr.ufrsciencestech.views;
 
+import java.net.URL;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author hg186648
  */
 public class PageFruit extends javax.swing.JDialog {
 
+    //private Fruit fruit;
+    private int tailleMAX;
     private int noFruit = 0;
     private String nF;
     private String oF;
     private double pF;
     private String[] rF;
-    private String iF; //chemin pour accéder à l'image du fruit ?
+    private URL iF; //chemin pour accéder à l'image du fruit 
     
     /**
      * Creates new PageFruit
      * @param parent
      * @param modal
      */
+    //public PageFruit(java.awt.Frame parent, boolean modal,Fruit leFruit) {
     public PageFruit(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-       
         this.NbFruit.setText(Integer.toString(noFruit));
+        
+        /*
+        this.nF=leFruit.getNom();
+        this.oF=leFruit.getOrigine();
+        this.pF=leFruit.getPrix();
+        this.rF=leFruit.getRecettes();
+        this.iF= this.getClass().getClassLoader().getResource("./images/" + this.nF + ".png");
+        */
+        
+
+    }
+
+    public void initFruitIHM(){
         //this.ImageFruit.setIcon(iF);
         //this.NomFruit.setText(nF);
         //this.OrigineFruit.setText(oF);
         //this.PrixFruit.setText(pF);
         //this.ExempleRecette.setText(); //boucle for pour afficher la liste 
-
+        
     }
-
     
     
     /**
@@ -230,6 +247,11 @@ public class PageFruit extends javax.swing.JDialog {
                 AjoutFruitMouseClicked(evt);
             }
         });
+        AjoutFruit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AjoutFruitActionPerformed(evt);
+            }
+        });
         PanelTotalFruit.add(AjoutFruit);
 
         Ligne3.add(PanelTotalFruit);
@@ -273,6 +295,26 @@ public class PageFruit extends javax.swing.JDialog {
         //->Prix total à accumuler
     }//GEN-LAST:event_AjoutFruitMouseClicked
 
+    private void AjoutFruitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjoutFruitActionPerformed
+        // Renvoie le nombre de fruits qu'on ajoute au panier
+        //on vérifie qu'on peut ajouter selon TailleMAX
+        
+        //récupère le nombre pour la boucle de création de fruit
+        //this.fruit.setNombre(Double.parseDouble(NbFruit.getText()));
+    
+        //vérifie qu'on a encore de l'espace dans le panier
+        
+        if(Double.parseDouble(NbFruit.getText())<=tailleMAX){
+            this.setVisible(false);
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(Ligne2, "Attention !", "Il n'y a plus de place dans votre panier.", JOptionPane.WARNING_MESSAGE);
+        }
+           
+        
+        
+    }//GEN-LAST:event_AjoutFruitActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -303,7 +345,9 @@ public class PageFruit extends javax.swing.JDialog {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                //PageFruit dialog1 = new PageFruit(new javax.swing.JFrame(), true, Fruit leFruit);
                 PageFruit dialog1 = new PageFruit(new javax.swing.JFrame(), true);
+
                 dialog1.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

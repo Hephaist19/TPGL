@@ -1,16 +1,28 @@
 package fr.ufrsciencestech.views;
 
+import javax.swing.*;
+import java.lang.*;
+
 /**
  *
  * @author mgall
  */
-public class Interface extends javax.swing.JFrame {
+public class Interface extends javax.swing.JDialog {
 
+    private JList<String> listeFruits1;
+    private double prixTotal1;
+    
     /**
      * Creates new form Interface
      */
-    public Interface() {
+    //public Interface(java.awt.Frame parent, boolean modal, JList<String> listeFruits, double prixTotal ) {
+    public Interface(java.awt.Frame parent, boolean modal) {
+        super(parent,modal);
         initComponents();
+        /*
+        this.listeFruits1=listeFruits;
+        this.prixTotal1=prixTotal;
+        */
     }
 
     /**
@@ -270,7 +282,16 @@ public class Interface extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Interface().setVisible(true);
+              //Interface panier = new Interface(this, true, JList<String> listeFruits, double prixTotal);
+
+                Interface panier = new Interface(new javax.swing.JFrame(), true);
+                panier.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                panier.setVisible(true);
             }
         });
     }
