@@ -327,8 +327,6 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
 
     private void creationFruits(ArrayList<Fruit> liste){
         
-        //TEST créer les fruits dans un gridlayout en fonction du nombre de fruits (c'est moche)
-        
         final ArrayList<Fruit> listeFruit = liste;
         
         int taille = listeFruit.size();
@@ -346,7 +344,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         {
             final Fruit fruit = listeFruit.get(i);
             //Chemin d'accès à l'image
-            URL path = this.getClass().getClassLoader().getResource("./images/" + listeTous.get(i) + ".png");
+            URL path = this.getClass().getClassLoader().getResource("./images/" + listeFruit.get(i).getName() + ".png");
             
             JPanel pan = new javax.swing.JPanel();
             pan.setLayout(new javax.swing.BoxLayout(pan, javax.swing.BoxLayout.Y_AXIS));
@@ -392,7 +390,6 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         
     private void categorieSansPepinsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorieSansPepinsActionPerformed
         // Fruits sans pépins 
-        
         ArrayList<Fruit> test = FruitsFactory.createAll();
         FilterExecutor fe = new FilterExecutor(test);
 
@@ -400,7 +397,6 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
       
         //Vider les panels avant de remettre 
         remiseAZero();
-        
         //Remplir des fruits types
         creationFruits(result);
         
