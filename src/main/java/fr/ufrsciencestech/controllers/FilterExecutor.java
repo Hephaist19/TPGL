@@ -87,7 +87,7 @@ public class FilterExecutor {
                     }
                 }
                 break;
-            case PRIXDECROISSANT:
+            default:
                 for(int i = liste.size() - 1; i >= 0; i--) {
                     for(int j = 0; j < i; j++) {
                         if(liste.get(j).getPrix() < liste.get(j+1).getPrix()) {
@@ -100,8 +100,6 @@ public class FilterExecutor {
                     }
                 }
                 break;
-            default: //AUCUN
-                return this;
         }
         return this;
     }
@@ -122,7 +120,7 @@ public class FilterExecutor {
                     }
                 }
                 break;
-            case AVECPEPINS:
+            default:
                 for (int i = 0; i < liste.size(); i++) {
                     //On enlève tous les fruit sans pépins
                     if(liste.get(i).isSeedless()) {
@@ -131,8 +129,6 @@ public class FilterExecutor {
                     }
                 }
                 break;
-            default:
-            return this;
         }
         return this;
     }

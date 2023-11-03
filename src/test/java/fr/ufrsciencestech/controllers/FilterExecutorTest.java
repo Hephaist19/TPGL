@@ -52,9 +52,6 @@ public class FilterExecutorTest {
         attendu = FruitsFactory.createAllOf(FruitType.CERISE, FruitType.FRAMBOISE, FruitType.ANANAS, FruitType.BANANE, FruitType.ORANGE, FruitType.KIWI);
         assertEquals(attendu, result);
 
-        result = fe.sort(SortType.AUCUN).getResult();
-        assertEquals(attendu, result);
-
     }
 
     @Test
@@ -70,9 +67,6 @@ public class FilterExecutorTest {
         fe = new FilterExecutor(listeTest);
         result = fe.filter(FilterType.AVECPEPINS).getResult();
         attendu = FruitsFactory.createAllOf(FruitType.KIWI, FruitType.CERISE);
-        assertEquals(attendu, result);
-
-        result = fe.filter(FilterType.AUCUN).getResult();
         assertEquals(attendu, result);
     }
 

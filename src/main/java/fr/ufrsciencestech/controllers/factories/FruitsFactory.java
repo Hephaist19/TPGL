@@ -34,11 +34,8 @@ public class FruitsFactory {
                 return new Orange();
             case PECHE:
                 return new Peche();
-            case POMME:
+            default: //Cas pomme
                 return new Pomme();
-            default: //normalement ce cas ne se déclanchera jamais car nous utilisons une enumeration pour lister tous les fruits disponible
-                //Donc par défault (Pour JaCoCo surtout), on va créer un fruit du type du premier élément de l'énumération..
-                return createFruit(FruitType.values()[0]);
         }
     }
 
@@ -64,11 +61,8 @@ public class FruitsFactory {
                 return new Orange(prix, origine);
             case PECHE:
                 return new Peche(prix, origine);
-            case POMME:
+            default: //Pomme
                 return new Pomme(prix, origine);
-            default: //normalement ce cas ne se déclanchera jamais car nous utilisons une enumeration pour lister tous les fruits disponible
-                //Donc par défault (Pour JaCoCo surtout), on va créer un fruit du type du premier élément de l'énumération..
-                return createFruit(FruitType.values()[0], prix, origine);
         }
     }
 
