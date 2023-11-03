@@ -10,6 +10,8 @@ import fr.ufrsciencestech.controllers.factories.FruitsFactory;
 import fr.ufrsciencestech.exceptions.PanierPleinException;
 import fr.ufrsciencestech.models.Panier;
 import fr.ufrsciencestech.models.fruits.Fruit;
+import fr.ufrsciencestech.models.recettes.Jus;
+import fr.ufrsciencestech.models.recettes.Recette;
 import fr.ufrsciencestech.utils.FilterType;
 import fr.ufrsciencestech.utils.FruitType;
 import fr.ufrsciencestech.utils.SortType;
@@ -61,6 +63,8 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         //TODO limiter à deux chiffre après la virgules
         this.labelPrixRecapPanier.setText(Double.toString(panier.getPrix()));
     }
+    
+    
     
     //Créer dynamiquement tous les fruits avec la listeTous
     public void initButtons(){
@@ -686,6 +690,8 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
     }//GEN-LAST:event_categorieTousActionPerformed
 
     private void trierParActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trierParActionPerformed
+        //récupérer la catégorie qu'on est dedans
+        
         String choix = (String) this.trierPar.getSelectedItem(); //Récupère ce qui a été sélectionné
 
         //On réalise au cas par cas
@@ -710,26 +716,22 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
                 creationFruits(result);
                 break;
             default:
-                //Les trier comme on a initialisé
-                /*ArrayList<Fruit> result = FruitsFactory.createAll();
-
-                //Vider les panels avant de remettre 
-                remiseAZero();
-                
-                //Remplir des fruits types
-                creationFruits(result);*/
                 break;
         }
 
      }//GEN-LAST:event_trierParActionPerformed
 
     private void boutonVoirPanierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boutonVoirPanierMouseClicked
-
         Interface validation = new Interface(this, true, panier);
         
         validation.setVisible(true);
         validation.setLocation(100,100);
+        /*
+        Recette recette = new Jus();
+        PageRecette validation = new PageRecette(this, true, recette ,panier);
         
+        validation.setVisible(true);
+        validation.setLocation(100,100);*/
     }//GEN-LAST:event_boutonVoirPanierMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
