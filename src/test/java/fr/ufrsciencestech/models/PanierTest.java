@@ -329,8 +329,6 @@ public class PanierTest {
 
         p.retirer(0);
         assertTrue(p.getTaillePanier() == 0);
-
-
     }
 
     /**
