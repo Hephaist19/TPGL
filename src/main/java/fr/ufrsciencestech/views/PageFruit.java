@@ -5,7 +5,15 @@
 package fr.ufrsciencestech.views;
 
 import java.net.URL;
+import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+
+import fr.ufrsciencestech.exceptions.PanierPleinException;
+import fr.ufrsciencestech.models.Panier;
+import fr.ufrsciencestech.models.fruits.Fruit;
+import fr.ufrsciencestech.models.recettes.Recette;
 
 /**
  *
@@ -13,13 +21,10 @@ import javax.swing.JOptionPane;
  */
 public class PageFruit extends javax.swing.JDialog {
 
-    //private Fruit fruit;
-    private int tailleMAX;
-    private int noFruit = 0;
-    private String nF;
-    private String oF;
-    private double pF;
-    private String[] rF;
+    private Panier panier;
+    private Fruit fruit;
+    
+    private ArrayList<Recette> listeRecette; //Recettes contenant ce fruit
     private URL iF; //chemin pour accéder à l'image du fruit 
     
     /**
@@ -28,29 +33,23 @@ public class PageFruit extends javax.swing.JDialog {
      * @param modal
      */
     //public PageFruit(java.awt.Frame parent, boolean modal,Fruit leFruit) {
-    public PageFruit(java.awt.Frame parent, boolean modal) {
+    public PageFruit(java.awt.Frame parent, boolean modal, Fruit f, Panier p) {
         super(parent, modal);
+        this.panier = p;
+        this.fruit = f;
+        this.iF= this.getClass().getClassLoader().getResource("./images/" + f.getName() + ".png");
         initComponents();
-        this.NbFruit.setText(Integer.toString(noFruit));
+        initFruitIHM();
         
-        /*
-        this.nF=leFruit.getNom();
-        this.oF=leFruit.getOrigine();
-        this.pF=leFruit.getPrix();
-        this.rF=leFruit.getRecettes();
-        this.iF= this.getClass().getClassLoader().getResource("./images/" + this.nF + ".png");
-        */
-        
-
     }
 
     public void initFruitIHM(){
-        //this.ImageFruit.setIcon(iF);
-        //this.NomFruit.setText(nF);
-        //this.OrigineFruit.setText(oF);
-        //this.PrixFruit.setText(pF);
-        //this.ExempleRecette.setText(); //boucle for pour afficher la liste 
-        
+        this.ImageFruit.setIcon(new ImageIcon(iF));
+        this.NomFruit.setText(fruit.getName());
+        this.OrigineFruit.setText(fruit.getOrigine());
+        this.PrixFruit.setText(Double.toString(fruit.getPrix()));
+        this.NbFruit.setText(Integer.toString(1));
+        this.TotalFruit.setText(Double.toString(Double.parseDouble(this.NbFruit.getText()) * fruit.getPrix()));
     }
     
     
@@ -242,11 +241,6 @@ public class PageFruit extends javax.swing.JDialog {
         AjoutFruit.setForeground(new java.awt.Color(255, 255, 255));
         AjoutFruit.setText("Ajouter");
         AjoutFruit.setPreferredSize(new java.awt.Dimension(89, 32));
-        AjoutFruit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AjoutFruitMouseClicked(evt);
-            }
-        });
         AjoutFruit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AjoutFruitActionPerformed(evt);
@@ -260,11 +254,16 @@ public class PageFruit extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
     
+
+    private void actualiserPrixTotal() {
+        this.TotalFruit.setText(Double.toString(Double.parseDouble(this.NbFruit.getText()) * fruit.getPrix()));
+    }
+
     private void MoinsFruitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MoinsFruitMouseClicked
         int nombre = Integer.parseInt(this.NbFruit.getText());
-        if(nombre==0) //Vérification qu'on ne peut avoir un chiffre négatif
+        //TODO VERIFIER SI OK
+        if(nombre == 1) //Vérification qu'on ne peut avoir un chiffre négatif
         {
             this.NbFruit.setText(Integer.toString(nombre));
         }
@@ -275,8 +274,7 @@ public class PageFruit extends javax.swing.JDialog {
         }
         
         //Mise à jour du prix total
-        double prixTotal = nombre*pF;
-        this.TotalFruit.setText(Double.toString(prixTotal));
+        actualiserPrixTotal();
     }//GEN-LAST:event_MoinsFruitMouseClicked
 
     private void PlusFruitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PlusFruitMouseClicked
@@ -285,79 +283,24 @@ public class PageFruit extends javax.swing.JDialog {
         this.NbFruit.setText(Integer.toString(nombre));
         
         //Mise à jour du prix total
-        double prixTotal = nombre*pF;
-        this.TotalFruit.setText(Double.toString(prixTotal));
+        actualiserPrixTotal();
     }//GEN-LAST:event_PlusFruitMouseClicked
 
-    private void AjoutFruitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AjoutFruitMouseClicked
-        // VERIFIER MAX PANIER NON ATTEINT et Renvoyer les informations pour mettre à jour dans la boîte de dialogue précédente
-        //->Ajouter les fruits dans le récapitulatif panier
-        //->Prix total à accumuler
-    }//GEN-LAST:event_AjoutFruitMouseClicked
-
     private void AjoutFruitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjoutFruitActionPerformed
-        // Renvoie le nombre de fruits qu'on ajoute au panier
-        //on vérifie qu'on peut ajouter selon TailleMAX
         
-        //récupère le nombre pour la boucle de création de fruit
-        //this.fruit.setNombre(Double.parseDouble(NbFruit.getText()));
-    
-        //vérifie qu'on a encore de l'espace dans le panier
-        
-        if(Double.parseDouble(NbFruit.getText())<=tailleMAX){
-            this.setVisible(false);
-            this.dispose();
-        }else{
-            JOptionPane.showMessageDialog(Ligne2, "Attention !", "Il n'y a plus de place dans votre panier.", JOptionPane.WARNING_MESSAGE);
-        }
-           
-        
-        
-    }//GEN-LAST:event_AjoutFruitActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        int nombre = Integer.parseInt(this.NbFruit.getText());
+        int i = 0;
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+            for (; i < nombre; i++) {
+                panier.ajout(fruit);
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PageFruit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PageFruit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PageFruit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PageFruit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (PanierPleinException e) {
+            JOptionPane.showMessageDialog(Ligne2, "Il n'y a plus de place dans votre panier.\nSeulement " + i + " " + fruit.getName() + " se retrouvent dans votre panier.", "Attention !", JOptionPane.ERROR_MESSAGE);
+
+        }finally {
+            this.dispose();
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                //PageFruit dialog1 = new PageFruit(new javax.swing.JFrame(), true, Fruit leFruit);
-                PageFruit dialog1 = new PageFruit(new javax.swing.JFrame(), true);
-
-                dialog1.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog1.setVisible(true);
-            }
-        });
-    }
+    }//GEN-LAST:event_AjoutFruitActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AjoutFruit;
