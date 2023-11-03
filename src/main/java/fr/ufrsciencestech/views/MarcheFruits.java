@@ -1,18 +1,25 @@
 package fr.ufrsciencestech.views;
-import java.awt.GridLayout;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.net.URL;
 import java.util.*;
 import javax.swing.*;
+
+import fr.ufrsciencestech.controllers.factories.FruitsFactory;
+import fr.ufrsciencestech.exceptions.PanierPleinException;
+import fr.ufrsciencestech.models.Panier;
+import fr.ufrsciencestech.models.fruits.Fruit;
+import fr.ufrsciencestech.utils.FruitType;
 
 /**
  *
  * @author mgall
  */
-public class MarcheFruits extends javax.swing.JFrame {
+public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeListener {
     
     private List<String> listeSansPepins = Arrays.asList("Ananas","Kiwi","Framboise","Fraise","Banane");
     private List<String> listeAgrume = Arrays.asList("Orange","Citron");  
-    private List<String> listeExotique = Arrays.asList("Ananas","Kiwi","Banane","Litchi"); 
+    private List<String> listeExotique = Arrays.asList("Ananas","Kiwi","Banane","Litchi");
     private List<String> listeTous = Arrays.asList("Ananas","Pomme","Kiwi","Orange","Citron","Framboise","Cerise","Fraise","Banane","Peche","Litchi","Cake au citron","Jus de pomme","Jus multifruit","Tarte aux cerises","Banana split");
     private List<String> listeRecette = Arrays.asList("Cake au citron","Jus de pomme","Jus multifruit","Tarte aux cerises","Banana split");  
 
@@ -22,12 +29,33 @@ public class MarcheFruits extends javax.swing.JFrame {
     //private List<String> listePrixDecroissant = Arrays.asList();
     
 
+    private Panier panier;
     /**
      * Creates new form MarcheFruits
      */
     public MarcheFruits() {
+        panier = new Panier(20);
+        //jeu de test
+        try {
+            panier.ajouterTout(FruitsFactory.createAllOf(FruitType.CERISE, FruitType.POMME, FruitType.FRAMBOISE));
+        } catch (PanierPleinException e) {
+            e.printStackTrace();
+        };
+
         initComponents();
         initButtons();
+        initListeFruit();
+    }
+
+    //TODO actualiser panier en fonction de son signal
+    private void initListeFruit() {
+        DefaultListModel liste = new DefaultListModel();
+        for (Fruit fruit : panier.getFruits()) {
+            liste.addElement(fruit.getName());
+        }
+        this.listeRecap.setModel(liste);
+        //TODO limiter à deux chiffre après la virgules
+        this.labelPrixRecapPanier.setText(Double.toString(panier.getPrix()));
     }
     
     //Créer dynamiquement tous les fruits avec la listeTous
@@ -911,52 +939,13 @@ public class MarcheFruits extends javax.swing.JFrame {
      }//GEN-LAST:event_trierParActionPerformed
 
     private void boutonVoirPanierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boutonVoirPanierMouseClicked
-        // Quitter le marché -> Récupérer les instances de fruits dans le récapitulatif panier JList this.listeRecap 
-        //afin de les ajouter dans le panier en vérifiant que le MAX panier n'est pas atteint !
+
+        Interface validation = new Interface(this, true, panier);
         
-        //Interface panier = new Interface(this, true, this.listeRecap, Double.parseDouble(this.labelPrixRecapPanier.getText()));
-        //TODO Interface panier = new Interface(this, true);
-        
-        //panier.setVisible(true);
-        //spanier.setLocation(100,100);
+        validation.setVisible(true);
+        validation.setLocation(100,100);
         
     }//GEN-LAST:event_boutonVoirPanierMouseClicked
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MarcheFruits.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MarcheFruits.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MarcheFruits.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MarcheFruits.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new MarcheFruits().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boutonVoirPanier;
@@ -995,4 +984,8 @@ public class MarcheFruits extends javax.swing.JFrame {
     private javax.swing.JList<String> listeRecap;
     private javax.swing.JComboBox<String> trierPar;
     // End of variables declaration//GEN-END:variables
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        System.out.println("WESH");
+    }
 }

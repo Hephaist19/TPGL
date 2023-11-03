@@ -1,5 +1,8 @@
 package fr.ufrsciencestech.views;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
 import javax.swing.*;
 
 import fr.ufrsciencestech.models.Panier;
@@ -20,8 +23,8 @@ public class Interface extends javax.swing.JDialog {
     public Interface(java.awt.Frame parent, boolean modal, Panier p) {
         super(parent,modal);
         this.panier = p;
+        //Affecter l'observer this au panier
         initComponents();
-        
         initListeFruit();
     }
 
@@ -31,7 +34,7 @@ public class Interface extends javax.swing.JDialog {
             liste.addElement(fruit.getName());
         }
         this.affichePanier.setModel(liste);
-        //TODO limiter à deux chiffre après la virgule
+        //TODO limiter à deux chiffre après la virgules
         this.LabelPrixTotal.setText(Double.toString(panier.getPrix()) + "€");
     }
 
@@ -238,6 +241,7 @@ public class Interface extends javax.swing.JDialog {
     private void BoutonValiderPanierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoutonValiderPanierActionPerformed
         if(panier.getPrix() > 0) {
             JOptionPane.showMessageDialog(this, "Merci pour votre commande d'une valeur de " + panier.getPrix() + "€!\nBonne cuisine et à bientôt!", "Validation du paiement", JOptionPane.INFORMATION_MESSAGE);
+            panier.vider();
         }
         this.dispose();
     }//GEN-LAST:event_BoutonValiderPanierActionPerformed
