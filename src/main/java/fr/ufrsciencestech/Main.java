@@ -1,5 +1,6 @@
 package fr.ufrsciencestech;
 
+import fr.ufrsciencestech.controllers.factories.FruitsFactory;
 import fr.ufrsciencestech.exceptions.PanierPleinException;
 import fr.ufrsciencestech.models.Panier;
 import fr.ufrsciencestech.models.fruits.Fruit;
@@ -24,7 +25,12 @@ public class Main {
         }
         
         Fruit f = new Pomme();
-        Panier p = new Panier(2);
+        Panier p = new Panier(20);
+        try {
+            p.ajouterTout(FruitsFactory.createAll());
+        } catch (PanierPleinException e) {
+            e.printStackTrace();
+        }
         try {
             p.ajout(f);
         } catch (PanierPleinException e) {

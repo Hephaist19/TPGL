@@ -115,6 +115,12 @@ public class Panier {
         }
     }
 
+    public void retirer(int indice) {
+        if(!(indice < 0 || indice > fruits.size())) {
+            fruits.remove(indice);
+        }
+    }
+
     /**
      * Supprime du panier tous les fruits provenant du pays origine
      * @param origine Le pays d'origine à boycotter 

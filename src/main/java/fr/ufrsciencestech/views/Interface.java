@@ -2,7 +2,6 @@ package fr.ufrsciencestech.views;
 
 import javax.swing.*;
 
-import fr.ufrsciencestech.exceptions.PanierPleinException;
 import fr.ufrsciencestech.models.Panier;
 import fr.ufrsciencestech.models.fruits.Fruit;
 
@@ -22,7 +21,7 @@ public class Interface extends javax.swing.JDialog {
         super(parent,modal);
         this.panier = p;
         initComponents();
-        this.LabelPrixTotal.setText(Double.toString(panier.getPrix()) + "€");
+        
         initListeFruit();
     }
 
@@ -32,6 +31,8 @@ public class Interface extends javax.swing.JDialog {
             liste.addElement(fruit.getName());
         }
         this.affichePanier.setModel(liste);
+        //TODO limiter à deux chiffre après la virgule
+        this.LabelPrixTotal.setText(Double.toString(panier.getPrix()) + "€");
     }
 
     /**
@@ -235,21 +236,25 @@ public class Interface extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BoutonValiderPanierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoutonValiderPanierActionPerformed
-
-        JOptionPane.showMessageDialog(this, "Merci pour votre commande d'une valeur de " + panier.getPrix() + "€!\nBonne cuisine et à bientôt!", "Validation du paiement", JOptionPane.INFORMATION_MESSAGE);
+        if(panier.getPrix() > 0) {
+            JOptionPane.showMessageDialog(this, "Merci pour votre commande d'une valeur de " + panier.getPrix() + "€!\nBonne cuisine et à bientôt!", "Validation du paiement", JOptionPane.INFORMATION_MESSAGE);
+        }
         this.dispose();
     }//GEN-LAST:event_BoutonValiderPanierActionPerformed
 
     private void BoutonRetourMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BoutonRetourMouseClicked
-        // Retour vers le marché
+        this.dispose();
     }//GEN-LAST:event_BoutonRetourMouseClicked
 
     private void BoutonRetirerFruitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BoutonRetirerFruitMouseClicked
-        // TODO add your handling code here:
+        int index = this.affichePanier.getSelectedIndex();
+        panier.retirer(index);
+        initListeFruit();
     }//GEN-LAST:event_BoutonRetirerFruitMouseClicked
 
     private void BoutonViderPanierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BoutonViderPanierMouseClicked
-        // TODO add your handling code here:
+        panier.vider();
+        initListeFruit();
     }//GEN-LAST:event_BoutonViderPanierMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
