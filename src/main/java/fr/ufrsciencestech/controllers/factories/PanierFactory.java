@@ -20,32 +20,32 @@ public class PanierFactory {
         
         switch(type){
             case EXOTIQUE :
-                p = new Panier(5);
                 list = FruitsFactory.createAllOf(FruitType.ANANAS,FruitType.BANANE,FruitType.LITCHI,FruitType.KIWI);
+                p = new Panier(list.size());
                 p.setFruits(list);
                 break;
             case AGRUME :
-                p = new Panier(2);
                 list = FruitsFactory.createAllOf(FruitType.ORANGE,FruitType.CITRON);
+                p = new Panier(list.size());
                 p.setFruits(list);
                 break;
             case SANSPEPINS :
-                p = new Panier(5);
                 list = FruitsFactory.createAll();
                 fe = new FilterExecutor(list);
                 list = fe.filter(FilterType.SANSPEPINS).getResult();
+                p = new Panier(list.size());
                 p.setFruits(list);
                 break;
             case AVECPEPINS :
-                p = new Panier(5);
                 list = FruitsFactory.createAll();
                 fe = new FilterExecutor(list);
                 list = fe.filter(FilterType.AVECPEPINS).getResult();
+                p = new Panier(list.size());
                 p.setFruits(list);
                 break;
             default:
-                p = new Panier(2);
                 list = FruitsFactory.createAll();
+                p = new Panier(list.size());
                 p.setFruits(list);
                 break;
         }
