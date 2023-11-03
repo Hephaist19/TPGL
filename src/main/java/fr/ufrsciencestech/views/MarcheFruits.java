@@ -22,7 +22,6 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
     private List<String> listeExotique = Arrays.asList("Ananas","Kiwi","Banane","Litchi");
     private List<String> listeTous = Arrays.asList("Ananas","Pomme","Kiwi","Orange","Citron","Framboise","Cerise","Fraise","Banane","Peche","Litchi","Cake au citron","Jus de pomme","Jus multifruit","Tarte aux cerises","Banana split");
     private List<String> listeRecette = Arrays.asList("Cake au citron","Jus de pomme","Jus multifruit","Tarte aux cerises","Banana split");  
-
     
     private List<String> listeOrdreAlphabtique = Arrays.asList("Ananas","Banane","Cerise","Citron","Fraise","Framboise","Kiwi","Litchi","Orange","Peche","Pomme"); 
     //private List<String> listePrixCroissant = Arrays.asList();
@@ -44,11 +43,11 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
 
         initComponents();
         initButtons();
-        initListeFruit();
+        initListePanier();
     }
 
     //TODO actualiser panier en fonction de son signal
-    private void initListeFruit() {
+    private void initListePanier() {
         DefaultListModel liste = new DefaultListModel();
         for (Fruit fruit : panier.getFruits()) {
             liste.addElement(fruit.getName());
@@ -60,6 +59,10 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
     
     //Créer dynamiquement tous les fruits avec la listeTous
     public void initButtons(){
+
+        ArrayList<Fruit> listeFruit = FruitsFactory.createAll();
+        System.out.println(listeFruit);
+        //Pareil recette
         
         for(int i=0;i<listeTous.size();i++)
         {
