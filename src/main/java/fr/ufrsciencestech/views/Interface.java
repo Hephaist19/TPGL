@@ -51,7 +51,7 @@ public class Interface extends javax.swing.JDialog {
         LabelPrixTotal = new javax.swing.JLabel();
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200));
         Colonne3 = new javax.swing.JPanel();
-        BoutonAjouterFruit = new javax.swing.JButton();
+        BoutonRetour = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
         BoutonRetirerFruit = new javax.swing.JButton();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
@@ -59,8 +59,6 @@ public class Interface extends javax.swing.JDialog {
         spaceButton = new javax.swing.Box.Filler(new java.awt.Dimension(0, 200), new java.awt.Dimension(0, 200), new java.awt.Dimension(250, 200));
         BoutonValiderPanier = new javax.swing.JButton();
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200));
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         InterfacePanier.setBackground(new java.awt.Color(255, 255, 255));
         java.awt.GridBagLayout InterfacePanierLayout = new java.awt.GridBagLayout();
@@ -160,14 +158,19 @@ public class Interface extends javax.swing.JDialog {
         Colonne3.setBackground(new java.awt.Color(255, 255, 255));
         Colonne3.setLayout(new javax.swing.BoxLayout(Colonne3, javax.swing.BoxLayout.Y_AXIS));
 
-        BoutonAjouterFruit.setBackground(new java.awt.Color(141, 126, 255));
-        BoutonAjouterFruit.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
-        BoutonAjouterFruit.setForeground(new java.awt.Color(255, 255, 255));
-        BoutonAjouterFruit.setText("Ajouter un fruit");
-        BoutonAjouterFruit.setMaximumSize(new java.awt.Dimension(155, 22));
-        BoutonAjouterFruit.setMinimumSize(new java.awt.Dimension(155, 22));
-        BoutonAjouterFruit.setPreferredSize(new java.awt.Dimension(137, 22));
-        Colonne3.add(BoutonAjouterFruit);
+        BoutonRetour.setBackground(new java.awt.Color(141, 126, 255));
+        BoutonRetour.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
+        BoutonRetour.setForeground(new java.awt.Color(255, 255, 255));
+        BoutonRetour.setText("Retour au marché");
+        BoutonRetour.setMaximumSize(new java.awt.Dimension(155, 22));
+        BoutonRetour.setMinimumSize(new java.awt.Dimension(155, 22));
+        BoutonRetour.setPreferredSize(new java.awt.Dimension(137, 22));
+        BoutonRetour.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BoutonRetourMouseClicked(evt);
+            }
+        });
+        Colonne3.add(BoutonRetour);
         Colonne3.add(filler1);
 
         BoutonRetirerFruit.setBackground(new java.awt.Color(141, 126, 255));
@@ -178,6 +181,11 @@ public class Interface extends javax.swing.JDialog {
         BoutonRetirerFruit.setMaximumSize(new java.awt.Dimension(155, 22));
         BoutonRetirerFruit.setMinimumSize(new java.awt.Dimension(137, 22));
         BoutonRetirerFruit.setPreferredSize(new java.awt.Dimension(155, 22));
+        BoutonRetirerFruit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BoutonRetirerFruitMouseClicked(evt);
+            }
+        });
         Colonne3.add(BoutonRetirerFruit);
         Colonne3.add(filler2);
 
@@ -188,6 +196,11 @@ public class Interface extends javax.swing.JDialog {
         BoutonViderPanier.setMaximumSize(new java.awt.Dimension(155, 22));
         BoutonViderPanier.setMinimumSize(new java.awt.Dimension(137, 22));
         BoutonViderPanier.setPreferredSize(new java.awt.Dimension(155, 22));
+        BoutonViderPanier.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BoutonViderPanierMouseClicked(evt);
+            }
+        });
         Colonne3.add(BoutonViderPanier);
         Colonne3.add(spaceButton);
 
@@ -216,14 +229,26 @@ public class Interface extends javax.swing.JDialog {
     private void BoutonValiderPanierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoutonValiderPanierActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BoutonValiderPanierActionPerformed
-
+   
     private void choixRecetteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choixRecetteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_choixRecetteActionPerformed
 
+    private void BoutonRetourMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BoutonRetourMouseClicked
+        // Retour vers le marché
+    }//GEN-LAST:event_BoutonRetourMouseClicked
+
+    private void BoutonRetirerFruitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BoutonRetirerFruitMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BoutonRetirerFruitMouseClicked
+
+    private void BoutonViderPanierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BoutonViderPanierMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BoutonViderPanierMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BoutonAjouterFruit;
     private javax.swing.JButton BoutonRetirerFruit;
+    private javax.swing.JButton BoutonRetour;
     private javax.swing.JButton BoutonValiderPanier;
     private javax.swing.JButton BoutonViderPanier;
     private javax.swing.JPanel Colonne1;

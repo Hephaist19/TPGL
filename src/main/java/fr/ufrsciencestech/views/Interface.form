@@ -332,7 +332,7 @@
             <Property name="axis" type="int" value="1"/>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="BoutonAjouterFruit">
+            <Component class="javax.swing.JButton" name="BoutonRetour">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="7e" red="8d" type="rgb"/>
@@ -343,7 +343,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Ajouter un fruit"/>
+                <Property name="text" type="java.lang.String" value="Retour au march&#xe9;"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[155, 22]"/>
                 </Property>
@@ -354,6 +354,9 @@
                   <Dimension value="[137, 22]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BoutonRetourMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.Box$Filler" name="filler1">
               <Properties>
@@ -396,6 +399,9 @@
                   <Dimension value="[155, 22]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BoutonRetirerFruitMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.Box$Filler" name="filler2">
               <Properties>
@@ -435,6 +441,9 @@
                   <Dimension value="[155, 22]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BoutonViderPanierMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.Box$Filler" name="spaceButton">
               <Properties>
