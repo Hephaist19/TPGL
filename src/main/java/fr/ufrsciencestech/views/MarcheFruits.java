@@ -1,4 +1,5 @@
 package fr.ufrsciencestech.views;
+import fr.ufrsciencestech.controllers.FilterExecutor;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.net.URL;
@@ -9,7 +10,11 @@ import fr.ufrsciencestech.controllers.factories.FruitsFactory;
 import fr.ufrsciencestech.exceptions.PanierPleinException;
 import fr.ufrsciencestech.models.Panier;
 import fr.ufrsciencestech.models.fruits.Fruit;
+import fr.ufrsciencestech.utils.FilterType;
 import fr.ufrsciencestech.utils.FruitType;
+import fr.ufrsciencestech.utils.SortType;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -64,10 +69,10 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         System.out.println(listeFruit);
         //Pareil recette
         
-        for(int i=0;i<listeTous.size();i++)
+        for(int i=0;i<listeFruit.size();i++)
         {
             //Chemin d'accès à l'image
-            URL path = this.getClass().getClassLoader().getResource("./images/" + listeTous.get(i) + ".png");
+            URL path = this.getClass().getClassLoader().getResource("./images/" + listeFruit.get(i).getName() + ".png");
             
             //Couleur du texte pair/impair
             java.awt.Color mauve = new java.awt.Color(189, 98, 199);
@@ -81,6 +86,15 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
                 bouton.setPreferredSize(new java.awt.Dimension(125, 125));
                 bouton.setIcon(new javax.swing.ImageIcon(path)); 
                 jPanel3.add(bouton);
+                /*
+                bouton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent ae) {
+                        PageFruit affichageFruit = new PageFruit(this, true, listeFruit.get(i), panier); 
+                        affichageFruit.setVisible(true);
+                        affichageFruit.setLocation(100,100);
+                    }
+                });*/
 
                 JLabel label = new JLabel();
                 label.setBackground(new java.awt.Color(255, 255, 255));
@@ -93,7 +107,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
                 {
                     label.setForeground(bleu);
                 }
-                label.setText(listeTous.get(i));
+                label.setText(listeFruit.get(i).getName());
                 jPanel6.add(label);   
             }
             else if (i<8) //Deuxième ligne
@@ -116,7 +130,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
                 {
                     label.setForeground(bleu);
                 }
-                label.setText(listeTous.get(i));
+                label.setText(listeFruit.get(i).getName());
                 jPanel8.add(label); 
             }
             else if (i<12) { //Troisième ligne
@@ -160,51 +174,11 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
                 {
                     label.setForeground(bleu);
                 }
-                label.setText(listeTous.get(i));
+                label.setText(listeFruit.get(i).getName());
                 jPanel16.add(label); 
             }
             
-            
         }
-        //TEST créer les fruits dans un gridlayout en fonction du nombre de fruits (c'est moche)
-        /*
-        int nb = this.listeTous.size(); //Récupère le nombre de fruits à afficher    
-        int n = (int) Math.sqrt(nb) + 1;
-        jPanel3.setLayout(new GridLayout(n, n + 1));    //création de la grille dans le JPanel
-
-        //Couleur du texte pair/impair
-        java.awt.Color mauve = new java.awt.Color(189, 98, 199);
-        java.awt.Color bleu = new java.awt.Color(141, 126, 255);
-            
-        for(int i=0;i<nb;i++)
-        {
-            //Chemin d'accès à l'image
-            URL path = this.getClass().getClassLoader().getResource("./images/" + listeTous.get(i) + ".png");
-            
-            JPanel pan = new javax.swing.JPanel();
-            pan.setLayout(new javax.swing.BoxLayout(pan, javax.swing.BoxLayout.Y_AXIS));
-            
-            JButton bouton = new JButton();
-            bouton.setMaximumSize(new java.awt.Dimension(125, 125));
-            bouton.setMinimumSize(new java.awt.Dimension(125, 125));
-            bouton.setPreferredSize(new java.awt.Dimension(125, 125));
-            bouton.setIcon(new javax.swing.ImageIcon(path));
-            pan.add(bouton);
-
-            JLabel label = new JLabel("",SwingConstants.CENTER);
-            label.setBackground(new java.awt.Color(255, 255, 255));
-            label.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16));
-            if (i % 2 == 0) {
-                label.setForeground(mauve);
-            } else {
-                label.setForeground(bleu);
-            }
-            label.setText(listeTous.get(i));
-            pan.add(label);  
-            
-            jPanel3.add(pan); //ajout dans le grand panel
-        }
-        */
     }
 
     /**
@@ -470,6 +444,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         jPanel16.setBackground(new java.awt.Color(255, 255, 255));
         jPanel16.setMinimumSize(new java.awt.Dimension(160, 10));
         jPanel16.setPreferredSize(new java.awt.Dimension(160, 10));
+        jPanel16.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 60, 5));
         jPanel4.add(jPanel16);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -481,7 +456,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -495,14 +470,59 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void remiseAZero(){
+        
+        //JPanel 3.6.7.8.9.10.15.16
+        jPanel3.removeAll();
+        jPanel3.revalidate();
+        jPanel3.repaint();
+        
+        jPanel6.removeAll();
+        jPanel6.revalidate();
+        jPanel6.repaint();
+        
+        jPanel7.removeAll();
+        jPanel7.revalidate();
+        jPanel7.repaint();
+        
+        jPanel8.removeAll();
+        jPanel8.revalidate();
+        jPanel8.repaint();
+        
+        jPanel9.removeAll();
+        jPanel9.revalidate();
+        jPanel9.repaint();
+        
+        jPanel10.removeAll();
+        jPanel10.revalidate();
+        jPanel10.repaint();
+        
+        jPanel15.removeAll();
+        jPanel15.revalidate();
+        jPanel15.repaint();
+        
+        jPanel16.removeAll();
+        jPanel16.revalidate();
+        jPanel16.repaint();
+        
+    }
+        
     private void categorieSansPepinsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorieSansPepinsActionPerformed
-        // Fruits sans pépins NI NOYAU -> Ananas, Kiwi, Framboise, Fraise, Banane
+        // Fruits sans pépins 
+        
+        ArrayList<Fruit> test = FruitsFactory.createAll();
+        FilterExecutor fe = new FilterExecutor(test);
+
+        ArrayList<Fruit> result = fe.filter(FilterType.SANSPEPINS).getResult();
+        System.out.println(result);
         
         //Vider les panels avant de remettre 
-        for(int i=0;i<listeSansPepins.size();i++)
+        remiseAZero();
+        
+        for(int i=0;i<result.size();i++)
         {
             //Chemin d'accès à l'image
-            URL path = this.getClass().getClassLoader().getResource("./images/" + listeSansPepins.get(i) + ".png");
+            URL path = this.getClass().getClassLoader().getResource("./images/" + result.get(i).getName() + ".png");
             
             //Couleur du texte pair/impair
             java.awt.Color mauve = new java.awt.Color(189, 98, 199);
@@ -528,7 +548,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
                 {
                     label.setForeground(bleu);
                 }
-                label.setText(listeSansPepins.get(i));
+                label.setText(result.get(i).getName());
                 jPanel6.add(label);   
             }
             else if (i<8) //Deuxième ligne
@@ -551,7 +571,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
                 {
                     label.setForeground(bleu);
                 }
-                label.setText(listeSansPepins.get(i));
+                label.setText(result.get(i).getName());
                 jPanel8.add(label); 
             }
             else { //Troisième ligne
@@ -573,7 +593,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
                 {
                     label.setForeground(bleu);
                 }
-                label.setText(listeSansPepins.get(i));
+                label.setText(result.get(i).getName());
                 jPanel9.add(label); 
                 
             }
@@ -668,7 +688,14 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
 
     private void categorieAgrumeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorieAgrumeActionPerformed
         // Agrumes -> Orange, Citron
-        
+        /*ArrayList<Fruit> test = FruitsFactory.createAll();
+        FilterExecutor fe = new FilterExecutor(test);
+
+        ArrayList<Fruit> result = fe.filter(FilterType.AGRUMES).getResult();
+        System.out.println(result);
+        */
+        //Vider les panels avant de remettre 
+        remiseAZero();
         
         for(int i=0;i<listeAgrume.size();i++)
         {
