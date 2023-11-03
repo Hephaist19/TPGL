@@ -1,5 +1,9 @@
 package fr.ufrsciencestech;
 
+import fr.ufrsciencestech.exceptions.PanierPleinException;
+import fr.ufrsciencestech.models.Panier;
+import fr.ufrsciencestech.models.fruits.Fruit;
+import fr.ufrsciencestech.models.fruits.Pomme;
 import fr.ufrsciencestech.views.*;
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +23,15 @@ public class Main {
             System.out.println(path);
         }
         
-        MarcheFruits dialog = new MarcheFruits();
+        Fruit f = new Pomme();
+        Panier p = new Panier(2);
+        try {
+            p.ajout(f);
+        } catch (PanierPleinException e) {
+            e.printStackTrace();
+        }
+        Interface dialog = new Interface(new javax.swing.JFrame(), true, p);
+        
         dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
