@@ -17,6 +17,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 
 /**
  *
@@ -34,7 +35,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
     //private List<String> listePrixCroissant = Arrays.asList();
     //private List<String> listePrixDecroissant = Arrays.asList();
     
-
+    private static final DecimalFormat df = new DecimalFormat("0.00");
     private final Panier panier;
     private final MarcheFruits instance;
     /**
@@ -110,6 +111,14 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        jPanel15 = new javax.swing.JPanel();
+        jPanel16 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1000, 1000));
@@ -302,6 +311,36 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
 
         jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.Y_AXIS));
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.add(jPanel3);
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 80, 5));
+        jPanel4.add(jPanel6);
+
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.add(jPanel7);
+
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 80, 5));
+        jPanel4.add(jPanel8);
+
+        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.add(jPanel10);
+
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 80, 5));
+        jPanel4.add(jPanel9);
+
+        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.add(jPanel15);
+
+        jPanel16.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel16.setMinimumSize(new java.awt.Dimension(160, 10));
+        jPanel16.setPreferredSize(new java.awt.Dimension(160, 10));
+        jPanel16.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 60, 5));
+        jPanel4.add(jPanel16);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -493,6 +532,8 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         
         validation.setVisible(true);
         validation.setLocation(100,100);*/
+        
+        //TODO labelPrixRecapPanier actualise au cas ou on retire
     }//GEN-LAST:event_boutonVoirPanierMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -506,13 +547,21 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
     private javax.swing.JLabel euros;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;

@@ -7,6 +7,7 @@ import javax.swing.*;
 
 import fr.ufrsciencestech.models.Panier;
 import fr.ufrsciencestech.models.fruits.Fruit;
+import java.text.DecimalFormat;
 
 /**
  *
@@ -15,6 +16,7 @@ import fr.ufrsciencestech.models.fruits.Fruit;
 public class Interface extends javax.swing.JDialog {
 
     private Panier panier;
+    private static final DecimalFormat df = new DecimalFormat("0.00");
     
     /**
      * Creates new form Interface
@@ -34,8 +36,8 @@ public class Interface extends javax.swing.JDialog {
             liste.addElement(fruit.getName());
         }
         this.affichePanier.setModel(liste);
-        //TODO limiter à deux chiffre après la virgules
-        this.LabelPrixTotal.setText(Double.toString(panier.getPrix()) + "€");
+        
+        this.LabelPrixTotal.setText(df.format(panier.getPrix()) + "€");
     }
 
     /**

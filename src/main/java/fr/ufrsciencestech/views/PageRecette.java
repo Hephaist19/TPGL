@@ -14,6 +14,7 @@ import fr.ufrsciencestech.exceptions.PanierPleinException;
 import fr.ufrsciencestech.models.Panier;
 import fr.ufrsciencestech.models.fruits.*;
 import fr.ufrsciencestech.models.recettes.Recette;
+import java.text.DecimalFormat;
 
 /**
  *
@@ -23,7 +24,7 @@ public class PageRecette extends javax.swing.JDialog {
 
     private Panier panier;
     private Recette recette;
-    
+    private static final DecimalFormat df = new DecimalFormat("0.00");
     private ArrayList<Fruit> listeFruit; //Fruits nécessaires de la recette
     private URL iR; //chemin pour accéder à l'image de la recette
     
@@ -233,7 +234,8 @@ public class PageRecette extends javax.swing.JDialog {
     
 
     private void actualiserPrixTotal() {
-       // this.TotalFruit.setText(Double.toString(Double.parseDouble(this.NbRecette.getText()) * fruit.getPrix()));
+       // double total = Double.parseDouble(this.NbFruit.getText()) * fruit.getPrix();
+       // this.TotalFruit.setText(df.format(total));
     }
 
     private void MoinsFruitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MoinsFruitMouseClicked
