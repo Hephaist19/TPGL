@@ -1,7 +1,8 @@
 package fr.ufrsciencestech.views;
 
 import javax.swing.*;
-import java.lang.*;
+
+import fr.ufrsciencestech.models.Panier;
 
 /**
  *
@@ -9,20 +10,20 @@ import java.lang.*;
  */
 public class Interface extends javax.swing.JDialog {
 
-    private JList<String> listeFruits1;
-    private double prixTotal1;
+    private Panier panier;
     
     /**
      * Creates new form Interface
      */
     //public Interface(java.awt.Frame parent, boolean modal, JList<String> listeFruits, double prixTotal ) {
-    public Interface(java.awt.Frame parent, boolean modal) {
+    public Interface(java.awt.Frame parent, boolean modal, Panier p) {
         super(parent,modal);
+        this.panier = p;
         initComponents();
-        /*
-        this.listeFruits1=listeFruits;
-        this.prixTotal1=prixTotal;
-        */
+        initListeFruit();
+    }
+
+    private void initListeFruit() {
     }
 
     /**
@@ -62,7 +63,7 @@ public class Interface extends javax.swing.JDialog {
         BoutonValiderPanier = new javax.swing.JButton();
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200));
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         InterfacePanier.setBackground(new java.awt.Color(255, 255, 255));
         java.awt.GridBagLayout InterfacePanierLayout = new java.awt.GridBagLayout();
@@ -251,54 +252,6 @@ public class Interface extends javax.swing.JDialog {
     private void choixRecetteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choixRecetteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_choixRecetteActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Interface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Interface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Interface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Interface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-              //Interface panier = new Interface(this, true, JList<String> listeFruits, double prixTotal);
-
-                Interface panier = new Interface(new javax.swing.JFrame(), true);
-                panier.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                panier.setVisible(true);
-            }
-        });
-    }
-    
-    
-    
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BoutonAjouterFruit;

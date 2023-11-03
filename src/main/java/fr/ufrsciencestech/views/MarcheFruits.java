@@ -915,9 +915,10 @@ public class MarcheFruits extends javax.swing.JFrame {
         //afin de les ajouter dans le panier en vérifiant que le MAX panier n'est pas atteint !
         
         //Interface panier = new Interface(this, true, this.listeRecap, Double.parseDouble(this.labelPrixRecapPanier.getText()));
-        Interface panier = new Interface(this, true);
-        panier.setVisible(true);
-        panier.setLocation(100,100);
+        //TODO Interface panier = new Interface(this, true);
+        
+        //panier.setVisible(true);
+        //spanier.setLocation(100,100);
         
     }//GEN-LAST:event_boutonVoirPanierMouseClicked
 

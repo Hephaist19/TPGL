@@ -1,5 +1,6 @@
 package fr.ufrsciencestech;
 
+import fr.ufrsciencestech.exceptions.PanierPleinException;
 import fr.ufrsciencestech.models.Panier;
 import fr.ufrsciencestech.models.fruits.Fruit;
 import fr.ufrsciencestech.models.fruits.Pomme;
@@ -24,7 +25,12 @@ public class Main {
         
         Fruit f = new Pomme();
         Panier p = new Panier(2);
-        PageFruit dialog = new PageFruit(new javax.swing.JFrame(), true, f, p);
+        try {
+            p.ajout(f);
+        } catch (PanierPleinException e) {
+            e.printStackTrace();
+        }
+        Interface dialog = new Interface(new javax.swing.JFrame(), true, p);
         
         dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
