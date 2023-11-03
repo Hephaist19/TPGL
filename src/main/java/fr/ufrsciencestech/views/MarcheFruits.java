@@ -8,7 +8,7 @@ import javax.swing.*;
  *
  * @author mgall
  */
-public class MarcheFruits extends javax.swing.JDialog {
+public class MarcheFruits extends javax.swing.JFrame {
     
     private List<String> listeSansPepins = Arrays.asList("Ananas","Kiwi","Framboise","Fraise","Banane");
     private List<String> listeAgrume = Arrays.asList("Orange","Citron");  
@@ -24,11 +24,8 @@ public class MarcheFruits extends javax.swing.JDialog {
 
     /**
      * Creates new form MarcheFruits
-     * @param parent
-     * @param modal
      */
-    public MarcheFruits(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public MarcheFruits() {
         initComponents();
         initButtons();
     }
@@ -192,7 +189,7 @@ public class MarcheFruits extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jSeparator3 = new javax.swing.JSeparator();
-        boutonQuitterMarche = new javax.swing.JButton();
+        boutonVoirPanier = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel11 = new javax.swing.JPanel();
         labelCategorie = new javax.swing.JLabel();
@@ -242,22 +239,22 @@ public class MarcheFruits extends javax.swing.JDialog {
         jSeparator3.setPreferredSize(new java.awt.Dimension(0, 1));
         jPanel5.add(jSeparator3);
 
-        boutonQuitterMarche.setBackground(new java.awt.Color(189, 98, 199));
-        boutonQuitterMarche.setFont(new java.awt.Font("Eunjin Nakseo", 0, 18)); // NOI18N
-        boutonQuitterMarche.setForeground(new java.awt.Color(255, 255, 255));
-        boutonQuitterMarche.setAlignmentX(0.5F);
-        boutonQuitterMarche.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        boutonQuitterMarche.setLabel("Voir le panier");
-        boutonQuitterMarche.setMargin(new java.awt.Insets(5, 14, 5, 14));
-        boutonQuitterMarche.setMaximumSize(new java.awt.Dimension(200, 25));
-        boutonQuitterMarche.setPreferredSize(new java.awt.Dimension(200, 40));
-        boutonQuitterMarche.setRolloverEnabled(false);
-        boutonQuitterMarche.addMouseListener(new java.awt.event.MouseAdapter() {
+        boutonVoirPanier.setBackground(new java.awt.Color(189, 98, 199));
+        boutonVoirPanier.setFont(new java.awt.Font("Eunjin Nakseo", 0, 18)); // NOI18N
+        boutonVoirPanier.setForeground(new java.awt.Color(255, 255, 255));
+        boutonVoirPanier.setAlignmentX(0.5F);
+        boutonVoirPanier.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        boutonVoirPanier.setLabel("Voir le panier");
+        boutonVoirPanier.setMargin(new java.awt.Insets(5, 14, 5, 14));
+        boutonVoirPanier.setMaximumSize(new java.awt.Dimension(200, 25));
+        boutonVoirPanier.setPreferredSize(new java.awt.Dimension(200, 40));
+        boutonVoirPanier.setRolloverEnabled(false);
+        boutonVoirPanier.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                boutonQuitterMarcheMouseClicked(evt);
+                boutonVoirPanierMouseClicked(evt);
             }
         });
-        jPanel5.add(boutonQuitterMarche);
+        jPanel5.add(boutonVoirPanier);
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
@@ -913,10 +910,16 @@ public class MarcheFruits extends javax.swing.JDialog {
 
      }//GEN-LAST:event_trierParActionPerformed
 
-    private void boutonQuitterMarcheMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boutonQuitterMarcheMouseClicked
-        // Quitter le marché -> Récupérer les instances de fruits dans le récapitulatif panier JList this.listeRecap afin de les ajouter dans le panier en vérifiant que le MAX panier n'est pas atteint !
+    private void boutonVoirPanierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boutonVoirPanierMouseClicked
+        // Quitter le marché -> Récupérer les instances de fruits dans le récapitulatif panier JList this.listeRecap 
+        //afin de les ajouter dans le panier en vérifiant que le MAX panier n'est pas atteint !
         
-    }//GEN-LAST:event_boutonQuitterMarcheMouseClicked
+        //Interface panier = new Interface(this, true, this.listeRecap, Double.parseDouble(this.labelPrixRecapPanier.getText()));
+        Interface panier = new Interface(this, true);
+        panier.setVisible(true);
+        panier.setLocation(100,100);
+        
+    }//GEN-LAST:event_boutonVoirPanierMouseClicked
 
     /**
      * @param args the command line arguments
@@ -949,20 +952,13 @@ public class MarcheFruits extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                MarcheFruits dialog = new MarcheFruits(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
+                new MarcheFruits().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton boutonQuitterMarche;
+    private javax.swing.JButton boutonVoirPanier;
     private javax.swing.JRadioButton categorieAgrume;
     private javax.swing.JRadioButton categorieExotique;
     private javax.swing.ButtonGroup categorieGroupe;
