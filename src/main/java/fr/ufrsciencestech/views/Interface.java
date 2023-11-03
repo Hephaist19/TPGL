@@ -2,7 +2,9 @@ package fr.ufrsciencestech.views;
 
 import javax.swing.*;
 
+import fr.ufrsciencestech.exceptions.PanierPleinException;
 import fr.ufrsciencestech.models.Panier;
+import fr.ufrsciencestech.models.fruits.Fruit;
 
 /**
  *
@@ -20,10 +22,16 @@ public class Interface extends javax.swing.JDialog {
         super(parent,modal);
         this.panier = p;
         initComponents();
+        this.LabelPrixTotal.setText(Double.toString(panier.getPrix()) + "€");
         initListeFruit();
     }
 
     private void initListeFruit() {
+        DefaultListModel liste = new DefaultListModel();
+        for (Fruit fruit : panier.getFruits()) {
+            liste.addElement(fruit.getName());
+        }
+        this.affichePanier.setModel(liste);
     }
 
     /**
@@ -227,12 +235,10 @@ public class Interface extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BoutonValiderPanierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoutonValiderPanierActionPerformed
-        // TODO add your handling code here:
+
+        JOptionPane.showMessageDialog(this, "Merci pour votre commande d'une valeur de " + panier.getPrix() + "€!\nBonne cuisine et à bientôt!", "Validation du paiement", JOptionPane.INFORMATION_MESSAGE);
+        this.dispose();
     }//GEN-LAST:event_BoutonValiderPanierActionPerformed
-   
-    private void choixRecetteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choixRecetteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_choixRecetteActionPerformed
 
     private void BoutonRetourMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BoutonRetourMouseClicked
         // Retour vers le marché
