@@ -152,7 +152,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
                 {
                     label.setForeground(bleu);
                 }
-                label.setText(listeTous.get(i));
+                label.setText(listeFruit.get(i).getName());
                 jPanel9.add(label); 
                 
             } else {//Quatrième ligne
