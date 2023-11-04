@@ -111,7 +111,7 @@ public class FruitsFilter {
      */
     public FruitsFilter filter(FilterType type) {
         switch (type) {
-            case PEPINS:
+            case NPEPINS:
                 for (int i = 0; i < liste.size(); i++) {
                     //On enlève tous les fruit avec pépins
                     if(!liste.get(i).isSeedless()) {
@@ -120,7 +120,7 @@ public class FruitsFilter {
                     }
                 }
                 break;
-            case NPEPINS:
+            case PEPINS:
                 for (int i = 0; i < liste.size(); i++) {
                     //On enlève tous les fruit sans pépins
                     if(liste.get(i).isSeedless()) {
