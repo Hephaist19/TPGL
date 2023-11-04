@@ -38,6 +38,11 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
     private static final DecimalFormat df = new DecimalFormat("0.00");
     private final Panier panier;
     private final MarcheFruits instance;
+
+    private ArrayList<Fruit> listeFruitAffiche;
+
+    boolean recetteAffiche = false;
+    private ArrayList<Recette> listeRecetteAffiche;
     /**
      * Creates new form MarcheFruits
      */
@@ -70,8 +75,8 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
     
     //Créer dynamiquement tous les fruits avec la listeTous
     public void initButtons(){
-       ArrayList<Fruit> toutFruit = FruitsFactory.createAll();
-       creationFruits(toutFruit);
+       listeFruitAffiche = FruitsFactory.createAll();
+       afficheFruits(listeFruitAffiche);
        //TODO faire pareil recette
     }
 
