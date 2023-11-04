@@ -8,12 +8,10 @@ import javax.swing.*;
 
 import fr.ufrsciencestech.controllers.FruitsFilter;
 import fr.ufrsciencestech.controllers.factories.*;
-import fr.ufrsciencestech.exceptions.PanierPleinException;
 import fr.ufrsciencestech.models.Panier;
 import fr.ufrsciencestech.models.fruits.Fruit;
 import fr.ufrsciencestech.models.recettes.Recette;
 import fr.ufrsciencestech.utils.FilterType;
-import fr.ufrsciencestech.utils.FruitType;
 import fr.ufrsciencestech.utils.SortType;
 
 import java.awt.Color;
@@ -447,7 +445,6 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         jPanel4.add(contenu);
     }
     
-
     private void remiseAZero(){
         jPanel4.removeAll();
         jPanel4.revalidate();
@@ -464,6 +461,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         
         //Remplir des fruits types
         afficheFruits();
+    }
 
     private void categorieRecetteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorieRecetteActionPerformed
         //Vider les panels avant de remettre 
@@ -560,6 +558,10 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         System.out.println("WESH");
+    }
+
+    public Panier getPanier() {
+        return panier;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -16,16 +16,16 @@ public class FruitsfactoryTest {
 
     @Test
     public void testCreateFruit() {
-        RecettesFactory instance = new RecettesFactory();
+        FruitsFactory instance = new FruitsFactory();
         assertTrue(instance != null);
         System.out.println("testCreateFruit");
         for(FruitType ft : FruitType.values()) {
             //Tester que la creation d'un fruit est possible pour tous les cas
-            Fruit tmp = RecettesFactory.createFruit(ft);
+            Fruit tmp = FruitsFactory.createFruit(ft);
             assertTrue(tmp != null);
         }
         for(FruitType ft : FruitType.values()) {
-            Fruit tmp = RecettesFactory.createFruit(ft, 8.5, "France");
+            Fruit tmp = FruitsFactory.createFruit(ft, 8.5, "France");
             if(null != tmp) {
                 assertTrue(8.5 == tmp.getPrix());
                 assertTrue(tmp.getOrigine().equals("France"));
@@ -35,7 +35,7 @@ public class FruitsfactoryTest {
 
     @Test
     public void testCreateAll() {
-        ArrayList<Fruit> all = RecettesFactory.createAll();
+        ArrayList<Fruit> all = FruitsFactory.createAll();
         //Est-ce que cette methods renvoit bien une liste avec tous les fruit dedans
         //Sachant que la valeur null produit un fruit valide aussi (Cf FruitFactory)
         assertTrue(all.size() == FruitType.values().length);
