@@ -25,17 +25,6 @@ import java.text.DecimalFormat;
  */
 public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeListener {
     
-    private List<String> listeSansPepins = Arrays.asList("Ananas","Kiwi","Framboise","Fraise","Banane");
-    private List<String> listeAgrume = Arrays.asList("Orange","Citron");  
-    private List<String> listeExotique = Arrays.asList("Ananas","Kiwi","Banane","Litchi");
-    private List<String> listeTous = Arrays.asList("Ananas","Pomme","Kiwi","Orange","Citron","Framboise","Cerise","Fraise","Banane","Peche","Litchi","Cake au citron","Jus de pomme","Jus multifruit","Tarte aux cerises","Banana split");
-    private List<String> listeRecette = Arrays.asList("Cake au citron","Jus de pomme","Jus multifruit","Tarte aux cerises","Banana split");  
-    
-    private List<String> listeOrdreAlphabtique = Arrays.asList("Ananas","Banane","Cerise","Citron","Fraise","Framboise","Kiwi","Litchi","Orange","Peche","Pomme"); 
-    //private List<String> listePrixCroissant = Arrays.asList();
-    //private List<String> listePrixDecroissant = Arrays.asList();
-    
-    private static final DecimalFormat df = new DecimalFormat("0.00");
     private final Panier panier;
     private final MarcheFruits instance;
 
