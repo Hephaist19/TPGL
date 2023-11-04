@@ -6,5 +6,5 @@ public enum PanierType {
     AGRUME,
     SANSPEPINS,
     AVECPEPINS,
-    
+    NULL;
 }
