@@ -251,6 +251,7 @@ public class Interface extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     public void BoutonValiderPanierActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_BoutonValiderPanierActionPerformed
+        System.out.println("callBack Valider");
         if (panier.getPrix() > 0) {
             JOptionPane.showMessageDialog(this,
                     "Merci pour votre commande d'une valeur de " + panier.getPrix() + "€!\nBonne cuisine et à bientôt!",
@@ -261,17 +262,19 @@ public class Interface extends javax.swing.JDialog {
     }// GEN-LAST:event_BoutonValiderPanierActionPerformed
 
     private void BoutonRetourMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_BoutonRetourMouseClicked
+        System.out.println("Callback Retour");
         this.dispose();
     }// GEN-LAST:event_BoutonRetourMouseClicked
 
     private void BoutonRetirerFruitMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_BoutonRetirerFruitMouseClicked
+        System.out.println("Callback Retirer");
         int index = this.affichePanier.getSelectedIndex();
         panier.retirer(index);
         initListeFruit();
     }// GEN-LAST:event_BoutonRetirerFruitMouseClicked
 
     private void BoutonViderPanierMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_BoutonViderPanierMouseClicked
-        System.out.println("hello");
+        System.out.println("Callback Vider");
         panier.vider();
         initListeFruit();
     }// GEN-LAST:event_BoutonViderPanierMouseClicked

@@ -1,7 +1,5 @@
 package fr.ufrsciencestech;
 
-import java.awt.Color;
-
 import fr.ufrsciencestech.views.*;
 
 public class Main {

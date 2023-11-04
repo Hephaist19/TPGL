@@ -4,10 +4,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 
-import java.awt.Frame;
 import java.awt.event.ActionEvent;
 
-import javax.swing.JFrame;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -28,16 +26,14 @@ public class InterfaceTest {
     @Mock
     private Panier p;
 
-    @Mock
-    private ActionEvent ae = mock(ActionEvent.class);
-
-    private MarcheFruits parent = new MarcheFruits();
+    private MarcheFruits parent;
 
     public InterfaceTest() {
     }
 
     @BeforeClass
     public static void setUpClass() {
+        
     }
 
     @AfterClass
@@ -46,10 +42,13 @@ public class InterfaceTest {
 
     @Before
     public void setUp() {
+
+        parent = new MarcheFruits();
+
         p = parent.getPanier();
+
         try {
-            p.ajouterTout(
-                    FruitsFactory.createAllOf(FruitType.FRAISE, FruitType.ANANAS, FruitType.BANANE, FruitType.CITRON));
+            p.ajouterTout(FruitsFactory.createAllOf(FruitType.FRAISE, FruitType.ANANAS, FruitType.BANANE, FruitType.CITRON));
         } catch (PanierPleinException e) {
             e.printStackTrace();
         }
@@ -67,6 +66,7 @@ public class InterfaceTest {
         System.out.println("testBoutonValiderPanierActionPerformed");
         // Test avec un panier valide
         i.getButtonValider().doClick();
+
         assertTrue(p.getTaillePanier() == 0);
         assertFalse(i.isActive());
     }
@@ -76,23 +76,22 @@ public class InterfaceTest {
     public void testBoutonValiderPanierActionPerformedInvalide() {
         System.out.println("testBoutonValiderPanierActionPerformedInvalide");
         p.vider();
-        // Test panier vide donc non valide
-        i.BoutonValiderPanierActionPerformed(ae);
+        //Simuler un clique avec un panier vide
+        i.getButtonValider().doClick();
         assertFalse(i.isActive());
     }
 
     @Test
-    public void testBoutonRetour() {
-        System.out.println("testBoutonRetour");
-        // Test avec un panier valide
+    public void testBoutonRetourMouseClicked() {
+        System.out.println("testBoutonRetourMouseClicked");
         i.getButtonRetour().doClick();
+        //Resultat attendu: la fenêtre n'est plus visible
         assertFalse(i.isActive());
     }
 
     @Test
-    public void testBoutonViderPanier() {
-        System.out.println("testBoutonViderPanier");
-        System.out.println(p);
+    public void testBoutonViderPanierMouseClicked() {
+        System.out.println("testBoutonViderPanierMouseClicked");
         i.getButtonViderPanier().doClick();
         System.out.println(p);
         assertTrue(p.getTaillePanier() == 0);
