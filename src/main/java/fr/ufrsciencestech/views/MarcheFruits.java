@@ -437,14 +437,13 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
     }
         
     private void categorieSansPepinsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorieSansPepinsActionPerformed
-        // Fruits sans pépins 
-        ArrayList<Fruit> test = FruitsFactory.createAll();
-        FilterExecutor fe = new FilterExecutor(test);
-
-        ArrayList<Fruit> result = fe.filter(FilterType.SANSPEPINS).getResult();
-      
         //Vider les panels avant de remettre 
         remiseAZero();
+        
+        //Fruits sans pépins
+        ArrayList<Fruit> tout = FruitsFactory.createAll();
+        listeFruitAffiche = new FruitsFilter(tout).filter(FilterType.NPEPINS).getResult();
+        
         //Remplir des fruits types
         afficheFruits(listeFruitAffiche);
         
@@ -495,7 +494,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         remiseAZero();
         
         //Remplir des fruits types
-        creationFruits(result);
+        afficheFruits(result);
     }//GEN-LAST:event_categorieTousActionPerformed
 
     private void trierParActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trierParActionPerformed
