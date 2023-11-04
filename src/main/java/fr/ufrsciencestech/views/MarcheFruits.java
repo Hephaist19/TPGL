@@ -1,23 +1,24 @@
 package fr.ufrsciencestech.views;
-import fr.ufrsciencestech.controllers.FilterExecutor;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.net.URL;
 import java.util.*;
 import javax.swing.*;
 
+import fr.ufrsciencestech.controllers.FruitsFilter;
 import fr.ufrsciencestech.controllers.factories.FruitsFactory;
 import fr.ufrsciencestech.exceptions.PanierPleinException;
 import fr.ufrsciencestech.models.Panier;
 import fr.ufrsciencestech.models.fruits.Fruit;
+import fr.ufrsciencestech.models.recettes.Recette;
 import fr.ufrsciencestech.utils.FilterType;
 import fr.ufrsciencestech.utils.FruitType;
+import fr.ufrsciencestech.utils.SortType;
 
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.DecimalFormat;
 
 /**
  *
@@ -65,7 +66,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
     //Créer dynamiquement tous les fruits avec la listeTous
     public void initButtons(){
        listeFruitAffiche = FruitsFactory.createAll();
-       afficheFruits(listeFruitAffiche);
+       afficheFruits();
        //TODO faire pareil recette
     }
 
@@ -320,7 +321,6 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void creationFruits(ArrayList<Fruit> liste){
     /**
      * Affiche tous les fruits contenu dans la liste listeFruitAffiche, dans le jPanel prévu
      */
@@ -485,15 +485,14 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         
         validation.setVisible(true);
         validation.setLocation(100,100);
-        /*
-        Recette recette = new Jus();
-        PageRecette validation = new PageRecette(this, true, recette ,panier);
-        
-        validation.setVisible(true);
-        validation.setLocation(100,100);*/
-        
-        //TODO labelPrixRecapPanier actualise au cas ou on retire
+
     }//GEN-LAST:event_boutonVoirPanierMouseClicked
+
+    //TODO a faire fonctionner
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        System.out.println("WESH");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boutonVoirPanier;
@@ -506,21 +505,13 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
     private javax.swing.JLabel euros;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -533,9 +524,5 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
     private javax.swing.JComboBox<String> trierPar;
     // End of variables declaration//GEN-END:variables
 
-    //TODO a faire fonctionner
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-        System.out.println("WESH");
-    }
+    
 }
