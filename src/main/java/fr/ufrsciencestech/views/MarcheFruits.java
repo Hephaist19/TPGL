@@ -502,31 +502,31 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         
         String choix = (String) this.trierPar.getSelectedItem(); //Récupère ce qui a été sélectionné
 
-        //On réalise au cas par cas
-        switch (choix) {
-            case "Ordre Alphabétique":
-                //Les trier dans cet ordre => Ananas, Banane, Cerise, Citron, Fraise, Framboise, Kiwi, Litchi, Orange, Pêche, Pomme
-                break;
-            case "Prix Croissant":
-                //Les trier dans cet ordre (prix)=>
-                break;
-            case "Prix Décroissant":
-                //Les trier dans cet ordre (prix inverse ci dessus)
-                ArrayList<Fruit> test = FruitsFactory.createAll();
-                FilterExecutor fe = new FilterExecutor(test);
-
-                ArrayList<Fruit> result = FruitsFactory.createAll();
-
-                //Vider les panels avant de remettre 
-                remiseAZero();
-                
-                //Remplir des fruits types
-                creationFruits(result);
-                break;
-            default:
-                break;
+        if(!recetteAffiche) {
+            
+            FruitsFilter fe = new FruitsFilter(listeFruitAffiche);
+            //On réalise au cas par cas
+            switch (choix) {
+                case "Ordre Alphabétique":
+                    listeFruitAffiche = fe.sort(SortType.ALPHABETIQUE).getResult();
+                    remiseAZero();
+                    afficheFruits();
+                    break;
+                case "Prix Croissant":
+                    listeFruitAffiche = fe.sort(SortType.PRIXCROISSANT).getResult();
+                    remiseAZero();
+                    afficheFruits();
+                    break;
+                case "Prix Décroissant":
+                    listeFruitAffiche = fe.sort(SortType.PRIXDECROISSANT).getResult();
+                    remiseAZero();
+                    afficheFruits();
+                    break;
+                default:
+                    break;
+            }
         }
-
+        
      }//GEN-LAST:event_trierParActionPerformed
 
     private void boutonVoirPanierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boutonVoirPanierMouseClicked
