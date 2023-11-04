@@ -116,14 +116,6 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
-        jPanel10 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        jPanel15 = new javax.swing.JPanel();
-        jPanel16 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1000, 1000));
@@ -315,36 +307,6 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         jPanel2.add(jLabel1, new java.awt.GridBagConstraints());
 
         jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.Y_AXIS));
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.add(jPanel3);
-
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 80, 5));
-        jPanel4.add(jPanel6);
-
-        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.add(jPanel7);
-
-        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 80, 5));
-        jPanel4.add(jPanel8);
-
-        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.add(jPanel10);
-
-        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 80, 5));
-        jPanel4.add(jPanel9);
-
-        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.add(jPanel15);
-
-        jPanel16.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel16.setMinimumSize(new java.awt.Dimension(160, 10));
-        jPanel16.setPreferredSize(new java.awt.Dimension(160, 10));
-        jPanel16.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 60, 5));
-        jPanel4.add(jPanel16);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
