@@ -19,6 +19,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 
 /**
  *
@@ -28,7 +29,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
     
     private final Panier panier;
     private final MarcheFruits instance;
-
+    private static final DecimalFormat df = new DecimalFormat("0.00");
     private ArrayList<Fruit> listeFruitAffiche;
 
     boolean recetteAffiche = false;
@@ -57,8 +58,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
             liste.addElement(fruit.getName());
         }
         this.listeRecap.setModel(liste);
-        //TODO limiter à deux chiffre après la virgules
-        this.labelPrixRecapPanier.setText(Double.toString(panier.getPrix()));
+        this.labelPrixRecapPanier.setText(df.format(panier.getPrix()));
     }
     
     
@@ -393,7 +393,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         
         //Fruits sans pépins
         ArrayList<Fruit> tout = FruitsFactory.createAll();
-        listeFruitAffiche = new FruitsFilter(tout).filter(FilterType.NPEPINS).getResult();
+        listeFruitAffiche = new FruitsFilter(tout).filter(FilterType.PEPINS).getResult();
         
         //Remplir des fruits types
         afficheFruits();
@@ -405,46 +405,40 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
     }//GEN-LAST:event_categorieRecetteActionPerformed
 
     private void categorieAgrumeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorieAgrumeActionPerformed
-        // Agrumes -> Orange, Citron
-        /*ArrayList<Fruit> test = FruitsFactory.createAll();
-        FilterExecutor fe = new FilterExecutor(test);
-
-        ArrayList<Fruit> result = fe.filter(FilterType.AGRUMES).getResult();
-        System.out.println(result);
-        
         //Vider les panels avant de remettre 
         remiseAZero();
         
+        // Agrumes 
+        ArrayList<Fruit> tout = FruitsFactory.createAll();
+        listeFruitAffiche = new FruitsFilter(tout).filter(FilterType.AGRUME).getResult();
+        
        //Remplir des fruits types
-        creationFruits(result);
-        */
+        afficheFruits();
+        
     }//GEN-LAST:event_categorieAgrumeActionPerformed
 
     private void categorieExotiqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorieExotiqueActionPerformed
-        // Fruits exotiques -> Ananas, Kiwi, Banane, Litchi
-        /*ArrayList<Fruit> test = FruitsFactory.createAll();
-        FilterExecutor fe = new FilterExecutor(test);
-        //TODO a faire
-        ArrayList<Fruit> result = fe.filter(FilterType.EXOTIQUE).getResult();
-        System.out.println(result);
-        
-        //Vider les panels avant de remettre 
+       //Vider les panels avant de remettre 
         remiseAZero();
         
-        //Remplir des fruits types
-        creationFruits(result);
-        */
+        // Agrumes 
+        ArrayList<Fruit> tout = FruitsFactory.createAll();
+        listeFruitAffiche = new FruitsFilter(tout).filter(FilterType.EXOTIQUE).getResult();
+        
+       //Remplir des fruits types
+        afficheFruits();
     }//GEN-LAST:event_categorieExotiqueActionPerformed
 
     
     private void categorieTousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorieTousActionPerformed
-        // Tous les fruits du marché
-        ArrayList<Fruit> result = FruitsFactory.createAll();
-        
         //Vider les panels avant de remettre 
         remiseAZero();
         
-        //Remplir des fruits types
+        // Agrumes 
+        ArrayList<Fruit> tout = FruitsFactory.createAll();
+        listeFruitAffiche = new FruitsFilter(tout).getResult();
+        
+       //Remplir des fruits types
         afficheFruits();
     }//GEN-LAST:event_categorieTousActionPerformed
 

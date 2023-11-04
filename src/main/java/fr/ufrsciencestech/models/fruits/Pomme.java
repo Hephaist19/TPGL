@@ -66,7 +66,17 @@ public class Pomme implements Fruit {
     }
 
     @Override
-    public boolean isSeedless() {  //predicat indiquant qu'une orange a des pepins
+    public boolean isSeedless() { 
+        return false;
+    }
+    
+    @Override
+    public boolean isExotique() { 
+        return false;
+    }
+    
+    @Override
+    public boolean isAgrume(){
         return false;
     }
 

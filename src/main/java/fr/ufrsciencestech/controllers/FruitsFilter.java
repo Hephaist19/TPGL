@@ -130,9 +130,23 @@ public class FruitsFilter {
                 }
                 break;
             case EXOTIQUE:
-            break;
+                for (int i = 0; i < liste.size(); i++) {
+                    //On enlève tous les fruit qui ne sont pas exotique
+                    if(!liste.get(i).isExotique()) {
+                        liste.remove(i);
+                        i--;
+                    }
+                }
+                break;
             default:
-            break;
+                for (int i = 0; i < liste.size(); i++) {
+                    //On enlève tous les fruit qui ne sont pas des agrumes
+                    if(!liste.get(i).isAgrume()) {
+                        liste.remove(i);
+                        i--;
+                    }
+                }
+                break;
                 
         }
         return this;

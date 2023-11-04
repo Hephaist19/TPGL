@@ -75,6 +75,16 @@ public class Peche implements Fruit{
     public boolean isSeedless() {  //predicat indiquant qu'une kiwi a des pepins
         return false;
     }
+    
+    @Override
+    public boolean isExotique() { 
+        return false;
+    }
+    
+    @Override
+    public boolean isAgrume(){
+        return false;
+    }
 
     @Override
     public Object clone() throws CloneNotSupportedException {

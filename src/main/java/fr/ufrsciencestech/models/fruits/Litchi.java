@@ -75,6 +75,16 @@ public class Litchi implements Fruit {
     public boolean isSeedless() {
         return false;
     }
+    
+    @Override
+    public boolean isExotique() { 
+        return true;
+    }
+    
+    @Override
+    public boolean isAgrume(){
+        return false;
+    }
 
     @Override
     public Object clone() throws CloneNotSupportedException {

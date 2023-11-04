@@ -8,6 +8,19 @@ public interface Fruit {
      */
     public boolean isSeedless();
 
+    
+    /**
+     * @brief Renvoie si le fruit est exotique
+     * @return
+     */
+    public boolean isExotique();
+    
+    /**
+     * @brief Renvoie si le fruit est un agrume
+     * @return
+     */
+    public boolean isAgrume();
+    
     /**
      * @brief Renvoie le prix unitaire du fruit
      * @return

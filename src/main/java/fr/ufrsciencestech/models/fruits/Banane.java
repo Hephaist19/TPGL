@@ -65,6 +65,16 @@ public class Banane implements Fruit{
     }
 
     @Override
+    public boolean isExotique() { 
+        return true;
+    }
+    
+    @Override
+    public boolean isAgrume(){
+        return false;
+    }
+    
+    @Override
     public String toString() {
         return "Banane de " + origine + " à " + prix + " euros";
     }

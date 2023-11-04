@@ -56,6 +56,16 @@ public class Ananas implements Fruit {
     public boolean isSeedless() {
         return true;
     }
+    
+    @Override
+    public boolean isExotique() { 
+        return true;
+    }
+    
+    @Override
+    public boolean isAgrume(){
+        return false;
+    }
 
     @Override
     public String toString() {
