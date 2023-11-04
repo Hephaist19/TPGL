@@ -2,7 +2,7 @@ package fr.ufrsciencestech.controllers;
 
 import java.util.ArrayList;
 
-import fr.ufrsciencestech.controllers.factories.FruitsFactory;
+import fr.ufrsciencestech.controllers.factories.*;
 import fr.ufrsciencestech.models.fruits.Fruit;
 import fr.ufrsciencestech.utils.FilterType;
 import fr.ufrsciencestech.utils.SortType;

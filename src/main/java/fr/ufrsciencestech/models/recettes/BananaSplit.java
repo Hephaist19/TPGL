@@ -2,20 +2,36 @@ package fr.ufrsciencestech.models.recettes;
 
 import java.util.ArrayList;
 
-import fr.ufrsciencestech.models.fruits.Fruit;
+import fr.ufrsciencestech.models.fruits.*;
 
-public class Macedoine implements Recette {
+public class BananaSplit implements Recette {
+    
     private String name;
     private ArrayList<Fruit> listeFruit;
-    private ArrayList<String> listeAutre;
-
+    
+    private Banane b1 = new Banane();
+    private Banane b2 = new Banane();
+    private Cerise c3 = new Cerise();
+   
+    
     @Override
     public String getName() {
-        return name;
+        return "Banana split";
     }
 
     @Override
+    public double getPrix() {
+        Banane b = new Banane();
+        Cerise c = new Cerise();
+        return 2*b.getPrix()+1*c.getPrix();
+    }
+    
+    @Override
     public ArrayList<Fruit> getFruits() {
+        listeFruit.clear();
+        listeFruit.add(b1);
+        listeFruit.add(b2);
+        listeFruit.add(c3);
         return listeFruit;
     }
 
@@ -26,11 +42,7 @@ public class Macedoine implements Recette {
         for (Fruit fruit : listeFruit) {
             sb.append(fruit.getName()).append("\n");
         }
-
-        for (String string : listeAutre) {
-            sb.append(string).append("\n");
-        }
-
+        
         return sb.toString();
     }
 }

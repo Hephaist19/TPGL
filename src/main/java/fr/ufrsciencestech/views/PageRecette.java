@@ -25,8 +25,10 @@ public class PageRecette extends javax.swing.JDialog {
     private Panier panier;
     private Recette recette;
     private static final DecimalFormat df = new DecimalFormat("0.00");
+    
     private ArrayList<Fruit> listeFruit; //Fruits nécessaires de la recette
     private URL iR; //chemin pour accéder à l'image de la recette
+    private double prix =0;
     
     /**
      * Creates new PageFruit
@@ -38,7 +40,8 @@ public class PageRecette extends javax.swing.JDialog {
         super(parent, modal);
         this.panier = p;
         this.recette = r;
-        //this.iR= this.getClass().getClassLoader().getResource("./images/" + r.getName() + ".png");
+        this.listeFruit=r.getFruits();
+        this.iR= this.getClass().getClassLoader().getResource("./images/" + recette.getName() + ".png");
         initComponents();
         initRecetteIHM();
         
@@ -48,13 +51,23 @@ public class PageRecette extends javax.swing.JDialog {
         //this.ImageRecette.setIcon(new ImageIcon(iR));
         this.NomRecette.setText(recette.getName());
         this.NbRecette.setText(Integer.toString(1));
+        this.Etapes.setText(recette.getDescription());
+        calculPrix();
         
-        //this.Etapes.setText(recette.getDescription());
-        
-        
-        //this.TotalFruit.setText(Double.toString(Double.parseDouble(this.NbFruit.getText()) * recette.getPrix()));
+        this.TotalFruit.setText(df.format(Double.parseDouble(this.NbRecette.getText()) * prix ));
     }
     
+    private void calculPrix(){
+        
+        int taille = recette.getFruits().size();
+        double prix = 0;
+        
+        for(int i=0; i<taille; i++)
+        {
+            prix += recette.getFruits().get(i).getPrix();
+        }
+        
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
