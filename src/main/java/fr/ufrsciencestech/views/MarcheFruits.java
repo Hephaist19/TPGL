@@ -396,7 +396,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         listeFruitAffiche = new FruitsFilter(tout).filter(FilterType.NPEPINS).getResult();
         
         //Remplir des fruits types
-        afficheFruits(listeFruitAffiche);
+        afficheFruits();
         
     }//GEN-LAST:event_categorieSansPepinsActionPerformed
 
@@ -445,7 +445,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         remiseAZero();
         
         //Remplir des fruits types
-        afficheFruits(result);
+        afficheFruits();
     }//GEN-LAST:event_categorieTousActionPerformed
 
     private void trierParActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trierParActionPerformed

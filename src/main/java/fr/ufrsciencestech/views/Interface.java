@@ -1,8 +1,5 @@
 package fr.ufrsciencestech.views;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
 import javax.swing.*;
 
 import fr.ufrsciencestech.models.Panier;
@@ -21,7 +18,6 @@ public class Interface extends javax.swing.JDialog {
     /**
      * Creates new form Interface
      */
-    //public Interface(java.awt.Frame parent, boolean modal, JList<String> listeFruits, double prixTotal ) {
     public Interface(java.awt.Frame parent, boolean modal, Panier p) {
         super(parent,modal);
         this.panier = p;
