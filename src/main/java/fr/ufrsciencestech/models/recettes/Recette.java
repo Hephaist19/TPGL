@@ -16,7 +16,7 @@ public interface Recette {
      * Renvoie la liste des fruit associé à la recette
      * @return
      */
-    public ArrayList<Fruit> getIngredients();
+    public ArrayList<Fruit> getFruits();
 
     public String getDescription();
 }

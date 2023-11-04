@@ -15,7 +15,7 @@ public class Macedoine implements Recette {
     }
 
     @Override
-    public ArrayList<Fruit> getIngredients() {
+    public ArrayList<Fruit> getFruits() {
         return listeFruit;
     }
 
