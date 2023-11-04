@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 
 import fr.ufrsciencestech.exceptions.PanierPleinException;
 import fr.ufrsciencestech.models.Panier;
-import fr.ufrsciencestech.models.fruits.Fruit;
+import fr.ufrsciencestech.models.fruits.*;
 import fr.ufrsciencestech.models.recettes.Recette;
 import java.text.DecimalFormat;
 
@@ -20,38 +20,39 @@ import java.text.DecimalFormat;
  *
  * @author hg186648
  */
-public class PageFruit extends javax.swing.JDialog {
+public class PageRecette extends javax.swing.JDialog {
 
     private Panier panier;
-    private Fruit fruit;
+    private Recette recette;
     private static final DecimalFormat df = new DecimalFormat("0.00");
-    
-    private ArrayList<Recette> listeRecette; //Recettes contenant ce fruit
-    private URL iF; //chemin pour accéder à l'image du fruit 
+    private ArrayList<Fruit> listeFruit; //Fruits nécessaires de la recette
+    private URL iR; //chemin pour accéder à l'image de la recette
     
     /**
      * Creates new PageFruit
      * @param parent
      * @param modal
      */
-    //public PageFruit(java.awt.Frame parent, boolean modal,Fruit leFruit) {
-    public PageFruit(java.awt.Frame parent, boolean modal, Fruit f, Panier p) {
+    
+    public PageRecette(java.awt.Frame parent, boolean modal, Recette r, Panier p) {
         super(parent, modal);
         this.panier = p;
-        this.fruit = f;
-        this.iF= this.getClass().getClassLoader().getResource("./images/" + f.getName() + ".png");
+        this.recette = r;
+        //this.iR= this.getClass().getClassLoader().getResource("./images/" + r.getName() + ".png");
         initComponents();
-        initFruitIHM();
+        initRecetteIHM();
         
     }
 
-    public void initFruitIHM(){
-        this.ImageFruit.setIcon(new ImageIcon(iF));
-        this.NomFruit.setText(fruit.getName());
-        this.OrigineFruit.setText(fruit.getOrigine());
-        this.PrixFruit.setText(Double.toString(fruit.getPrix()));
-        this.NbFruit.setText(Integer.toString(1));
-        this.TotalFruit.setText(Double.toString(Double.parseDouble(this.NbFruit.getText()) * fruit.getPrix()));
+    private void initRecetteIHM(){
+        //this.ImageRecette.setIcon(new ImageIcon(iR));
+        this.NomRecette.setText(recette.getName());
+        this.NbRecette.setText(Integer.toString(1));
+        
+        //this.Etapes.setText(recette.getDescription());
+        
+        
+        //this.TotalFruit.setText(Double.toString(Double.parseDouble(this.NbFruit.getText()) * recette.getPrix()));
     }
     
     
@@ -65,94 +66,69 @@ public class PageFruit extends javax.swing.JDialog {
     private void initComponents() {
 
         Ligne1 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        ImageFruit = new javax.swing.JButton();
-        PanelInfoFruit = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        NomFruit = new javax.swing.JLabel();
+        ImagePanel = new javax.swing.JPanel();
+        ImageRecette = new javax.swing.JButton();
+        PanelInfoRecette = new javax.swing.JPanel();
+        Ligne1Infos = new javax.swing.JPanel();
+        NomRecette = new javax.swing.JLabel();
         Ligne2Infos = new javax.swing.JPanel();
-        LabelOrigine = new javax.swing.JLabel();
-        OrigineFruit = new javax.swing.JLabel();
-        Ligne3Infos = new javax.swing.JPanel();
-        LabelPrix = new javax.swing.JLabel();
-        PrixFruit = new javax.swing.JLabel();
-        EuroFruit = new javax.swing.JLabel();
+        LabelIngredients = new javax.swing.JLabel();
+        IngredientsRecette = new javax.swing.JLabel();
         Ligne2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        LabelExempleRecettes = new javax.swing.JLabel();
-        ExempleRecette = new javax.swing.JLabel();
+        LabelEtapes = new javax.swing.JLabel();
+        Etapes = new javax.swing.JLabel();
         Ligne3 = new javax.swing.JPanel();
         PanelNombreFruit = new javax.swing.JPanel();
         MoinsFruit = new javax.swing.JButton();
-        NbFruit = new javax.swing.JTextField();
+        NbRecette = new javax.swing.JTextField();
         PlusFruit = new javax.swing.JButton();
         PanelTotalFruit = new javax.swing.JPanel();
         TotalFruit = new javax.swing.JLabel();
         EuroTotal = new javax.swing.JLabel();
         AjoutFruit = new javax.swing.JButton();
 
-        setMaximumSize(new java.awt.Dimension(460, 325));
         setMinimumSize(new java.awt.Dimension(460, 318));
-        setPreferredSize(new java.awt.Dimension(460, 300));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.Y_AXIS));
 
         Ligne1.setLayout(new java.awt.GridLayout(1, 2));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(100, 125));
+        ImagePanel.setBackground(new java.awt.Color(255, 255, 255));
+        ImagePanel.setPreferredSize(new java.awt.Dimension(100, 125));
 
-        ImageFruit.setForeground(new java.awt.Color(255, 255, 255));
-        ImageFruit.setPreferredSize(new java.awt.Dimension(125, 125));
-        jPanel1.add(ImageFruit);
+        ImageRecette.setForeground(new java.awt.Color(255, 255, 255));
+        ImageRecette.setPreferredSize(new java.awt.Dimension(125, 125));
+        ImagePanel.add(ImageRecette);
 
-        Ligne1.add(jPanel1);
+        Ligne1.add(ImagePanel);
 
-        PanelInfoFruit.setLayout(new javax.swing.BoxLayout(PanelInfoFruit, javax.swing.BoxLayout.Y_AXIS));
+        PanelInfoRecette.setLayout(new javax.swing.BoxLayout(PanelInfoRecette, javax.swing.BoxLayout.Y_AXIS));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setPreferredSize(new java.awt.Dimension(100, 25));
+        Ligne1Infos.setBackground(new java.awt.Color(255, 255, 255));
+        Ligne1Infos.setPreferredSize(new java.awt.Dimension(100, 25));
 
-        NomFruit.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        NomFruit.setForeground(new java.awt.Color(141, 126, 255));
-        NomFruit.setText("Fruit");
-        jPanel2.add(NomFruit);
+        NomRecette.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        NomRecette.setForeground(new java.awt.Color(141, 126, 255));
+        NomRecette.setText("Recette");
+        Ligne1Infos.add(NomRecette);
 
-        PanelInfoFruit.add(jPanel2);
+        PanelInfoRecette.add(Ligne1Infos);
 
         Ligne2Infos.setBackground(new java.awt.Color(255, 255, 255));
 
-        LabelOrigine.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        LabelOrigine.setForeground(new java.awt.Color(141, 126, 255));
-        LabelOrigine.setText("Origine : ");
-        Ligne2Infos.add(LabelOrigine);
+        LabelIngredients.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        LabelIngredients.setForeground(new java.awt.Color(141, 126, 255));
+        LabelIngredients.setText("Ingrédients  : ");
+        Ligne2Infos.add(LabelIngredients);
 
-        OrigineFruit.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        OrigineFruit.setForeground(new java.awt.Color(189, 98, 199));
-        OrigineFruit.setText("Pays");
-        Ligne2Infos.add(OrigineFruit);
+        IngredientsRecette.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        IngredientsRecette.setForeground(new java.awt.Color(189, 98, 199));
+        IngredientsRecette.setText("Les ingrédients");
+        Ligne2Infos.add(IngredientsRecette);
 
-        PanelInfoFruit.add(Ligne2Infos);
+        PanelInfoRecette.add(Ligne2Infos);
 
-        Ligne3Infos.setBackground(new java.awt.Color(255, 255, 255));
-
-        LabelPrix.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        LabelPrix.setForeground(new java.awt.Color(141, 126, 255));
-        LabelPrix.setText("Prix : ");
-        Ligne3Infos.add(LabelPrix);
-
-        PrixFruit.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        PrixFruit.setForeground(new java.awt.Color(189, 98, 199));
-        PrixFruit.setText("00,00");
-        Ligne3Infos.add(PrixFruit);
-
-        EuroFruit.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        EuroFruit.setForeground(new java.awt.Color(189, 98, 199));
-        EuroFruit.setText(" €");
-        Ligne3Infos.add(EuroFruit);
-
-        PanelInfoFruit.add(Ligne3Infos);
-
-        Ligne1.add(PanelInfoFruit);
+        Ligne1.add(PanelInfoRecette);
 
         getContentPane().add(Ligne1);
 
@@ -164,17 +140,17 @@ public class PageFruit extends javax.swing.JDialog {
         jPanel3.setPreferredSize(new java.awt.Dimension(100, 80));
         jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 25));
 
-        LabelExempleRecettes.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        LabelExempleRecettes.setForeground(new java.awt.Color(141, 126, 255));
-        LabelExempleRecettes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LabelExempleRecettes.setText("Exemples de recettes :");
-        jPanel3.add(LabelExempleRecettes);
+        LabelEtapes.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        LabelEtapes.setForeground(new java.awt.Color(141, 126, 255));
+        LabelEtapes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LabelEtapes.setText("Étapes :");
+        jPanel3.add(LabelEtapes);
 
-        ExempleRecette.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        ExempleRecette.setForeground(new java.awt.Color(189, 98, 199));
-        ExempleRecette.setText("recette, recette, recette");
-        ExempleRecette.setToolTipText("");
-        jPanel3.add(ExempleRecette);
+        Etapes.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        Etapes.setForeground(new java.awt.Color(189, 98, 199));
+        Etapes.setText("1,2,3");
+        Etapes.setToolTipText("");
+        jPanel3.add(Etapes);
 
         Ligne2.add(jPanel3);
 
@@ -200,13 +176,13 @@ public class PageFruit extends javax.swing.JDialog {
         });
         PanelNombreFruit.add(MoinsFruit);
 
-        NbFruit.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        NbFruit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        NbFruit.setText("0");
-        NbFruit.setMaximumSize(new java.awt.Dimension(30, 37));
-        NbFruit.setMinimumSize(new java.awt.Dimension(64, 37));
-        NbFruit.setPreferredSize(new java.awt.Dimension(64, 37));
-        PanelNombreFruit.add(NbFruit);
+        NbRecette.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        NbRecette.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        NbRecette.setText("0");
+        NbRecette.setMaximumSize(new java.awt.Dimension(30, 37));
+        NbRecette.setMinimumSize(new java.awt.Dimension(64, 37));
+        NbRecette.setPreferredSize(new java.awt.Dimension(64, 37));
+        PanelNombreFruit.add(NbRecette);
 
         PlusFruit.setBackground(new java.awt.Color(141, 126, 255));
         PlusFruit.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
@@ -258,22 +234,21 @@ public class PageFruit extends javax.swing.JDialog {
     
 
     private void actualiserPrixTotal() {
-        
-        double total = Double.parseDouble(this.NbFruit.getText()) * fruit.getPrix();
-        this.TotalFruit.setText(df.format(total));
+       // double total = Double.parseDouble(this.NbFruit.getText()) * fruit.getPrix();
+       // this.TotalFruit.setText(df.format(total));
     }
 
     private void MoinsFruitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MoinsFruitMouseClicked
-        int nombre = Integer.parseInt(this.NbFruit.getText());
+        int nombre = Integer.parseInt(this.NbRecette.getText());
         //TODO VERIFIER SI OK
         if(nombre == 1) //Vérification qu'on ne peut avoir un chiffre négatif
         {
-            this.NbFruit.setText(Integer.toString(nombre));
+            this.NbRecette.setText(Integer.toString(nombre));
         }
         else 
         {            
             nombre--;
-            this.NbFruit.setText(Integer.toString(nombre));
+            this.NbRecette.setText(Integer.toString(nombre));
         }
         
         //Mise à jour du prix total
@@ -281,56 +256,54 @@ public class PageFruit extends javax.swing.JDialog {
     }//GEN-LAST:event_MoinsFruitMouseClicked
 
     private void PlusFruitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PlusFruitMouseClicked
-        int nombre = Integer.parseInt(this.NbFruit.getText());
+        int nombre = Integer.parseInt(this.NbRecette.getText());
         nombre++;
-        this.NbFruit.setText(Integer.toString(nombre));
+        this.NbRecette.setText(Integer.toString(nombre));
         
         //Mise à jour du prix total
         actualiserPrixTotal();
     }//GEN-LAST:event_PlusFruitMouseClicked
 
     private void AjoutFruitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjoutFruitActionPerformed
+        Fruit fruit = new Pomme();
         
-        int nombre = Integer.parseInt(this.NbFruit.getText());
+        int nombre = Integer.parseInt(this.NbRecette.getText());
         int i = 0;
         try {
             for (; i < nombre; i++) {
                 panier.ajout(fruit);
             }
         } catch (PanierPleinException e) {
-            JOptionPane.showMessageDialog(Ligne2, "Il n'y a plus de place dans votre panier.\nSeulement " + i + " " + fruit.getName() + " se retrouvent dans votre panier.", "Attention !", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(Ligne2, "Il n'y a pas assez de place dans votre panier.", "Faites du tri !", JOptionPane.ERROR_MESSAGE);
 
         }finally {
             this.dispose();
         }
+        
     }//GEN-LAST:event_AjoutFruitActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AjoutFruit;
-    private javax.swing.JLabel EuroFruit;
+    private javax.swing.JLabel Etapes;
     private javax.swing.JLabel EuroTotal;
-    private javax.swing.JLabel ExempleRecette;
-    private javax.swing.JButton ImageFruit;
-    private javax.swing.JLabel LabelExempleRecettes;
-    private javax.swing.JLabel LabelOrigine;
-    private javax.swing.JLabel LabelPrix;
+    private javax.swing.JPanel ImagePanel;
+    private javax.swing.JButton ImageRecette;
+    private javax.swing.JLabel IngredientsRecette;
+    private javax.swing.JLabel LabelEtapes;
+    private javax.swing.JLabel LabelIngredients;
     private javax.swing.JPanel Ligne1;
+    private javax.swing.JPanel Ligne1Infos;
     private javax.swing.JPanel Ligne2;
     private javax.swing.JPanel Ligne2Infos;
     private javax.swing.JPanel Ligne3;
-    private javax.swing.JPanel Ligne3Infos;
     private javax.swing.JButton MoinsFruit;
-    private javax.swing.JTextField NbFruit;
-    private javax.swing.JLabel NomFruit;
-    private javax.swing.JLabel OrigineFruit;
-    private javax.swing.JPanel PanelInfoFruit;
+    private javax.swing.JTextField NbRecette;
+    private javax.swing.JLabel NomRecette;
+    private javax.swing.JPanel PanelInfoRecette;
     private javax.swing.JPanel PanelNombreFruit;
     private javax.swing.JPanel PanelTotalFruit;
     private javax.swing.JButton PlusFruit;
-    private javax.swing.JLabel PrixFruit;
     private javax.swing.JLabel TotalFruit;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }

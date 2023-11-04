@@ -1,7 +1,10 @@
 package fr.ufrsciencestech.views;
 
 import javax.swing.*;
-import java.lang.*;
+
+import fr.ufrsciencestech.models.Panier;
+import fr.ufrsciencestech.models.fruits.Fruit;
+import java.text.DecimalFormat;
 
 /**
  *
@@ -9,20 +12,28 @@ import java.lang.*;
  */
 public class Interface extends javax.swing.JDialog {
 
-    private JList<String> listeFruits1;
-    private double prixTotal1;
+    private Panier panier;
+    private static final DecimalFormat df = new DecimalFormat("0.00");
     
     /**
      * Creates new form Interface
      */
-    //public Interface(java.awt.Frame parent, boolean modal, JList<String> listeFruits, double prixTotal ) {
-    public Interface(java.awt.Frame parent, boolean modal) {
+    public Interface(java.awt.Frame parent, boolean modal, Panier p) {
         super(parent,modal);
+        this.panier = p;
+        //Affecter l'observer this au panier
         initComponents();
-        /*
-        this.listeFruits1=listeFruits;
-        this.prixTotal1=prixTotal;
-        */
+        initListeFruit();
+    }
+
+    private void initListeFruit() {
+        DefaultListModel liste = new DefaultListModel();
+        for (Fruit fruit : panier.getFruits()) {
+            liste.addElement(fruit.getName());
+        }
+        this.affichePanier.setModel(liste);
+        
+        this.LabelPrixTotal.setText(df.format(panier.getPrix()) + "€");
     }
 
     /**
@@ -37,23 +48,20 @@ public class Interface extends javax.swing.JDialog {
         InterfacePanier = new javax.swing.JPanel();
         filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 200), new java.awt.Dimension(20, 200), new java.awt.Dimension(20, 200));
         Colonne1 = new javax.swing.JPanel();
-        choixRecette = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
-        ScrollPaneRecettes = new javax.swing.JScrollPane();
-        afficheRecette = new javax.swing.JTextArea();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200));
         Colonne2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         labelVotrePanier = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        ScrollPanePanier = new javax.swing.JScrollPane();
-        affichePanier = new javax.swing.JTextArea();
+        ScrollPanier = new javax.swing.JScrollPane();
+        affichePanier = new javax.swing.JList<>();
         LigneTotalPanier = new javax.swing.JPanel();
         LabelTotalPanier = new javax.swing.JLabel();
         LabelPrixTotal = new javax.swing.JLabel();
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200));
         Colonne3 = new javax.swing.JPanel();
-        BoutonAjouterFruit = new javax.swing.JButton();
+        BoutonRetour = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
         BoutonRetirerFruit = new javax.swing.JButton();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
@@ -61,8 +69,6 @@ public class Interface extends javax.swing.JDialog {
         spaceButton = new javax.swing.Box.Filler(new java.awt.Dimension(0, 200), new java.awt.Dimension(0, 200), new java.awt.Dimension(250, 200));
         BoutonValiderPanier = new javax.swing.JButton();
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200));
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         InterfacePanier.setBackground(new java.awt.Color(255, 255, 255));
         java.awt.GridBagLayout InterfacePanierLayout = new java.awt.GridBagLayout();
@@ -75,39 +81,9 @@ public class Interface extends javax.swing.JDialog {
 
         Colonne1.setLayout(new javax.swing.BoxLayout(Colonne1, javax.swing.BoxLayout.Y_AXIS));
 
-        choixRecette.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        choixRecette.setForeground(new java.awt.Color(141, 126, 255));
-        choixRecette.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Recettes", "Cake au citron", "Ganache à l'amande", "Délice parfait", "Tarte aux pommes", "Chausson aux cerises griottes", " " }));
-        choixRecette.setMaximumSize(new java.awt.Dimension(200, 50));
-        choixRecette.setMinimumSize(new java.awt.Dimension(200, 22));
-        choixRecette.setPreferredSize(new java.awt.Dimension(200, 22));
-        choixRecette.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                choixRecetteActionPerformed(evt);
-            }
-        });
-        Colonne1.add(choixRecette);
-
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
         Colonne1.add(jSeparator1);
-
-        ScrollPaneRecettes.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        ScrollPaneRecettes.setMaximumSize(new java.awt.Dimension(200, 300));
-        ScrollPaneRecettes.setMinimumSize(new java.awt.Dimension(200, 300));
-        ScrollPaneRecettes.setPreferredSize(new java.awt.Dimension(200, 300));
-
-        afficheRecette.setEditable(false);
-        afficheRecette.setBackground(new java.awt.Color(255, 255, 255));
-        afficheRecette.setColumns(20);
-        afficheRecette.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
-        afficheRecette.setForeground(new java.awt.Color(189, 98, 199));
-        afficheRecette.setRows(5);
-        afficheRecette.setMaximumSize(new java.awt.Dimension(200, 300));
-        afficheRecette.setMinimumSize(new java.awt.Dimension(200, 300));
-        ScrollPaneRecettes.setViewportView(afficheRecette);
-
-        Colonne1.add(ScrollPaneRecettes);
 
         InterfacePanier.add(Colonne1, new java.awt.GridBagConstraints());
         InterfacePanier.add(filler3, new java.awt.GridBagConstraints());
@@ -138,24 +114,25 @@ public class Interface extends javax.swing.JDialog {
         jPanel2.setPreferredSize(new java.awt.Dimension(200, 330));
         jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
 
-        ScrollPanePanier.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        ScrollPanePanier.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-        ScrollPanePanier.setMaximumSize(new java.awt.Dimension(250, 300));
-        ScrollPanePanier.setMinimumSize(new java.awt.Dimension(250, 300));
-        ScrollPanePanier.setPreferredSize(new java.awt.Dimension(250, 300));
+        ScrollPanier.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        ScrollPanier.setHorizontalScrollBar(null);
+        ScrollPanier.setMaximumSize(new java.awt.Dimension(250, 300));
+        ScrollPanier.setMinimumSize(new java.awt.Dimension(250, 300));
+        ScrollPanier.setPreferredSize(new java.awt.Dimension(250, 300));
 
-        affichePanier.setEditable(false);
-        affichePanier.setBackground(new java.awt.Color(255, 255, 255));
-        affichePanier.setColumns(20);
-        affichePanier.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
+        affichePanier.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
         affichePanier.setForeground(new java.awt.Color(141, 126, 255));
-        affichePanier.setRows(5);
+        affichePanier.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
         affichePanier.setMaximumSize(new java.awt.Dimension(250, 300));
         affichePanier.setMinimumSize(new java.awt.Dimension(250, 300));
         affichePanier.setPreferredSize(new java.awt.Dimension(250, 300));
-        ScrollPanePanier.setViewportView(affichePanier);
+        ScrollPanier.setViewportView(affichePanier);
 
-        jPanel2.add(ScrollPanePanier);
+        jPanel2.add(ScrollPanier);
 
         Colonne2.add(jPanel2);
 
@@ -191,14 +168,19 @@ public class Interface extends javax.swing.JDialog {
         Colonne3.setBackground(new java.awt.Color(255, 255, 255));
         Colonne3.setLayout(new javax.swing.BoxLayout(Colonne3, javax.swing.BoxLayout.Y_AXIS));
 
-        BoutonAjouterFruit.setBackground(new java.awt.Color(141, 126, 255));
-        BoutonAjouterFruit.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
-        BoutonAjouterFruit.setForeground(new java.awt.Color(255, 255, 255));
-        BoutonAjouterFruit.setText("Ajouter un fruit");
-        BoutonAjouterFruit.setMaximumSize(new java.awt.Dimension(155, 22));
-        BoutonAjouterFruit.setMinimumSize(new java.awt.Dimension(155, 22));
-        BoutonAjouterFruit.setPreferredSize(new java.awt.Dimension(137, 22));
-        Colonne3.add(BoutonAjouterFruit);
+        BoutonRetour.setBackground(new java.awt.Color(141, 126, 255));
+        BoutonRetour.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
+        BoutonRetour.setForeground(new java.awt.Color(255, 255, 255));
+        BoutonRetour.setText("Retour au marché");
+        BoutonRetour.setMaximumSize(new java.awt.Dimension(155, 22));
+        BoutonRetour.setMinimumSize(new java.awt.Dimension(155, 22));
+        BoutonRetour.setPreferredSize(new java.awt.Dimension(137, 22));
+        BoutonRetour.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BoutonRetourMouseClicked(evt);
+            }
+        });
+        Colonne3.add(BoutonRetour);
         Colonne3.add(filler1);
 
         BoutonRetirerFruit.setBackground(new java.awt.Color(141, 126, 255));
@@ -209,6 +191,11 @@ public class Interface extends javax.swing.JDialog {
         BoutonRetirerFruit.setMaximumSize(new java.awt.Dimension(155, 22));
         BoutonRetirerFruit.setMinimumSize(new java.awt.Dimension(137, 22));
         BoutonRetirerFruit.setPreferredSize(new java.awt.Dimension(155, 22));
+        BoutonRetirerFruit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BoutonRetirerFruitMouseClicked(evt);
+            }
+        });
         Colonne3.add(BoutonRetirerFruit);
         Colonne3.add(filler2);
 
@@ -219,6 +206,11 @@ public class Interface extends javax.swing.JDialog {
         BoutonViderPanier.setMaximumSize(new java.awt.Dimension(155, 22));
         BoutonViderPanier.setMinimumSize(new java.awt.Dimension(137, 22));
         BoutonViderPanier.setPreferredSize(new java.awt.Dimension(155, 22));
+        BoutonViderPanier.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BoutonViderPanierMouseClicked(evt);
+            }
+        });
         Colonne3.add(BoutonViderPanier);
         Colonne3.add(spaceButton);
 
@@ -245,64 +237,31 @@ public class Interface extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BoutonValiderPanierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoutonValiderPanierActionPerformed
-        // TODO add your handling code here:
+        if(panier.getPrix() > 0) {
+            JOptionPane.showMessageDialog(this, "Merci pour votre commande d'une valeur de " + panier.getPrix() + "€!\nBonne cuisine et à bientôt!", "Validation du paiement", JOptionPane.INFORMATION_MESSAGE);
+            panier.vider();
+        }
+        this.dispose();
     }//GEN-LAST:event_BoutonValiderPanierActionPerformed
 
-    private void choixRecetteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choixRecetteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_choixRecetteActionPerformed
+    private void BoutonRetourMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BoutonRetourMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_BoutonRetourMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Interface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Interface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Interface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Interface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void BoutonRetirerFruitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BoutonRetirerFruitMouseClicked
+        int index = this.affichePanier.getSelectedIndex();
+        panier.retirer(index);
+        initListeFruit();
+    }//GEN-LAST:event_BoutonRetirerFruitMouseClicked
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-              //Interface panier = new Interface(this, true, JList<String> listeFruits, double prixTotal);
-
-                Interface panier = new Interface(new javax.swing.JFrame(), true);
-                panier.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                panier.setVisible(true);
-            }
-        });
-    }
-    
-    
-    
-    
+    private void BoutonViderPanierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BoutonViderPanierMouseClicked
+        panier.vider();
+        initListeFruit();
+    }//GEN-LAST:event_BoutonViderPanierMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BoutonAjouterFruit;
     private javax.swing.JButton BoutonRetirerFruit;
+    private javax.swing.JButton BoutonRetour;
     private javax.swing.JButton BoutonValiderPanier;
     private javax.swing.JButton BoutonViderPanier;
     private javax.swing.JPanel Colonne1;
@@ -312,11 +271,8 @@ public class Interface extends javax.swing.JDialog {
     private javax.swing.JLabel LabelPrixTotal;
     private javax.swing.JLabel LabelTotalPanier;
     private javax.swing.JPanel LigneTotalPanier;
-    private javax.swing.JScrollPane ScrollPanePanier;
-    private javax.swing.JScrollPane ScrollPaneRecettes;
-    private javax.swing.JTextArea affichePanier;
-    private javax.swing.JTextArea afficheRecette;
-    private javax.swing.JComboBox<String> choixRecette;
+    private javax.swing.JScrollPane ScrollPanier;
+    private javax.swing.JList<String> affichePanier;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;

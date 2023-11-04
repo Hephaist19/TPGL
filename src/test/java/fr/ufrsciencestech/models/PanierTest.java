@@ -19,7 +19,6 @@ public class PanierTest {
     @Mock
     private Panier p;
 
-    
     private PropertyChangeListener l = mock(PropertyChangeListener.class);
 
     public PanierTest() {
@@ -311,6 +310,25 @@ public class PanierTest {
 
         p.setFruits(fruits);
         assertEquals(p.getFruits(), fruits);
+    }
+
+    @Test
+    public void testRetirer() {
+        System.out.println("retirer");
+        //Test invalide 1
+        p.retirer(-1);
+        assertTrue(p.getTaillePanier() == 0);
+
+        p.retirer(5);
+        assertTrue(p.getTaillePanier() == 0);
+        try {
+            p.ajout(new Ananas());
+        } catch (PanierPleinException e) {
+            e.printStackTrace();
+        }
+
+        p.retirer(0);
+        assertTrue(p.getTaillePanier() == 0);
     }
 
     /**

@@ -38,7 +38,7 @@ public class Peche implements Fruit{
 
     @Override
     public String getName() {
-        return "Pêche";
+        return "Peche";
     }
 
     public String getOrigine() {

@@ -1,7 +1,10 @@
 package fr.ufrsciencestech.utils;
 
 public enum FilterType {
-    SANSPEPINS,
-    AVECPEPINS,
-    AUCUN
+    PEPINS,
+    NPEPINS,
+    EXOTIQUE,
+    NEXOTIQUE,
+    AGRUME,
+    NAGRUME
 }

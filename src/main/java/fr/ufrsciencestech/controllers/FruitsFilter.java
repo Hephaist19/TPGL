@@ -7,14 +7,14 @@ import fr.ufrsciencestech.models.fruits.Fruit;
 import fr.ufrsciencestech.utils.FilterType;
 import fr.ufrsciencestech.utils.SortType;
 
-public class FilterExecutor {
+public class FruitsFilter {
 
     private ArrayList<Fruit> liste;
 
     /**
      * Constructeur pas defaut (Tous les fruits)
      */
-    public FilterExecutor() {
+    public FruitsFilter() {
         this.liste = FruitsFactory.createAll();
     }
 
@@ -22,7 +22,7 @@ public class FilterExecutor {
      * Constructeur standard
      * @param fruits Liste de fruit 
      */
-    public FilterExecutor(ArrayList<Fruit> fruits) {
+    public FruitsFilter(ArrayList<Fruit> fruits) {
         deepCopie(fruits);
     }
 
@@ -43,7 +43,7 @@ public class FilterExecutor {
      * @param type
      * @return
      */
-    public FilterExecutor sort(SortType type) {
+    public FruitsFilter sort(SortType type) {
 
         Fruit tmp;
         //Tri à bulle classique
@@ -87,7 +87,7 @@ public class FilterExecutor {
                     }
                 }
                 break;
-            case PRIXDECROISSANT:
+            default:
                 for(int i = liste.size() - 1; i >= 0; i--) {
                     for(int j = 0; j < i; j++) {
                         if(liste.get(j).getPrix() < liste.get(j+1).getPrix()) {
@@ -100,8 +100,6 @@ public class FilterExecutor {
                     }
                 }
                 break;
-            default: //AUCUN
-                return this;
         }
         return this;
     }
@@ -111,9 +109,9 @@ public class FilterExecutor {
      * @param type Type de filtre
      * @return FilterExecutor instance
      */
-    public FilterExecutor filter(FilterType type) {
+    public FruitsFilter filter(FilterType type) {
         switch (type) {
-            case SANSPEPINS:
+            case PEPINS:
                 for (int i = 0; i < liste.size(); i++) {
                     //On enlève tous les fruit avec pépins
                     if(!liste.get(i).isSeedless()) {
@@ -122,7 +120,7 @@ public class FilterExecutor {
                     }
                 }
                 break;
-            case AVECPEPINS:
+            case NPEPINS:
                 for (int i = 0; i < liste.size(); i++) {
                     //On enlève tous les fruit sans pépins
                     if(liste.get(i).isSeedless()) {
@@ -131,8 +129,11 @@ public class FilterExecutor {
                     }
                 }
                 break;
+            case EXOTIQUE:
+            break;
             default:
-            return this;
+            break;
+                
         }
         return this;
     }

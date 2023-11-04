@@ -1,179 +1,73 @@
 package fr.ufrsciencestech.views;
-import java.awt.GridLayout;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.net.URL;
 import java.util.*;
 import javax.swing.*;
+
+import fr.ufrsciencestech.controllers.FruitsFilter;
+import fr.ufrsciencestech.controllers.factories.FruitsFactory;
+import fr.ufrsciencestech.exceptions.PanierPleinException;
+import fr.ufrsciencestech.models.Panier;
+import fr.ufrsciencestech.models.fruits.Fruit;
+import fr.ufrsciencestech.models.recettes.Recette;
+import fr.ufrsciencestech.utils.FilterType;
+import fr.ufrsciencestech.utils.FruitType;
+import fr.ufrsciencestech.utils.SortType;
+
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
  * @author mgall
  */
-public class MarcheFruits extends javax.swing.JFrame {
+public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeListener {
     
-    private List<String> listeSansPepins = Arrays.asList("Ananas","Kiwi","Framboise","Fraise","Banane");
-    private List<String> listeAgrume = Arrays.asList("Orange","Citron");  
-    private List<String> listeExotique = Arrays.asList("Ananas","Kiwi","Banane","Litchi"); 
-    private List<String> listeTous = Arrays.asList("Ananas","Pomme","Kiwi","Orange","Citron","Framboise","Cerise","Fraise","Banane","Peche","Litchi","Cake au citron","Jus de pomme","Jus multifruit","Tarte aux cerises","Banana split");
-    private List<String> listeRecette = Arrays.asList("Cake au citron","Jus de pomme","Jus multifruit","Tarte aux cerises","Banana split");  
+    private final Panier panier;
+    private final MarcheFruits instance;
 
-    
-    private List<String> listeOrdreAlphabtique = Arrays.asList("Ananas","Banane","Cerise","Citron","Fraise","Framboise","Kiwi","Litchi","Orange","Peche","Pomme"); 
-    //private List<String> listePrixCroissant = Arrays.asList();
-    //private List<String> listePrixDecroissant = Arrays.asList();
-    
+    private ArrayList<Fruit> listeFruitAffiche;
 
+    boolean recetteAffiche = false;
+    private ArrayList<Recette> listeRecetteAffiche;
     /**
      * Creates new form MarcheFruits
      */
     public MarcheFruits() {
+        panier = new Panier(20);
+        instance = this;
+        //jeu de test
+        try {
+            panier.ajouterTout(FruitsFactory.createAllOf(FruitType.CERISE, FruitType.POMME, FruitType.FRAMBOISE));
+        } catch (PanierPleinException e) {
+            e.printStackTrace();
+        };
         initComponents();
         initButtons();
+        initListePanier();
     }
+
+    //TODO actualiser panier en fonction de son signal
+    private void initListePanier() {
+        DefaultListModel liste = new DefaultListModel();
+        for (Fruit fruit : panier.getFruits()) {
+            liste.addElement(fruit.getName());
+        }
+        this.listeRecap.setModel(liste);
+        //TODO limiter à deux chiffre après la virgules
+        this.labelPrixRecapPanier.setText(Double.toString(panier.getPrix()));
+    }
+    
+    
     
     //Créer dynamiquement tous les fruits avec la listeTous
     public void initButtons(){
-        
-        for(int i=0;i<listeTous.size();i++)
-        {
-            //Chemin d'accès à l'image
-            URL path = this.getClass().getClassLoader().getResource("./images/" + listeTous.get(i) + ".png");
-            
-            //Couleur du texte pair/impair
-            java.awt.Color mauve = new java.awt.Color(189, 98, 199);
-            java.awt.Color bleu = new java.awt.Color(141, 126, 255);
-            
-            if(i<4) //Première ligne
-            {
-                JButton bouton = new JButton();
-                bouton.setMaximumSize(new java.awt.Dimension(125, 125));
-                bouton.setMinimumSize(new java.awt.Dimension(125, 125));
-                bouton.setPreferredSize(new java.awt.Dimension(125, 125));
-                bouton.setIcon(new javax.swing.ImageIcon(path)); 
-                jPanel3.add(bouton);
-
-                JLabel label = new JLabel();
-                label.setBackground(new java.awt.Color(255, 255, 255));
-                label.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); 
-                if(i%2==0)
-                {
-                    label.setForeground(mauve);
-                }
-                else
-                {
-                    label.setForeground(bleu);
-                }
-                label.setText(listeTous.get(i));
-                jPanel6.add(label);   
-            }
-            else if (i<8) //Deuxième ligne
-            {
-                JButton bouton = new JButton();
-                bouton.setMaximumSize(new java.awt.Dimension(125, 125));
-                bouton.setMinimumSize(new java.awt.Dimension(125, 125));
-                bouton.setPreferredSize(new java.awt.Dimension(125, 125));
-                bouton.setIcon(new javax.swing.ImageIcon(path));         
-                jPanel7.add(bouton);
-
-                JLabel label = new JLabel();
-                label.setBackground(new java.awt.Color(255, 255, 255));
-                label.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); 
-                if(i%2==0)
-                {
-                    label.setForeground(mauve);
-                }
-                else
-                {
-                    label.setForeground(bleu);
-                }
-                label.setText(listeTous.get(i));
-                jPanel8.add(label); 
-            }
-            else if (i<12) { //Troisième ligne
-                JButton bouton = new JButton();
-                bouton.setMaximumSize(new java.awt.Dimension(125, 125));
-                bouton.setMinimumSize(new java.awt.Dimension(125, 125));
-                bouton.setPreferredSize(new java.awt.Dimension(125, 125));
-                bouton.setIcon(new javax.swing.ImageIcon(path));                 
-                jPanel10.add(bouton);
-
-                JLabel label = new JLabel();
-                label.setBackground(new java.awt.Color(255, 255, 255));
-                label.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); 
-                if(i%2==0)
-                {
-                    label.setForeground(mauve);
-                }
-                else
-                {
-                    label.setForeground(bleu);
-                }
-                label.setText(listeTous.get(i));
-                jPanel9.add(label); 
-                
-            } else {//Quatrième ligne
-                JButton bouton = new JButton();
-                bouton.setMaximumSize(new java.awt.Dimension(125, 125));
-                bouton.setMinimumSize(new java.awt.Dimension(125, 125));
-                bouton.setPreferredSize(new java.awt.Dimension(125, 125));
-                bouton.setIcon(new javax.swing.ImageIcon(path));                 
-                jPanel15.add(bouton);
-
-                JLabel label = new JLabel();
-                label.setBackground(new java.awt.Color(255, 255, 255));
-                label.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); 
-                if(i%2==0)
-                {
-                    label.setForeground(mauve);
-                }
-                else
-                {
-                    label.setForeground(bleu);
-                }
-                label.setText(listeTous.get(i));
-                jPanel16.add(label); 
-            }
-            
-            
-        }
-        //TEST créer les fruits dans un gridlayout en fonction du nombre de fruits (c'est moche)
-        /*
-        int nb = this.listeTous.size(); //Récupère le nombre de fruits à afficher    
-        int n = (int) Math.sqrt(nb) + 1;
-        jPanel3.setLayout(new GridLayout(n, n + 1));    //création de la grille dans le JPanel
-
-        //Couleur du texte pair/impair
-        java.awt.Color mauve = new java.awt.Color(189, 98, 199);
-        java.awt.Color bleu = new java.awt.Color(141, 126, 255);
-            
-        for(int i=0;i<nb;i++)
-        {
-            //Chemin d'accès à l'image
-            URL path = this.getClass().getClassLoader().getResource("./images/" + listeTous.get(i) + ".png");
-            
-            JPanel pan = new javax.swing.JPanel();
-            pan.setLayout(new javax.swing.BoxLayout(pan, javax.swing.BoxLayout.Y_AXIS));
-            
-            JButton bouton = new JButton();
-            bouton.setMaximumSize(new java.awt.Dimension(125, 125));
-            bouton.setMinimumSize(new java.awt.Dimension(125, 125));
-            bouton.setPreferredSize(new java.awt.Dimension(125, 125));
-            bouton.setIcon(new javax.swing.ImageIcon(path));
-            pan.add(bouton);
-
-            JLabel label = new JLabel("",SwingConstants.CENTER);
-            label.setBackground(new java.awt.Color(255, 255, 255));
-            label.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16));
-            if (i % 2 == 0) {
-                label.setForeground(mauve);
-            } else {
-                label.setForeground(bleu);
-            }
-            label.setText(listeTous.get(i));
-            pan.add(label);  
-            
-            jPanel3.add(pan); //ajout dans le grand panel
-        }
-        */
+       listeFruitAffiche = FruitsFactory.createAll();
+       afficheFruits();
+       //TODO faire pareil recette
     }
 
     /**
@@ -212,14 +106,6 @@ public class MarcheFruits extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
-        jPanel10 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        jPanel15 = new javax.swing.JPanel();
-        jPanel16 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1000, 1000));
@@ -412,35 +298,6 @@ public class MarcheFruits extends javax.swing.JFrame {
 
         jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.Y_AXIS));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.add(jPanel3);
-
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 80, 5));
-        jPanel4.add(jPanel6);
-
-        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.add(jPanel7);
-
-        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 80, 5));
-        jPanel4.add(jPanel8);
-
-        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.add(jPanel10);
-
-        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 80, 5));
-        jPanel4.add(jPanel9);
-
-        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.add(jPanel15);
-
-        jPanel16.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel16.setMinimumSize(new java.awt.Dimension(160, 10));
-        jPanel16.setPreferredSize(new java.awt.Dimension(160, 10));
-        jPanel4.add(jPanel16);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -450,7 +307,7 @@ public class MarcheFruits extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -464,497 +321,177 @@ public class MarcheFruits extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void categorieSansPepinsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorieSansPepinsActionPerformed
-        // Fruits sans pépins NI NOYAU -> Ananas, Kiwi, Framboise, Fraise, Banane
+    /**
+     * Affiche tous les fruits contenu dans la liste listeFruitAffiche, dans le jPanel prévu
+     */
+    private void afficheFruits(){
         
-        //Vider les panels avant de remettre 
-        for(int i=0;i<listeSansPepins.size();i++)
+        final ArrayList<Fruit> listeFruit = listeFruitAffiche;
+        
+        int taille = listeFruit.size();
+        
+        JPanel contenu = new JPanel();
+        contenu.setLayout(new GridLayout(0, 5));    //création de la grille dans le JPanel
+        contenu.setBackground(new Color(255, 255, 255));
+        jPanel4.setBackground(new Color(255, 255, 255));
+
+        //Couleur du texte pair/impair
+        java.awt.Color mauve = new java.awt.Color(189, 98, 199);
+        java.awt.Color bleu = new java.awt.Color(141, 126, 255);
+            
+        for(int i=0;i<taille;i++)
         {
+            final Fruit fruit = listeFruit.get(i);
             //Chemin d'accès à l'image
-            URL path = this.getClass().getClassLoader().getResource("./images/" + listeSansPepins.get(i) + ".png");
+            URL path = this.getClass().getClassLoader().getResource("./images/" + listeFruit.get(i).getName() + ".png");
             
-            //Couleur du texte pair/impair
-            java.awt.Color mauve = new java.awt.Color(189, 98, 199);
-            java.awt.Color bleu = new java.awt.Color(141, 126, 255);
+            JPanel pan = new javax.swing.JPanel();
+            pan.setLayout(new javax.swing.BoxLayout(pan, javax.swing.BoxLayout.Y_AXIS));
             
-            if(i<4) //Première ligne
-            {
-                JButton bouton = new JButton();
-                bouton.setMaximumSize(new java.awt.Dimension(125, 125));
-                bouton.setMinimumSize(new java.awt.Dimension(125, 125));
-                bouton.setPreferredSize(new java.awt.Dimension(125, 125));
-                bouton.setIcon(new javax.swing.ImageIcon(path)); 
-                jPanel3.add(bouton);
+            JButton bouton = new JButton();
+            bouton.setMaximumSize(new java.awt.Dimension(125, 125));
+            bouton.setMinimumSize(new java.awt.Dimension(125, 125));
+            bouton.setPreferredSize(new java.awt.Dimension(125, 125));
+            bouton.setIcon(new javax.swing.ImageIcon(path));
+            pan.add(bouton);
 
-                JLabel label = new JLabel();
-                label.setBackground(new java.awt.Color(255, 255, 255));
-                label.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); 
-                if(i%2==0)
-                {
-                    label.setForeground(mauve);
-                }
-                else
-                {
-                    label.setForeground(bleu);
-                }
-                label.setText(listeSansPepins.get(i));
-                jPanel6.add(label);   
-            }
-            else if (i<8) //Deuxième ligne
-            {
-                JButton bouton = new JButton();
-                bouton.setMaximumSize(new java.awt.Dimension(125, 125));
-                bouton.setMinimumSize(new java.awt.Dimension(125, 125));
-                bouton.setPreferredSize(new java.awt.Dimension(125, 125));
-                bouton.setIcon(new javax.swing.ImageIcon(path));         
-                jPanel7.add(bouton);
+            JLabel label = new JLabel(listeFruit.get(i).getName(),SwingConstants.CENTER);
 
-                JLabel label = new JLabel();
-                label.setBackground(new java.awt.Color(255, 255, 255));
-                label.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); 
-                if(i%2==0)
-                {
-                    label.setForeground(mauve);
-                }
-                else
-                {
-                    label.setForeground(bleu);
-                }
-                label.setText(listeSansPepins.get(i));
-                jPanel8.add(label); 
+            label.setBackground(new java.awt.Color(255, 255, 255));
+            label.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16));
+            if (i % 2 == 0) {
+                label.setForeground(mauve);
+            } else {
+                label.setForeground(bleu);
             }
-            else { //Troisième ligne
-                JButton bouton = new JButton();
-                bouton.setMaximumSize(new java.awt.Dimension(125, 125));
-                bouton.setMinimumSize(new java.awt.Dimension(125, 125));
-                bouton.setPreferredSize(new java.awt.Dimension(125, 125));
-                bouton.setIcon(new javax.swing.ImageIcon(path));                 
-                jPanel10.add(bouton);
+            pan.add(label);
+            bouton.addActionListener(new ActionListener() {
+                @Override
+                    public void actionPerformed(ActionEvent ae) {
+                        PageFruit affichageFruit = new PageFruit(instance, true, fruit, panier);
+                        affichageFruit.setLocation(100,100);
+                        affichageFruit.setVisible(true);
+                    }
+            });
 
-                JLabel label = new JLabel();
-                label.setBackground(new java.awt.Color(255, 255, 255));
-                label.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); 
-                if(i%2==0)
-                {
-                    label.setForeground(mauve);
-                }
-                else
-                {
-                    label.setForeground(bleu);
-                }
-                label.setText(listeSansPepins.get(i));
-                jPanel9.add(label); 
-                
-            }
+            
+            contenu.add(pan); //ajout dans le grand panel
         }
+
+        jPanel4.add(contenu);
+    }
+    
+    private void remiseAZero(){
+        jPanel4.removeAll();
+        jPanel4.revalidate();
+        jPanel4.repaint();
+    }
+        
+    private void categorieSansPepinsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorieSansPepinsActionPerformed
+        //Vider les panels avant de remettre 
+        remiseAZero();
+        
+        //Fruits sans pépins
+        ArrayList<Fruit> tout = FruitsFactory.createAll();
+        listeFruitAffiche = new FruitsFilter(tout).filter(FilterType.NPEPINS).getResult();
+        
+        //Remplir des fruits types
+        afficheFruits();
         
     }//GEN-LAST:event_categorieSansPepinsActionPerformed
 
     private void categorieRecetteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorieRecetteActionPerformed
         //Recettes
-        
-        for(int i=0;i<listeRecette.size();i++)
-        {
-            //Chemin d'accès à l'image
-            URL path = this.getClass().getClassLoader().getResource("./images/" + listeRecette.get(i) + ".png");
-            
-            //Couleur du texte pair/impair
-            java.awt.Color mauve = new java.awt.Color(189, 98, 199);
-            java.awt.Color bleu = new java.awt.Color(141, 126, 255);
-            
-            if(i<4) //Première ligne
-            {
-                JButton bouton = new JButton();
-                bouton.setMaximumSize(new java.awt.Dimension(125, 125));
-                bouton.setMinimumSize(new java.awt.Dimension(125, 125));
-                bouton.setPreferredSize(new java.awt.Dimension(125, 125));
-                bouton.setIcon(new javax.swing.ImageIcon(path)); 
-                jPanel3.add(bouton);
-
-                JLabel label = new JLabel();
-                label.setBackground(new java.awt.Color(255, 255, 255));
-                label.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); 
-                if(i%2==0)
-                {
-                    label.setForeground(mauve);
-                }
-                else
-                {
-                    label.setForeground(bleu);
-                }
-                label.setText(listeRecette.get(i));
-                jPanel6.add(label);   
-            }
-            else if (i<8) //Deuxième ligne
-            {
-                JButton bouton = new JButton();
-                bouton.setMaximumSize(new java.awt.Dimension(125, 125));
-                bouton.setMinimumSize(new java.awt.Dimension(125, 125));
-                bouton.setPreferredSize(new java.awt.Dimension(125, 125));
-                bouton.setIcon(new javax.swing.ImageIcon(path));         
-                jPanel7.add(bouton);
-
-                JLabel label = new JLabel();
-                label.setBackground(new java.awt.Color(255, 255, 255));
-                label.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); 
-                if(i%2==0)
-                {
-                    label.setForeground(mauve);
-                }
-                else
-                {
-                    label.setForeground(bleu);
-                }
-                label.setText(listeRecette.get(i));
-                jPanel8.add(label); 
-            }
-            else { //Troisième ligne
-                JButton bouton = new JButton();
-                bouton.setMaximumSize(new java.awt.Dimension(125, 125));
-                bouton.setMinimumSize(new java.awt.Dimension(125, 125));
-                bouton.setPreferredSize(new java.awt.Dimension(125, 125));
-                bouton.setIcon(new javax.swing.ImageIcon(path));                 
-                jPanel10.add(bouton);
-
-                JLabel label = new JLabel();
-                label.setBackground(new java.awt.Color(255, 255, 255));
-                label.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); 
-                if(i%2==0)
-                {
-                    label.setForeground(mauve);
-                }
-                else
-                {
-                    label.setForeground(bleu);
-                }
-                label.setText(listeRecette.get(i));
-                jPanel9.add(label); 
-                
-            }
-        }
-        
     }//GEN-LAST:event_categorieRecetteActionPerformed
 
     private void categorieAgrumeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorieAgrumeActionPerformed
         // Agrumes -> Orange, Citron
+        /*ArrayList<Fruit> test = FruitsFactory.createAll();
+        FilterExecutor fe = new FilterExecutor(test);
+
+        ArrayList<Fruit> result = fe.filter(FilterType.AGRUMES).getResult();
+        System.out.println(result);
         
+        //Vider les panels avant de remettre 
+        remiseAZero();
         
-        for(int i=0;i<listeAgrume.size();i++)
-        {
-            //Chemin d'accès à l'image
-            URL path = this.getClass().getClassLoader().getResource("./images/" + listeAgrume.get(i) + ".png");
-            
-            //Couleur du texte pair/impair
-            java.awt.Color mauve = new java.awt.Color(189, 98, 199);
-            java.awt.Color bleu = new java.awt.Color(141, 126, 255);
-            
-            if(i<4) //Première ligne
-            {
-                JButton bouton = new JButton();
-                bouton.setMaximumSize(new java.awt.Dimension(125, 125));
-                bouton.setMinimumSize(new java.awt.Dimension(125, 125));
-                bouton.setPreferredSize(new java.awt.Dimension(125, 125));
-                bouton.setIcon(new javax.swing.ImageIcon(path)); 
-                jPanel3.add(bouton);
-
-                JLabel label = new JLabel();
-                label.setBackground(new java.awt.Color(255, 255, 255));
-                label.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); 
-                if(i%2==0)
-                {
-                    label.setForeground(mauve);
-                }
-                else
-                {
-                    label.setForeground(bleu);
-                }
-                label.setText(listeAgrume.get(i));
-                jPanel6.add(label);   
-            }
-            else if (i<8) //Deuxième ligne
-            {
-                JButton bouton = new JButton();
-                bouton.setMaximumSize(new java.awt.Dimension(125, 125));
-                bouton.setMinimumSize(new java.awt.Dimension(125, 125));
-                bouton.setPreferredSize(new java.awt.Dimension(125, 125));
-                bouton.setIcon(new javax.swing.ImageIcon(path));         
-                jPanel7.add(bouton);
-
-                JLabel label = new JLabel();
-                label.setBackground(new java.awt.Color(255, 255, 255));
-                label.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); 
-                if(i%2==0)
-                {
-                    label.setForeground(mauve);
-                }
-                else
-                {
-                    label.setForeground(bleu);
-                }
-                label.setText(listeAgrume.get(i));
-                jPanel8.add(label); 
-            }
-            else { //Troisième ligne
-                JButton bouton = new JButton();
-                bouton.setMaximumSize(new java.awt.Dimension(125, 125));
-                bouton.setMinimumSize(new java.awt.Dimension(125, 125));
-                bouton.setPreferredSize(new java.awt.Dimension(125, 125));
-                bouton.setIcon(new javax.swing.ImageIcon(path));                 
-                jPanel10.add(bouton);
-
-                JLabel label = new JLabel();
-                label.setBackground(new java.awt.Color(255, 255, 255));
-                label.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); 
-                if(i%2==0)
-                {
-                    label.setForeground(mauve);
-                }
-                else
-                {
-                    label.setForeground(bleu);
-                }
-                label.setText(listeAgrume.get(i));
-                jPanel9.add(label); 
-                
-            }
-        }
+       //Remplir des fruits types
+        creationFruits(result);
+        */
     }//GEN-LAST:event_categorieAgrumeActionPerformed
 
     private void categorieExotiqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorieExotiqueActionPerformed
         // Fruits exotiques -> Ananas, Kiwi, Banane, Litchi
+        /*ArrayList<Fruit> test = FruitsFactory.createAll();
+        FilterExecutor fe = new FilterExecutor(test);
+        //TODO a faire
+        ArrayList<Fruit> result = fe.filter(FilterType.EXOTIQUE).getResult();
+        System.out.println(result);
         
-        for(int i=0;i<listeExotique.size();i++)
-        {
-            //Chemin d'accès à l'image
-            URL path = this.getClass().getClassLoader().getResource("./images/" + listeExotique.get(i) + ".png");
-            
-            //Couleur du texte pair/impair
-            java.awt.Color mauve = new java.awt.Color(189, 98, 199);
-            java.awt.Color bleu = new java.awt.Color(141, 126, 255);
-            
-            if(i<4) //Première ligne
-            {
-                JButton bouton = new JButton();
-                bouton.setMaximumSize(new java.awt.Dimension(125, 125));
-                bouton.setMinimumSize(new java.awt.Dimension(125, 125));
-                bouton.setPreferredSize(new java.awt.Dimension(125, 125));
-                bouton.setIcon(new javax.swing.ImageIcon(path)); 
-                jPanel3.add(bouton);
-
-                JLabel label = new JLabel();
-                label.setBackground(new java.awt.Color(255, 255, 255));
-                label.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); 
-                if(i%2==0)
-                {
-                    label.setForeground(mauve);
-                }
-                else
-                {
-                    label.setForeground(bleu);
-                }
-                label.setText(listeExotique.get(i));
-                jPanel6.add(label);   
-            }
-            else if (i<8) //Deuxième ligne
-            {
-                JButton bouton = new JButton();
-                bouton.setMaximumSize(new java.awt.Dimension(125, 125));
-                bouton.setMinimumSize(new java.awt.Dimension(125, 125));
-                bouton.setPreferredSize(new java.awt.Dimension(125, 125));
-                bouton.setIcon(new javax.swing.ImageIcon(path));         
-                jPanel7.add(bouton);
-
-                JLabel label = new JLabel();
-                label.setBackground(new java.awt.Color(255, 255, 255));
-                label.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); 
-                if(i%2==0)
-                {
-                    label.setForeground(mauve);
-                }
-                else
-                {
-                    label.setForeground(bleu);
-                }
-                label.setText(listeExotique.get(i));
-                jPanel8.add(label); 
-            }
-            else { //Troisième ligne
-                JButton bouton = new JButton();
-                bouton.setMaximumSize(new java.awt.Dimension(125, 125));
-                bouton.setMinimumSize(new java.awt.Dimension(125, 125));
-                bouton.setPreferredSize(new java.awt.Dimension(125, 125));
-                bouton.setIcon(new javax.swing.ImageIcon(path));                 
-                jPanel10.add(bouton);
-
-                JLabel label = new JLabel();
-                label.setBackground(new java.awt.Color(255, 255, 255));
-                label.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); 
-                if(i%2==0)
-                {
-                    label.setForeground(mauve);
-                }
-                else
-                {
-                    label.setForeground(bleu);
-                }
-                label.setText(listeExotique.get(i));
-                jPanel9.add(label); 
-                
-            }
-        }
+        //Vider les panels avant de remettre 
+        remiseAZero();
         
+        //Remplir des fruits types
+        creationFruits(result);
+        */
     }//GEN-LAST:event_categorieExotiqueActionPerformed
 
+    
     private void categorieTousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorieTousActionPerformed
         // Tous les fruits du marché
-        for(int i=0;i<listeTous.size();i++)
-        {
-            //Chemin d'accès à l'image
-            URL path = this.getClass().getClassLoader().getResource("./images/" + listeTous.get(i) + ".png");
-            
-            //Couleur du texte pair/impair
-            java.awt.Color mauve = new java.awt.Color(189, 98, 199);
-            java.awt.Color bleu = new java.awt.Color(141, 126, 255);
-            
-            if(i<4) //Première ligne
-            {
-                JButton bouton = new JButton();
-                bouton.setMaximumSize(new java.awt.Dimension(125, 125));
-                bouton.setMinimumSize(new java.awt.Dimension(125, 125));
-                bouton.setPreferredSize(new java.awt.Dimension(125, 125));
-                bouton.setIcon(new javax.swing.ImageIcon(path)); 
-                jPanel3.add(bouton);
-
-                JLabel label = new JLabel();
-                label.setBackground(new java.awt.Color(255, 255, 255));
-                label.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); 
-                if(i%2==0)
-                {
-                    label.setForeground(mauve);
-                }
-                else
-                {
-                    label.setForeground(bleu);
-                }
-                label.setText(listeTous.get(i));
-                jPanel6.add(label);   
-            }
-            else if (i<8) //Deuxième ligne
-            {
-                JButton bouton = new JButton();
-                bouton.setMaximumSize(new java.awt.Dimension(125, 125));
-                bouton.setMinimumSize(new java.awt.Dimension(125, 125));
-                bouton.setPreferredSize(new java.awt.Dimension(125, 125));
-                bouton.setIcon(new javax.swing.ImageIcon(path));         
-                jPanel7.add(bouton);
-
-                JLabel label = new JLabel();
-                label.setBackground(new java.awt.Color(255, 255, 255));
-                label.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); 
-                if(i%2==0)
-                {
-                    label.setForeground(mauve);
-                }
-                else
-                {
-                    label.setForeground(bleu);
-                }
-                label.setText(listeTous.get(i));
-                jPanel8.add(label); 
-            }
-            else { //Troisième ligne
-                JButton bouton = new JButton();
-                bouton.setMaximumSize(new java.awt.Dimension(125, 125));
-                bouton.setMinimumSize(new java.awt.Dimension(125, 125));
-                bouton.setPreferredSize(new java.awt.Dimension(125, 125));
-                bouton.setIcon(new javax.swing.ImageIcon(path));                 
-                jPanel10.add(bouton);
-
-                JLabel label = new JLabel();
-                label.setBackground(new java.awt.Color(255, 255, 255));
-                label.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); 
-                if(i%2==0)
-                {
-                    label.setForeground(mauve);
-                }
-                else
-                {
-                    label.setForeground(bleu);
-                }
-                label.setText(listeTous.get(i));
-                jPanel9.add(label); 
-                
-            }
-        }
+        ArrayList<Fruit> result = FruitsFactory.createAll();
         
+        //Vider les panels avant de remettre 
+        remiseAZero();
+        
+        //Remplir des fruits types
+        afficheFruits();
     }//GEN-LAST:event_categorieTousActionPerformed
 
     private void trierParActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trierParActionPerformed
+        //récupérer la catégorie qu'on est dedans
+        
         String choix = (String) this.trierPar.getSelectedItem(); //Récupère ce qui a été sélectionné
 
-        //On réalise au cas par cas
-        switch (choix) {
-            case "Ordre Alphabétique":
-                //Les trier dans cet ordre => Ananas, Banane, Cerise, Citron, Fraise, Framboise, Kiwi, Litchi, Orange, Pêche, Pomme
-                break;
-            case "Prix Croissant":
-                //Les trier dans cet ordre (prix)=>
-                break;
-            case "Prix Décroissant":
-                //Les trier dans cet ordre (prix inverse ci dessus) =>
-                break;
-            default:
-                //Les trier comme on a initialisé
-                break;
+        if(!recetteAffiche) {
+            
+            FruitsFilter fe = new FruitsFilter(listeFruitAffiche);
+            //On réalise au cas par cas
+            switch (choix) {
+                case "Ordre Alphabétique":
+                    listeFruitAffiche = fe.sort(SortType.ALPHABETIQUE).getResult();
+                    remiseAZero();
+                    afficheFruits();
+                    break;
+                case "Prix Croissant":
+                    listeFruitAffiche = fe.sort(SortType.PRIXCROISSANT).getResult();
+                    remiseAZero();
+                    afficheFruits();
+                    break;
+                case "Prix Décroissant":
+                    listeFruitAffiche = fe.sort(SortType.PRIXDECROISSANT).getResult();
+                    remiseAZero();
+                    afficheFruits();
+                    break;
+                default:
+                    break;
+            }
         }
-
+        
      }//GEN-LAST:event_trierParActionPerformed
 
     private void boutonVoirPanierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boutonVoirPanierMouseClicked
-        // Quitter le marché -> Récupérer les instances de fruits dans le récapitulatif panier JList this.listeRecap 
-        //afin de les ajouter dans le panier en vérifiant que le MAX panier n'est pas atteint !
+        Interface validation = new Interface(this, true, panier);
         
-        //Interface panier = new Interface(this, true, this.listeRecap, Double.parseDouble(this.labelPrixRecapPanier.getText()));
-        Interface panier = new Interface(this, true);
-        panier.setVisible(true);
-        panier.setLocation(100,100);
-        
+        validation.setVisible(true);
+        validation.setLocation(100,100);
+
     }//GEN-LAST:event_boutonVoirPanierMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MarcheFruits.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MarcheFruits.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MarcheFruits.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MarcheFruits.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new MarcheFruits().setVisible(true);
-            }
-        });
+    //TODO a faire fonctionner
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        System.out.println("WESH");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -968,21 +505,13 @@ public class MarcheFruits extends javax.swing.JFrame {
     private javax.swing.JLabel euros;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -994,4 +523,6 @@ public class MarcheFruits extends javax.swing.JFrame {
     private javax.swing.JList<String> listeRecap;
     private javax.swing.JComboBox<String> trierPar;
     // End of variables declaration//GEN-END:variables
+
+    
 }
