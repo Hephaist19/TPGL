@@ -65,7 +65,7 @@ public class Cerise implements Fruit {
     }
 
     @Override
-    public boolean equals(Object o) {  //predicat pour tester si 2 oranges sont equivalentes
+    public boolean equals(Object o) {  
         if (o != null && getClass() == o.getClass()) {
             Cerise ce = (Cerise) o;
             return (prix == ce.prix && origine.equals(ce.origine));
@@ -74,7 +74,17 @@ public class Cerise implements Fruit {
     }
 
     @Override
-    public boolean isSeedless() {  //predicat indiquant qu'une kiwi a des pepins
+    public boolean isSeedless() {  
+        return false;
+    }
+    
+    @Override
+    public boolean isExotique() { 
+        return false;
+    }
+    
+    @Override
+    public boolean isAgrume(){
         return false;
     }
 

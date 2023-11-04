@@ -57,7 +57,7 @@ public class Framboise implements Fruit {
     }
 
     @Override
-    public boolean equals(Object o) {  //predicat pour tester si 2 oranges sont equivalentes
+    public boolean equals(Object o) {  
         if (o != null && getClass() == o.getClass()) {
             Framboise fr = (Framboise) o;
             return (prix == fr.prix && origine.equals(fr.origine));
@@ -68,6 +68,16 @@ public class Framboise implements Fruit {
     @Override
     public boolean isSeedless() {
         return true;
+    }
+    
+    @Override
+    public boolean isExotique() { 
+        return false;
+    }
+    
+    @Override
+    public boolean isAgrume(){
+        return false;
     }
 
     @Override

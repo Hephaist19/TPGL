@@ -11,6 +11,12 @@ public interface Recette {
      * @return
      */
     public String getName();
+    
+     /**
+     * Renvoie le prix de la recette
+     * @return
+     */
+    public double getPrix();
 
     /**
      * Renvoie la liste des fruit associé à la recette
@@ -18,5 +24,15 @@ public interface Recette {
      */
     public ArrayList<Fruit> getFruits();
 
+    /**
+     * Renvoie les ingrédients de la recette sous format String
+     * @return
+     */
     public String getDescription();
+    
+    /**
+     * Renvoie les étapes de la recette sous format String
+     * @return
+     */
+    public String getEtapes();
 }

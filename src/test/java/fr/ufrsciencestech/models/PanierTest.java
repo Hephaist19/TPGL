@@ -1,6 +1,6 @@
 package fr.ufrsciencestech.models;
 
-import fr.ufrsciencestech.controllers.factories.FruitsFactory;
+import fr.ufrsciencestech.controllers.factories.RecettesFactory;
 import fr.ufrsciencestech.exceptions.PanierPleinException;
 import fr.ufrsciencestech.exceptions.PanierVideException;
 import fr.ufrsciencestech.models.fruits.*;
@@ -534,7 +534,7 @@ public class PanierTest {
     @Test
     public void testAjouterTout() {
         System.out.println("testAjouterTout");
-        ArrayList<Fruit> test = FruitsFactory.createAllOf(FruitType.BANANE, FruitType.LITCHI);
+        ArrayList<Fruit> test = RecettesFactory.createAllOf(FruitType.BANANE, FruitType.LITCHI);
         try {
             p.ajouterTout(test);
         } catch (PanierPleinException e) {
@@ -544,7 +544,7 @@ public class PanierTest {
         assertEquals(2, p.getTaillePanier());
 
         //ajout de trop de fruit
-        test = FruitsFactory.createAllOf(FruitType.FRAISE);
+        test = RecettesFactory.createAllOf(FruitType.FRAISE);
 
         try {
             p.ajouterTout(test);

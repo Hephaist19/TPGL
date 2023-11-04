@@ -7,7 +7,7 @@ import java.util.*;
 import javax.swing.*;
 
 import fr.ufrsciencestech.controllers.FruitsFilter;
-import fr.ufrsciencestech.controllers.factories.FruitsFactory;
+import fr.ufrsciencestech.controllers.factories.*;
 import fr.ufrsciencestech.exceptions.PanierPleinException;
 import fr.ufrsciencestech.models.Panier;
 import fr.ufrsciencestech.models.fruits.Fruit;
@@ -20,6 +20,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 
 /**
  *
@@ -29,7 +30,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
 
     private final Panier panier;
     private final MarcheFruits instance;
-
+    private static final DecimalFormat df = new DecimalFormat("0.00");
     private ArrayList<Fruit> listeFruitAffiche;
 
     boolean recetteAffiche = false;
@@ -53,19 +54,18 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
             liste.addElement(fruit.getName());
         }
         this.listeRecap.setModel(liste);
-        // TODO limiter à deux chiffre après la virgules
-        this.labelPrixRecapPanier.setText(Double.toString(panier.getPrix()));
+        this.labelPrixRecapPanier.setText(df.format(panier.getPrix()));
     }
-
-    // Créer dynamiquement tous les fruits avec la listeTous
-    public void initButtons() {
-        listeFruitAffiche = FruitsFactory.createAll();
-        afficheFruits();
-        // TODO faire pareil recette
-    }
-
-    public Panier getPanier() {
-        return panier;
+    
+    
+    
+    //Créer dynamiquement tous les fruits avec la listeTous
+    public void initButtons(){
+       listeFruitAffiche = FruitsFactory.createAll();
+       afficheFruits();
+       //TODO faire pareil recette
+       listeRecetteAffiche = RecettesFactory.createAll();
+       afficheRecettes();
     }
 
     /**
@@ -366,7 +366,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
             bouton.setIcon(new javax.swing.ImageIcon(path));
             pan.add(bouton);
 
-            JLabel label = new JLabel(listeFruit.get(i).getName(), SwingConstants.CENTER);
+            JLabel label = new JLabel(listeFruit.get(i).getName() + " " + listeFruit.get(i).getPrix() + "€",SwingConstants.CENTER);
 
             label.setBackground(new java.awt.Color(255, 255, 255));
             label.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16));
@@ -390,8 +390,65 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
 
         jPanel4.add(contenu);
     }
+    
+    private void afficheRecettes(){
+        final ArrayList<Recette> listeRecette = listeRecetteAffiche;
+        
+        int taille = listeRecette.size();
+        
+        JPanel contenu = new JPanel();
+        contenu.setLayout(new GridLayout(0, 5));    //création de la grille dans le JPanel
+        contenu.setBackground(new Color(255, 255, 255));
+        jPanel4.setBackground(new Color(255, 255, 255));
 
-    private void remiseAZero() {
+        //Couleur du texte pair/impair
+        java.awt.Color mauve = new java.awt.Color(189, 98, 199);
+        java.awt.Color bleu = new java.awt.Color(141, 126, 255);
+            
+        for(int i=0;i<taille;i++)
+        {
+            final Recette recette = listeRecette.get(i);
+            //Chemin d'accès à l'image
+            URL path = this.getClass().getClassLoader().getResource("./images/" + listeRecette.get(i).getName() + ".png");
+            
+            JPanel pan = new javax.swing.JPanel();
+            pan.setLayout(new javax.swing.BoxLayout(pan, javax.swing.BoxLayout.Y_AXIS));
+            
+            JButton bouton = new JButton();
+            bouton.setMaximumSize(new java.awt.Dimension(125, 125));
+            bouton.setMinimumSize(new java.awt.Dimension(125, 125));
+            bouton.setPreferredSize(new java.awt.Dimension(125, 125));
+            bouton.setIcon(new javax.swing.ImageIcon(path));
+            pan.add(bouton);
+
+            JLabel label = new JLabel(listeRecette.get(i).getName() + " " + listeRecette.get(i).getPrix() + "€",SwingConstants.CENTER);
+
+            label.setBackground(new java.awt.Color(255, 255, 255));
+            label.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16));
+            if (i % 2 == 0) {
+                label.setForeground(mauve);
+            } else {
+                label.setForeground(bleu);
+            }
+            pan.add(label);
+            bouton.addActionListener(new ActionListener() {
+                @Override
+                    public void actionPerformed(ActionEvent ae) {
+                        PageRecette affichageFruit = new PageRecette(instance, true, recette, panier);
+                        affichageFruit.setLocation(100,100);
+                        affichageFruit.setVisible(true);
+                    }
+            });
+
+            
+            contenu.add(pan); //ajout dans le grand panel
+        }
+
+        jPanel4.add(contenu);
+    }
+    
+
+    private void remiseAZero(){
         jPanel4.removeAll();
         jPanel4.revalidate();
         jPanel4.repaint();
@@ -403,61 +460,62 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
 
         // Fruits sans pépins
         ArrayList<Fruit> tout = FruitsFactory.createAll();
-        listeFruitAffiche = new FruitsFilter(tout).filter(FilterType.NPEPINS).getResult();
-
-        // Remplir des fruits types
+        listeFruitAffiche = new FruitsFilter(tout).filter(FilterType.PEPINS).getResult();
+        
+        //Remplir des fruits types
         afficheFruits();
 
-    }// GEN-LAST:event_categorieSansPepinsActionPerformed
-
-    private void categorieRecetteActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_categorieRecetteActionPerformed
-        // Recettes
-    }// GEN-LAST:event_categorieRecetteActionPerformed
-
-    private void categorieAgrumeActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_categorieAgrumeActionPerformed
-        // Agrumes -> Orange, Citron
-        /*
-         * ArrayList<Fruit> test = FruitsFactory.createAll();
-         * FilterExecutor fe = new FilterExecutor(test);
-         * 
-         * ArrayList<Fruit> result = fe.filter(FilterType.AGRUMES).getResult();
-         * System.out.println(result);
-         * 
-         * //Vider les panels avant de remettre
-         * remiseAZero();
-         * 
-         * //Remplir des fruits types
-         * creationFruits(result);
-         */
-    }// GEN-LAST:event_categorieAgrumeActionPerformed
-
-    private void categorieExotiqueActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_categorieExotiqueActionPerformed
-        // Fruits exotiques -> Ananas, Kiwi, Banane, Litchi
-        /*
-         * ArrayList<Fruit> test = FruitsFactory.createAll();
-         * FilterExecutor fe = new FilterExecutor(test);
-         * //TODO a faire
-         * ArrayList<Fruit> result = fe.filter(FilterType.EXOTIQUE).getResult();
-         * System.out.println(result);
-         * 
-         * //Vider les panels avant de remettre
-         * remiseAZero();
-         * 
-         * //Remplir des fruits types
-         * creationFruits(result);
-         */
-    }// GEN-LAST:event_categorieExotiqueActionPerformed
-
-    private void categorieTousActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_categorieTousActionPerformed
-        // Tous les fruits du marché
-        ArrayList<Fruit> result = FruitsFactory.createAll();
-
-        // Vider les panels avant de remettre
+    private void categorieRecetteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorieRecetteActionPerformed
+        //Vider les panels avant de remettre 
         remiseAZero();
+        
+        //Recettes
+        listeRecetteAffiche = RecettesFactory.createAll();
+        
+       //Remplir des fruits types
+        afficheRecettes();
+        
+    }//GEN-LAST:event_categorieRecetteActionPerformed
 
-        // Remplir des fruits types
+    private void categorieAgrumeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorieAgrumeActionPerformed
+        //Vider les panels avant de remettre 
+        remiseAZero();
+        
+        // Agrumes 
+        ArrayList<Fruit> tout = FruitsFactory.createAll();
+        listeFruitAffiche = new FruitsFilter(tout).filter(FilterType.AGRUME).getResult();
+        
+       //Remplir des fruits types
         afficheFruits();
-    }// GEN-LAST:event_categorieTousActionPerformed
+        
+    }//GEN-LAST:event_categorieAgrumeActionPerformed
+
+    private void categorieExotiqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorieExotiqueActionPerformed
+       //Vider les panels avant de remettre 
+        remiseAZero();
+        
+        // Agrumes 
+        ArrayList<Fruit> tout = FruitsFactory.createAll();
+        listeFruitAffiche = new FruitsFilter(tout).filter(FilterType.EXOTIQUE).getResult();
+        
+       //Remplir des fruits types
+        afficheFruits();
+    }//GEN-LAST:event_categorieExotiqueActionPerformed
+
+    
+    private void categorieTousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorieTousActionPerformed
+        //Vider les panels avant de remettre 
+        remiseAZero();
+        
+        // Tous
+        ArrayList<Fruit> tout = FruitsFactory.createAll();
+        listeFruitAffiche = new FruitsFilter(tout).getResult();
+        listeRecetteAffiche = RecettesFactory.createAll();
+        
+       //Remplir tous
+        afficheFruits();
+        afficheRecettes();
+    }//GEN-LAST:event_categorieTousActionPerformed
 
     private void trierParActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_trierParActionPerformed
         // récupérer la catégorie qu'on est dedans
@@ -495,9 +553,8 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         Interface validation = new Interface(this, true, panier);
 
         validation.setVisible(true);
-        validation.setLocation(100, 100);
-
-    }// GEN-LAST:event_boutonVoirPanierMouseClicked
+        validation.setLocation(100,100);
+    }//GEN-LAST:event_boutonVoirPanierMouseClicked
 
     // TODO a faire fonctionner
     @Override

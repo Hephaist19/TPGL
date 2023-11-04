@@ -2,7 +2,7 @@ package fr.ufrsciencestech.controllers;
 
 import java.util.ArrayList;
 
-import fr.ufrsciencestech.controllers.factories.FruitsFactory;
+import fr.ufrsciencestech.controllers.factories.*;
 import fr.ufrsciencestech.models.fruits.Fruit;
 import fr.ufrsciencestech.utils.FilterType;
 import fr.ufrsciencestech.utils.SortType;
@@ -130,9 +130,23 @@ public class FruitsFilter {
                 }
                 break;
             case EXOTIQUE:
-            break;
+                for (int i = 0; i < liste.size(); i++) {
+                    //On enlève tous les fruit qui ne sont pas exotique
+                    if(!liste.get(i).isExotique()) {
+                        liste.remove(i);
+                        i--;
+                    }
+                }
+                break;
             default:
-            break;
+                for (int i = 0; i < liste.size(); i++) {
+                    //On enlève tous les fruit qui ne sont pas des agrumes
+                    if(!liste.get(i).isAgrume()) {
+                        liste.remove(i);
+                        i--;
+                    }
+                }
+                break;
                 
         }
         return this;
