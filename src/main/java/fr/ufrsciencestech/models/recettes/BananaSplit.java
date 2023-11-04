@@ -7,7 +7,7 @@ import fr.ufrsciencestech.models.fruits.*;
 public class BananaSplit implements Recette {
     
     private String name;
-    private ArrayList<Fruit> listeFruit;
+    private ArrayList<Fruit> listeFruit= new ArrayList<>();
     
     private Banane b1 = new Banane();
     private Banane b2 = new Banane();
@@ -28,7 +28,8 @@ public class BananaSplit implements Recette {
     
     @Override
     public ArrayList<Fruit> getFruits() {
-        listeFruit.clear();
+        if(listeFruit!=null)
+        {listeFruit.clear();}
         listeFruit.add(b1);
         listeFruit.add(b2);
         listeFruit.add(c3);
@@ -37,12 +38,21 @@ public class BananaSplit implements Recette {
 
     @Override
     public String getDescription() {
-        StringBuilder sb = new StringBuilder("Ingredients:").append("\n");
+        StringBuilder sb = new StringBuilder("Ingrédients:").append("\n");
 
-        for (Fruit fruit : listeFruit) {
-            sb.append(fruit.getName()).append("\n");
+        for (Fruit fruit : getFruits()) {
+            sb.append(fruit.getName()).append(" ");
         }
         
         return sb.toString();
     }
+    
+    @Override
+    public String getEtapes() {
+        StringBuilder sb = new StringBuilder("Étapes :").append("\n");
+
+        sb.append("Allonger les deux bananes dans un plat, placer vos boules de glaces puis napper de chocolat fondu.\n Ajouter de la chantilly et la cerise sur le gâteau !");
+        return sb.toString();
+    }
+
 }

@@ -40,6 +40,7 @@ public class PageRecette extends javax.swing.JDialog {
         super(parent, modal);
         this.panier = p;
         this.recette = r;
+        
         this.listeFruit=r.getFruits();
         this.iR= this.getClass().getClassLoader().getResource("./images/" + recette.getName() + ".png");
         initComponents();
@@ -48,19 +49,23 @@ public class PageRecette extends javax.swing.JDialog {
     }
 
     private void initRecetteIHM(){
-        //this.ImageRecette.setIcon(new ImageIcon(iR));
+        this.ImageRecette.setIcon(new ImageIcon(iR));
         this.NomRecette.setText(recette.getName());
         this.NbRecette.setText(Integer.toString(1));
-        this.Etapes.setText(recette.getDescription());
+        this.IngredientsRecette.setText(recette.getDescription());
+        this.Etapes.setText(recette.getEtapes());
         calculPrix();
-        
         this.TotalFruit.setText(df.format(Double.parseDouble(this.NbRecette.getText()) * prix ));
     }
     
+     private void actualiserPrixTotal() {
+        double total = Double.parseDouble(this.NbRecette.getText()) * prix;
+        this.TotalFruit.setText(df.format(total));
+    }
+     
     private void calculPrix(){
         
         int taille = recette.getFruits().size();
-        double prix = 0;
         
         for(int i=0; i<taille; i++)
         {
@@ -85,12 +90,11 @@ public class PageRecette extends javax.swing.JDialog {
         Ligne1Infos = new javax.swing.JPanel();
         NomRecette = new javax.swing.JLabel();
         Ligne2Infos = new javax.swing.JPanel();
-        LabelIngredients = new javax.swing.JLabel();
         IngredientsRecette = new javax.swing.JLabel();
         Ligne2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        LabelEtapes = new javax.swing.JLabel();
-        Etapes = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Etapes = new javax.swing.JTextArea();
         Ligne3 = new javax.swing.JPanel();
         PanelNombreFruit = new javax.swing.JPanel();
         MoinsFruit = new javax.swing.JButton();
@@ -101,7 +105,9 @@ public class PageRecette extends javax.swing.JDialog {
         EuroTotal = new javax.swing.JLabel();
         AjoutFruit = new javax.swing.JButton();
 
-        setMinimumSize(new java.awt.Dimension(460, 318));
+        setMaximumSize(new java.awt.Dimension(620, 500));
+        setMinimumSize(new java.awt.Dimension(620, 500));
+        setPreferredSize(new java.awt.Dimension(620, 500));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.Y_AXIS));
 
         Ligne1.setLayout(new java.awt.GridLayout(1, 2));
@@ -129,11 +135,6 @@ public class PageRecette extends javax.swing.JDialog {
 
         Ligne2Infos.setBackground(new java.awt.Color(255, 255, 255));
 
-        LabelIngredients.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        LabelIngredients.setForeground(new java.awt.Color(141, 126, 255));
-        LabelIngredients.setText("Ingrédients  : ");
-        Ligne2Infos.add(LabelIngredients);
-
         IngredientsRecette.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
         IngredientsRecette.setForeground(new java.awt.Color(189, 98, 199));
         IngredientsRecette.setText("Les ingrédients");
@@ -153,17 +154,19 @@ public class PageRecette extends javax.swing.JDialog {
         jPanel3.setPreferredSize(new java.awt.Dimension(100, 80));
         jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 25));
 
-        LabelEtapes.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        LabelEtapes.setForeground(new java.awt.Color(141, 126, 255));
-        LabelEtapes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LabelEtapes.setText("Étapes :");
-        jPanel3.add(LabelEtapes);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(450, 100));
 
-        Etapes.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        Etapes.setForeground(new java.awt.Color(189, 98, 199));
-        Etapes.setText("1,2,3");
-        Etapes.setToolTipText("");
-        jPanel3.add(Etapes);
+        Etapes.setColumns(20);
+        Etapes.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
+        Etapes.setForeground(new java.awt.Color(141, 126, 255));
+        Etapes.setLineWrap(true);
+        Etapes.setRows(5);
+        Etapes.setMaximumSize(new java.awt.Dimension(30000, 80000));
+        Etapes.setMinimumSize(new java.awt.Dimension(300, 80));
+        Etapes.setPreferredSize(new java.awt.Dimension(450, 100));
+        jScrollPane1.setViewportView(Etapes);
+
+        jPanel3.add(jScrollPane1);
 
         Ligne2.add(jPanel3);
 
@@ -246,11 +249,6 @@ public class PageRecette extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
     
 
-    private void actualiserPrixTotal() {
-       // double total = Double.parseDouble(this.NbFruit.getText()) * fruit.getPrix();
-       // this.TotalFruit.setText(df.format(total));
-    }
-
     private void MoinsFruitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MoinsFruitMouseClicked
         int nombre = Integer.parseInt(this.NbRecette.getText());
         //TODO VERIFIER SI OK
@@ -297,13 +295,11 @@ public class PageRecette extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AjoutFruit;
-    private javax.swing.JLabel Etapes;
+    private javax.swing.JTextArea Etapes;
     private javax.swing.JLabel EuroTotal;
     private javax.swing.JPanel ImagePanel;
     private javax.swing.JButton ImageRecette;
     private javax.swing.JLabel IngredientsRecette;
-    private javax.swing.JLabel LabelEtapes;
-    private javax.swing.JLabel LabelIngredients;
     private javax.swing.JPanel Ligne1;
     private javax.swing.JPanel Ligne1Infos;
     private javax.swing.JPanel Ligne2;
@@ -318,5 +314,6 @@ public class PageRecette extends javax.swing.JDialog {
     private javax.swing.JButton PlusFruit;
     private javax.swing.JLabel TotalFruit;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
