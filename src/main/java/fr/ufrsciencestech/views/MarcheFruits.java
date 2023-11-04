@@ -370,8 +370,12 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
     }// </editor-fold>//GEN-END:initComponents
 
     private void creationFruits(ArrayList<Fruit> liste){
+    /**
+     * Affiche tous les fruits contenu dans la liste listeFruitAffiche, dans le jPanel prévu
+     */
+    private void afficheFruits(){
         
-        final ArrayList<Fruit> listeFruit = liste;
+        final ArrayList<Fruit> listeFruit = listeFruitAffiche;
         
         int taille = listeFruit.size();
         
@@ -442,7 +446,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         //Vider les panels avant de remettre 
         remiseAZero();
         //Remplir des fruits types
-        creationFruits(result);
+        afficheFruits(listeFruitAffiche);
         
     }//GEN-LAST:event_categorieSansPepinsActionPerformed
 
