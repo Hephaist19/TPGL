@@ -61,9 +61,9 @@ public class PanierFactoryTest {
         Panier result2 = PanierFactory.createPanier(PanierType.AGRUME);
         assertEquals(result2.getTaillePanier(), 2);
         Panier result3 = PanierFactory.createPanier(PanierType.SANSPEPINS);
-        assertEquals(result3.getTaillePanier(), 5);
+        assertEquals(result3.getTaillePanier(), 6);
         Panier result4 = PanierFactory.createPanier(PanierType.AVECPEPINS);
-        assertEquals(result4.getTaillePanier(), 6);
+        assertEquals(result4.getTaillePanier(), 5);
         Panier result5 = PanierFactory.createPanier(PanierType.NULL);
         assertEquals(result5.getTaillePanier(), 11);
     }

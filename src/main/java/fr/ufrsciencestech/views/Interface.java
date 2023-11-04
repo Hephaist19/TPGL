@@ -43,16 +43,14 @@ public class Interface extends javax.swing.JDialog {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         InterfacePanier = new javax.swing.JPanel();
-        filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 200), new java.awt.Dimension(20, 200),
-                new java.awt.Dimension(20, 200));
+        filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 200), new java.awt.Dimension(20, 200), new java.awt.Dimension(20, 200));
         Colonne1 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
-        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200),
-                new java.awt.Dimension(30, 200));
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200));
         Colonne2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         labelVotrePanier = new javax.swing.JLabel();
@@ -62,28 +60,23 @@ public class Interface extends javax.swing.JDialog {
         LigneTotalPanier = new javax.swing.JPanel();
         LabelTotalPanier = new javax.swing.JLabel();
         LabelPrixTotal = new javax.swing.JLabel();
-        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200),
-                new java.awt.Dimension(30, 200));
+        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200));
         Colonne3 = new javax.swing.JPanel();
         BoutonRetour = new javax.swing.JButton();
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10),
-                new java.awt.Dimension(32767, 10));
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
         BoutonRetirerFruit = new javax.swing.JButton();
-        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10),
-                new java.awt.Dimension(32767, 10));
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
         BoutonViderPanier = new javax.swing.JButton();
-        spaceButton = new javax.swing.Box.Filler(new java.awt.Dimension(0, 200), new java.awt.Dimension(0, 200),
-                new java.awt.Dimension(250, 200));
+        spaceButton = new javax.swing.Box.Filler(new java.awt.Dimension(0, 200), new java.awt.Dimension(0, 200), new java.awt.Dimension(250, 200));
         BoutonValiderPanier = new javax.swing.JButton();
-        filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200),
-                new java.awt.Dimension(30, 200));
+        filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200), new java.awt.Dimension(30, 200));
 
         InterfacePanier.setBackground(new java.awt.Color(255, 255, 255));
         java.awt.GridBagLayout InterfacePanierLayout = new java.awt.GridBagLayout();
-        InterfacePanierLayout.columnWidths = new int[] { 0 };
-        InterfacePanierLayout.rowHeights = new int[] { 0 };
-        InterfacePanierLayout.columnWeights = new double[] { 0.0 };
-        InterfacePanierLayout.rowWeights = new double[] { 0.0 };
+        InterfacePanierLayout.columnWidths = new int[] {0};
+        InterfacePanierLayout.rowHeights = new int[] {0};
+        InterfacePanierLayout.columnWeights = new double[] {0.0};
+        InterfacePanierLayout.rowWeights = new double[] {0.0};
         InterfacePanier.setLayout(InterfacePanierLayout);
         InterfacePanier.add(filler6, new java.awt.GridBagConstraints());
 
@@ -132,14 +125,8 @@ public class Interface extends javax.swing.JDialog {
         affichePanier.setForeground(new java.awt.Color(141, 126, 255));
         affichePanier.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1" };
-
-            public int getSize() {
-                return strings.length;
-            }
-
-            public String getElementAt(int i) {
-                return strings[i];
-            }
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
         });
         affichePanier.setMaximumSize(new java.awt.Dimension(250, 300));
         affichePanier.setMinimumSize(new java.awt.Dimension(250, 300));
@@ -189,9 +176,9 @@ public class Interface extends javax.swing.JDialog {
         BoutonRetour.setMaximumSize(new java.awt.Dimension(155, 22));
         BoutonRetour.setMinimumSize(new java.awt.Dimension(155, 22));
         BoutonRetour.setPreferredSize(new java.awt.Dimension(137, 22));
-        BoutonRetour.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BoutonRetourMouseClicked(evt);
+        BoutonRetour.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BoutonRetourActionPerformed(evt);
             }
         });
         Colonne3.add(BoutonRetour);
@@ -205,9 +192,9 @@ public class Interface extends javax.swing.JDialog {
         BoutonRetirerFruit.setMaximumSize(new java.awt.Dimension(155, 22));
         BoutonRetirerFruit.setMinimumSize(new java.awt.Dimension(137, 22));
         BoutonRetirerFruit.setPreferredSize(new java.awt.Dimension(155, 22));
-        BoutonRetirerFruit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BoutonRetirerFruitMouseClicked(evt);
+        BoutonRetirerFruit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BoutonRetirerFruitActionPerformed(evt);
             }
         });
         Colonne3.add(BoutonRetirerFruit);
@@ -220,9 +207,9 @@ public class Interface extends javax.swing.JDialog {
         BoutonViderPanier.setMaximumSize(new java.awt.Dimension(155, 22));
         BoutonViderPanier.setMinimumSize(new java.awt.Dimension(137, 22));
         BoutonViderPanier.setPreferredSize(new java.awt.Dimension(155, 22));
-        BoutonViderPanier.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BoutonViderPanierMouseClicked(evt);
+        BoutonViderPanier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BoutonViderPanierActionPerformed(evt);
             }
         });
         Colonne3.add(BoutonViderPanier);
@@ -250,8 +237,26 @@ public class Interface extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BoutonRetirerFruitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoutonRetirerFruitActionPerformed
+
+        int index = this.affichePanier.getSelectedIndex();
+        panier.retirer(index);
+        initListeFruit();
+    }//GEN-LAST:event_BoutonRetirerFruitActionPerformed
+
+    private void BoutonViderPanierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoutonViderPanierActionPerformed
+
+        panier.vider();
+        initListeFruit();
+    }//GEN-LAST:event_BoutonViderPanierActionPerformed
+
+    private void BoutonRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoutonRetourActionPerformed
+
+        this.dispose();
+    }//GEN-LAST:event_BoutonRetourActionPerformed
+
     public void BoutonValiderPanierActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_BoutonValiderPanierActionPerformed
-        System.out.println("callBack Valider");
+
         if (panier.getPrix() > 0) {
             JOptionPane.showMessageDialog(this,
                     "Merci pour votre commande d'une valeur de " + panier.getPrix() + "€!\nBonne cuisine et à bientôt!",
@@ -260,24 +265,6 @@ public class Interface extends javax.swing.JDialog {
         }
         this.dispose();
     }// GEN-LAST:event_BoutonValiderPanierActionPerformed
-
-    private void BoutonRetourMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_BoutonRetourMouseClicked
-        System.out.println("Callback Retour");
-        this.dispose();
-    }// GEN-LAST:event_BoutonRetourMouseClicked
-
-    private void BoutonRetirerFruitMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_BoutonRetirerFruitMouseClicked
-        System.out.println("Callback Retirer");
-        int index = this.affichePanier.getSelectedIndex();
-        panier.retirer(index);
-        initListeFruit();
-    }// GEN-LAST:event_BoutonRetirerFruitMouseClicked
-
-    private void BoutonViderPanierMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_BoutonViderPanierMouseClicked
-        System.out.println("Callback Vider");
-        panier.vider();
-        initListeFruit();
-    }// GEN-LAST:event_BoutonViderPanierMouseClicked
 
     public JButton getButtonValider() {
         return BoutonValiderPanier;
@@ -293,6 +280,10 @@ public class Interface extends javax.swing.JDialog {
 
     public JButton getButtonViderPanier() {
         return BoutonViderPanier;
+    }
+    
+    public JList getAffichePanier() {
+        return affichePanier;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

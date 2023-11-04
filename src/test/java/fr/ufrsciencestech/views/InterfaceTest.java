@@ -101,8 +101,12 @@ public class InterfaceTest {
     @Test
     public void testBoutonRetirerFruit() {
         System.out.println("testBoutonRetirerFruit");
+        int debut = p.getTaillePanier();
+        System.out.println(p);
+        i.getAffichePanier().setSelectedIndex(1);
         i.getButtonRetirerFruit().doClick();
-        assertTrue(p.getTaillePanier() == 0);
+        System.out.println(p);
+        assertTrue(p.getTaillePanier() == (debut-1));
         // assertFalse(i.isActive());
     }
 
