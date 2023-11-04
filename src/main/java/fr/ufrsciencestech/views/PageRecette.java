@@ -105,9 +105,7 @@ public class PageRecette extends javax.swing.JDialog {
         EuroTotal = new javax.swing.JLabel();
         AjoutFruit = new javax.swing.JButton();
 
-        setMaximumSize(new java.awt.Dimension(620, 500));
         setMinimumSize(new java.awt.Dimension(620, 500));
-        setPreferredSize(new java.awt.Dimension(620, 500));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.Y_AXIS));
 
         Ligne1.setLayout(new java.awt.GridLayout(1, 2));
@@ -184,7 +182,7 @@ public class PageRecette extends javax.swing.JDialog {
         MoinsFruit.setText("-");
         MoinsFruit.setMaximumSize(new java.awt.Dimension(37, 37));
         MoinsFruit.setMinimumSize(new java.awt.Dimension(37, 37));
-        MoinsFruit.setPreferredSize(new java.awt.Dimension(37, 37));
+        MoinsFruit.setPreferredSize(new java.awt.Dimension(43, 43));
         MoinsFruit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 MoinsFruitMouseClicked(evt);
@@ -197,16 +195,16 @@ public class PageRecette extends javax.swing.JDialog {
         NbRecette.setText("0");
         NbRecette.setMaximumSize(new java.awt.Dimension(30, 37));
         NbRecette.setMinimumSize(new java.awt.Dimension(64, 37));
-        NbRecette.setPreferredSize(new java.awt.Dimension(64, 37));
+        NbRecette.setPreferredSize(new java.awt.Dimension(64, 43));
         PanelNombreFruit.add(NbRecette);
 
         PlusFruit.setBackground(new java.awt.Color(141, 126, 255));
         PlusFruit.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
         PlusFruit.setForeground(new java.awt.Color(255, 255, 255));
         PlusFruit.setText("+");
-        PlusFruit.setMaximumSize(new java.awt.Dimension(37, 37));
+        PlusFruit.setMaximumSize(new java.awt.Dimension(370, 370));
         PlusFruit.setMinimumSize(new java.awt.Dimension(37, 37));
-        PlusFruit.setPreferredSize(new java.awt.Dimension(37, 37));
+        PlusFruit.setPreferredSize(new java.awt.Dimension(43, 43));
         PlusFruit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 PlusFruitMouseClicked(evt);
@@ -233,7 +231,7 @@ public class PageRecette extends javax.swing.JDialog {
         AjoutFruit.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
         AjoutFruit.setForeground(new java.awt.Color(255, 255, 255));
         AjoutFruit.setText("Ajouter");
-        AjoutFruit.setPreferredSize(new java.awt.Dimension(89, 32));
+        AjoutFruit.setPreferredSize(new java.awt.Dimension(89, 43));
         AjoutFruit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AjoutFruitActionPerformed(evt);

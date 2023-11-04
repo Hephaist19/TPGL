@@ -274,7 +274,7 @@
                   <Dimension value="[37, 37]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[37, 37]"/>
+                  <Dimension value="[43, 43]"/>
                 </Property>
               </Properties>
               <Events>
@@ -295,7 +295,7 @@
                   <Dimension value="[64, 37]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[64, 37]"/>
+                  <Dimension value="[64, 43]"/>
                 </Property>
               </Properties>
             </Component>
@@ -318,7 +318,7 @@
                   <Dimension value="[37, 37]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[37, 37]"/>
+                  <Dimension value="[43, 43]"/>
                 </Property>
               </Properties>
               <Events>
@@ -373,7 +373,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ajouter"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[89, 32]"/>
+                  <Dimension value="[89, 43]"/>
                 </Property>
               </Properties>
               <Events>
