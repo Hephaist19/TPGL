@@ -355,7 +355,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
             bouton.setIcon(new javax.swing.ImageIcon(path));
             pan.add(bouton);
 
-            JLabel label = new JLabel(listeFruit.get(i).getName(),SwingConstants.CENTER);
+            JLabel label = new JLabel(listeFruit.get(i).getName() + " " + listeFruit.get(i).getPrix() + "€",SwingConstants.CENTER);
 
             label.setBackground(new java.awt.Color(255, 255, 255));
             label.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16));
