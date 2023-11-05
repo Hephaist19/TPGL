@@ -9,6 +9,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 
 import org.junit.*;
+import static org.junit.Assert.*;
 
 public class FruitsFilterTest {
 
@@ -86,7 +87,18 @@ public class FruitsFilterTest {
         public void testFruitsFilter() {
                 System.out.println("testFruitsFilter");
                 FruitsFilter fe = new FruitsFilter();
-                assertEquals(fe.getResult().size(), FruitType.values().length);
+                ArrayList<Fruit> result;
+                result = fe.filter(FilterType.PEPINS).getResult();
+                assertEquals(5 , result.size());
+                fe = new FruitsFilter();
+                result = fe.filter(FilterType.NPEPINS).getResult();
+                assertEquals(6 ,  result.size());
+                fe = new FruitsFilter();
+                result = fe.filter(FilterType.EXOTIQUE).getResult();
+                assertEquals(4,  result.size());
+                fe = new FruitsFilter();
+                result = fe.filter(FilterType.AGRUME).getResult();
+                assertEquals(2 ,  result.size());
         }
 
 }
