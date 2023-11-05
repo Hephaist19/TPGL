@@ -4,6 +4,7 @@
  */
 package fr.ufrsciencestech;
 
+import fr.ufrsciencestech.views.MarcheFruits;
 import java.beans.PropertyChangeListener;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -21,7 +22,7 @@ import static org.mockito.Mockito.mock;
 public class MainTest {
     
     @Mock
-    private  Main p;
+    private  Main m;
 
     private PropertyChangeListener l = mock(PropertyChangeListener.class);
     
@@ -38,7 +39,7 @@ public class MainTest {
     
     @Before
     public void setUp() {
-        p = new Main();
+        m = new Main();
     }
     
     @After
