@@ -4,6 +4,7 @@
  */
 package fr.ufrsciencestech.views;
 
+import fr.ufrsciencestech.controllers.factories.*;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -52,9 +53,37 @@ public class PageFruit extends javax.swing.JDialog {
         this.PrixFruit.setText(Double.toString(fruit.getPrix()));
         this.NbFruit.setText(Integer.toString(1));
         this.TotalFruit.setText(Double.toString(Double.parseDouble(this.NbFruit.getText()) * fruit.getPrix()));
+        this.ExempleRecette.setText("");
+        
+        
+        //On créé toutes les recettes existantes à ce jour afin de rechercher lesquelles contiennent ce fruit.
+        listeRecette = RecettesFactory.createAll();
+        String nulle="";
+        
+        //on parcourt les recettes
+        for(int i=0;i<listeRecette.size();i++)
+        {
+            //on parcourt les fruits de la recette
+            for(int j=0; j<listeRecette.get(i).getFruits().size();j++)
+            {
+                //dès que ça correspond on ajoute la recette et on passe à la suivante
+                if(listeRecette.get(i).getFruits().get(j).getName().equals(fruit.getName()))
+                {
+                    this.ExempleRecette.setText(ExempleRecette.getText() +" "+ listeRecette.get(i).getName());
+                    break;
+                }
+            }            
+        }
+        
+        if(this.ExempleRecette.getText().equals(nulle))
+            {
+                this.ExempleRecette.setText("Aucune recette n'est disponible pour l'instant.");
+
+            }
+        
     }
     
-    
+      
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -93,7 +122,7 @@ public class PageFruit extends javax.swing.JDialog {
 
         setMaximumSize(new java.awt.Dimension(460, 325));
         setMinimumSize(new java.awt.Dimension(460, 318));
-        setPreferredSize(new java.awt.Dimension(460, 300));
+        setPreferredSize(new java.awt.Dimension(500, 350));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.Y_AXIS));
 
         Ligne1.setLayout(new java.awt.GridLayout(1, 2));
