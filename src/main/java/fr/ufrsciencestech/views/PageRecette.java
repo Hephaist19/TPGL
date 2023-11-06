@@ -103,7 +103,7 @@ public class PageRecette extends javax.swing.JDialog {
         PanelTotalFruit = new javax.swing.JPanel();
         TotalFruit = new javax.swing.JLabel();
         EuroTotal = new javax.swing.JLabel();
-        AjoutFruit = new javax.swing.JButton();
+        AjoutRecette = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(620, 500));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.Y_AXIS));
@@ -227,17 +227,17 @@ public class PageRecette extends javax.swing.JDialog {
         EuroTotal.setText(" € ");
         PanelTotalFruit.add(EuroTotal);
 
-        AjoutFruit.setBackground(new java.awt.Color(189, 98, 199));
-        AjoutFruit.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        AjoutFruit.setForeground(new java.awt.Color(255, 255, 255));
-        AjoutFruit.setText("Ajouter");
-        AjoutFruit.setPreferredSize(new java.awt.Dimension(89, 43));
-        AjoutFruit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AjoutFruitActionPerformed(evt);
+        AjoutRecette.setBackground(new java.awt.Color(189, 98, 199));
+        AjoutRecette.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        AjoutRecette.setForeground(new java.awt.Color(255, 255, 255));
+        AjoutRecette.setText("Ajouter");
+        AjoutRecette.setPreferredSize(new java.awt.Dimension(89, 43));
+        AjoutRecette.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AjoutRecetteMouseClicked(evt);
             }
         });
-        PanelTotalFruit.add(AjoutFruit);
+        PanelTotalFruit.add(AjoutRecette);
 
         Ligne3.add(PanelTotalFruit);
 
@@ -273,14 +273,19 @@ public class PageRecette extends javax.swing.JDialog {
         actualiserPrixTotal();
     }//GEN-LAST:event_PlusFruitMouseClicked
 
-    private void AjoutFruitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjoutFruitActionPerformed
-        Fruit fruit = new Pomme();
-        
+    private void AjoutRecetteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AjoutRecetteMouseClicked
+            
+        int taille = recette.getFruits().size();
         int nombre = Integer.parseInt(this.NbRecette.getText());
-        int i = 0;
+        
         try {
-            for (; i < nombre; i++) {
-                panier.ajout(fruit);
+            for (int i=0; i < nombre; i++) {
+                for (int j=0; j < taille; j++) 
+                {
+                    Fruit fruit = recette.getFruits().get(j);
+                    panier.ajout(fruit);
+                }
+                
             }
         } catch (PanierPleinException e) {
             JOptionPane.showMessageDialog(Ligne2, "Il n'y a pas assez de place dans votre panier.", "Faites du tri !", JOptionPane.ERROR_MESSAGE);
@@ -288,11 +293,10 @@ public class PageRecette extends javax.swing.JDialog {
         }finally {
             this.dispose();
         }
-        
-    }//GEN-LAST:event_AjoutFruitActionPerformed
+    }//GEN-LAST:event_AjoutRecetteMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AjoutFruit;
+    private javax.swing.JButton AjoutRecette;
     private javax.swing.JTextArea Etapes;
     private javax.swing.JLabel EuroTotal;
     private javax.swing.JPanel ImagePanel;
