@@ -502,7 +502,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
 
         // Fruits sans pépins
         ArrayList<Fruit> tout = FruitsFactory.createAll();
-        listeFruitAffiche = new FruitsFilter(tout).filter(FilterType.PEPINS).getResult();
+        listeFruitAffiche = new FruitsFilter(tout).filter(FilterType.NPEPINS).getResult();
         
         //Remplir des fruits types
         afficheFruits();
