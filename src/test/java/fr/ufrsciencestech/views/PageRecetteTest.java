@@ -5,7 +5,9 @@
 package fr.ufrsciencestech.views;
 
 import fr.ufrsciencestech.controllers.factories.RecettesFactory;
+import fr.ufrsciencestech.exceptions.PanierPleinException;
 import fr.ufrsciencestech.models.Panier;
+import fr.ufrsciencestech.models.fruits.Pomme;
 import fr.ufrsciencestech.utils.RecetteType;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -57,17 +59,22 @@ public class PageRecetteTest {
      * Test of AjoutFruit method, of class PageRecette.
      */
     @Test
-    public void testgetAjoutRecette() {
-        System.out.println("getAjoutRecette");
+    public void testAjoutRecette() {
+        System.out.println("testAjoutRecette");
         int tailleavant = p.getTaillePanier();
         pr.getAjoutRecette().doClick();
         assertTrue(p.getTaillePanier() >= tailleavant);
         //test catch
         for(int i = p.getTaillePanier();i<p.getContenanceMax();i++){
-            pr.getAjoutRecette().doClick();
+            try {
+                p.ajout(new Pomme());
+            } catch (PanierPleinException e) {
+                e.printStackTrace();
+            }
         }
         assertTrue(p.estPlein());
-         pr.getAjoutRecette().doClick();
+        //Ajout fruit dans un panier plein
+        pr.getAjoutRecette().doClick();
         assertTrue(p.estPlein());
     }
     
