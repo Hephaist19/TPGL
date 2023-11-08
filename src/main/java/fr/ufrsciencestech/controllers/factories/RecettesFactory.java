@@ -1,7 +1,6 @@
 
 package fr.ufrsciencestech.controllers.factories;
 
-import fr.ufrsciencestech.models.fruits.*;
 import java.util.ArrayList;
 
 import fr.ufrsciencestech.models.recettes.*;
@@ -16,16 +15,16 @@ public class RecettesFactory {
     public static Recette createRecette(RecetteType type) {
         switch (type) {
             case JUSPOMME:
-                    return new JusPomme();
+                return new JusPomme();
                     
             case BANANASPLIT:
-                    return new BananaSplit();
+                return new BananaSplit();
                     
             case CAKECITRON:
-                    return new CakeCitron();
+                return new CakeCitron();
     
             default: //TARTECERISE
-                    return new TarteCerise();
+                return new TarteCerise();
         }
     }
 
