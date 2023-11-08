@@ -1,6 +1,9 @@
 package fr.ufrsciencestech;
 
-import fr.ufrsciencestech.views.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import fr.ufrsciencestech.views.MarcheFruits;
 
 public class Main {
 
@@ -8,9 +11,9 @@ public class Main {
 
         MarcheFruits page = new MarcheFruits();
         
-        page.addWindowListener(new java.awt.event.WindowAdapter() {
+        page.addWindowListener(new WindowAdapter() {
                     @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
+                    public void windowClosing(WindowEvent e) {
                         System.exit(0);
                     }
                 });
