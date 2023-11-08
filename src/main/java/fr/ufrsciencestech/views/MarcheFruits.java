@@ -109,6 +109,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         jPanel15 = new javax.swing.JPanel();
         labelCategorie1 = new javax.swing.JLabel();
         boycott = new javax.swing.JComboBox<>();
+        ButtonBoycott = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -340,6 +341,17 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
 
         jPanel1.add(jPanel5);
 
+        ButtonBoycott.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        ButtonBoycott.setForeground(new java.awt.Color(189, 98, 199));
+        ButtonBoycott.setText("Boycotter");
+        ButtonBoycott.setPreferredSize(new java.awt.Dimension(110, 35));
+        ButtonBoycott.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonBoycottActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ButtonBoycott);
+
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
@@ -369,7 +381,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 724, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
         );
 
         pack();
@@ -611,6 +623,10 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         }
     }//GEN-LAST:event_boycottActionPerformed
 
+    private void ButtonBoycottActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonBoycottActionPerformed
+        
+    }//GEN-LAST:event_ButtonBoycottActionPerformed
+
     private void trierParActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_trierParActionPerformed
         // récupérer la catégorie qu'on est dedans
 
@@ -671,6 +687,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonBoycott;
     private javax.swing.JButton boutonVoirPanier;
     private javax.swing.JComboBox<String> boycott;
     private javax.swing.JRadioButton categorieAgrume;
