@@ -54,13 +54,15 @@ public class PageRecette extends javax.swing.JDialog {
         this.ImageRecette.setIcon(new ImageIcon(iR));
         this.NomRecette.setText(recette.getName());
         this.NbRecette.setText(Integer.toString(1));
-        this.IngredientsRecette.setText(recette.getDescription());
+        
+        affichageIngredients();
+       // this.IngredientsRecette.setText(recette.getDescription());
         this.Etapes.setText(recette.getEtapes());
         calculPrix();
         this.TotalFruit.setText(df.format(Double.parseDouble(this.NbRecette.getText()) * prix ));
     }
     
-     private void actualiserPrixTotal() {
+    private void actualiserPrixTotal() {
         double total = Double.parseDouble(this.NbRecette.getText()) * prix;
         this.TotalFruit.setText(df.format(total));
     }
@@ -74,6 +76,29 @@ public class PageRecette extends javax.swing.JDialog {
             prix += recette.getFruits().get(i).getPrix();
         }
         
+    }
+    
+    private void affichageIngredients(){
+        
+        int taille = recette.getFruits().size();
+        String label = "";
+        
+        for(int i=0; i<taille; i++)
+        {
+            if(i==0)
+            {
+                label += recette.getFruits().get(i).getName();
+            }
+            else if(recette.getFruits().get(i).getName().equals(recette.getFruits().get(i-1).getName())){}
+            else 
+            {
+                label += ", "+recette.getFruits().get(i).getName();
+            }
+            
+        }
+        //recette.getDescription()
+        
+        this.IngredientsRecette.setText(label);
     }
     
     /**
@@ -92,6 +117,7 @@ public class PageRecette extends javax.swing.JDialog {
         Ligne1Infos = new javax.swing.JPanel();
         NomRecette = new javax.swing.JLabel();
         Ligne2Infos = new javax.swing.JPanel();
+        LabelIngred = new javax.swing.JLabel();
         IngredientsRecette = new javax.swing.JLabel();
         Ligne2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -135,6 +161,11 @@ public class PageRecette extends javax.swing.JDialog {
 
         Ligne2Infos.setBackground(new java.awt.Color(255, 255, 255));
 
+        LabelIngred.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        LabelIngred.setForeground(new java.awt.Color(189, 98, 199));
+        LabelIngred.setText("Fruits nécessaires :");
+        Ligne2Infos.add(LabelIngred);
+
         IngredientsRecette.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
         IngredientsRecette.setForeground(new java.awt.Color(189, 98, 199));
         IngredientsRecette.setText("Les ingrédients");
@@ -156,6 +187,7 @@ public class PageRecette extends javax.swing.JDialog {
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(450, 100));
 
+        Etapes.setEditable(false);
         Etapes.setColumns(20);
         Etapes.setFont(new java.awt.Font("Century", 0, 15)); // NOI18N
         Etapes.setForeground(new java.awt.Color(141, 126, 255));
@@ -317,6 +349,7 @@ public class PageRecette extends javax.swing.JDialog {
     private javax.swing.JPanel ImagePanel;
     private javax.swing.JButton ImageRecette;
     private javax.swing.JLabel IngredientsRecette;
+    private javax.swing.JLabel LabelIngred;
     private javax.swing.JPanel Ligne1;
     private javax.swing.JPanel Ligne1Infos;
     private javax.swing.JPanel Ligne2;
