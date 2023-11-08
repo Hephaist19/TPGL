@@ -15,7 +15,7 @@ import java.text.DecimalFormat;
  */
 public class Interface extends javax.swing.JDialog implements PropertyChangeListener {
 
-    private Panier panier;
+    final private Panier panier;
     private static final DecimalFormat df = new DecimalFormat("0.00");
 
     /**
@@ -37,6 +37,10 @@ public class Interface extends javax.swing.JDialog implements PropertyChangeList
         this.affichePanier.setModel(liste);
 
         this.LabelPrixTotal.setText(df.format(panier.getPrix()) + "€");
+    }
+
+    public final Panier getPanier() {
+        return panier;
     }
 
     /**

@@ -54,8 +54,14 @@ public class MarcheFruitsTest {
     @Test
     public void testPropertyChange() {
         System.out.println("propertyChange");
-        PropertyChangeEvent evt = null;
+        
         MarcheFruits instance = new MarcheFruits();
+        assertTrue(instance != null);;
+        
+        PropertyChangeEvent evt = new PropertyChangeEvent(instance.getPanier(), "fruits", 0, 1);
+        instance.propertyChange(evt);
+
+        evt = new PropertyChangeEvent(instance.getPanier(), "fake", 0, 1);
         instance.propertyChange(evt);
     }
 

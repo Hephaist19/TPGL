@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 
 import java.awt.event.ActionEvent;
-
+import java.beans.PropertyChangeEvent;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -17,6 +17,7 @@ import org.mockito.Mock;
 import fr.ufrsciencestech.controllers.factories.FruitsFactory;
 import fr.ufrsciencestech.exceptions.PanierPleinException;
 import fr.ufrsciencestech.models.Panier;
+import fr.ufrsciencestech.models.fruits.Banane;
 import fr.ufrsciencestech.utils.FruitType;
 
 public class InterfaceTest {
@@ -108,6 +109,19 @@ public class InterfaceTest {
         System.out.println(p);
         assertTrue(p.getTaillePanier() == (debut-1));
         // assertFalse(i.isActive());
+    }
+
+    @Test
+    public void testPropertyChange() {
+        System.out.println("propertyChange");
+        
+        Interface instance = new Interface(parent, false, p);
+        assertTrue(instance != null);
+        PropertyChangeEvent evt = new PropertyChangeEvent(instance.getPanier(), "fruits", 0, 1);
+        instance.propertyChange(evt);
+        
+        evt = new PropertyChangeEvent(instance.getPanier(), "fake", 0, 1);
+        instance.propertyChange(evt);
     }
 
 }
