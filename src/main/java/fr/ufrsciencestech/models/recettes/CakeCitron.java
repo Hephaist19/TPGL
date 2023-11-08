@@ -1,38 +1,39 @@
 package fr.ufrsciencestech.models.recettes;
 
+import fr.ufrsciencestech.controllers.factories.FruitsFactory;
 import fr.ufrsciencestech.models.fruits.*;
+import fr.ufrsciencestech.utils.FruitType;
+
 import java.util.ArrayList;
 
 
 public class CakeCitron implements Recette {
 
-    private String name;
-    private final ArrayList<Fruit> listeFruit = new ArrayList<>();
-    
-    private Citron ci1 = new Citron();
-    private Citron ci2 = new Citron();
-    private Citron ci3 = new Citron();
+    final private String name;
+    final private  ArrayList<Fruit> listeFruit;
+
+    public CakeCitron() {
+        name = "Cake au citron";
+        listeFruit = FruitsFactory.createAllOf(FruitType.CITRON, FruitType.CITRON, FruitType.CITRON);
+    }
     
     @Override
     public String getName() {
-        return "Cake au citron";
+        return name;
     }
 
     @Override
     public ArrayList<Fruit> getFruits() {
-        if(listeFruit!=null)
-        {listeFruit.clear();}
-
-        listeFruit.add(ci1);
-        listeFruit.add(ci2);
-        listeFruit.add(ci3);
         return listeFruit;
     }
     
     @Override
     public double getPrix() {
-        Citron c = new Citron();
-        return 3*c.getPrix();
+        double prix = 0;
+        for(Fruit f : listeFruit){
+            prix += f.getPrix();
+        }
+        return prix;
     }
 
     @Override

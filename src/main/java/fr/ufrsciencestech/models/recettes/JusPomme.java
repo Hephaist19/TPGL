@@ -2,37 +2,36 @@ package fr.ufrsciencestech.models.recettes;
 
 import java.util.ArrayList;
 
+import fr.ufrsciencestech.controllers.factories.FruitsFactory;
 import fr.ufrsciencestech.models.fruits.*;
-import java.util.Arrays;
+import fr.ufrsciencestech.utils.FruitType;
 
 public class JusPomme implements Recette {
 
-    private String name;
-    private Pomme p1 = new Pomme();
-    private Pomme p2 = new Pomme(); 
-    private Pomme p3 = new Pomme(); 
-    private Pomme p4 = new Pomme();
-    private ArrayList<Fruit> listeFruit = new ArrayList<>();
+    final private String name;
+    final private ArrayList<Fruit> listeFruit;
+
+    public JusPomme() {
+        name = "Jus de pomme";
+        listeFruit = FruitsFactory.createAllOf(FruitType.POMME, FruitType.POMME, FruitType.POMME, FruitType.POMME);
+    }
 
     @Override
     public String getName() {
-        return "Jus de pomme";
+        return name;
     }
     
     @Override
     public double getPrix() {
-        Pomme p = new Pomme();
-        return 4*p.getPrix();
+        double prix = 0;
+        for(Fruit f : listeFruit){
+            prix += f.getPrix();
+        }
+        return prix;
     }
 
     @Override
     public ArrayList<Fruit> getFruits() {
-        if(listeFruit!=null)
-        {listeFruit.clear();}
-        listeFruit.add(p1);
-        listeFruit.add(p2);
-        listeFruit.add(p3);
-        listeFruit.add(p4);
         return listeFruit;
     }
 

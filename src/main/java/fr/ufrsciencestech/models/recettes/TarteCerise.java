@@ -2,34 +2,38 @@ package fr.ufrsciencestech.models.recettes;
 
 import java.util.ArrayList;
 
+import fr.ufrsciencestech.controllers.factories.FruitsFactory;
 import fr.ufrsciencestech.models.fruits.*;
+import fr.ufrsciencestech.utils.FruitType;
 
 public class TarteCerise implements Recette {
 
-    private String name;
-    private ArrayList<Fruit> listeFruit= new ArrayList<>();
-    private Cerise c1 = new Cerise();
-    private Cerise c2 = new Cerise();
+    final private String name;
+    final private ArrayList<Fruit> listeFruit;
+
+    public TarteCerise() {
+        name = "Tarte aux cerises";
+        listeFruit = FruitsFactory.createAllOf(FruitType.CERISE, FruitType.CERISE);
+    }
 
     
     @Override
     public String getName() {
-        return "Tarte aux cerises";
+        return name;
     }
 
     @Override
     public ArrayList<Fruit> getFruits() {
-        if(listeFruit!=null)
-        {listeFruit.clear();}
-        listeFruit.add(c1);
-        listeFruit.add(c2);
         return listeFruit;
     }
     
     @Override
     public double getPrix() {
-        Cerise c = new Cerise();
-        return 2*c.getPrix();
+        double prix = 0;
+        for(Fruit f : listeFruit){
+            prix += f.getPrix();
+        }
+        return prix;
     }
 
     @Override
