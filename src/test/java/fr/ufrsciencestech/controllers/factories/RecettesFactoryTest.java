@@ -54,7 +54,7 @@ public class RecettesFactoryTest {
         ArrayList<Recette> result = RecettesFactory.createAllOf(RecetteType.BANANASPLIT);
 
         System.out.println(result.get(0).getName());
-        assertEquals("Banana split", result.get(0).getName());
+        assertEquals("Banana Split", result.get(0).getName());
         result = RecettesFactory.createAllOf(RecetteType.CAKECITRON);
 
         System.out.println(result.get(0).getName());

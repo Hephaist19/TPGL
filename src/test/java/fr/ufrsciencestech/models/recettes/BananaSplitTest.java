@@ -45,7 +45,7 @@ public class BananaSplitTest {
     public void testGetName() {
         System.out.println("getName");
         BananaSplit instance = new BananaSplit();
-        String expResult = "Banana split";
+        String expResult = "Banana Split";
         String result = instance.getName();
         assertEquals(expResult, result);
     }
