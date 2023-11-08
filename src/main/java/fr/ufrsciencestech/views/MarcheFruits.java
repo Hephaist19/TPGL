@@ -94,9 +94,6 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         categorieExotique = new javax.swing.JRadioButton();
         categorieTous = new javax.swing.JRadioButton();
         jSeparator5 = new javax.swing.JSeparator();
-        jPanel15 = new javax.swing.JPanel();
-        labelCategorie1 = new javax.swing.JLabel();
-        boycott = new javax.swing.JComboBox<>();
         jSeparator4 = new javax.swing.JSeparator();
         jPanel12 = new javax.swing.JPanel();
         labelCategorie2 = new javax.swing.JLabel();
@@ -109,6 +106,9 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         labelRecapTotalPanier = new javax.swing.JLabel();
         labelPrixRecapPanier = new javax.swing.JLabel();
         euros = new javax.swing.JLabel();
+        jPanel15 = new javax.swing.JPanel();
+        labelCategorie1 = new javax.swing.JLabel();
+        boycott = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -236,32 +236,6 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         jSeparator5.setPreferredSize(new java.awt.Dimension(0, 5));
         jPanel5.add(jSeparator5);
 
-        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel15.setPreferredSize(new java.awt.Dimension(190, 20));
-
-        labelCategorie1.setFont(new java.awt.Font("Eunjin Nakseo", 0, 17)); // NOI18N
-        labelCategorie1.setForeground(new java.awt.Color(141, 126, 255));
-        labelCategorie1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        labelCategorie1.setText("Boycott :");
-        labelCategorie1.setAlignmentY(0.0F);
-        labelCategorie1.setPreferredSize(new java.awt.Dimension(200, 23));
-        jPanel15.add(labelCategorie1);
-
-        boycott.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
-        boycott.setForeground(new java.awt.Color(141, 126, 255));
-        boycott.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sélectionnez un pays", "Brésil", "Costa Rica", "Espagne", "France", "Madagascar", "Nouvelle-Zélande", "Portugal" }));
-        boycott.setAlignmentX(0.25F);
-        boycott.setMaximumSize(new java.awt.Dimension(170, 25));
-        boycott.setPreferredSize(new java.awt.Dimension(180, 25));
-        boycott.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boycottActionPerformed(evt);
-            }
-        });
-        jPanel15.add(boycott);
-
-        jPanel5.add(jPanel15);
-
         jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator4.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator4.setMaximumSize(new java.awt.Dimension(0, 5));
@@ -294,7 +268,8 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         jPanel5.add(jPanel12);
 
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel13.setPreferredSize(new java.awt.Dimension(200, 15));
+        jPanel13.setMaximumSize(new java.awt.Dimension(200, 30));
+        jPanel13.setPreferredSize(new java.awt.Dimension(200, 30));
 
         labelRecapPanier.setBackground(new java.awt.Color(255, 255, 255));
         labelRecapPanier.setFont(new java.awt.Font("Eunjin Nakseo", 0, 17)); // NOI18N
@@ -316,7 +291,9 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         jPanel5.add(jScrollPane1);
 
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel14.setPreferredSize(new java.awt.Dimension(200, 20));
+        jPanel14.setMaximumSize(new java.awt.Dimension(32767, 40));
+        jPanel14.setPreferredSize(new java.awt.Dimension(200, 40));
+        jPanel14.setRequestFocusEnabled(false);
 
         labelRecapTotalPanier.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
         labelRecapTotalPanier.setForeground(new java.awt.Color(141, 126, 255));
@@ -334,6 +311,32 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         jPanel14.add(euros);
 
         jPanel5.add(jPanel14);
+
+        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel15.setPreferredSize(new java.awt.Dimension(190, 20));
+
+        labelCategorie1.setFont(new java.awt.Font("Eunjin Nakseo", 0, 17)); // NOI18N
+        labelCategorie1.setForeground(new java.awt.Color(141, 126, 255));
+        labelCategorie1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        labelCategorie1.setText("Boycott :");
+        labelCategorie1.setAlignmentY(0.0F);
+        labelCategorie1.setPreferredSize(new java.awt.Dimension(200, 23));
+        jPanel15.add(labelCategorie1);
+
+        boycott.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
+        boycott.setForeground(new java.awt.Color(141, 126, 255));
+        boycott.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sélectionnez un pays", "Brésil", "Costa Rica", "Espagne", "France", "Madagascar", "Nouvelle-Zélande", "Portugal" }));
+        boycott.setAlignmentX(0.25F);
+        boycott.setMaximumSize(new java.awt.Dimension(170, 25));
+        boycott.setPreferredSize(new java.awt.Dimension(180, 25));
+        boycott.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boycottActionPerformed(evt);
+            }
+        });
+        jPanel15.add(boycott);
+
+        jPanel5.add(jPanel15);
 
         jPanel1.add(jPanel5);
 
