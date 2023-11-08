@@ -550,7 +550,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         System.out.println("WESH");
     }
 
-    public Panier getPanier() {
+    public final Panier getPanier() {
         return panier;
     }
 
