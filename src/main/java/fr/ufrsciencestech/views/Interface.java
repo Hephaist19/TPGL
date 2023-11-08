@@ -4,13 +4,16 @@ import javax.swing.*;
 
 import fr.ufrsciencestech.models.Panier;
 import fr.ufrsciencestech.models.fruits.Fruit;
+
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.text.DecimalFormat;
 
 /**
  *
  * @author mgall
  */
-public class Interface extends javax.swing.JDialog {
+public class Interface extends javax.swing.JDialog implements PropertyChangeListener {
 
     private Panier panier;
     private static final DecimalFormat df = new DecimalFormat("0.00");
@@ -312,4 +315,10 @@ public class Interface extends javax.swing.JDialog {
     private javax.swing.JLabel labelVotrePanier;
     private javax.swing.Box.Filler spaceButton;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        if(evt.getPropertyName().equals("fruits"))
+            initListeFruit();
+    }
 }
