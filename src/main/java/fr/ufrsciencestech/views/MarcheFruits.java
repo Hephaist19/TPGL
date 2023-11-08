@@ -544,10 +544,10 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         validation.setLocation(100,100);
     }                                             
 
-    // TODO a faire fonctionner
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        System.out.println("WESH");
+        if(evt.getPropertyName().equals("fruits"))
+            initListePanier();
     }
 
     public final Panier getPanier() {
