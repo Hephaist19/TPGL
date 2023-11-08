@@ -53,10 +53,10 @@ public class Panier {
      * @param fruits ArrayList<<>Fruit>
      */
     public void setFruits(ArrayList<Fruit> fruits) {
-        ArrayList<Fruit> old = this.fruits;
+        int oldsize = this.fruits.size();
         this.fruits = fruits;
         //Emission de l'évênement de modification à tous les listeners
-        pcs.firePropertyChange("fruits", old, this.fruits);
+        pcs.firePropertyChange("fruits", oldsize, this.fruits.size());
     }
 
     /**
@@ -66,9 +66,9 @@ public class Panier {
      */
     public void ajout(Fruit o) throws PanierPleinException {
         if (fruits.size() < contenanceMax) {
-            ArrayList<Fruit> old = this.fruits;
+            int oldsize = this.fruits.size();
             fruits.add(o);
-            pcs.firePropertyChange("fruits", old, this.fruits);
+            pcs.firePropertyChange("fruits", oldsize, this.fruits.size());
         } else {
             throw new PanierPleinException();
         }
@@ -80,7 +80,7 @@ public class Panier {
      * @throws PanierPleinException si le panier est plein
      */
     public void ajouterTout(ArrayList<Fruit> liste) throws PanierPleinException {
-        ArrayList<Fruit> old = this.fruits;
+        int oldsize = this.fruits.size();
         for(Fruit f : liste) {
             try {
                 ajout(f);
@@ -88,7 +88,7 @@ public class Panier {
                 throw new PanierPleinException();
             } finally {
                 //On emet quand même le signal après capture de l'erreur au niveau plus haut
-                pcs.firePropertyChange("fruits", old, this.fruits);
+                pcs.firePropertyChange("fruits", oldsize, this.fruits.size());
             }
         }
     }
@@ -97,8 +97,9 @@ public class Panier {
      * Vide entièrement le panier
      */
     public void vider() {
+        int oldsize = this.fruits.size();
         this.fruits.clear();
-        pcs.firePropertyChange("fruits", this.fruits, fruits);
+        pcs.firePropertyChange("fruits", oldsize, fruits.size());
     }
 
     /**
@@ -107,9 +108,9 @@ public class Panier {
      */
     public void retrait() throws PanierVideException {
         if (!fruits.isEmpty()) {
-            ArrayList<Fruit> old = this.fruits;
+            int oldsize = this.fruits.size();
             fruits.remove(fruits.size() - 1);
-            pcs.firePropertyChange("fruits", old, this.fruits);
+            pcs.firePropertyChange("fruits", oldsize, this.fruits.size());
         } else {
             throw new PanierVideException();
         }
@@ -117,9 +118,9 @@ public class Panier {
 
     public void retirer(int indice) {
         if(!(indice < 0 || indice > fruits.size())) {
-            ArrayList<Fruit> old = this.fruits;
+            int oldsize = this.fruits.size();
             fruits.remove(indice);
-            pcs.firePropertyChange("fruits", old, this.fruits);
+            pcs.firePropertyChange("fruits", oldsize, this.fruits.size());
         }
     }
 
@@ -129,7 +130,7 @@ public class Panier {
      */
     public void boycotteOrigine(String origine) {
         int nbModification = 0;
-        ArrayList<Fruit> old = this.fruits;
+        int oldsize = this.fruits.size();
         for (int i = 0; i < this.fruits.size(); i++) {
             if (this.fruits.get(i).getOrigine().equals(origine)) {
                 this.fruits.remove(i);
@@ -138,7 +139,7 @@ public class Panier {
         }
 
         if (nbModification > 0) {
-            pcs.firePropertyChange("fruits", old, this.fruits);
+            pcs.firePropertyChange("fruits", oldsize, this.fruits.size());
         }
     }
 
@@ -150,9 +151,9 @@ public class Panier {
      */
     public void setFruit(int i, Fruit f) {
         if (i >= 0 && this.fruits.size() > i) {
-            ArrayList<Fruit> old = this.fruits;
+            int oldsize = this.fruits.size();
             fruits.set(i, f);
-            pcs.firePropertyChange("fruits", old, this.fruits);
+            pcs.firePropertyChange("fruits", oldsize, this.fruits.size());
         }
     }
 
