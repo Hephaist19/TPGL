@@ -367,7 +367,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
             bouton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent ae) {
-                    PageFruit affichageFruit = new PageFruit(instance, true, fruit, panier);
+                    PageFruit affichageFruit = new PageFruit(instance, false, fruit, panier);
                     affichageFruit.setLocation(100, 100);
                     affichageFruit.setVisible(true);
                 }
@@ -422,7 +422,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
             bouton.addActionListener(new ActionListener() {
                 @Override
                     public void actionPerformed(ActionEvent ae) {
-                        PageRecette affichageFruit = new PageRecette(instance, true, recette, panier);
+                        PageRecette affichageFruit = new PageRecette(instance, false, recette, panier);
                         affichageFruit.setLocation(100,100);
                         affichageFruit.setVisible(true);
                     }
