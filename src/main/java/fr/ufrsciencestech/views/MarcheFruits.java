@@ -80,7 +80,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
     private void initListePanier() {
         DefaultListModel liste = new DefaultListModel();
         for (Fruit fruit : panier.getFruits()) {
-            liste.addElement(fruit.getName());
+            liste.addElement(fruit.toString());
         }
         this.listeRecap.setModel(liste);
         this.labelPrixRecapPanier.setText(df.format(panier.getPrix()));

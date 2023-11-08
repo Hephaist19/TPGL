@@ -32,7 +32,7 @@ public class ValidationPanier extends javax.swing.JDialog implements PropertyCha
     private void initListeFruit() {
         DefaultListModel liste = new DefaultListModel();
         for (Fruit fruit : panier.getFruits()) {
-            liste.addElement(fruit.getName());
+            liste.addElement(fruit.toString());
         }
         this.affichePanier.setModel(liste);
 
