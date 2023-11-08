@@ -51,6 +51,30 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         initListePanier();
     }
 
+    private void actualiserListeComboBoycott() {
+        boycott.removeAllItems();
+        boycott.addItem("Sélectionnez un pays");
+        boycott.setEnabled(true);
+        ArrayList<String> liste = new ArrayList<>();
+
+        for(Fruit f : panier.getFruits()) {
+            if(!liste.contains(f.getOrigine())) {
+                liste.add(f.getOrigine());
+            }
+        }
+
+        if(!liste.isEmpty()) {
+            for(String pays : liste) {
+                boycott.addItem(pays);
+            }
+        }
+        else {
+            boycott.setEnabled(false);
+        }
+
+
+    }
+
     private void initListePanier() {
         DefaultListModel liste = new DefaultListModel();
         for (Fruit fruit : panier.getFruits()) {
@@ -58,6 +82,8 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         }
         this.listeRecap.setModel(liste);
         this.labelPrixRecapPanier.setText(df.format(panier.getPrix()));
+
+        actualiserListeComboBoycott();
     }
     
     
@@ -545,7 +571,6 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         afficheFruits();
     }//GEN-LAST:event_categorieExotiqueActionPerformed
 
-    
     private void categorieTousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorieTousActionPerformed
         //Vider les panels avant de remettre 
         remiseAZero();
@@ -563,51 +588,8 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
     private void boycottActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boycottActionPerformed
         String choix = (String) this.boycott.getSelectedItem(); // Récupère ce qui a été sélectionné
 
-        if (!recetteAffiche) {
-            
-            FruitsFilter fe = new FruitsFilter(listeFruitAffiche);
-            // On réalise au cas par cas
-            switch (choix) {
-                case "Brésil":
-                    //listeFruitAffiche = fe.sort(SortType.ALPHABETIQUE).getResult();
-                    remiseAZero();
-                    afficheFruits();
-                    break;
-                case "Costa Rica":
-                    //listeFruitAffiche = fe.sort(SortType.PRIXCROISSANT).getResult();
-                    remiseAZero();
-                    afficheFruits();
-                    break;
-                case "Espagne":
-                    //listeFruitAffiche = fe.sort(SortType.PRIXDECROISSANT).getResult();
-                    remiseAZero();
-                    afficheFruits();
-                    break;
-                case "France":
-                    //listeFruitAffiche = fe.sort(SortType.PRIXDECROISSANT).getResult();
-                    remiseAZero();
-                    afficheFruits();
-                    break;
-                case "Madagascar":
-                    //listeFruitAffiche = fe.sort(SortType.PRIXDECROISSANT).getResult();
-                    remiseAZero();
-                    afficheFruits();
-                    break;
-                case "Nouvelle-Zélande":
-                    //listeFruitAffiche = fe.sort(SortType.PRIXDECROISSANT).getResult();
-                    remiseAZero();
-                    afficheFruits();
-                    break;
-                case "Portugal":
-                    //listeFruitAffiche = fe.sort(SortType.PRIXDECROISSANT).getResult();
-                    remiseAZero();
-                    afficheFruits();
-                    break;
-                default:
-                    remiseAZero();
-                    afficheFruits();
-                    break;
-            }
+        if(choix != null) {
+
         }
     }//GEN-LAST:event_boycottActionPerformed
 
