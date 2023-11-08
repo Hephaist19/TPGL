@@ -249,7 +249,6 @@ public class PageRecette extends javax.swing.JDialog {
 
     private void MoinsFruitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MoinsFruitMouseClicked
         int nombre = Integer.parseInt(this.NbRecette.getText());
-        //TODO VERIFIER SI OK
         if(nombre == 1) //Vérification qu'on ne peut avoir un chiffre négatif
         {
             this.NbRecette.setText(Integer.toString(nombre));
