@@ -39,6 +39,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
      */
     public MarcheFruits() {
         panier = new Panier(20);
+        panier.addObserver(this);
         instance = this;
         initComponents();
         initButtons();
