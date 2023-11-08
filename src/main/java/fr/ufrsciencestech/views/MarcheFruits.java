@@ -179,6 +179,11 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
                 boutonVoirPanierMouseClicked(evt);
             }
         });
+        boutonVoirPanier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boutonVoirPanierActionPerformed(evt);
+            }
+        });
         jPanel5.add(boutonVoirPanier);
 
         jSeparator6.setBackground(new java.awt.Color(255, 255, 255));
@@ -633,6 +638,10 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         String paysToBoycott = boycott.getSelectedItem().toString();
         panier.boycotteOrigine(paysToBoycott);
     }//GEN-LAST:event_ButtonBoycottActionPerformed
+
+    private void boutonVoirPanierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonVoirPanierActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boutonVoirPanierActionPerformed
 
     private void trierParActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_trierParActionPerformed
         // récupérer la catégorie qu'on est dedans
