@@ -134,6 +134,7 @@ public class Panier {
         for (int i = 0; i < this.fruits.size(); i++) {
             if (this.fruits.get(i).getOrigine().equals(origine)) {
                 this.fruits.remove(i);
+                i--;
                 nbModification++;
             }
         }
