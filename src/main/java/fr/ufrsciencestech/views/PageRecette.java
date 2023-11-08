@@ -280,11 +280,11 @@ public class PageRecette extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
    
-    public JButton getPlusFruit() {
+    public JButton getPlusRecette() {
         return PlusRecette;
     }
     
-    public JButton getMoinsFruit() {
+    public JButton getMoinsRecette() {
         return MoinsRecette;
     }
         

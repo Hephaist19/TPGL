@@ -124,15 +124,18 @@ public class ValidationPanier extends javax.swing.JDialog implements PropertyCha
 
         ScrollPanier.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         ScrollPanier.setHorizontalScrollBar(null);
-        ScrollPanier.setMaximumSize(new java.awt.Dimension(500, 300));
-        ScrollPanier.setMinimumSize(new java.awt.Dimension(250, 300));
-        ScrollPanier.setPreferredSize(new java.awt.Dimension(500, 300));
+        ScrollPanier.setMaximumSize(new java.awt.Dimension(30000, 30000));
+        ScrollPanier.setMinimumSize(new java.awt.Dimension(0, 0));
+        ScrollPanier.setPreferredSize(new java.awt.Dimension(0, 0));
+        ScrollPanier.setViewportView(null);
 
         affichePanier.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
         affichePanier.setForeground(new java.awt.Color(141, 126, 255));
-        affichePanier.setMaximumSize(new java.awt.Dimension(500, 300));
-        affichePanier.setMinimumSize(new java.awt.Dimension(500, 300));
-        affichePanier.setPreferredSize(new java.awt.Dimension(500, 300));
+        affichePanier.setAutoscrolls(false);
+        affichePanier.setInheritsPopupMenu(true);
+        affichePanier.setMaximumSize(new java.awt.Dimension(30000, 30000));
+        affichePanier.setValueIsAdjusting(true);
+        affichePanier.setVisibleRowCount(0);
         ScrollPanier.setViewportView(affichePanier);
 
         jPanel2.add(ScrollPanier);
