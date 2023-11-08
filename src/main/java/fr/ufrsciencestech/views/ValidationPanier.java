@@ -130,11 +130,6 @@ public class ValidationPanier extends javax.swing.JDialog implements PropertyCha
 
         affichePanier.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
         affichePanier.setForeground(new java.awt.Color(141, 126, 255));
-        affichePanier.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         affichePanier.setMaximumSize(new java.awt.Dimension(250, 300));
         affichePanier.setMinimumSize(new java.awt.Dimension(250, 300));
         affichePanier.setPreferredSize(new java.awt.Dimension(250, 300));
