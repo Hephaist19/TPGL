@@ -20,16 +20,16 @@ import fr.ufrsciencestech.models.Panier;
 import fr.ufrsciencestech.models.fruits.Banane;
 import fr.ufrsciencestech.utils.FruitType;
 
-public class InterfaceTest {
+public class ValidationPanierTest {
 
-    private Interface i;
+    private ValidationPanier i;
 
     @Mock
     private Panier p;
 
     private MarcheFruits parent;
 
-    public InterfaceTest() {
+    public ValidationPanierTest() {
     }
 
     @BeforeClass
@@ -54,7 +54,7 @@ public class InterfaceTest {
             e.printStackTrace();
         }
 
-        i = new Interface(parent, true, p);
+        i = new ValidationPanier(parent, true, p);
     }
 
     @After
@@ -115,7 +115,7 @@ public class InterfaceTest {
     public void testPropertyChange() {
         System.out.println("propertyChange");
         
-        Interface instance = new Interface(parent, false, p);
+        ValidationPanier instance = new ValidationPanier(parent, false, p);
         assertTrue(instance != null);
         PropertyChangeEvent evt = new PropertyChangeEvent(instance.getPanier(), "fruits", 0, 1);
         instance.propertyChange(evt);
