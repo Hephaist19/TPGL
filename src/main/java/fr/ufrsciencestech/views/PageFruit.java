@@ -294,7 +294,6 @@ public class PageFruit extends javax.swing.JDialog {
 
     private void MoinsFruitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MoinsFruitMouseClicked
         int nombre = Integer.parseInt(this.NbFruit.getText());
-        //TODO VERIFIER SI OK
         if(nombre == 1) //Vérification qu'on ne peut avoir un chiffre négatif
         {
             this.NbFruit.setText(Integer.toString(nombre));
