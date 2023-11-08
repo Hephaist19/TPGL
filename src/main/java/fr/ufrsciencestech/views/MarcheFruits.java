@@ -152,8 +152,8 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 10));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setMaximumSize(new java.awt.Dimension(200, 500));
-        jPanel5.setPreferredSize(new java.awt.Dimension(200, 700));
+        jPanel5.setMaximumSize(new java.awt.Dimension(500, 500));
+        jPanel5.setPreferredSize(new java.awt.Dimension(300, 700));
         jPanel5.setLayout(new javax.swing.BoxLayout(jPanel5, javax.swing.BoxLayout.Y_AXIS));
 
         jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
@@ -165,6 +165,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         boutonVoirPanier.setFont(new java.awt.Font("Eunjin Nakseo", 0, 18)); // NOI18N
         boutonVoirPanier.setForeground(new java.awt.Color(255, 255, 255));
         boutonVoirPanier.setAlignmentX(0.5F);
+        boutonVoirPanier.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         boutonVoirPanier.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         boutonVoirPanier.setLabel("Voir le panier");
         boutonVoirPanier.setMargin(new java.awt.Insets(5, 14, 5, 14));
@@ -371,9 +372,11 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         jPanel3.setPreferredSize(new java.awt.Dimension(50, 50));
         jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.LINE_AXIS));
 
+        ButtonBoycott.setBackground(new java.awt.Color(189, 98, 199));
         ButtonBoycott.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        ButtonBoycott.setForeground(new java.awt.Color(189, 98, 199));
+        ButtonBoycott.setForeground(new java.awt.Color(255, 255, 255));
         ButtonBoycott.setText("Boycotter");
+        ButtonBoycott.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ButtonBoycott.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ButtonBoycott.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ButtonBoycott.setPreferredSize(new java.awt.Dimension(125, 50));
