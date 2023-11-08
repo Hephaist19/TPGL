@@ -93,6 +93,8 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         categorieAgrume = new javax.swing.JRadioButton();
         categorieExotique = new javax.swing.JRadioButton();
         categorieTous = new javax.swing.JRadioButton();
+        jPanel15 = new javax.swing.JPanel();
+        boycott = new javax.swing.JComboBox<>();
         jSeparator2 = new javax.swing.JSeparator();
         jPanel12 = new javax.swing.JPanel();
         trierPar = new javax.swing.JComboBox<>();
@@ -118,7 +120,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setMaximumSize(new java.awt.Dimension(200, 500));
-        jPanel5.setPreferredSize(new java.awt.Dimension(200, 515));
+        jPanel5.setPreferredSize(new java.awt.Dimension(200, 550));
         jPanel5.setLayout(new javax.swing.BoxLayout(jPanel5, javax.swing.BoxLayout.Y_AXIS));
 
         jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
@@ -221,6 +223,24 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         jPanel11.add(categorieTous);
 
         jPanel5.add(jPanel11);
+
+        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel15.setPreferredSize(new java.awt.Dimension(190, 20));
+
+        boycott.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
+        boycott.setForeground(new java.awt.Color(141, 126, 255));
+        boycott.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boycott" }));
+        boycott.setAlignmentX(0.25F);
+        boycott.setMaximumSize(new java.awt.Dimension(170, 25));
+        boycott.setPreferredSize(new java.awt.Dimension(180, 25));
+        boycott.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boycottActionPerformed(evt);
+            }
+        });
+        jPanel15.add(boycott);
+
+        jPanel5.add(jPanel15);
 
         jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
@@ -508,6 +528,55 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         afficheRecettes();
     }//GEN-LAST:event_categorieTousActionPerformed
 
+    private void boycottActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boycottActionPerformed
+        String choix = (String) this.boycott.getSelectedItem(); // Récupère ce qui a été sélectionné
+
+        if (!recetteAffiche) {
+
+            FruitsFilter fe = new FruitsFilter(listeFruitAffiche);
+            // On réalise au cas par cas
+            switch (choix) {
+                case "Brésil":
+                    //listeFruitAffiche = fe.sort(SortType.ALPHABETIQUE).getResult();
+                    remiseAZero();
+                    afficheFruits();
+                    break;
+                case "Costa Rica":
+                    //listeFruitAffiche = fe.sort(SortType.PRIXCROISSANT).getResult();
+                    remiseAZero();
+                    afficheFruits();
+                    break;
+                case "Espagne":
+                    //listeFruitAffiche = fe.sort(SortType.PRIXDECROISSANT).getResult();
+                    remiseAZero();
+                    afficheFruits();
+                    break;
+                case "France":
+                    //listeFruitAffiche = fe.sort(SortType.PRIXDECROISSANT).getResult();
+                    remiseAZero();
+                    afficheFruits();
+                    break;
+                case "Madagascar":
+                    //listeFruitAffiche = fe.sort(SortType.PRIXDECROISSANT).getResult();
+                    remiseAZero();
+                    afficheFruits();
+                    break;
+                case "Nouvelle-Zélande":
+                    //listeFruitAffiche = fe.sort(SortType.PRIXDECROISSANT).getResult();
+                    remiseAZero();
+                    afficheFruits();
+                    break;
+                case "Portugal":
+                    //listeFruitAffiche = fe.sort(SortType.PRIXDECROISSANT).getResult();
+                    remiseAZero();
+                    afficheFruits();
+                    break;
+                default:
+                    break;
+            }
+        }
+    }//GEN-LAST:event_boycottActionPerformed
+
     private void trierParActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_trierParActionPerformed
         // récupérer la catégorie qu'on est dedans
 
@@ -541,7 +610,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
     }// GEN-LAST:event_trierParActionPerformed
 
     private void boutonVoirPanierMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_boutonVoirPanierMouseClicked
-        final Interface validation = new Interface(this, false, panier);
+        final ValidationPanier validation = new ValidationPanier(this, false, panier);
 
         //On ajout un event de fermeture de validation panier, pour éviter de notifier des instances détruites
         validation.addWindowListener(new WindowAdapter() {
@@ -569,6 +638,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boutonVoirPanier;
+    private javax.swing.JComboBox<String> boycott;
     private javax.swing.JRadioButton categorieAgrume;
     private javax.swing.JRadioButton categorieExotique;
     private javax.swing.ButtonGroup categorieGroupe;
@@ -582,6 +652,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;

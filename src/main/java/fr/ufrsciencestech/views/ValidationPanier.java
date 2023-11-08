@@ -13,7 +13,7 @@ import java.text.DecimalFormat;
  *
  * @author mgall
  */
-public class Interface extends javax.swing.JDialog implements PropertyChangeListener {
+public class ValidationPanier extends javax.swing.JDialog implements PropertyChangeListener {
 
     final private Panier panier;
     private static final DecimalFormat df = new DecimalFormat("0.00");
@@ -21,7 +21,7 @@ public class Interface extends javax.swing.JDialog implements PropertyChangeList
     /**
      * Creates new form Interface
      */
-    public Interface(java.awt.Frame parent, boolean modal, Panier p) {
+    public ValidationPanier(java.awt.Frame parent, boolean modal, Panier p) {
         super(parent, modal);
         this.panier = p;
         // Affecter l'observer this au panier
