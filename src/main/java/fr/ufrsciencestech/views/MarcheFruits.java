@@ -18,6 +18,8 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.text.DecimalFormat;
 
 /**
@@ -26,6 +28,9 @@ import java.text.DecimalFormat;
  */
 public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeListener {
 
+    //Instance de panier final important:
+    //this s'enregistre en tant que listener pour les event que l'instance panier peut envoyer
+    //En l'occurence lorsque le contenu du panier a changé (cf propertyChange())
     private final Panier panier;
     private final MarcheFruits instance;
     private static final DecimalFormat df = new DecimalFormat("0.00");
@@ -46,7 +51,6 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         initListePanier();
     }
 
-    // TODO actualiser panier en fonction de son signal
     private void initListePanier() {
         DefaultListModel liste = new DefaultListModel();
         for (Fruit fruit : panier.getFruits()) {
@@ -62,7 +66,6 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
     public void initButtons(){
        listeFruitAffiche = FruitsFactory.createAll();
        afficheFruits();
-       //TODO faire pareil recette
        listeRecetteAffiche = RecettesFactory.createAll();
        afficheRecettes();
     }
@@ -538,7 +541,17 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
     }// GEN-LAST:event_trierParActionPerformed
 
     private void boutonVoirPanierMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_boutonVoirPanierMouseClicked
-        Interface validation = new Interface(this, true, panier);
+        final Interface validation = new Interface(this, false, panier);
+
+        //On ajout un event de fermeture de validation panier, pour éviter de notifier des instances détruites
+        validation.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                panier.removeObserver(validation);
+            }
+        });
+
+        panier.addObserver(validation);
 
         validation.setVisible(true);
         validation.setLocation(100,100);
