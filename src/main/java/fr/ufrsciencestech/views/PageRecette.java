@@ -288,7 +288,7 @@ public class PageRecette extends javax.swing.JDialog {
         return MoinsRecette;
     }
         
-    public JButton getAjoutFruit() {
+    public JButton getAjoutRecette() {
         return AjoutRecette;
     }
     
