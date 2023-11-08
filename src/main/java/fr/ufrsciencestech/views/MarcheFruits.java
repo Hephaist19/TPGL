@@ -85,7 +85,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         jPanel5 = new javax.swing.JPanel();
         jSeparator3 = new javax.swing.JSeparator();
         boutonVoirPanier = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
         jPanel11 = new javax.swing.JPanel();
         labelCategorie = new javax.swing.JLabel();
         categorieSansPepins = new javax.swing.JRadioButton();
@@ -93,10 +93,13 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         categorieAgrume = new javax.swing.JRadioButton();
         categorieExotique = new javax.swing.JRadioButton();
         categorieTous = new javax.swing.JRadioButton();
+        jSeparator5 = new javax.swing.JSeparator();
         jPanel15 = new javax.swing.JPanel();
+        labelCategorie1 = new javax.swing.JLabel();
         boycott = new javax.swing.JComboBox<>();
-        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
         jPanel12 = new javax.swing.JPanel();
+        labelCategorie2 = new javax.swing.JLabel();
         trierPar = new javax.swing.JComboBox<>();
         jPanel13 = new javax.swing.JPanel();
         labelRecapPanier = new javax.swing.JLabel();
@@ -112,15 +115,16 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1100, 750));
-        setPreferredSize(new java.awt.Dimension(1100, 750));
+        setPreferredSize(new java.awt.Dimension(1100, 800));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMaximumSize(new java.awt.Dimension(200, 510));
+        jPanel1.setPreferredSize(new java.awt.Dimension(200, 700));
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 10));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setMaximumSize(new java.awt.Dimension(200, 500));
-        jPanel5.setPreferredSize(new java.awt.Dimension(200, 550));
+        jPanel5.setPreferredSize(new java.awt.Dimension(200, 700));
         jPanel5.setLayout(new javax.swing.BoxLayout(jPanel5, javax.swing.BoxLayout.Y_AXIS));
 
         jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
@@ -145,9 +149,11 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         });
         jPanel5.add(boutonVoirPanier);
 
-        jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel5.add(jSeparator1);
+        jSeparator6.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator6.setForeground(new java.awt.Color(255, 255, 255));
+        jSeparator6.setMaximumSize(new java.awt.Dimension(0, 5));
+        jSeparator6.setPreferredSize(new java.awt.Dimension(0, 5));
+        jPanel5.add(jSeparator6);
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
         jPanel11.setMaximumSize(new java.awt.Dimension(200, 155));
@@ -157,7 +163,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
 
         labelCategorie.setFont(new java.awt.Font("Eunjin Nakseo", 0, 17)); // NOI18N
         labelCategorie.setForeground(new java.awt.Color(141, 126, 255));
-        labelCategorie.setText("Catégorie");
+        labelCategorie.setText("Catégorie :");
         labelCategorie.setAlignmentY(0.0F);
         jPanel11.add(labelCategorie);
 
@@ -224,12 +230,26 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
 
         jPanel5.add(jPanel11);
 
+        jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator5.setForeground(new java.awt.Color(255, 255, 255));
+        jSeparator5.setMaximumSize(new java.awt.Dimension(0, 5));
+        jSeparator5.setPreferredSize(new java.awt.Dimension(0, 5));
+        jPanel5.add(jSeparator5);
+
         jPanel15.setBackground(new java.awt.Color(255, 255, 255));
         jPanel15.setPreferredSize(new java.awt.Dimension(190, 20));
 
+        labelCategorie1.setFont(new java.awt.Font("Eunjin Nakseo", 0, 17)); // NOI18N
+        labelCategorie1.setForeground(new java.awt.Color(141, 126, 255));
+        labelCategorie1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        labelCategorie1.setText("Boycott :");
+        labelCategorie1.setAlignmentY(0.0F);
+        labelCategorie1.setPreferredSize(new java.awt.Dimension(200, 23));
+        jPanel15.add(labelCategorie1);
+
         boycott.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
         boycott.setForeground(new java.awt.Color(141, 126, 255));
-        boycott.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boycott" }));
+        boycott.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sélectionnez un pays", "Brésil", "Costa Rica", "Espagne", "France", "Madagascar", "Nouvelle-Zélande", "Portugal" }));
         boycott.setAlignmentX(0.25F);
         boycott.setMaximumSize(new java.awt.Dimension(170, 25));
         boycott.setPreferredSize(new java.awt.Dimension(180, 25));
@@ -242,16 +262,25 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
 
         jPanel5.add(jPanel15);
 
-        jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel5.add(jSeparator2);
+        jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator4.setForeground(new java.awt.Color(255, 255, 255));
+        jSeparator4.setMaximumSize(new java.awt.Dimension(0, 5));
+        jSeparator4.setPreferredSize(new java.awt.Dimension(0, 5));
+        jPanel5.add(jSeparator4);
 
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
         jPanel12.setPreferredSize(new java.awt.Dimension(190, 20));
 
+        labelCategorie2.setFont(new java.awt.Font("Eunjin Nakseo", 0, 17)); // NOI18N
+        labelCategorie2.setForeground(new java.awt.Color(141, 126, 255));
+        labelCategorie2.setText("Trier par :");
+        labelCategorie2.setAlignmentY(0.0F);
+        labelCategorie2.setPreferredSize(new java.awt.Dimension(200, 23));
+        jPanel12.add(labelCategorie2);
+
         trierPar.setFont(new java.awt.Font("Eunjin Nakseo", 0, 15)); // NOI18N
         trierPar.setForeground(new java.awt.Color(141, 126, 255));
-        trierPar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Trier par", "Ordre Alphabétique", "Prix Croissant", "Prix Décroissant" }));
+        trierPar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sélectionnez un tri", "Ordre Alphabétique", "Prix Croissant", "Prix Décroissant" }));
         trierPar.setAlignmentX(0.25F);
         trierPar.setMaximumSize(new java.awt.Dimension(170, 25));
         trierPar.setPreferredSize(new java.awt.Dimension(180, 25));
@@ -532,7 +561,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         String choix = (String) this.boycott.getSelectedItem(); // Récupère ce qui a été sélectionné
 
         if (!recetteAffiche) {
-
+            
             FruitsFilter fe = new FruitsFilter(listeFruitAffiche);
             // On réalise au cas par cas
             switch (choix) {
@@ -572,6 +601,8 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
                     afficheFruits();
                     break;
                 default:
+                    remiseAZero();
+                    afficheFruits();
                     break;
             }
         }
@@ -657,10 +688,13 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JLabel labelCategorie;
+    private javax.swing.JLabel labelCategorie1;
+    private javax.swing.JLabel labelCategorie2;
     private javax.swing.JLabel labelPrixRecapPanier;
     private javax.swing.JLabel labelRecapPanier;
     private javax.swing.JLabel labelRecapTotalPanier;
