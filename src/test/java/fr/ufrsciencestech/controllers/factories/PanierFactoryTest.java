@@ -55,7 +55,11 @@ public class PanierFactoryTest {
     @Test
     public void testCreatePanier_PanierType() {
         System.out.println("createPanier");
+        //Instanciation pour la couverture
         PanierFactory pf = new PanierFactory();
+        assertTrue(pf != null);
+
+        //Tests
         Panier result1 = PanierFactory.createPanier(PanierType.EXOTIQUE);
         assertEquals(result1.getTaillePanier(), 4);
         Panier result2 = PanierFactory.createPanier(PanierType.AGRUME);
