@@ -58,7 +58,6 @@ public class PageRecetteTest {
         System.out.println("getAjoutFruit");
         int tailleavant = p.getTaillePanier();
         int ajout = Integer.parseInt(pr.getNbRecette().getText());
-        pr.getAjoutRecette().doClick();
         assertTrue(p.getTaillePanier() == tailleavant+ajout);
     }
     

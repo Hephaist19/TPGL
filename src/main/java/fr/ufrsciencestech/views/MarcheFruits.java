@@ -121,8 +121,6 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         categorieAgrume = new javax.swing.JRadioButton();
         categorieExotique = new javax.swing.JRadioButton();
         categorieTous = new javax.swing.JRadioButton();
-        jSeparator5 = new javax.swing.JSeparator();
-        jSeparator4 = new javax.swing.JSeparator();
         jPanel12 = new javax.swing.JPanel();
         labelCategorie2 = new javax.swing.JLabel();
         trierPar = new javax.swing.JComboBox<>();
@@ -139,6 +137,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         boycott = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         ButtonBoycott = new javax.swing.JButton();
+        jSeparator5 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -151,7 +150,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMaximumSize(new java.awt.Dimension(200, 510));
         jPanel1.setPreferredSize(new java.awt.Dimension(200, 700));
-        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 10));
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setMaximumSize(new java.awt.Dimension(500, 500));
@@ -167,11 +166,12 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         boutonVoirPanier.setFont(new java.awt.Font("Eunjin Nakseo", 0, 18)); // NOI18N
         boutonVoirPanier.setForeground(new java.awt.Color(255, 255, 255));
         boutonVoirPanier.setAlignmentX(0.5F);
-        boutonVoirPanier.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        boutonVoirPanier.setBorder(null);
         boutonVoirPanier.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         boutonVoirPanier.setLabel("Voir le panier");
         boutonVoirPanier.setMargin(new java.awt.Insets(5, 14, 5, 14));
-        boutonVoirPanier.setMaximumSize(new java.awt.Dimension(200, 25));
+        boutonVoirPanier.setMaximumSize(new java.awt.Dimension(200, 40));
+        boutonVoirPanier.setMinimumSize(new java.awt.Dimension(105, 20));
         boutonVoirPanier.setPreferredSize(new java.awt.Dimension(200, 40));
         boutonVoirPanier.setRolloverEnabled(false);
         boutonVoirPanier.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -262,19 +262,8 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
 
         jPanel5.add(jPanel11);
 
-        jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator5.setForeground(new java.awt.Color(255, 255, 255));
-        jSeparator5.setMaximumSize(new java.awt.Dimension(0, 5));
-        jSeparator5.setPreferredSize(new java.awt.Dimension(0, 5));
-        jPanel5.add(jSeparator5);
-
-        jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator4.setForeground(new java.awt.Color(255, 255, 255));
-        jSeparator4.setMaximumSize(new java.awt.Dimension(0, 5));
-        jSeparator4.setPreferredSize(new java.awt.Dimension(0, 5));
-        jPanel5.add(jSeparator4);
-
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel12.setMinimumSize(new java.awt.Dimension(251, 20));
         jPanel12.setPreferredSize(new java.awt.Dimension(190, 20));
 
         labelCategorie2.setFont(new java.awt.Font("Eunjin Nakseo", 0, 17)); // NOI18N
@@ -301,6 +290,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
 
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
         jPanel13.setMaximumSize(new java.awt.Dimension(200, 30));
+        jPanel13.setMinimumSize(new java.awt.Dimension(150, 30));
         jPanel13.setPreferredSize(new java.awt.Dimension(200, 30));
 
         labelRecapPanier.setBackground(new java.awt.Color(255, 255, 255));
@@ -318,12 +308,18 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        listeRecap.setMaximumSize(new java.awt.Dimension(60, 150));
+        listeRecap.setMinimumSize(new java.awt.Dimension(60, 150));
+        listeRecap.setPreferredSize(new java.awt.Dimension(60, 150));
+        listeRecap.setRequestFocusEnabled(false);
+        listeRecap.setSelectionBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(listeRecap);
 
         jPanel5.add(jScrollPane1);
 
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
         jPanel14.setMaximumSize(new java.awt.Dimension(32767, 40));
+        jPanel14.setMinimumSize(new java.awt.Dimension(163, 40));
         jPanel14.setPreferredSize(new java.awt.Dimension(200, 40));
         jPanel14.setRequestFocusEnabled(false);
 
@@ -345,7 +341,8 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         jPanel5.add(jPanel14);
 
         jPanel15.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel15.setPreferredSize(new java.awt.Dimension(190, 20));
+        jPanel15.setMinimumSize(new java.awt.Dimension(257, 50));
+        jPanel15.setPreferredSize(new java.awt.Dimension(190, 50));
 
         labelCategorie1.setFont(new java.awt.Font("Eunjin Nakseo", 0, 17)); // NOI18N
         labelCategorie1.setForeground(new java.awt.Color(141, 126, 255));
@@ -371,17 +368,20 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         jPanel5.add(jPanel15);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setPreferredSize(new java.awt.Dimension(50, 50));
+        jPanel3.setOpaque(false);
+        jPanel3.setPreferredSize(new java.awt.Dimension(100, 50));
         jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.LINE_AXIS));
 
         ButtonBoycott.setBackground(new java.awt.Color(189, 98, 199));
-        ButtonBoycott.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        ButtonBoycott.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         ButtonBoycott.setForeground(new java.awt.Color(255, 255, 255));
         ButtonBoycott.setText("Boycotter");
-        ButtonBoycott.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        ButtonBoycott.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ButtonBoycott.setBorder(null);
         ButtonBoycott.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ButtonBoycott.setPreferredSize(new java.awt.Dimension(125, 50));
+        ButtonBoycott.setMargin(new java.awt.Insets(10, 14, 3, 14));
+        ButtonBoycott.setMaximumSize(new java.awt.Dimension(200, 200));
+        ButtonBoycott.setMinimumSize(new java.awt.Dimension(20, 20));
+        ButtonBoycott.setPreferredSize(new java.awt.Dimension(100, 10));
         ButtonBoycott.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButtonBoycottActionPerformed(evt);
@@ -390,6 +390,12 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         jPanel3.add(ButtonBoycott);
 
         jPanel5.add(jPanel3);
+
+        jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator5.setForeground(new java.awt.Color(255, 255, 255));
+        jSeparator5.setMaximumSize(new java.awt.Dimension(0, 20));
+        jSeparator5.setPreferredSize(new java.awt.Dimension(0, 20));
+        jPanel5.add(jSeparator5);
 
         jPanel1.add(jPanel5);
 
@@ -403,6 +409,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         jPanel2.add(jLabel1, new java.awt.GridBagConstraints());
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setAutoscrolls(true);
         jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.Y_AXIS));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -710,7 +717,6 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JLabel labelCategorie;
