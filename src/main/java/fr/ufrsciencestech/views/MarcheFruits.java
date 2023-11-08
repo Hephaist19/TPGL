@@ -440,6 +440,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
             URL path = this.getClass().getClassLoader().getResource("./images/" + listeFruit.get(i).getName() + ".png");
 
             JPanel pan = new javax.swing.JPanel();
+            pan.setBackground(new Color(255, 255, 255));
             pan.setLayout(new javax.swing.BoxLayout(pan, javax.swing.BoxLayout.Y_AXIS));
 
             JButton bouton = new JButton();
@@ -495,6 +496,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
             URL path = this.getClass().getClassLoader().getResource("./images/" + listeRecette.get(i).getName() + ".png");
             
             JPanel pan = new javax.swing.JPanel();
+            pan.setBackground(new Color(255, 255, 255));
             pan.setLayout(new javax.swing.BoxLayout(pan, javax.swing.BoxLayout.Y_AXIS));
             
             JButton bouton = new JButton();
