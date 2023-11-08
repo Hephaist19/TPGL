@@ -53,6 +53,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
 
     private void actualiserListeComboBoycott() {
         boycott.removeAllItems();
+        this.ButtonBoycott.setEnabled(true);
         boycott.addItem("Sélectionnez un pays");
         boycott.setEnabled(true);
         ArrayList<String> liste = new ArrayList<>();
@@ -70,6 +71,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         }
         else {
             boycott.setEnabled(false);
+            this.ButtonBoycott.setEnabled(false);
         }
 
 
@@ -606,7 +608,8 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
     }//GEN-LAST:event_boycottActionPerformed
 
     private void ButtonBoycottActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonBoycottActionPerformed
-        
+        String paysToBoycott = boycott.getSelectedItem().toString();
+        panier.boycotteOrigine(paysToBoycott);
     }//GEN-LAST:event_ButtonBoycottActionPerformed
 
     private void trierParActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_trierParActionPerformed
