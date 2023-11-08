@@ -99,13 +99,13 @@ public class ValidationPanier extends javax.swing.JDialog implements PropertyCha
         Colonne2.setBackground(new java.awt.Color(255, 255, 255));
         Colonne2.setMaximumSize(new java.awt.Dimension(300, 400));
         Colonne2.setMinimumSize(new java.awt.Dimension(300, 400));
-        Colonne2.setPreferredSize(new java.awt.Dimension(300, 416));
+        Colonne2.setPreferredSize(new java.awt.Dimension(500, 416));
         Colonne2.setLayout(new javax.swing.BoxLayout(Colonne2, javax.swing.BoxLayout.Y_AXIS));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMaximumSize(new java.awt.Dimension(200, 50));
         jPanel1.setMinimumSize(new java.awt.Dimension(100, 30));
-        jPanel1.setPreferredSize(new java.awt.Dimension(117, 21));
+        jPanel1.setPreferredSize(new java.awt.Dimension(500, 21));
 
         labelVotrePanier.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
         labelVotrePanier.setForeground(new java.awt.Color(189, 98, 199));
@@ -117,22 +117,22 @@ public class ValidationPanier extends javax.swing.JDialog implements PropertyCha
         Colonne2.add(jPanel1);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setMaximumSize(new java.awt.Dimension(32767, 300));
-        jPanel2.setMinimumSize(new java.awt.Dimension(26, 150));
-        jPanel2.setPreferredSize(new java.awt.Dimension(200, 330));
-        jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
+        jPanel2.setMaximumSize(new java.awt.Dimension(500, 300));
+        jPanel2.setMinimumSize(new java.awt.Dimension(500, 150));
+        jPanel2.setPreferredSize(new java.awt.Dimension(500, 300));
+        jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.LINE_AXIS));
 
         ScrollPanier.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         ScrollPanier.setHorizontalScrollBar(null);
-        ScrollPanier.setMaximumSize(new java.awt.Dimension(250, 300));
+        ScrollPanier.setMaximumSize(new java.awt.Dimension(500, 300));
         ScrollPanier.setMinimumSize(new java.awt.Dimension(250, 300));
-        ScrollPanier.setPreferredSize(new java.awt.Dimension(250, 300));
+        ScrollPanier.setPreferredSize(new java.awt.Dimension(500, 300));
 
         affichePanier.setFont(new java.awt.Font("Constantia", 0, 15)); // NOI18N
         affichePanier.setForeground(new java.awt.Color(141, 126, 255));
-        affichePanier.setMaximumSize(new java.awt.Dimension(250, 300));
-        affichePanier.setMinimumSize(new java.awt.Dimension(250, 300));
-        affichePanier.setPreferredSize(new java.awt.Dimension(250, 300));
+        affichePanier.setMaximumSize(new java.awt.Dimension(500, 300));
+        affichePanier.setMinimumSize(new java.awt.Dimension(500, 300));
+        affichePanier.setPreferredSize(new java.awt.Dimension(500, 300));
         ScrollPanier.setViewportView(affichePanier);
 
         jPanel2.add(ScrollPanier);

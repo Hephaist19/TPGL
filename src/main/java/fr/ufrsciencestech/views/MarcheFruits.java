@@ -135,14 +135,16 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         jPanel15 = new javax.swing.JPanel();
         labelCategorie1 = new javax.swing.JLabel();
         boycott = new javax.swing.JComboBox<>();
+        jPanel3 = new javax.swing.JPanel();
         ButtonBoycott = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1100, 750));
-        setPreferredSize(new java.awt.Dimension(1100, 800));
+        setBackground(new java.awt.Color(255, 255, 255));
+        setMaximumSize(new java.awt.Dimension(1920, 1080));
+        setPreferredSize(new java.awt.Dimension(1300, 800));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMaximumSize(new java.awt.Dimension(200, 510));
@@ -365,18 +367,26 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
 
         jPanel5.add(jPanel15);
 
-        jPanel1.add(jPanel5);
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setPreferredSize(new java.awt.Dimension(50, 50));
+        jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.LINE_AXIS));
 
         ButtonBoycott.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         ButtonBoycott.setForeground(new java.awt.Color(189, 98, 199));
         ButtonBoycott.setText("Boycotter");
-        ButtonBoycott.setPreferredSize(new java.awt.Dimension(110, 35));
+        ButtonBoycott.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ButtonBoycott.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ButtonBoycott.setPreferredSize(new java.awt.Dimension(125, 50));
         ButtonBoycott.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButtonBoycottActionPerformed(evt);
             }
         });
-        jPanel1.add(ButtonBoycott);
+        jPanel3.add(ButtonBoycott);
+
+        jPanel5.add(jPanel3);
+
+        jPanel1.add(jPanel5);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new java.awt.GridBagLayout());
@@ -395,11 +405,11 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -687,6 +697,7 @@ public class MarcheFruits extends javax.swing.JFrame implements PropertyChangeLi
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;

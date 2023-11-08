@@ -42,11 +42,24 @@ public class PageRecetteTest {
     @Before
     public void setUp() {
         
+        p = parent.getPanier();
         pr = new PageRecette(parent,false,RecettesFactory.createRecette(RecetteType.JUSPOMME),p);
     }
     
     @After
     public void tearDown() {
+    }
+    
+    /**
+     * Test of AjoutFruit method, of class PageRecette.
+     */
+    @Test
+    public void testgetAjoutFruit() {
+        System.out.println("getAjoutFruit");
+        int tailleavant = p.getTaillePanier();
+        int ajout = Integer.parseInt(pr.getNbRecette().getText());
+        pr.getAjoutRecette().doClick();
+        assertTrue(p.getTaillePanier() == tailleavant+ajout);
     }
     
 }
