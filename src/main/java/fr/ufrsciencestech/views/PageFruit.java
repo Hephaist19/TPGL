@@ -16,6 +16,8 @@ import fr.ufrsciencestech.models.Panier;
 import fr.ufrsciencestech.models.fruits.Fruit;
 import fr.ufrsciencestech.models.recettes.Recette;
 import java.text.DecimalFormat;
+import javax.swing.JButton;
+import javax.swing.JTextField;
 
 /**
  *
@@ -25,7 +27,7 @@ public class PageFruit extends javax.swing.JDialog {
 
     private Panier panier;
     private Fruit fruit;
-    private static final DecimalFormat df = new DecimalFormat("0.00");
+    private final DecimalFormat df = new DecimalFormat("0.00");
     
     private ArrayList<Recette> listeRecette; //Recettes contenant ce fruit
     private URL iF; //chemin pour accéder à l'image du fruit 
@@ -58,7 +60,8 @@ public class PageFruit extends javax.swing.JDialog {
         
         //On créé toutes les recettes existantes à ce jour afin de rechercher lesquelles contiennent ce fruit.
         listeRecette = RecettesFactory.createAll();
-        String nulle="";
+        String result="";
+        
         
         //on parcourt les recettes
         for(int i=0;i<listeRecette.size();i++)
@@ -69,18 +72,36 @@ public class PageFruit extends javax.swing.JDialog {
                 //dès que ça correspond on ajoute la recette et on passe à la suivante
                 if(listeRecette.get(i).getFruits().get(j).getName().equals(fruit.getName()))
                 {
-                    this.ExempleRecette.setText(ExempleRecette.getText() +" "+ listeRecette.get(i).getName());
+                    result += listeRecette.get(i).getName() + ", ";
                     break;
                 }
-            }            
+            }
         }
         
-        if(this.ExempleRecette.getText().equals(nulle))
-            {
+        if(result.equals("")){
                 this.ExempleRecette.setText("Aucune recette n'est disponible pour l'instant.");
-
             }
         
+        else {
+            this.ExempleRecette.setText(result.substring(0, result.length()-2));
+        }
+        
+    }
+    
+    public JButton getMoinsFruit() {
+        return MoinsFruit;
+    }
+    
+    public JButton getPlusFruit() {
+        return PlusFruit;
+    }
+    
+    public JButton getAjoutFruit() {
+        return AjoutFruit;
+    }
+    
+    public JTextField getNbFruit() {
+        return NbFruit;
     }
     
       
@@ -222,9 +243,9 @@ public class PageFruit extends javax.swing.JDialog {
         MoinsFruit.setMaximumSize(new java.awt.Dimension(37, 37));
         MoinsFruit.setMinimumSize(new java.awt.Dimension(37, 37));
         MoinsFruit.setPreferredSize(new java.awt.Dimension(43, 43));
-        MoinsFruit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                MoinsFruitMouseClicked(evt);
+        MoinsFruit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MoinsFruit(evt);
             }
         });
         PanelNombreFruit.add(MoinsFruit);
@@ -244,9 +265,9 @@ public class PageFruit extends javax.swing.JDialog {
         PlusFruit.setMaximumSize(new java.awt.Dimension(37, 37));
         PlusFruit.setMinimumSize(new java.awt.Dimension(37, 37));
         PlusFruit.setPreferredSize(new java.awt.Dimension(43, 43));
-        PlusFruit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                PlusFruitMouseClicked(evt);
+        PlusFruit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PlusFruit(evt);
             }
         });
         PanelNombreFruit.add(PlusFruit);
@@ -292,31 +313,6 @@ public class PageFruit extends javax.swing.JDialog {
         this.TotalFruit.setText(df.format(total));
     }
 
-    private void MoinsFruitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MoinsFruitMouseClicked
-        int nombre = Integer.parseInt(this.NbFruit.getText());
-        if(nombre == 1) //Vérification qu'on ne peut avoir un chiffre négatif
-        {
-            this.NbFruit.setText(Integer.toString(nombre));
-        }
-        else 
-        {            
-            nombre--;
-            this.NbFruit.setText(Integer.toString(nombre));
-        }
-        
-        //Mise à jour du prix total
-        actualiserPrixTotal();
-    }//GEN-LAST:event_MoinsFruitMouseClicked
-
-    private void PlusFruitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PlusFruitMouseClicked
-        int nombre = Integer.parseInt(this.NbFruit.getText());
-        nombre++;
-        this.NbFruit.setText(Integer.toString(nombre));
-        
-        //Mise à jour du prix total
-        actualiserPrixTotal();
-    }//GEN-LAST:event_PlusFruitMouseClicked
-
     private void AjoutFruitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjoutFruitActionPerformed
         
         int nombre = Integer.parseInt(this.NbFruit.getText());
@@ -332,6 +328,31 @@ public class PageFruit extends javax.swing.JDialog {
             this.dispose();
         }
     }//GEN-LAST:event_AjoutFruitActionPerformed
+
+    private void PlusFruit(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlusFruit
+        int nombre = Integer.parseInt(this.NbFruit.getText());
+        nombre++;
+        this.NbFruit.setText(Integer.toString(nombre));
+        
+        //Mise à jour du prix total
+        actualiserPrixTotal();
+    }//GEN-LAST:event_PlusFruit
+
+    private void MoinsFruit(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MoinsFruit
+        int nombre = Integer.parseInt(this.NbFruit.getText());
+        if(nombre == 1) //Vérification qu'on ne peut avoir un chiffre négatif
+        {
+            this.NbFruit.setText(Integer.toString(nombre));
+        }
+        else 
+        {            
+            nombre--;
+            this.NbFruit.setText(Integer.toString(nombre));
+        }
+        
+        //Mise à jour du prix total
+        actualiserPrixTotal();
+    }//GEN-LAST:event_MoinsFruit
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AjoutFruit;

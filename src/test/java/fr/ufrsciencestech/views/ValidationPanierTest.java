@@ -59,6 +59,7 @@ public class ValidationPanierTest {
 
     @After
     public void tearDown() {
+        parent.dispose();
     }
 
     // Test partie 1

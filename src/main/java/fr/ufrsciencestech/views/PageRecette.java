@@ -15,6 +15,8 @@ import fr.ufrsciencestech.models.Panier;
 import fr.ufrsciencestech.models.fruits.*;
 import fr.ufrsciencestech.models.recettes.Recette;
 import java.text.DecimalFormat;
+import javax.swing.JButton;
+import javax.swing.JTextField;
 
 /**
  *
@@ -97,9 +99,9 @@ public class PageRecette extends javax.swing.JDialog {
         Etapes = new javax.swing.JTextArea();
         Ligne3 = new javax.swing.JPanel();
         PanelNombreFruit = new javax.swing.JPanel();
-        MoinsFruit = new javax.swing.JButton();
+        MoinsRecette = new javax.swing.JButton();
         NbRecette = new javax.swing.JTextField();
-        PlusFruit = new javax.swing.JButton();
+        PlusRecette = new javax.swing.JButton();
         PanelTotalFruit = new javax.swing.JPanel();
         TotalFruit = new javax.swing.JLabel();
         EuroTotal = new javax.swing.JLabel();
@@ -176,19 +178,19 @@ public class PageRecette extends javax.swing.JDialog {
         PanelNombreFruit.setBackground(new java.awt.Color(255, 255, 255));
         PanelNombreFruit.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 10));
 
-        MoinsFruit.setBackground(new java.awt.Color(141, 126, 255));
-        MoinsFruit.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        MoinsFruit.setForeground(new java.awt.Color(255, 255, 255));
-        MoinsFruit.setText("-");
-        MoinsFruit.setMaximumSize(new java.awt.Dimension(37, 37));
-        MoinsFruit.setMinimumSize(new java.awt.Dimension(37, 37));
-        MoinsFruit.setPreferredSize(new java.awt.Dimension(43, 43));
-        MoinsFruit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                MoinsFruitMouseClicked(evt);
+        MoinsRecette.setBackground(new java.awt.Color(141, 126, 255));
+        MoinsRecette.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        MoinsRecette.setForeground(new java.awt.Color(255, 255, 255));
+        MoinsRecette.setText("-");
+        MoinsRecette.setMaximumSize(new java.awt.Dimension(37, 37));
+        MoinsRecette.setMinimumSize(new java.awt.Dimension(37, 37));
+        MoinsRecette.setPreferredSize(new java.awt.Dimension(43, 43));
+        MoinsRecette.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MoinsRecette(evt);
             }
         });
-        PanelNombreFruit.add(MoinsFruit);
+        PanelNombreFruit.add(MoinsRecette);
 
         NbRecette.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
         NbRecette.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -198,19 +200,19 @@ public class PageRecette extends javax.swing.JDialog {
         NbRecette.setPreferredSize(new java.awt.Dimension(64, 43));
         PanelNombreFruit.add(NbRecette);
 
-        PlusFruit.setBackground(new java.awt.Color(141, 126, 255));
-        PlusFruit.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
-        PlusFruit.setForeground(new java.awt.Color(255, 255, 255));
-        PlusFruit.setText("+");
-        PlusFruit.setMaximumSize(new java.awt.Dimension(370, 370));
-        PlusFruit.setMinimumSize(new java.awt.Dimension(37, 37));
-        PlusFruit.setPreferredSize(new java.awt.Dimension(43, 43));
-        PlusFruit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                PlusFruitMouseClicked(evt);
+        PlusRecette.setBackground(new java.awt.Color(141, 126, 255));
+        PlusRecette.setFont(new java.awt.Font("Eunjin Nakseo", 0, 16)); // NOI18N
+        PlusRecette.setForeground(new java.awt.Color(255, 255, 255));
+        PlusRecette.setText("+");
+        PlusRecette.setMaximumSize(new java.awt.Dimension(370, 370));
+        PlusRecette.setMinimumSize(new java.awt.Dimension(37, 37));
+        PlusRecette.setPreferredSize(new java.awt.Dimension(43, 43));
+        PlusRecette.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PlusRecetteActionPerformed(evt);
             }
         });
-        PanelNombreFruit.add(PlusFruit);
+        PanelNombreFruit.add(PlusRecette);
 
         Ligne3.add(PanelNombreFruit);
 
@@ -232,9 +234,9 @@ public class PageRecette extends javax.swing.JDialog {
         AjoutRecette.setForeground(new java.awt.Color(255, 255, 255));
         AjoutRecette.setText("Ajouter");
         AjoutRecette.setPreferredSize(new java.awt.Dimension(89, 43));
-        AjoutRecette.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AjoutRecetteMouseClicked(evt);
+        AjoutRecette.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AjoutRecette(evt);
             }
         });
         PanelTotalFruit.add(AjoutRecette);
@@ -245,9 +247,24 @@ public class PageRecette extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+   
+    public JButton getPlusFruit() {
+        return PlusRecette;
+    }
     
-
-    private void MoinsFruitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MoinsFruitMouseClicked
+    public JButton getMoinsFruit() {
+        return MoinsRecette;
+    }
+        
+    public JButton getAjoutFruit() {
+        return AjoutRecette;
+    }
+    
+    public JTextField getNbRecette() {
+        return NbRecette;
+    }
+    
+    private void MoinsRecette(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MoinsRecette
         int nombre = Integer.parseInt(this.NbRecette.getText());
         if(nombre == 1) //Vérification qu'on ne peut avoir un chiffre négatif
         {
@@ -261,19 +278,9 @@ public class PageRecette extends javax.swing.JDialog {
         
         //Mise à jour du prix total
         actualiserPrixTotal();
-    }//GEN-LAST:event_MoinsFruitMouseClicked
+    }//GEN-LAST:event_MoinsRecette
 
-    private void PlusFruitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PlusFruitMouseClicked
-        int nombre = Integer.parseInt(this.NbRecette.getText());
-        nombre++;
-        this.NbRecette.setText(Integer.toString(nombre));
-        
-        //Mise à jour du prix total
-        actualiserPrixTotal();
-    }//GEN-LAST:event_PlusFruitMouseClicked
-
-    private void AjoutRecetteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AjoutRecetteMouseClicked
-            
+    private void AjoutRecette(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjoutRecette
         int taille = recette.getFruits().size();
         int nombre = Integer.parseInt(this.NbRecette.getText());
         
@@ -292,7 +299,16 @@ public class PageRecette extends javax.swing.JDialog {
         }finally {
             this.dispose();
         }
-    }//GEN-LAST:event_AjoutRecetteMouseClicked
+    }//GEN-LAST:event_AjoutRecette
+
+    private void PlusRecetteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlusRecetteActionPerformed
+        int nombre = Integer.parseInt(this.NbRecette.getText());
+        nombre++;
+        this.NbRecette.setText(Integer.toString(nombre));
+        
+        //Mise à jour du prix total
+        actualiserPrixTotal();
+    }//GEN-LAST:event_PlusRecetteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AjoutRecette;
@@ -306,13 +322,13 @@ public class PageRecette extends javax.swing.JDialog {
     private javax.swing.JPanel Ligne2;
     private javax.swing.JPanel Ligne2Infos;
     private javax.swing.JPanel Ligne3;
-    private javax.swing.JButton MoinsFruit;
+    private javax.swing.JButton MoinsRecette;
     private javax.swing.JTextField NbRecette;
     private javax.swing.JLabel NomRecette;
     private javax.swing.JPanel PanelInfoRecette;
     private javax.swing.JPanel PanelNombreFruit;
     private javax.swing.JPanel PanelTotalFruit;
-    private javax.swing.JButton PlusFruit;
+    private javax.swing.JButton PlusRecette;
     private javax.swing.JLabel TotalFruit;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;

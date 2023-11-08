@@ -12,12 +12,16 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.mockito.Mock;
 
 /**
  *
  * @author guyot
  */
 public class MarcheFruitsTest {
+    
+    @Mock
+    private MarcheFruits parent;
     
     public MarcheFruitsTest() {
     }
@@ -32,10 +36,13 @@ public class MarcheFruitsTest {
     
     @Before
     public void setUp() {
+        parent = new MarcheFruits();
     }
     
     @After
     public void tearDown() {
+        
+        parent.dispose();
     }
 
     /**
@@ -44,7 +51,7 @@ public class MarcheFruitsTest {
     @Test
     public void testInitButtons() {
         System.out.println("initButtons");
-        MarcheFruits instance = new MarcheFruits();
+        MarcheFruits instance = parent;
         instance.initButtons();
     }
 
@@ -55,7 +62,7 @@ public class MarcheFruitsTest {
     public void testPropertyChange() {
         System.out.println("propertyChange");
         
-        MarcheFruits instance = new MarcheFruits();
+        MarcheFruits instance = parent;
         assertTrue(instance != null);;
         
         PropertyChangeEvent evt = new PropertyChangeEvent(instance.getPanier(), "fruits", 0, 1);
@@ -71,7 +78,7 @@ public class MarcheFruitsTest {
     @Test
     public void testGetPanier() {
         System.out.println("getPanier");
-        MarcheFruits instance = new MarcheFruits();
+        MarcheFruits instance = parent;
         Panier result = instance.getPanier();
         assertTrue(result != null);
     }
